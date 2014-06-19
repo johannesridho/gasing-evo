@@ -45,16 +45,15 @@ public class MenuSelection : MonoBehaviour {
 				else{
 					r.enabled = false;
 				}
-			}		
-		}
+			}				
+		} 
 	}
 
-	void OnMouseUp(){
+void OnMouseUp(){
 		//atur yang mana yang hilang yang mana yang muncul
 		if (isSinglePlayer) {
 			//show all its children, hide other's children
-			Debug.Log("wah");
-			Application.LoadLevel("Single Player");
+//			Debug.Log("wah");
 			Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
 			Renderer[] MultiPlayerRenderers = GameObject.Find("Multiplayer").GetComponentsInChildren<Renderer>();
 			Renderer[] OptionsRenderers = GameObject.Find("Options").GetComponentsInChildren<Renderer>();
@@ -140,6 +139,10 @@ public class MenuSelection : MonoBehaviour {
 					r.enabled = false;
 				}
 			}
+		}
+		else if (isArcadeMode) {
+			Application.LoadLevel("Single Player");
+//			Debug.Log("wah");
 		}
 	}
 
