@@ -7,7 +7,7 @@ public class Gasing : MonoBehaviour {
 	public float skillPointMax;
 	public float mass;
 	public Gasing gasing;
-	
+
 	public static float COEF_DMG = 0.1f;
 	public static float COEF_MOMENTUM = 2f;
 	private static float COEF_SPIN = 500f;
@@ -24,8 +24,8 @@ public class Gasing : MonoBehaviour {
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
-//		energiPointMax = 50;
-//		skillPointMax = 50;
+		//		energiPointMax = 50;
+		//		skillPointMax = 50;
 	}
 
 	// Use this for initialization
@@ -35,24 +35,29 @@ public class Gasing : MonoBehaviour {
 		isOnGround = true;
 		mass = 100;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		EPKurang(Time.deltaTime);		//kurangi EP tiap detik
-
+		EPKurang(0.05f);		//kurangi EP tiap detik
 		if(energiPoint <=0 ){
 			//gasing berhenti
 			//Debug.Log("wah");
 			Destroy (transform.root.gameObject); 
+		} else if (energiPoint <= 2) {
+			removeConstraint ();
+			Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
+			transform.Rotate(rotation);
 		}
 	}
-	
+
 	//called every fixed framerate frame
-	void FixedUpdate () {		
-		spin();
-		this.rigidbody.rotation.Set(0f, this.rigidbody.rotation.y, 0f, 0f);
+	void FixedUpdate () {	
+		if (energiPoint > 0) {
+			spin ();
+			this.rigidbody.rotation.Set (0f, this.rigidbody.rotation.y, 0f, 0f);
+		}
 	}
-	
+
 	void EPKurang(float dmg){
 		if (energiPoint - dmg > 0) {
 			energiPoint -= dmg;
@@ -60,7 +65,7 @@ public class Gasing : MonoBehaviour {
 			energiPoint = 0;
 		}
 	}
-	
+
 	void EPTambah(float n){
 		if (energiPoint + n < energiPointMax) {
 			energiPoint += n;
@@ -68,7 +73,7 @@ public class Gasing : MonoBehaviour {
 			energiPoint = energiPointMax;
 		}
 	}
-	
+
 	void velChange(Vector3 n){
 		gasing.rigidbody.velocity = n;
 	}
@@ -90,15 +95,15 @@ public class Gasing : MonoBehaviour {
 	public void setEPMax(float ep){
 		energiPointMax = ep;
 	}
-	
+
 	public void setSPMax(float sp){
 		skillPointMax = sp;
 	}
-	
+
 	public float getEPMax(){
 		return energiPointMax;
 	}
-	
+
 	public float getSPMax(){
 		return skillPointMax;
 	}
@@ -118,10 +123,14 @@ public class Gasing : MonoBehaviour {
 	public float getSP(){
 		return skillPoint;
 	}
-	
+
 	protected void spin() {
-		Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
+		Vector3 rotation = new Vector3 (0f, 0f, COEF_SPIN*Time.deltaTime);
 		transform.Rotate(rotation);
 	}
-	
+
+	public void removeConstraint() {
+		rigidbody.constraints = RigidbodyConstraints.None;
+	}
+
 }//end class

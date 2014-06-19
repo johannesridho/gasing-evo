@@ -38,7 +38,7 @@ public class GasingBlender : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		EPKurang(0.3f);		//kurangi EP tiap detik
+		EPKurang(0.1f);		//kurangi EP tiap detik
 
 
 
