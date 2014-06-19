@@ -2,54 +2,42 @@
 using System.Collections;
 
 public class HealthBar : MonoBehaviour {
-
-
-
+	
 	public GameObject pemain;
-	private Vector3 offset;
+	public Gasing gasing;
 
-//	public GUIStyle : myGUIStyle;
-
-//	public static HealthBar instance;
-//	public Rect lifeBarRect;
-//	public Rect lifeBarLabelRect;
-//	public Rect lifeBarBackgroundRect;
-//	public Texture2D lifeBarBackground;
-//	public Texture2D lifeBar;
-//
-//	private float LifeBarWidth = 300f;
-//
+	public Vector3 screenPosition;
+	public float healthBarLength;
 
 	void Awake(){
 		if (!pemain) {
 			pemain = GameObject.Find ("Pemain");
 		}
+		if(!gasing){
+			gasing = GetComponent<Gasing>();
+		}
 	}
 
 	// Use this for initialization
 	void Start () {
-//		instance = this;
-//		offset = pemain.transform.position;
+		healthBarLength = 50;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-//		transform.position = offset + pemain.transform.position;
+	void FixedUpdate () {
+		screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+		screenPosition.y = Screen.height - screenPosition.y;	//naikin dikit biar di atasnya gasing
+		healthBarLength = gasing.getEP () / gasing.getEPMax() * 50;
 	}
 
 	void OnGUI(){		
-//		instance.lifeBarRect.width = LifeBarWidth * (200);
-//		instance.lifeBarRect.height = 20;
-//		
-//		instance.lifeBarBackgroundRect.width = LifeBarWidth;
-//		instance.lifeBarBackgroundRect.height= 20;
-//		
-//		GUI.DrawTexture(lifeBarRect, lifeBar);
-//		GUI.DrawTexture(lifeBarBackgroundRect, lifeBarBackground);
-//		
-//		GUI.Label(lifeBarLabelRect, "LIFE");
+//		GUIStyle styleBarKosong = new GUIStyle ();
+//		GUISkin skin = new GUISkin ();
 
-		GUI.Box (new Rect(pemain.transform.position.x,pemain.transform.position.z,100,100),"Life");
+		GUI.backgroundColor = Color.yellow;
+//		GUI.Box (new Rect(pemain.transform.position.x,pemain.transform.position.z,100,100),"Life");
+		GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, healthBarLength, 10), "");
+		GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, 50, 10), "");
 	}
 
 }//end class

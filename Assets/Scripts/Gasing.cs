@@ -54,11 +54,19 @@ public class Gasing : MonoBehaviour {
 	}
 	
 	void EPKurang(float dmg){
-		energiPoint -= dmg;
+		if (energiPoint - dmg > 0) {
+			energiPoint -= dmg;
+		} else {
+			energiPoint = 0;
+		}
 	}
 	
 	void EPTambah(float n){
-		energiPoint += n;
+		if (energiPoint + n < energiPointMax) {
+			energiPoint += n;
+		} else {
+			energiPoint = energiPointMax;
+		}
 	}
 	
 	void velChange(Vector3 n){

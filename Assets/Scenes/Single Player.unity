@@ -356,6 +356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5abf135e4863334da439e7e908d583b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pemain: {fileID: 0}
+  gasing: {fileID: 0}
+  screenPosition: {x: 0, y: 0, z: 0}
+  healthBarLength: 0
 --- !u!1 &517189639
 GameObject:
   m_ObjectHideFlags: 0
