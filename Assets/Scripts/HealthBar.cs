@@ -34,20 +34,17 @@ public class HealthBar : MonoBehaviour {
 		Texture2D texture = new Texture2D(1, 1);
 		texture.SetPixel (1, 1, Color.green);
 		texture.Apply ();
-		//Set new texture as background
 		style.normal.background = texture;
 
 		GUIStyle style2 = new GUIStyle(GUI.skin.box);
 		Texture2D texture2 = new Texture2D(1, 1);
 		texture2.SetPixel (1, 1, Color.red);
 		texture2.Apply ();
-		//Set new texture as background
+
 		style2.normal.background = texture2;
 
-//		GUI.backgroundColor = Color.yellow;
-//		GUI.Box (new Rect(pemain.transform.position.x,pemain.transform.position.z,100,100),"Life");
-		GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, 50, 10), "",style2);
-		GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, healthBarLength, 10), "",style);
+		GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, 50, 7), "",style2);
+		GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, healthBarLength, 7), "",style);
 	}
 
 }//end class

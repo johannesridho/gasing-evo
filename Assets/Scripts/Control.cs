@@ -30,9 +30,10 @@ public class Control : MonoBehaviour {
 		if (gasing.isOnGround) {
 			hor = Input.GetAxis ("Horizontal");
 			ver = Input.GetAxis ("Vertical");
+//					hor = Input.acceleration.x;
+//					ver = Input.acceleration.y;
 		}
-//		float hor = Input.acceleration.x;
-//		float ver = Input.acceleration.y;
+
 
 		Vector3 movement = new Vector3 (hor, 0f, ver);
 
