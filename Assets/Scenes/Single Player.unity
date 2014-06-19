@@ -356,7 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5abf135e4863334da439e7e908d583b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pemain: {fileID: 0}
   gasing: {fileID: 0}
   screenPosition: {x: 0, y: 0, z: 0}
   healthBarLength: 0
@@ -719,6 +718,7 @@ GameObject:
   - 54: {fileID: 1265794715}
   - 114: {fileID: 1265794720}
   - 114: {fileID: 1265794721}
+  - 114: {fileID: 1265794722}
   m_Layer: 0
   m_Name: Musuh
   m_TagString: Player
@@ -823,6 +823,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gasing: {fileID: 0}
   speed: 400
+--- !u!114 &1265794722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265794714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5abf135e4863334da439e7e908d583b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gasing: {fileID: 0}
+  screenPosition: {x: 0, y: 0, z: 0}
+  healthBarLength: 0
 --- !u!1 &1496484620
 GameObject:
   m_ObjectHideFlags: 0

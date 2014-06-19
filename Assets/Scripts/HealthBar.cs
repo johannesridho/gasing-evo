@@ -2,17 +2,13 @@
 using System.Collections;
 
 public class HealthBar : MonoBehaviour {
-	
-	public GameObject pemain;
+
 	public Gasing gasing;
 
 	public Vector3 screenPosition;
 	public float healthBarLength;
 
 	void Awake(){
-		if (!pemain) {
-			pemain = GameObject.Find ("Pemain");
-		}
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
 		}
