@@ -227,6 +227,7 @@ GameObject:
   - 54: {fileID: 383165547}
   - 114: {fileID: 383165548}
   - 114: {fileID: 383165549}
+  - 114: {fileID: 383165550}
   m_Layer: 0
   m_Name: Pemain
   m_TagString: Player
@@ -344,6 +345,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jump_coef: 0
   gasing: {fileID: 0}
+--- !u!114 &383165550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 383165541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5abf135e4863334da439e7e908d583b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &517189639
 GameObject:
   m_ObjectHideFlags: 0
