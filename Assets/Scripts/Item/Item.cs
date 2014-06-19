@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Item : MonoBehaviour {
 
-	private float spin_velo;
+	private static float spin_velo = 100f;
 
 	void Awake(){
 		init();
@@ -28,7 +28,7 @@ public class Item : MonoBehaviour {
 	}
 	
 	protected void init() {
-		spin_velo = 100f;
+
 	}
 	
 	protected void spin() {

@@ -229,7 +229,7 @@ GameObject:
   - 114: {fileID: 383165549}
   m_Layer: 0
   m_Name: Pemain
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -326,6 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energiPointMax: 100
   skillPointMax: 100
+  mass: 0
+  gasing: {fileID: 0}
   energiPoint: 0
   skillPoint: 0
   isOnGround: 0
@@ -703,7 +705,7 @@ GameObject:
   - 114: {fileID: 1265794721}
   m_Layer: 0
   m_Name: Musuh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -787,6 +789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energiPointMax: 0
   skillPointMax: 0
+  mass: 0
+  gasing: {fileID: 0}
   energiPoint: 0
   skillPoint: 0
   isOnGround: 0
@@ -796,7 +800,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1265794714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62817590ea51f1048a2844f1e2a599a2, type: 3}
   m_Name: 

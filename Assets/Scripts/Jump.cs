@@ -9,7 +9,7 @@ public class Jump : MonoBehaviour {
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
-		jump_coef = 20000f;
+		jump_coef = 15000f;
 	}
 
 	void Start () {

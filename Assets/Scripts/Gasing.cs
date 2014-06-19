@@ -5,6 +5,12 @@ public class Gasing : MonoBehaviour {
 
 	public float energiPointMax;
 	public float skillPointMax;
+	public float mass;
+	public Gasing gasing;
+	
+	public static float COEF_DMG = 0.1f;
+	public static float COEF_MOMENTUM = 2f;
+	private static float COEF_SPIN = 500f;
 
 	//ntar di-private
 	//private float energiPoint;
@@ -16,6 +22,8 @@ public class Gasing : MonoBehaviour {
 	public bool isOnGround;
 
 	void Awake(){
+		if(!gasing)
+			gasing = GetComponent<Gasing>();
 //		energiPointMax = 50;
 //		skillPointMax = 50;
 	}
@@ -25,6 +33,7 @@ public class Gasing : MonoBehaviour {
 		energiPoint = energiPointMax;
 		skillPoint = skillPointMax;
 		isOnGround = true;
+		mass = 100;
 	}
 	
 	// Update is called once per frame
@@ -38,6 +47,12 @@ public class Gasing : MonoBehaviour {
 		}
 	}
 	
+	//called every fixed framerate frame
+	void FixedUpdate () {		
+		spin();
+		this.rigidbody.rotation.Set(0f, this.rigidbody.rotation.y, 0f, 0f);
+	}
+	
 	void EPKurang(float dmg){
 		energiPoint -= dmg;
 	}
@@ -45,10 +60,20 @@ public class Gasing : MonoBehaviour {
 	void EPTambah(float n){
 		energiPoint += n;
 	}
+	
+	void velChange(Vector3 n){
+		gasing.rigidbody.velocity = n;
+	}
 
 	void OnCollisionEnter(Collision col){
-		if ((col.gameObject.name == "Musuh")||(col.gameObject.name == "Pemain")) {
-			col.collider.SendMessage ("EPKurang", 10.0, SendMessageOptions.DontRequireReceiver);	//trigger objek yg ditabrak buat eksekusi method EPKurang()
+		if (col.gameObject.tag == "Player") {
+			Vector3 vel = gasing.rigidbody.velocity;
+			Vector3 momentum = COEF_MOMENTUM * vel;
+			float damage = COEF_DMG * Mathf.Sqrt(Mathf.Pow(momentum.x,2) + Mathf.Pow(momentum.y,2) + Mathf.Pow(momentum.z,2));
+
+			col.collider.SendMessage ("velChange", momentum, SendMessageOptions.DontRequireReceiver);
+			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
+
 		} else if (col.gameObject.name == "Tanah") {
 			this.isOnGround = true;
 		}
@@ -84,6 +109,11 @@ public class Gasing : MonoBehaviour {
 
 	public float getSP(){
 		return skillPoint;
+	}
+	
+	protected void spin() {
+		Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
+		transform.Rotate(rotation);
 	}
 	
 }//end class
