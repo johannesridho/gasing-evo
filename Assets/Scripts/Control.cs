@@ -29,8 +29,8 @@ public class Control : MonoBehaviour {
 
 		if (gasing.isOnGround) {
 			if (Application.platform == RuntimePlatform.Android){
-				hor = Input.acceleration.x;
-				ver = Input.acceleration.y;
+				hor = Input.acceleration.x *2;
+				ver = Input.acceleration.y *2;
 			}else{
 				hor = Input.GetAxis ("Horizontal");
 				ver = Input.GetAxis ("Vertical");
