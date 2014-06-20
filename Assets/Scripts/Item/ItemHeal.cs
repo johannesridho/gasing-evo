@@ -7,8 +7,8 @@ public class ItemHeal : Item {
 	
 	void Awake(){
 		base.init();
-		renderer.material.shader = Shader.Find("Specular");
-		renderer.material.SetColor("_Color", Color.green);
+//		renderer.material.shader = Shader.Find("Specular");
+//		renderer.material.SetColor("_Color", Color.green);
 	}
 
 	void OnCollisionEnter(Collision col){

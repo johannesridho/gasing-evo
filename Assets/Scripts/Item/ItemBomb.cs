@@ -7,8 +7,8 @@ public class ItemBomb : Item {
 	
 	void Awake(){
 		base.init();
-		renderer.material.shader = Shader.Find("Specular");
-		renderer.material.SetColor("_Color", Color.red);
+//		renderer.material.shader = Shader.Find("Specular");
+//		renderer.material.SetColor("_Color", Color.red);
 	}
 
 	void OnCollisionEnter(Collision col){
