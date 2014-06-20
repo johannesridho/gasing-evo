@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Multiplayer Menu.unity
   - enabled: 1
     path: Assets/Scenes/Gladiator.unity
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
