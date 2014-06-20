@@ -28,10 +28,13 @@ public class Control : MonoBehaviour {
 		float ver = 0f;
 
 		if (gasing.isOnGround) {
-			hor = Input.GetAxis ("Horizontal");
-			ver = Input.GetAxis ("Vertical");
-//					hor = Input.acceleration.x;
-//					ver = Input.acceleration.y;
+			if (Application.platform == RuntimePlatform.Android){
+				hor = Input.acceleration.x;
+				ver = Input.acceleration.y;
+			}else{
+				hor = Input.GetAxis ("Horizontal");
+				ver = Input.GetAxis ("Vertical");
+			}
 		}
 
 
