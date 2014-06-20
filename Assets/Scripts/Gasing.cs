@@ -43,6 +43,7 @@ public class Gasing : MonoBehaviour {
 			//gasing berhenti
 			//Debug.Log("wah");
 			Destroy (transform.root.gameObject); 
+			Application.LoadLevel("GameOver");
 		} else if (energiPoint <= 2) {
 			removeConstraint ();
 			Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
