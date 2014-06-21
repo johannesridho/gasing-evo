@@ -9,8 +9,9 @@ public class Gasing : MonoBehaviour {
 	public Gasing gasing;
 
 	public static float COEF_DMG = 0.1f;
-	public static float COEF_MOMENTUM = 2f;
+	public static float COEF_MOMENTUM = 1.2f;
 	private static float COEF_SPIN = 500f;
+	private static float COEF_VEL_LIMIT = 25;
 
 	//ntar di-private
 	//private float energiPoint;
@@ -57,6 +58,9 @@ public class Gasing : MonoBehaviour {
 			spin ();
 			this.rigidbody.rotation.Set (0f, this.rigidbody.rotation.y, 0f, 0f);
 		}
+		Vector3 vel = gasing.rigidbody.velocity;
+		float vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
+		gasing.rigidbody.velocity = (vec > COEF_VEL_LIMIT) ? vel * COEF_VEL_LIMIT/vec : vel;
 	}
 
 	void EPKurang(float dmg){
