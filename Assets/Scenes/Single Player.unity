@@ -1428,7 +1428,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pemain: {fileID: 0}
   musuh: {fileID: 0}
-  jumlahMusuh: 20
+  gasingPemain: {fileID: 0}
+  jumlahMusuh: 3
 --- !u!4 &1787596714
 Transform:
   m_ObjectHideFlags: 0

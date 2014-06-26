@@ -5,12 +5,16 @@ public class StoneFieldController : MonoBehaviour {
 
 	public GameObject pemain;
 	public GameObject musuh;
+	public Gasing gasingPemain;
 	public int jumlahMusuh;
 
 	void Awake(){
 //		jumlahMusuh = 3;
 		if (!pemain) {
 			pemain = GameObject.Find ("Pemain");
+			if(!gasingPemain){
+				gasingPemain = pemain.GetComponent<Gasing>();
+			}
 		}
 		if (!musuh) {
 			musuh = GameObject.Find ("Musuh");
@@ -40,6 +44,8 @@ public class StoneFieldController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(gasingPemain.getEP()<=0 || GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
+			Application.LoadLevel("GameOver");
+		}
 	}
 }
