@@ -84,9 +84,13 @@ public class Gasing : MonoBehaviour {
 	void SPTambah(float n){
 		skillPoint = ((skillPoint + n) < skillPointMax) ? skillPoint + n : skillPointMax;
 	}
-
-	void velChange(Vector3 n){
+	
+	void speedChange(Vector3 n){
 		gasing.rigidbody.velocity = n;
+	}
+	
+	void speedMaxChange(float n){
+		speedMax = n;
 	}
 
 	void OnCollisionEnter(Collision col){
