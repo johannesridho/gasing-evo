@@ -28,8 +28,6 @@ public class Gasing : MonoBehaviour {
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
-		//		energiPointMax = 50;
-		//		skillPointMax = 50;
 	}
 
 	// Use this for initialization
@@ -37,9 +35,11 @@ public class Gasing : MonoBehaviour {
 		energiPoint = energiPointMax;
 		skillPoint = skillPointMax;
 		isOnGround = true;
-		mass = 100;
-		power = 1f;
-		speed = 1f;
+
+		//epmax, spmax, mass, power, speed diset di controller
+//		mass = 100;
+//		power = 1f;
+//		speed = 1f;
 		speedMax = 20f;
 	}
 
@@ -137,6 +137,25 @@ public class Gasing : MonoBehaviour {
 
 	public float getSP(){
 		return skillPoint;
+	}
+
+	public float getMass(){
+		return mass;
+	}
+	public float getSpeed(){
+		return speed;
+	}
+	public float getPower(){
+		return power;
+	}
+	public void setMass(float f){
+		mass = f;
+	}
+	public void setPower(float f){
+		power = f;
+	}
+	public void setSpeed(float f){
+		speed = f;
 	}
 
 	protected void spin() {

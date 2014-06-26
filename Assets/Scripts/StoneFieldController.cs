@@ -14,6 +14,13 @@ public class StoneFieldController : MonoBehaviour {
 			pemain = GameObject.Find ("Pemain");
 			if(!gasingPemain){
 				gasingPemain = pemain.GetComponent<Gasing>();
+
+				//set atribut gasing sesuai jenisnya
+				gasingPemain.setEPMax(100);
+				gasingPemain.setSPMax(100);
+				gasingPemain.setSpeed(1);
+				gasingPemain.setPower(1);
+				gasingPemain.setMass(100);
 			}
 		}
 		if (!musuh) {
