@@ -30,8 +30,8 @@ public class Control : MonoBehaviour {
 
 		if (gasing.isOnGround) {
 			if (Application.platform == RuntimePlatform.Android){
-				hor = Input.acceleration.x *2;
-				ver = Input.acceleration.y *2;
+				hor = Input.acceleration.x * Gasing.COEF_SPEED;
+				ver = Input.acceleration.y * Gasing.COEF_SPEED;
 			}else{
 				hor = Input.GetAxis ("Horizontal");
 				ver = Input.GetAxis ("Vertical");

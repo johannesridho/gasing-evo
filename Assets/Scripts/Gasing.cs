@@ -8,10 +8,11 @@ public class Gasing : MonoBehaviour {
 	public float mass;
 	public Gasing gasing;
 
-	public static float COEF_DMG = 0.1f;
+	public static float COEF_POWER = 0.1f;
 	public static float COEF_MOMENTUM = 1.2f;
-	private static float COEF_SPIN = 500f;
-	private static float COEF_VEL_LIMIT = 25;
+	public static float COEF_SPIN = 500f;
+	public static float COEF_SPEED_LIMIT = 25;
+	public static float COEF_SPEED = 2;
 
 	//ntar di-private
 	//private float energiPoint;
@@ -60,7 +61,7 @@ public class Gasing : MonoBehaviour {
 		}
 		Vector3 vel = gasing.rigidbody.velocity;
 		float vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
-		gasing.rigidbody.velocity = (vec > COEF_VEL_LIMIT) ? vel * COEF_VEL_LIMIT/vec : vel;
+		gasing.rigidbody.velocity = (vec > COEF_SPEED_LIMIT) ? vel * COEF_SPEED_LIMIT/vec : vel;
 	}
 
 	void EPKurang(float dmg){
@@ -87,7 +88,7 @@ public class Gasing : MonoBehaviour {
 		if (col.gameObject.tag == "Player") {
 			Vector3 vel = gasing.rigidbody.velocity;
 			Vector3 momentum = COEF_MOMENTUM * vel;
-			float damage = COEF_DMG * Mathf.Sqrt(Mathf.Pow(momentum.x,2) + Mathf.Pow(momentum.y,2) + Mathf.Pow(momentum.z,2));
+			float damage = COEF_POWER * Mathf.Sqrt(Mathf.Pow(momentum.x,2) + Mathf.Pow(momentum.y,2) + Mathf.Pow(momentum.z,2));
 
 			col.collider.SendMessage ("velChange", momentum, SendMessageOptions.DontRequireReceiver);
 			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
