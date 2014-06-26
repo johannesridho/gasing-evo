@@ -10,7 +10,6 @@ public class Gasing : MonoBehaviour {
 	public static float COEF_POWER = 0.1f;
 	public static float COEF_MOMENTUM = 1.2f;
 	public static float COEF_SPIN = 500f;
-	public static float COEF_SPEED_LIMIT = 25;
 	public static float COEF_SPEED = 2;
 
 	//ntar di-private
@@ -21,6 +20,7 @@ public class Gasing : MonoBehaviour {
 	public float mass;
 	public float power;
 	public float speed;
+	public float speedMax;
 
 	// state
 	public bool isOnGround;
@@ -40,6 +40,7 @@ public class Gasing : MonoBehaviour {
 		mass = 100;
 		power = 1f;
 		speed = 1f;
+		speedMax = 20f;
 	}
 
 	// Update is called once per frame
@@ -65,7 +66,7 @@ public class Gasing : MonoBehaviour {
 		}
 		Vector3 vel = gasing.rigidbody.velocity;
 		float vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
-		gasing.rigidbody.velocity = (vec > COEF_SPEED_LIMIT) ? vel * COEF_SPEED_LIMIT/vec : vel;
+		gasing.rigidbody.velocity = (vec > speedMax) ? vel * speedMax/vec : vel;
 	}
 	
 	void EPKurang(float dmg){
