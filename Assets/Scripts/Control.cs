@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Control : MonoBehaviour {
 
-	public float speed;
 	public Gasing gasing;
 	public Texture2D buttonSkill1;
 	
@@ -37,7 +36,7 @@ public class Control : MonoBehaviour {
 			}
 		}
 		Vector3 movement = new Vector3 (hor, 0f, ver);
-		rigidbody.AddForce (movement * speed * Time.deltaTime);
+		rigidbody.AddForce (movement * 2000 * Time.deltaTime);
 	}
 
 	void OnGUI () {
