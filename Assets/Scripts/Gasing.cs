@@ -94,7 +94,7 @@ public class Gasing : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			Vector3 vel = gasing.rigidbody.velocity;
 			Vector3 momentum = COEF_MOMENTUM * vel;
 			float damage = COEF_POWER * power * Mathf.Sqrt(Mathf.Pow(momentum.x,2) + Mathf.Pow(momentum.y,2) + Mathf.Pow(momentum.z,2));

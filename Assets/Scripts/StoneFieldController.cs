@@ -15,7 +15,7 @@ public class StoneFieldController : MonoBehaviour {
 		if (!musuh) {
 			musuh = GameObject.Find ("Musuh");
 			for (int i = 1; i < jumlahMusuh; i++) {
-				Instantiate(musuh, new Vector3(i * 2.0F, 1, 0), Quaternion.Euler(270,0,0));
+				Instantiate(musuh, new Vector3(i * 5, 1, 10), Quaternion.Euler(270,0,0));
 			}
 		}
 	}

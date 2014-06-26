@@ -17,7 +17,7 @@ public class ItemSpeedPlus : Item {
 	}
 	
 	void speedPlus(Collision col) {
-		if ((col.gameObject.name == "Musuh")||(col.gameObject.name == "Pemain")||(col.gameObject.name == "Musuh(Clone)")) {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			col.collider.SendMessage("speedMaxChange", _SPEEDPLUS, SendMessageOptions.DontRequireReceiver);
 		}
 	}

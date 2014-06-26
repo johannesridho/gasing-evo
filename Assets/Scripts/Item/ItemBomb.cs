@@ -17,7 +17,7 @@ public class ItemBomb : Item {
 	}
 	
 	void damage(Collision col) {
-		if ((col.gameObject.name == "Musuh")||(col.gameObject.name == "Pemain")||(col.gameObject.name == "Musuh(Clone)")) {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			col.collider.SendMessage("EPKurang", _DAMAGE, SendMessageOptions.DontRequireReceiver);
 		}
 	}

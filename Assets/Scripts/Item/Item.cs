@@ -37,7 +37,7 @@ public class Item : MonoBehaviour {
 	}
 
 	protected void destroyOnCollide(Collision col) {
-		if ((col.gameObject.name == "Musuh")||(col.gameObject.name == "Pemain")||(col.gameObject.name == "Musuh(Clone)")) {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			Destroy(transform.root.gameObject); 
 		}
 	}

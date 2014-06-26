@@ -17,7 +17,7 @@ public class ItemHeal : Item {
 	}
 
 	void heal(Collision col) {
-		if ((col.gameObject.name == "Musuh")||(col.gameObject.name == "Pemain")||(col.gameObject.name == "Musuh(Clone)")) {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			col.collider.SendMessage("EPTambah", _HEAL, SendMessageOptions.DontRequireReceiver);
 		}
 	}

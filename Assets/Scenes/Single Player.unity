@@ -744,7 +744,7 @@ GameObject:
   - 54: {fileID: 1095051555}
   m_Layer: 0
   m_Name: Musuh
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pemain: {fileID: 0}
   musuh: {fileID: 0}
-  jumlahMusuh: 3
+  jumlahMusuh: 4
 --- !u!4 &1787596714
 Transform:
   m_ObjectHideFlags: 0
@@ -1498,7 +1498,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: f8eb4be6d18731f41a0e7491277ce901, type: 2}
     - target: {fileID: 100000, guid: 88542486b1368f84f908561a26e0aa95, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88542486b1368f84f908561a26e0aa95, type: 3}
       propertyPath: m_LocalScale.x
