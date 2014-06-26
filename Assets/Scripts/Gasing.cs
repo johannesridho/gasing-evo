@@ -67,21 +67,21 @@ public class Gasing : MonoBehaviour {
 		float vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
 		gasing.rigidbody.velocity = (vec > COEF_SPEED_LIMIT) ? vel * COEF_SPEED_LIMIT/vec : vel;
 	}
-
+	
 	void EPKurang(float dmg){
-		if (energiPoint - dmg > 0) {
-			energiPoint -= dmg;
-		} else {
-			energiPoint = 0;
-		}
+		energiPoint = ((energiPoint - dmg) > 0) ? energiPoint - dmg : 0 ;
 	}
-
+	
 	void EPTambah(float n){
-		if (energiPoint + n < energiPointMax) {
-			energiPoint += n;
-		} else {
-			energiPoint = energiPointMax;
-		}
+		energiPoint = ((energiPoint + n) < energiPointMax) ? energiPoint + n : energiPointMax;
+	}
+	
+	void SPKurang(float dmg){
+		skillPoint = ((skillPoint - dmg) > 0) ? skillPoint - dmg : 0 ;
+	}
+	
+	void SPTambah(float n){
+		skillPoint = ((skillPoint + n) < skillPointMax) ? skillPoint + n : skillPointMax;
 	}
 
 	void velChange(Vector3 n){
