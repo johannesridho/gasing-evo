@@ -5,7 +5,6 @@ public class Gasing : MonoBehaviour {
 
 	public float energiPointMax;
 	public float skillPointMax;
-	public float mass;
 	public Gasing gasing;
 
 	public static float COEF_POWER = 0.1f;
@@ -19,6 +18,9 @@ public class Gasing : MonoBehaviour {
 	//private float skillPoint;
 	public float energiPoint;
 	public float skillPoint;
+	public float mass;
+	public float power;
+	public float speed;
 
 	// state
 	public bool isOnGround;
@@ -36,6 +38,8 @@ public class Gasing : MonoBehaviour {
 		skillPoint = skillPointMax;
 		isOnGround = true;
 		mass = 100;
+		power = 1f;
+		speed = 1f;
 	}
 
 	// Update is called once per frame
@@ -88,7 +92,7 @@ public class Gasing : MonoBehaviour {
 		if (col.gameObject.tag == "Player") {
 			Vector3 vel = gasing.rigidbody.velocity;
 			Vector3 momentum = COEF_MOMENTUM * vel;
-			float damage = COEF_POWER * Mathf.Sqrt(Mathf.Pow(momentum.x,2) + Mathf.Pow(momentum.y,2) + Mathf.Pow(momentum.z,2));
+			float damage = COEF_POWER * power * Mathf.Sqrt(Mathf.Pow(momentum.x,2) + Mathf.Pow(momentum.y,2) + Mathf.Pow(momentum.z,2));
 
 			col.collider.SendMessage ("velChange", momentum, SendMessageOptions.DontRequireReceiver);
 			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);

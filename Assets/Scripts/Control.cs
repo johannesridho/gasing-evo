@@ -27,22 +27,17 @@ public class Control : MonoBehaviour {
 	void FixedUpdate () {
 		float hor = 0f;
 		float ver = 0f;
-
 		if (gasing.isOnGround) {
 			if (Application.platform == RuntimePlatform.Android){
-				hor = Input.acceleration.x * Gasing.COEF_SPEED;
-				ver = Input.acceleration.y * Gasing.COEF_SPEED;
+				hor = Input.acceleration.x * Gasing.COEF_SPEED * gasing.speed;
+				ver = Input.acceleration.y * Gasing.COEF_SPEED * gasing.speed;
 			}else{
-				hor = Input.GetAxis ("Horizontal");
-				ver = Input.GetAxis ("Vertical");
+				hor = Input.GetAxis("Horizontal") * Gasing.COEF_SPEED * gasing.speed;
+				ver = Input.GetAxis("Vertical") * Gasing.COEF_SPEED * gasing.speed;
 			}
 		}
-
-
 		Vector3 movement = new Vector3 (hor, 0f, ver);
-
 		rigidbody.AddForce (movement * speed * Time.deltaTime);
-
 	}
 
 	void OnGUI () {
