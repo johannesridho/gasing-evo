@@ -876,7 +876,7 @@ MonoBehaviour:
   musuh: {fileID: 0}
   gasingPemain: {fileID: 0}
   gasingMusuh: {fileID: 0}
-  jumlahMusuh: 3
+  jumlahMusuh: 1
   listPemain:
   - {fileID: 100000, guid: d2f38186a2a9ad048945a13096b9941a, type: 2}
   - {fileID: 100000, guid: 54952e8752b4cbd41a1b2e97e52c3387, type: 2}
