@@ -14,16 +14,23 @@ public class StoneFieldController : MonoBehaviour {
 	void Awake(){
 //		jumlahMusuh = 3;
 		if (!pemain) {
-			pemain = GameObject.Find ("Pemain");
+//			pemain = GameObject.Find ("Pemain");
+			if (listPemain.Length != 0) {
+//				listPemain[0].name = "tes";
+//				Instantiate(listPemain[0], new Vector3(0, 1, -15), Quaternion.Euler(270,0,0));
+//				pemain = listPemain[0];
+				pemain = (GameObject)Instantiate(listPemain[0], new Vector3(0, 1, -15), Quaternion.Euler(270,0,0));		//hidupin gasing, pilih prefab
+				pemain.name = "Pemain";
+			}
 			if(!gasingPemain){
 				gasingPemain = pemain.GetComponent<Gasing>();
 
 				//set atribut gasing sesuai jenisnya
-				gasingPemain.setEPMax(100);
-				gasingPemain.setSPMax(100);
-				gasingPemain.setSpeed(1);
-				gasingPemain.setPower(1);
-				gasingPemain.setMass(100);
+//				gasingPemain.setEPMax(100);
+//				gasingPemain.setSPMax(100);
+//				gasingPemain.setSpeed(1);
+//				gasingPemain.setPower(1);
+//				gasingPemain.setMass(100);
 			}
 		}
 		if (!musuh) {
