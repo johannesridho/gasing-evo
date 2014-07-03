@@ -8,6 +8,8 @@ public class StoneFieldController : MonoBehaviour {
 	public Gasing gasingPemain;
 	public Gasing gasingMusuh;
 	public int jumlahMusuh;
+	public GameObject[] listPemain;
+	public GameObject[] listMusuh;
 
 	void Awake(){
 //		jumlahMusuh = 3;
@@ -25,14 +27,18 @@ public class StoneFieldController : MonoBehaviour {
 			}
 		}
 		if (!musuh) {
-			musuh = GameObject.Find ("Musuh");
+//			musuh = GameObject.Find ("Musuh");
+			if (listMusuh.Length != 0) {
+				Instantiate(listMusuh[0], new Vector3(0, 1, 10), Quaternion.Euler(270,0,0));
+				musuh = listMusuh[0];
+			}
 			if(!gasingMusuh){
 				gasingMusuh = musuh.GetComponent<Gasing>();
-				gasingMusuh.setEPMax(100);
-				gasingMusuh.setSPMax(100);
-				gasingMusuh.setSpeed(1);
-				gasingMusuh.setPower(1);
-				gasingMusuh.setMass(100);			
+//				gasingMusuh.setEPMax(100);
+//				gasingMusuh.setSPMax(100);
+//				gasingMusuh.setSpeed(1);
+//				gasingMusuh.setPower(1);
+//				gasingMusuh.setMass(100);			
 
 				for (int i = 1; i < jumlahMusuh; i++) {
 					if(i<=4){
