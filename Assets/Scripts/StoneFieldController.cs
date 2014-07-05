@@ -73,7 +73,7 @@ public class StoneFieldController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(gasingPemain.getEP()<=0 || GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
+		if(gasingPemain.getEP()<=0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
 			Application.LoadLevel("GameOver");
 		}
 	}

@@ -26,6 +26,8 @@ public class Gasing : MonoBehaviour {
 	// state
 	public bool isOnGround;
 
+	public AudioClip audioTabrakan;
+
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
@@ -105,6 +107,11 @@ public class Gasing : MonoBehaviour {
 
 			col.collider.SendMessage ("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
 			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
+
+			if(audioTabrakan){
+				audio.PlayOneShot(audioTabrakan);
+			}
+//			audio.Play();
 
 		} else if (col.gameObject.name == "Tanah") {
 			this.isOnGround = true;
