@@ -37,7 +37,7 @@ public class Jump : MonoBehaviour {
 		GUIStyle style = new GUIStyle (GUI.skin.box);
 		style.normal.background = buttonSkill1;
 
-		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Skill 1", style)) {
+		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Jump", style)) {
 			if (gasing.isOnGround) {
 				float jump_coef = 15000f;
 				Vector3 movement = new Vector3 (0f, 1f, 0f);		

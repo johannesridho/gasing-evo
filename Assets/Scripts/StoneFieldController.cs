@@ -12,7 +12,7 @@ public class StoneFieldController : MonoBehaviour
     public GameObject[] listPemain;
     public GameObject[] listMusuh;
 
-    public bool isMultiplayer = true;
+    public bool isMultiplayer;
 
     void Awake()
     {
