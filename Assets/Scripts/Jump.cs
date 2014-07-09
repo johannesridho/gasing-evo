@@ -5,11 +5,13 @@ public class Jump : MonoBehaviour {
 	
 	public float jump_coef;
 	public Gasing gasing;
+	public Texture2D buttonSkill1;
 	
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 		jump_coef = 15000f;
+//		buttonSkill1 = (Texture2D)Resources.Load("HUD_health_04.psd");
 	}
 
 	void Start () {
@@ -29,5 +31,20 @@ public class Jump : MonoBehaviour {
 		}		
 		Vector3 movement = new Vector3 (0f, jump, 0f);		
 		rigidbody.AddForce (movement * jump_coef * Time.deltaTime);		
+	}
+
+	void OnGUI () {
+		GUIStyle style = new GUIStyle (GUI.skin.box);
+		style.normal.background = buttonSkill1;
+
+		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Jump", style)) {
+			if (gasing.isOnGround) {
+				float jump_coef = 15000f;
+				Vector3 movement = new Vector3 (0f, 1f, 0f);		
+				rigidbody.AddForce (movement * jump_coef * Time.deltaTime);	
+				gasing.isOnGround = false;
+			}
+				
+		}
 	}
 }

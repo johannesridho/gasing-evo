@@ -14,6 +14,9 @@ public class FollowPemain : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (!pemain) {
+			pemain = GameObject.Find ("Pemain");
+		}
 		offset = transform.position;
 	}
 
