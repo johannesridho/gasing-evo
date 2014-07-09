@@ -18,6 +18,7 @@ GameObject:
   - 96: {fileID: 9600000}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Arjuna_Musuh
   m_TagString: Enemy
@@ -259,6 +260,20 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc8cdbe426ee6b4bacc321ce6084a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvicibleAfterClash: 0
+  timeCountAfterClash: 0
+  gasing: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

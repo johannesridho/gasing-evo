@@ -4,7 +4,7 @@ using System.Collections;
 public class PhysicsTabrak : MonoBehaviour {
 	
 	public bool isInvicibleAfterClash;
-	private float timeCountAfterClash;
+	public float timeCountAfterClash;
 	public Gasing gasing;
 	
 	void Awake(){
@@ -19,8 +19,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	void Update () {
 		
 	}
-	
-	//called every fixed framerate frame
+
 	void FixedUpdate () {	
 		if (isInvicibleAfterClash) {
 			timeCountAfterClash += Time.deltaTime;
@@ -32,7 +31,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	}
 	
 	void geserAfterClash(Collider C) {
-		float coeff_geser = 3.3f;
+		float coeff_geser = 0.3f;
 		Vector3 heading = C.rigidbody.position - gasing.rigidbody.position;
 		Vector3 direction = heading / heading.magnitude;
 		Vector3 posSelf = C.rigidbody.position + new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
@@ -40,4 +39,17 @@ public class PhysicsTabrak : MonoBehaviour {
 		gasing.rigidbody.MovePosition(posSelf);
 		C.SendMessage ("movePosition", posEnemy, SendMessageOptions.DontRequireReceiver);
 	}	
+
+	
+	void OnCollisionEnter(Collision col){
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+			if (!isInvicibleAfterClash) {
+				isInvicibleAfterClash = true;
+				geserAfterClash(col.collider);
+			}
+		} else if (col.gameObject.name == "Tanah") {
+
+		}
+	}
+
 }//end class

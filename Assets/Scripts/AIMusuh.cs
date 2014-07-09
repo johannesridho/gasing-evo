@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AIMusuh : MonoBehaviour {
 	public Gasing gasing;
+	public PhysicsTabrak gasing_pt;
 	private float speedAI;
 
 	void Awake(){
@@ -10,15 +11,16 @@ public class AIMusuh : MonoBehaviour {
 			gasing = GetComponent<Gasing>();
 			gasing.setEPMax(70);
 		}
+		if(!gasing_pt){
+			gasing_pt = GetComponent<PhysicsTabrak>();
+		}
 		speedAI = 300;
 	}
 
-	// Use this for initialization
 	void Start () {
 
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 	}
@@ -28,7 +30,7 @@ public class AIMusuh : MonoBehaviour {
 		float ver = Random.Range(-10.0F, 10.0F) * Gasing.COEF_SPEED * gasing.speed;
 
 		Vector3 movement = new Vector3 (hor,0.0f,ver);
-		if (!gasing.isInvicibleAfterClash)
+		if (!gasing_pt.isInvicibleAfterClash)
 			rigidbody.AddForce (movement * speedAI * Time.deltaTime);		
 	}
 }//end class
