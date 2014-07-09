@@ -1225,9 +1225,11 @@ MonoBehaviour:
   jumlahMusuh: 3
   listPemain:
   - {fileID: 100000, guid: d2f38186a2a9ad048945a13096b9941a, type: 2}
+  - {fileID: 100000, guid: 9ab9d13117d40194dbe28b5733666644, type: 2}
   - {fileID: 100000, guid: 54952e8752b4cbd41a1b2e97e52c3387, type: 2}
   listMusuh:
   - {fileID: 100000, guid: 2a7a6fae7f918a34990d5cbdb6accc22, type: 2}
+  - {fileID: 100000, guid: 8f99fb93ac1ccc2459c0937c8fd3c187, type: 2}
   - {fileID: 100000, guid: 43b2e73b6104db74a8b1706016685fbe, type: 2}
   isMultiplayer: 0
 --- !u!4 &1787596714

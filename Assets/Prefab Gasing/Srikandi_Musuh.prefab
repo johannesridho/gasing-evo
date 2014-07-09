@@ -11,15 +11,14 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400000}
-  - 114: {fileID: 11400004}
-  - 64: {fileID: 6400000}
-  - 54: {fileID: 5400000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400004}
   - 82: {fileID: 8200000}
+  - 54: {fileID: 5400000}
+  - 64: {fileID: 6400000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Prototype
+  m_Name: Srikandi_Musuh
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,9 +30,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalRotation: {x: -.707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .125242069, y: .125242069, z: .125242069}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,8 +48,11 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 0dbd471ec19261a4c8f49ccc867bb2ca, type: 2}
-  - {fileID: 2100000, guid: f8eb4be6d18731f41a0e7491277ce901, type: 2}
+  - {fileID: 2100000, guid: 2f6b6dcb82c03774084e79cbc1189e26, type: 2}
+  - {fileID: 2100000, guid: 5489c3f407a0e5145b6f60d7943d19dd, type: 2}
+  - {fileID: 2100000, guid: 655ea8e876663e8438832d78ac271d24, type: 2}
+  - {fileID: 2100000, guid: 2c58b63eb90863b4496db7908ab3aacf, type: 2}
+  - {fileID: 2100000, guid: a8067d90c6b831049ad6b403e960ab85, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -64,7 +66,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 88542486b1368f84f908561a26e0aa95, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 58d1cdcc8edcc4d4984ddf677a8ab8f8, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -92,7 +94,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 88542486b1368f84f908561a26e0aa95, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 58d1cdcc8edcc4d4984ddf677a8ab8f8, type: 3}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -159,13 +161,25 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 88542486b1368f84f908561a26e0aa95, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 58d1cdcc8edcc4d4984ddf677a8ab8f8, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62817590ea51f1048a2844f1e2a599a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gasing: {fileID: 0}
+--- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -187,19 +201,6 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 0
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6352f1705c138f24aa665eb1c83e3d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gasing: {fileID: 0}
-  buttonSkill1: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,20 +217,6 @@ MonoBehaviour:
   healthBarLength: 0
   teksturHealth: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
   teksturHealth2: {fileID: 2800000, guid: 89ae8d135a16a40479a422962a41b7fd, type: 3}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7227eb9b79e06f43b0f2a8ad7c3abb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump_coef: 0
-  gasing: {fileID: 0}
-  buttonSkill1: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
