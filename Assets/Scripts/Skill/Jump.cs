@@ -6,7 +6,8 @@ public class Jump : MonoBehaviour {
 	public float jump_coef;
 	public Gasing gasing;
 	public Texture2D buttonSkill1;
-	
+	public float skillPointNeeded;
+
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
