@@ -7,8 +7,8 @@ public class Gasing : MonoBehaviour {
 	public float skillPointMax;
 	public Gasing gasing;
 
-	public static float COEF_POWER = 0.1f;
-	public static float COEF_MOMENTUM = 2.2f;
+	public static float COEF_POWER = 0.3f;
+	public static float COEF_MOMENTUM = 1.2f;
 	public static float COEF_SPIN = 500f;
 	public static float COEF_SPEED = 2;
 	public static float GLOBAL_speedMax = 100f;
@@ -22,6 +22,8 @@ public class Gasing : MonoBehaviour {
 	public float power;
 	public float speed;
 	public float speedMax;
+	public bool isInvicibleAfterClash;
+	private float timeCountAfterClash;
 
 	// state
 	public bool isOnGround;
@@ -38,17 +40,19 @@ public class Gasing : MonoBehaviour {
 		energiPoint = energiPointMax;
 		skillPoint = skillPointMax;
 		isOnGround = true;
+		isInvicibleAfterClash = false;
 
 		//epmax, spmax, mass, power, speed diset di controller
 //		mass = 100;
 //		power = 1f;
 //		speed = 1f;
 		speedMax = 20f;
+		timeCountAfterClash = 0f;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		EPKurang(0.05f);		//kurangi EP tiap detik
+//		EPKurang(0.05f);		//kurangi EP tiap detik
 		if(energiPoint <=0 ){
 			//gasing berhenti
 			//Debug.Log("wah");
@@ -73,6 +77,14 @@ public class Gasing : MonoBehaviour {
 		vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
 		vel = (vec > GLOBAL_speedMax) ? vel * GLOBAL_speedMax/vec : vel;
 		gasing.rigidbody.velocity = vel;
+
+		if (isInvicibleAfterClash) {
+			timeCountAfterClash += Time.deltaTime;
+			if (timeCountAfterClash >= 0.20f) {
+				isInvicibleAfterClash = false;
+				timeCountAfterClash = 0f;
+			}
+		}
 	}
 	
 	void EPKurang(float dmg){
@@ -98,19 +110,39 @@ public class Gasing : MonoBehaviour {
 	void speedMaxChange(float n){
 		speedMax = n;
 	}
+	void movePosition(Vector3 v){
+		gasing.rigidbody.MovePosition(v);
+	}
+	void geserAfterClash(Collider C) {
+		float coeff_geser = 3.3f;
+		Vector3 heading = C.rigidbody.position - gasing.rigidbody.position;
+		Vector3 direction = heading / heading.magnitude;
+		Vector3 posSelf = C.rigidbody.position + new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
+		Vector3 posEnemy = gasing.rigidbody.position - new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
+		gasing.rigidbody.MovePosition(posSelf);
+		C.SendMessage ("movePosition", posEnemy, SendMessageOptions.DontRequireReceiver);
+	}
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
-			Vector3 vel = gasing.rigidbody.velocity;
-			Vector3 momentum = COEF_MOMENTUM * vel;
-			float damage = COEF_POWER * power * Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
 
-			col.collider.SendMessage ("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
-			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
+			if (!isInvicibleAfterClash) {
+				Vector3 vel = gasing.rigidbody.velocity;
+				Vector3 momentum = COEF_MOMENTUM * vel;
+				Vector3 momentum2 = COEF_MOMENTUM * col.collider.rigidbody.velocity;
+				float damage = COEF_POWER * power * Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
+				col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
+				col.collider.SendMessage ("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
+				speedChange(-momentum);
+				isInvicibleAfterClash = true;
 
-			if(audioTabrakan){
-				audio.PlayOneShot(audioTabrakan);
+				gasing.geserAfterClash(col.collider);
+
+				if(audioTabrakan){
+					audio.PlayOneShot(audioTabrakan);
+				}
 			}
+
 //			audio.Play();
 
 		} else if (col.gameObject.name == "Tanah") {

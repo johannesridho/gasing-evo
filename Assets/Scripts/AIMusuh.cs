@@ -28,7 +28,7 @@ public class AIMusuh : MonoBehaviour {
 		float ver = Random.Range(-10.0F, 10.0F) * Gasing.COEF_SPEED * gasing.speed;
 
 		Vector3 movement = new Vector3 (hor,0.0f,ver);
-		
-		rigidbody.AddForce (movement * speedAI * Time.deltaTime);		
+		if (!gasing.isInvicibleAfterClash)
+			rigidbody.AddForce (movement * speedAI * Time.deltaTime);		
 	}
 }//end class
