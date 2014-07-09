@@ -5,7 +5,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	
 	public bool isInvicibleAfterClash;
 	private float timeCountAfterClash;
-	
+	public Gasing gasing;
 	
 	void Awake(){
 		if(!gasing)
