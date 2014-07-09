@@ -28,8 +28,8 @@ public class Blink : MonoBehaviour {
 			float x;
 			float z;
 			if (Application.platform == RuntimePlatform.Android){
-				x = transform.position.x + 15 * Input.acceleration.x;
-				z = transform.position.z + 15 * Input.acceleration.y;
+				x = transform.position.x + 50 * Input.acceleration.x;
+				z = transform.position.z + 50 * Input.acceleration.y;
 			}else{
 				x = transform.position.x + 15 * Input.GetAxis("Horizontal");
 				z = transform.position.z + 15 * Input.GetAxis("Vertical");
