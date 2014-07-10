@@ -17,6 +17,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 64: {fileID: 6400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Srikandi_Musuh
   m_TagString: Enemy
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gasing: {fileID: 0}
+  gasing_pt: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,6 +219,20 @@ MonoBehaviour:
   healthBarLength: 0
   teksturHealth: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
   teksturHealth2: {fileID: 2800000, guid: 89ae8d135a16a40479a422962a41b7fd, type: 3}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc8cdbe426ee6b4bacc321ce6084a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvicibleAfterClash: 0
+  timeCountAfterClash: 0
+  gasing: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
