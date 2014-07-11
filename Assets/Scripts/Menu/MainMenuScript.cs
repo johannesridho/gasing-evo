@@ -25,7 +25,7 @@ public class MainMenuScript : MonoBehaviour {
 		} else if (isOption) {
 			showOptionMenu();
 		} else if (isArcadeMode) {
-			Application.LoadLevel ("Arcade Menu 1");
+			Application.LoadLevel ("Arcade Menu");
 		} else if (isRoyalRumble) {
 			Application.LoadLevel ("Multiplayer Menu");
 		}else if (isBackButton){
