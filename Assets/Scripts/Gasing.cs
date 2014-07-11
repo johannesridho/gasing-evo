@@ -88,7 +88,7 @@ public class Gasing : MonoBehaviour {
 		skillPoint = ((skillPoint + n) < skillPointMax) ? skillPoint + n : skillPointMax;
 	}
 	
-	void speedChange(Vector3 n){
+	public void speedChange(Vector3 n){
 		gasing.rigidbody.velocity = n;
 	}
 	
@@ -103,7 +103,6 @@ public class Gasing : MonoBehaviour {
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			Vector3 vel = gasing.rigidbody.velocity;
 			Vector3 momentum = COEF_MOMENTUM * vel;
-			Vector3 momentum2 = COEF_MOMENTUM * col.collider.rigidbody.velocity;
 			float damage = COEF_POWER * power * Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
 			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
 			col.collider.SendMessage ("speedChange", momentum, SendMessageOptions.DontRequireReceiver);

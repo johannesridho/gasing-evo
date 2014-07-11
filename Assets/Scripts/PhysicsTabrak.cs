@@ -6,7 +6,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	public bool isInvicibleAfterClash;
 	public float timeCountAfterClash;
 	public Gasing gasing;
-	
+
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
@@ -17,7 +17,6 @@ public class PhysicsTabrak : MonoBehaviour {
 		timeCountAfterClash = 0f;
 	}
 	void Update () {
-		
 	}
 
 	void FixedUpdate () {	
@@ -40,15 +39,31 @@ public class PhysicsTabrak : MonoBehaviour {
 		C.SendMessage ("movePosition", posEnemy, SendMessageOptions.DontRequireReceiver);
 	}	
 
+	void bounceAgainstObstacles(Collision C) {
+		float coeff_obs = 30f;
+		float coeff_geser = 3f;
+		ContactPoint cp = C.contacts[0];
+		Vector3 dir = gasing.rigidbody.position - cp.point;
+		Vector3 direction = dir / dir.magnitude;
+		print (direction);
+		Vector3 momentum = Gasing.COEF_MOMENTUM * direction * coeff_obs;
+		gasing.collider.SendMessage("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
+	}	
 	
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			if (!isInvicibleAfterClash) {
 				isInvicibleAfterClash = true;
+				timeCountAfterClash = 0f;
 				geserAfterClash(col.collider);
 			}
-		} else if (col.gameObject.name == "Tanah") {
-
+		}
+		if (col.gameObject.tag == "Obstacle") {
+			if (!isInvicibleAfterClash) {
+				isInvicibleAfterClash = true;
+				timeCountAfterClash = 0f;
+			}
+			bounceAgainstObstacles(col);
 		}
 	}
 
