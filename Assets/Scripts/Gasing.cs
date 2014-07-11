@@ -8,7 +8,6 @@ public class Gasing : MonoBehaviour {
 	public Gasing gasing;
 
 	public static float COEF_POWER = 0.3f;
-	public static float COEF_MOMENTUM = 1.2f;
 	public static float COEF_SPIN = 500f;
 	public static float COEF_SPEED = 2;
 	public static float GLOBAL_speedMax = 100f;
@@ -88,7 +87,7 @@ public class Gasing : MonoBehaviour {
 		skillPoint = ((skillPoint + n) < skillPointMax) ? skillPoint + n : skillPointMax;
 	}
 	
-	public void speedChange(Vector3 n){
+	void speedChange(Vector3 n){
 		gasing.rigidbody.velocity = n;
 	}
 	
@@ -101,12 +100,6 @@ public class Gasing : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
-			Vector3 vel = gasing.rigidbody.velocity;
-			Vector3 momentum = COEF_MOMENTUM * vel;
-			float damage = COEF_POWER * power * Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
-			col.collider.SendMessage ("EPKurang", damage, SendMessageOptions.DontRequireReceiver);
-			col.collider.SendMessage ("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
-			speedChange(-momentum);
 			if(audioTabrakan){
 				audio.PlayOneShot(audioTabrakan);
 			}
