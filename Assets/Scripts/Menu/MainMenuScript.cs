@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuSelection : MonoBehaviour {
+public class MainMenuScript : MonoBehaviour {
 	public bool isSinglePlayer = false;
 	public bool isStoryMode = false;
 	public bool isArcadeMode = false;
@@ -10,29 +10,29 @@ public class MenuSelection : MonoBehaviour {
 	public bool isRoyalRumble = false;
 	public bool isOption = false;
 	public bool isBackButton = false;
-
+	
 	void Start(){
 		//atur yang mana yang hilang yang mana yang muncul
 		setInitialState ();
 	}
-
-void OnMouseUp(){
+	
+	void OnMouseUp(){
 		//atur yang mana yang hilang yang mana yang muncul
 		if (isSinglePlayer) {
-						showSinglePlayerMenu();
-				} else if (isMultiPlayer) {
-						showMultiplayerMenu();
-				} else if (isOption) {
-						showOptionMenu();
-				} else if (isArcadeMode) {
-						Application.LoadLevel ("Single Player");
-				} else if (isRoyalRumble) {
-						Application.LoadLevel ("Multiplayer Menu");
-				}else if (isBackButton){
-						setInitialState();
-				}
+			showSinglePlayerMenu();
+		} else if (isMultiPlayer) {
+			showMultiplayerMenu();
+		} else if (isOption) {
+			showOptionMenu();
+		} else if (isArcadeMode) {
+			Application.LoadLevel ("Arcade Menu 1");
+		} else if (isRoyalRumble) {
+			Application.LoadLevel ("Multiplayer Menu");
+		}else if (isBackButton){
+			setInitialState();
+		}
 	}
-
+	
 	void setInitialState(){
 		Renderer[] renderers = GameObject.Find ("Single Player").GetComponentsInChildren<Renderer> ();
 		Renderer[] MultiPlayerRenderers = GameObject.Find ("Multiplayer").GetComponentsInChildren<Renderer> ();
@@ -77,7 +77,7 @@ void OnMouseUp(){
 			}
 		}
 	}
-
+	
 	void showSinglePlayerMenu(){
 		//show all its children, hide other's children, hide parents' renderer and collider
 		Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer> ();
@@ -119,7 +119,7 @@ void OnMouseUp(){
 			}
 		}
 	}
-
+	
 	void showMultiplayerMenu(){
 		//show all its children, hide other's children
 		Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer> ();
@@ -161,7 +161,7 @@ void OnMouseUp(){
 			}
 		}
 	}
-
+	
 	void showOptionMenu(){
 		//show all its children, hide other's children
 		Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer> ();
@@ -206,12 +206,13 @@ void OnMouseUp(){
 			}
 		}
 	}
-
+	
 	void OnMouseOver(){
 		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
 	}
-
+	
 	void OnMouseExit(){
 		renderer.material.color = Color.white;
 	}
+
 }
