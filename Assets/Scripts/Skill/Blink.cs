@@ -5,9 +5,10 @@ public class Blink : MonoBehaviour {
 
 	public Gasing gasing;
 	public Texture2D buttonSkill1;
-	public float skillPointNeeded;
+	private float skillPointNeeded;		//skill point yg diperlukan
 	
 	void Awake(){
+		skillPointNeeded = 10;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 	}
@@ -24,7 +25,7 @@ public class Blink : MonoBehaviour {
 		GUIStyle style = new GUIStyle (GUI.skin.box);
 		style.normal.background = buttonSkill1;
 		
-		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Blink", style)) {
+		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Blink", style) && gasing.getSP()>skillPointNeeded) {
 			float x;
 			float z;
 			if (Application.platform == RuntimePlatform.Android){
@@ -38,6 +39,7 @@ public class Blink : MonoBehaviour {
 				transform.position = new Vector3(x, 1f, z);
 			}
 //			transform.position+=transform.;
+			gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
 
 		}
 	}

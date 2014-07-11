@@ -6,9 +6,10 @@ public class Jump : MonoBehaviour {
 	public float jump_coef;
 	public Gasing gasing;
 	public Texture2D buttonSkill1;
-	public float skillPointNeeded;
+	private float skillPointNeeded;		//skill point yg diperlukan
 
 	void Awake(){
+		skillPointNeeded = 10;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 		jump_coef = 15000f;
@@ -38,12 +39,13 @@ public class Jump : MonoBehaviour {
 		GUIStyle style = new GUIStyle (GUI.skin.box);
 		style.normal.background = buttonSkill1;
 
-		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Jump", style)) {
+		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Jump", style) && gasing.getSP()>skillPointNeeded) {
 			if (gasing.isOnGround) {
 				float jump_coef = 15000f;
 				Vector3 movement = new Vector3 (0f, 1f, 0f);		
 				rigidbody.AddForce (movement * jump_coef * Time.deltaTime);	
 				gasing.isOnGround = false;
+				gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
 			}
 				
 		}

@@ -45,12 +45,12 @@ public class Gasing : MonoBehaviour {
 	}
 
 	void Update () {
-//		EPKurang(0.05f);		//kurangi EP tiap detik
+		EPKurang(0.05f);		//kurangi EP tiap detik
+		SPTambah (0.01f);		//tambah SP tiap detik
 		if(energiPoint <=0 ){
 			//gasing berhenti
 			//Debug.Log("wah");
 			Destroy (transform.root.gameObject); 
-//			Application.LoadLevel("GameOver");
 		} else if (energiPoint <= 2) {
 			removeConstraint ();
 			Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
@@ -71,27 +71,27 @@ public class Gasing : MonoBehaviour {
 		gasing.rigidbody.velocity = vel;
 	}
 	
-	void EPKurang(float dmg){
+	public void EPKurang(float dmg){
 		energiPoint = ((energiPoint - dmg) > 0) ? energiPoint - dmg : 0 ;
 	}
 	
-	void EPTambah(float n){
+	public void EPTambah(float n){
 		energiPoint = ((energiPoint + n) < energiPointMax) ? energiPoint + n : energiPointMax;
 	}
 	
-	void SPKurang(float dmg){
+	public void SPKurang(float dmg){
 		skillPoint = ((skillPoint - dmg) > 0) ? skillPoint - dmg : 0 ;
 	}
 	
-	void SPTambah(float n){
+	public void SPTambah(float n){
 		skillPoint = ((skillPoint + n) < skillPointMax) ? skillPoint + n : skillPointMax;
 	}
 	
-	void speedChange(Vector3 n){
+	public void speedChange(Vector3 n){
 		gasing.rigidbody.velocity = n;
 	}
 	
-	void speedMaxChange(float n){
+	public void speedMaxChange(float n){
 		speedMax = n;
 	}
 	void movePosition(Vector3 v){
@@ -124,11 +124,11 @@ public class Gasing : MonoBehaviour {
 		return skillPointMax;
 	}
 
-	public void setEP(float ep){
+	void setEP(float ep){
 		energiPoint = ep;
 	}
 
-	public void setSP(float sp){
+	void setSP(float sp){
 		skillPoint = sp;
 	}
 
