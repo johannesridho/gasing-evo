@@ -23,7 +23,7 @@ public class StoneFieldController : MonoBehaviour
             {                
                 if (listPemain.Length != 0)
                 {                  
-                    pemain = (GameObject)Instantiate(listPemain[0], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+                    pemain = (GameObject)Instantiate(listPemain[0], new Vector3(0, 10, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
                     pemain.name = "Pemain";
                 }
                 if (!gasingPemain)
@@ -84,7 +84,7 @@ public class StoneFieldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gasingPemain.getEP() <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+		if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
         {
             Application.LoadLevel("GameOver");
         }

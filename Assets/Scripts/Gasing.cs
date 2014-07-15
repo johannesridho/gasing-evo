@@ -5,7 +5,7 @@ public class Gasing : MonoBehaviour {
 
 	public float energiPointMax;
 	public float skillPointMax;
-	public Gasing gasing;
+	private Gasing gasing;
 
 	public static float COEF_POWER = 0.3f;
 	public static float COEF_SPIN = 500f;
@@ -47,7 +47,7 @@ public class Gasing : MonoBehaviour {
 	void Update () {
 		EPKurang(0.05f);		//kurangi EP tiap detik
 		SPTambah (0.01f);		//tambah SP tiap detik
-		if(energiPoint <=0 ){
+		if(energiPoint <=0 || transform.position.y <= (-4)){
 			//gasing berhenti
 			//Debug.Log("wah");
 			Destroy (transform.root.gameObject); 

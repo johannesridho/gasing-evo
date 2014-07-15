@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Control : MonoBehaviour {
 
-	public Gasing gasing;
+	private Gasing gasing;
 	public PhysicsTabrak gasing_pt;
 	public Texture2D buttonSkill1;
 	
