@@ -5,6 +5,7 @@ TagManager:
   tags:
   - Enemy
   - SpawnPoint
+  - Obstacle
   - Item
   - MP_Player
   - 

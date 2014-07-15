@@ -60,6 +60,7 @@ public class FollowPemain : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-		transform.position = offset + pemainTransform.position;
+if (pemain){transform.position = offset * 3 / 2 + pemainTransform.position;
+}
 	}
 }
