@@ -149,6 +149,7 @@ MonoBehaviour:
     playerManager: {fileID: 0}
   spawnPoints: []
   isMapLoaded: 0
+  items: []
 --- !u!114 &325154860
 MonoBehaviour:
   m_ObjectHideFlags: 0

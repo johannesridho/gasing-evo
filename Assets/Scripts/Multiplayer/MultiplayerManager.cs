@@ -29,6 +29,8 @@ public class MultiplayerManager : MonoBehaviour
     public GameObject[] spawnPoints;
     public bool isMapLoaded = false;
 
+    public GameObject[] items;
+
     // Use this for initialization
     void Start()
     {
@@ -214,6 +216,15 @@ public class MultiplayerManager : MonoBehaviour
             isMapLoaded = true;
             // Populate all spawnpoints
             spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+            // Populate all items
+            items = GameObject.FindGameObjectsWithTag("Item");
+
+            foreach (GameObject go in items)
+            {
+                Debug.Log("item = "+go.name);
+            }
+
             isGameStarted = true;
             networkView.RPC("client_serverLoaded", RPCMode.AllBuffered, isGameStarted);
 
@@ -236,23 +247,40 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
+    public void handleItemCollision(GameObject item)
+    {
+        networkView.RPC("client_itemCollected", RPCMode.All, item);
+    }
 
+    [RPC]
+    public void client_itemCollected(GameObject item)
+    {
+        Debug.Log("Item collected");
+    }
+
+    [RPC]
+    public void client_spawnItem()
+    {
+
+    }
+    
     //misc
 
     public string getServerIP()
     {
-        IPHostEntry host;
-        string localIP = "";
-        host = Dns.GetHostEntry(Dns.GetHostName());
-        foreach (IPAddress ip in host.AddressList)
-        {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
-            {
-                localIP += ip.ToString() + " ";
-                //break;
-            }
-        }
-        return localIP;
+        //IPHostEntry host;
+        //string localIP = "";
+        //host = Dns.GetHostEntry(Dns.GetHostName());
+        //foreach (IPAddress ip in host.AddressList)
+        //{
+        //    if (ip.AddressFamily == AddressFamily.InterNetwork)
+        //    {
+        //        localIP += ip.ToString() + " ";
+        //        //break;
+        //    }
+        //}
+
+        return Network.player.ipAddress;
     }
 
     public static MPPlayer getMPPlayer(NetworkPlayer player)

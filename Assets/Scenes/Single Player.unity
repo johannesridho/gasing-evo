@@ -374,12 +374,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 553933397}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6812118dc3798d343a226e465c642c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pemain: {fileID: 0}
+  pemainTransform: {fileID: 0}
+  isMultiplayer: 1
 --- !u!114 &553933404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,9 +406,10 @@ GameObject:
   - 23: {fileID: 789248235}
   - 54: {fileID: 789248234}
   - 114: {fileID: 789248233}
+  - 148: {fileID: 789248239}
   m_Layer: 0
   m_Name: Item Speed Plus
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,6 +491,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!148 &789248239
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 789248232}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 789248238}
+  m_ViewID:
+    m_ID: 3
+    m_Type: 1
 --- !u!1 &851870844
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,9 +612,10 @@ GameObject:
   - 23: {fileID: 1038794618}
   - 54: {fileID: 1038794617}
   - 114: {fileID: 1038794616}
+  - 148: {fileID: 1038794622}
   m_Layer: 0
   m_Name: Item Bomb
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,6 +697,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!148 &1038794622
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038794615}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1038794621}
+  m_ViewID:
+    m_ID: 2
+    m_Type: 1
 --- !u!1 &1115332691
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,9 +838,10 @@ GameObject:
   - 23: {fileID: 1496484622}
   - 54: {fileID: 1496484621}
   - 114: {fileID: 1496484626}
+  - 148: {fileID: 1496484627}
   m_Layer: 0
   m_Name: Item Heal
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,6 +923,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fa1e7365f03184c9cfd0e32015f5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!148 &1496484627
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1496484620}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1496484625}
+  m_ViewID:
+    m_ID: 1
+    m_Type: 1
 --- !u!1 &1528754951
 GameObject:
   m_ObjectHideFlags: 0

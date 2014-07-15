@@ -38,7 +38,7 @@ GameObject:
   - 148: {fileID: 14800000}
   m_Layer: 0
   m_Name: PlayerManager1
-  m_TagString: Untagged
+  m_TagString: MP_Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: -.707106888, y: 0, z: 0, w: .707106769}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .125242069, y: .125242069, z: .125242069}
   m_Children: []
@@ -317,6 +317,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gasingTransform: {fileID: 400000}
+  gasing: {fileID: 0}
+  energiPoint: 0
+  skillPoint: 0
+  mass: 0
+  power: 0
+  speed: 0
+  speedMax: 0
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!148 &14800000

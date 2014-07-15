@@ -26,21 +26,24 @@ public class MenuManager : MonoBehaviour
 
     void OnGUI()
     {
-        if (currentMenu == "Main")
+        if (!MultiplayerManager.instance.isGameStarted)
         {
-            menu_Main();
-        }
-        if (currentMenu == "Host")
-        {
-            menu_HostGame();
-        }
-        if (currentMenu == "Lobby")
-        {
-            menu_Lobby();
-        }
-        if (currentMenu == "Choose Map")
-        {
-            menu_chooseMap();
+            if (currentMenu == "Main")
+            {
+                menu_Main();
+            }
+            if (currentMenu == "Host")
+            {
+                menu_HostGame();
+            }
+            if (currentMenu == "Lobby")
+            {
+                menu_Lobby();
+            }
+            if (currentMenu == "Choose Map")
+            {
+                menu_chooseMap();
+            }
         }
     }
 
