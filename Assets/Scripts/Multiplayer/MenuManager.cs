@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        GamePrefs.isMultiplayer = true;
         currentMenu = "Main";
         maxPlayer = 2;
     }
@@ -45,10 +46,6 @@ public class MenuManager : MonoBehaviour
                 menu_chooseMap();
             }
         }
-        else
-        {
-            menu_inGame();
-        }
     }
 
     private void menu_Main()
@@ -64,8 +61,13 @@ public class MenuManager : MonoBehaviour
         if (GUILayout.Button("Host"))
         {
             navigateTo("Host");
+            MultiplayerManager.instance.isDedicatedServer = false;
         }
-
+        if (GUILayout.Button("Host a Dedicated Server"))
+        {
+            navigateTo("Host");
+            MultiplayerManager.instance.isDedicatedServer = true;
+        }
         //Input nama
         GUILayout.BeginHorizontal();
         GUILayout.Label("Player Name");

@@ -7,39 +7,54 @@ public class FollowPemain : MonoBehaviour
     public GameObject pemain;
     public Transform pemainTransform;
     private Vector3 offset;
-    public bool isMultiplayer = true;
 
     void Awake()
     {
         if (!pemain)
         {
-            if (isMultiplayer)
+            if (GamePrefs.isMultiplayer)
             {
-                GameObject[] players = GameObject.FindGameObjectsWithTag("MP_Player");
-
-                Debug.Log("found = "+players.Length);
-                Debug.Log("my player " + int.Parse(Network.player.ToString()));
-                //foreach (GameObject go in players)
-                //{
-                //    Debug.Log("nomor = " + go.GetComponent<Server_Gasing>().networkPlayer);
-
-                //    if(go.GetComponent<Server_Gasing>().networkPlayer == Network.player)
-
-                //    //if (go.networkView.isMine)
-                //    {
-                //        pemain = go;
-                //        break;
-                //    }
-
-                //}
-
-                pemain = players[int.Parse(Network.player.ToString())];
-
-                //pemainTransform = pemain.GetComponent<MultiplayerInputHandler>().followPoint;
-
-                foreach (Transform tf in pemain.transform)
+                if (MultiplayerManager.instance.isDedicatedServer)
                 {
-                    pemainTransform = tf;
+                    if (Network.isServer)
+                    {
+                        transform.rotation = Quaternion.Euler(60, 0, 0);
+                        transform.position = new Vector3(0, 30, -20);
+                    }
+                    else
+                    {
+                        gameObject.SetActive(false);
+                        GameObject.Find("Blank Camera").SetActive(true) ;
+                    }
+                }
+                else
+                {
+                    GameObject[] players = GameObject.FindGameObjectsWithTag("MP_Player");
+
+                    Debug.Log("found = " + players.Length);
+                    Debug.Log("my player " + int.Parse(Network.player.ToString()));
+                    //foreach (GameObject go in players)
+                    //{
+                    //    Debug.Log("nomor = " + go.GetComponent<Server_Gasing>().networkPlayer);
+
+                    //    if(go.GetComponent<Server_Gasing>().networkPlayer == Network.player)
+
+                    //    //if (go.networkView.isMine)
+                    //    {
+                    //        pemain = go;
+                    //        break;
+                    //    }
+
+                    //}
+
+                    pemain = players[int.Parse(Network.player.ToString())];
+
+                    //pemainTransform = pemain.GetComponent<MultiplayerInputHandler>().followPoint;
+
+                    foreach (Transform tf in pemain.transform)
+                    {
+                        pemainTransform = tf;
+                    }
                 }
             }
             else
@@ -76,9 +91,12 @@ public class FollowPemain : MonoBehaviour
 
     void LateUpdate()
     {
-        if (pemain)
+        if (!GamePrefs.isMultiplayer && MultiplayerManager.instance.isDedicatedServer)
         {
-            transform.position = offset * 3 / 2 + pemainTransform.position;
+            if (pemain)
+            {
+                transform.position = offset * 3 / 2 + pemainTransform.position;
+            }
         }
     }
 }

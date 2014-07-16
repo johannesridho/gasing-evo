@@ -8,16 +8,21 @@ public class MultiplayerManager : MonoBehaviour
 {
     public static MultiplayerManager instance;
 
+    public string playerName;
+
+    #region Loadable_prefabs
     public GameObject playerManagerPrefab;
     public GameObject servergasingPrefab;
     public GameObject multiplayerInputHandlerPrefab;
+    #endregion
 
-    public string playerName;
-
+    #region server_conf
     public int serverPort = 45000;
-
     public string serverName;
     public int maxPlayer;
+    public bool isAllRigidbodyOnServer = false;
+    public bool isDedicatedServer = false;
+    #endregion
 
     public List<MPPlayer> playerList = new List<MPPlayer>();
     public List<MapSetting> mapList = new List<MapSetting>();
@@ -34,8 +39,7 @@ public class MultiplayerManager : MonoBehaviour
     public GameObject[] items;
 
     public GameObject instantiatedPlayer;
-    public bool isAllRigidbodyOnServer = false;
-
+    
 
     //Server-only properies
     public List<GameObject> serverSideGasings = new List<GameObject>();
@@ -78,14 +82,17 @@ public class MultiplayerManager : MonoBehaviour
 
     void OnServerInitialized()
     {
-        //Add the server creator as a player in the server
-        server_playerJoinRequest(playerName, Network.player);
         if (isAllRigidbodyOnServer)
         {
-            // add new gasing to server side gasing
-            GameObject newGasing = Network.Instantiate(servergasingPrefab, new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
-            newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
-            serverSideGasings.Add(newGasing);
+            if (!isDedicatedServer)
+            {
+                //Add the server creator as a player in the server
+                server_playerJoinRequest(playerName, Network.player);
+                // add new gasing to server side gasing
+                GameObject newGasing = Network.Instantiate(servergasingPrefab, new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
+                newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
+                serverSideGasings.Add(newGasing);
+            }
         }
     }
 
@@ -102,7 +109,7 @@ public class MultiplayerManager : MonoBehaviour
             networkView.RPC("client_addPlayerToList", player, pl.playerName, pl.playerNetwork);
         }
         //send map info to the newly connected player
-        networkView.RPC("client_getMultiplayerMapSetting", player, currentMap.mapName, "");
+        networkView.RPC("client_getMultiplayerMapSetting", player, currentMap.mapName, "", isDedicatedServer);
 
         //send the server's maxPlayer
         networkView.RPC("client_getMaxPlayer", player, maxPlayer);
@@ -182,9 +189,10 @@ public class MultiplayerManager : MonoBehaviour
     }
 
     [RPC]
-    void client_getMultiplayerMapSetting(string mapname, string mode)
+    void client_getMultiplayerMapSetting(string mapname, string mode, bool isDedicated)
     {
         currentMap = getMap(mapname);
+        this.isDedicatedServer = isDedicated;
     }
 
     public MapSetting getMap(string mapName)

@@ -10,7 +10,7 @@ public class Client_Gasing : MonoBehaviour {
     public float speedMax;
     // state
     public bool isOnGround;
-
+    public bool isInvicibleAfterClash;
 
 	// Use this for initialization
 	void Start () {
