@@ -178,7 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energiPointMax: 100
   skillPointMax: 100
-  gasing: {fileID: 0}
   energiPoint: 0
   skillPoint: 0
   mass: 100
@@ -213,9 +212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gasing: {fileID: 0}
   screenPosition: {x: 0, y: 0, z: 0}
-  healthBarLength: 0
   teksturHealth: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
   teksturHealth2: {fileID: 2800000, guid: 89ae8d135a16a40479a422962a41b7fd, type: 3}
+  teksturSkill: {fileID: 0}
+  teksturSkill2: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

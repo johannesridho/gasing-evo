@@ -11,9 +11,9 @@ public class Control : MonoBehaviour {
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
 		}
-		if(!gasing_pt){
-			gasing_pt = GetComponent<PhysicsTabrak>();
-		}
+        //if(!gasing_pt){
+        //    gasing_pt = GetComponent<PhysicsTabrak>();
+        //}
 	}
 
 	void Start () {
@@ -27,7 +27,8 @@ public class Control : MonoBehaviour {
 	void FixedUpdate () {
 		float hor = 0f;
 		float ver = 0f;
-		if (gasing.isOnGround && !gasing_pt.isInvicibleAfterClash) {
+        //if (gasing.isOnGround && !gasing_pt.isInvicibleAfterClash) {
+		if (gasing.isOnGround) {
 			if (Application.platform == RuntimePlatform.Android){
 				hor = Input.acceleration.x * Gasing.COEF_SPEED * gasing.speed;
 				ver = Input.acceleration.y * Gasing.COEF_SPEED * gasing.speed;

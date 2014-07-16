@@ -95,7 +95,8 @@ public class Gasing : MonoBehaviour {
 		speedMax = n;
 	}
 	void movePosition(Vector3 v){
-		gasing.rigidbody.MovePosition(v);
+        Debug.Log("move position");
+        gasing.rigidbody.MovePosition(v);
 	}
 
 	void OnCollisionEnter(Collision col){

@@ -19,6 +19,10 @@ GameObject:
   - 114: {fileID: 11400006}
   - 96: {fileID: 9600000}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400010}
+  - 148: {fileID: 14800002}
+  - 114: {fileID: 11400012}
+  - 148: {fileID: 14800004}
   m_Layer: 0
   m_Name: GasingMultiplayerTest
   m_TagString: Player
@@ -251,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6352f1705c138f24aa665eb1c83e3d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasing: {fileID: 0}
+  gasing_pt: {fileID: 0}
   buttonSkill1: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -264,9 +268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2776ff7fcf95204ab1d0120dbd5f2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energiPointMax: 100
+  energiPointMax: 10000
   skillPointMax: 100
-  gasing: {fileID: 0}
   energiPoint: 0
   skillPoint: 0
   mass: 100
@@ -288,9 +291,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gasing: {fileID: 0}
   screenPosition: {x: 0, y: 0, z: 0}
-  healthBarLength: 800
   teksturHealth: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
   teksturHealth2: {fileID: 2800000, guid: 89ae8d135a16a40479a422962a41b7fd, type: 3}
+  teksturSkill: {fileID: 0}
+  teksturSkill2: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +330,34 @@ MonoBehaviour:
   speedMax: 0
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc8cdbe426ee6b4bacc321ce6084a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvicibleAfterClash: 0
+  timeCountAfterClash: 0
+  gasing: {fileID: 0}
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4f1e77fbdcb4bd99b843556fee4a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InterpolationBackTime: .10000000000000001
+  m_ExtrapolationLimit: .5
+  target: {fileID: 0}
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
@@ -335,6 +367,30 @@ NetworkView:
   m_Enabled: 1
   m_StateSynchronization: 1
   m_Observed: {fileID: 11400008}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
+--- !u!148 &14800002
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_StateSynchronization: 2
+  m_Observed: {fileID: 5400000}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
+--- !u!148 &14800004
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_StateSynchronization: 2
+  m_Observed: {fileID: 11400012}
   m_ViewID:
     m_ID: 0
     m_Type: 0
