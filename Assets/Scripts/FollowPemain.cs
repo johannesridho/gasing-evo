@@ -93,6 +93,10 @@ public class FollowPemain : MonoBehaviour
     {
         if (!GamePrefs.isMultiplayer && MultiplayerManager.instance.isDedicatedServer)
         {
+
+        }
+        else
+        {
             if (pemain)
             {
                 transform.position = offset * 3 / 2 + pemainTransform.position;
