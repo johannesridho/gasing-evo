@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Item
   - MP_Player
+  - MP_InputHandler
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

@@ -45,6 +45,10 @@ public class MenuManager : MonoBehaviour
                 menu_chooseMap();
             }
         }
+        else
+        {
+            menu_inGame();
+        }
     }
 
     private void menu_Main()
@@ -206,6 +210,11 @@ public class MenuManager : MonoBehaviour
         }
         GUILayout.EndVertical();
         GUILayout.EndArea();
+    }
+
+    private void menu_inGame()
+    {
+        GUI.Label(new Rect(5, 5, 200, 50), "player :" + MultiplayerManager.instance.playerList.Count);
     }
 
     void OnServerInitialized()

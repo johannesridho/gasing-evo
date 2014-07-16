@@ -1,60 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerManager : MonoBehaviour
+/*
+ * Mirip kelas PlayerManager
+ */
+public class Server_Gasing : MonoBehaviour
 {
-    public MPPlayer thisPlayer
-    {
-        get
-        {
-            return MultiplayerManager.getMPPlayer(networkView.owner);
-        }
-    }
-
-    //gasing controller
-    //public PlayerController controller;
     public Transform gasingTransform;
-    public Gasing gasing;
-
-    //properti gasing
-    public float energiPoint;
-    public float skillPoint;
-    public float mass;
-    public float power;
-    public float speed;
-    public float speedMax;
 
     public Vector3 currentPosition;
     public Quaternion currentRotation;
 
+    public NetworkPlayer networkPlayer;
+
+    // Use this for initialization
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        thisPlayer.playerManager = this;
-        //thisPlayer = MultiplayerManager.getMPPlayer(networkView.owner);
         gasingTransform.gameObject.SetActive(false);
+        ////gasingTransform.rigidbody.detectCollisions = false;
+        ////gasingTransform.rigidbody.useGravity = false;
     }
 
     void FixedUpdate()
     {
-        //gasing = gasingTransform.GetComponent<Gasing>();
-        //Debug.Log("Energy " + gasing.energiPoint);
-        //Debug.Log(gasingTransform.GetComponent<Gasing>().energiPoint);
         if (networkView.isMine)
         {
             currentPosition = gasingTransform.position;
             currentRotation = gasingTransform.rotation;
-           
-            //energiPoint = gasingTransform.GetComponent<Gasing>().energiPoint;
-            //skillPoint = gasingTransform.GetComponent<Gasing>().skillPoint;
         }
         else
         {
             gasingTransform.position = currentPosition;
             gasingTransform.rotation = currentRotation;
-
-            //gasingTransform.GetComponent<Gasing>().energiPoint = energiPoint;
-            //gasingTransform.GetComponent<Gasing>().skillPoint = skillPoint;
         }
     }
 
@@ -78,29 +56,9 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    [RPC]
-    public void server_handleDamage(int damage)
-    {
-        // Do something
-
-
-    }
-
-    public void handleDamage(int damage)
-    {
-        if (Network.isServer)
-        {
-            server_handleDamage(damage);
-        }
-        else
-        {
-            networkView.RPC("server_handleDamage", RPCMode.Server, damage);
-        }
-    }
-
     /*
-     * Called when a player dies
-     */
+    * Called when a player dies
+    */
     [RPC]
     public void client_playerDied()
     {
@@ -115,5 +73,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("client_playerAlive");
         gasingTransform.gameObject.SetActive(true);
+        //gasingTransform.rigidbody.detectCollisions = true;
+        //gasingTransform.rigidbody.useGravity = true;
     }
 }
