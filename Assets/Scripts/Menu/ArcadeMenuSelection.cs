@@ -87,6 +87,8 @@ public class ArcadeMenuSelection : MonoBehaviour {
 		GameObject.Find("Arcade Menus").GetComponent<ArcadeCameraController>().designatedCamera = "Team Mode Camera";
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isOneExist = true;
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 1;
+		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
 	}
 
 	void chooseRoyalMode(){
@@ -111,6 +113,8 @@ public class ArcadeMenuSelection : MonoBehaviour {
 		GameObject.Find("Arcade Menus").GetComponent<ArcadeCameraController>().designatedCamera = "Royal Mode Camera";
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isOneExist = false;
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "two";
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 2;
+		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
 		GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = 2;
 	}
 

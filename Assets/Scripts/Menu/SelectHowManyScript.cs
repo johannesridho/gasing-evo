@@ -27,6 +27,11 @@ public class SelectHowManyScript : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
+		configureNames ();	
+		configurePref ();
+	}
+
+	void configureNames(){
 		if (isOneExist) {
 			if(number == "one"){
 				number = "two";
@@ -59,7 +64,19 @@ public class SelectHowManyScript : MonoBehaviour {
 				numberInt = 2;
 				GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = numberInt;
 			} 		
-		}	
+		}
+	}
+
+	public void configurePref(){
+		if (isOneExist) {//team mode
+			//set how many allies	
+			Utilities.howManyGasingTeam = numberInt;
+			Debug.Log("how many gasing team : " + Utilities.howManyGasingTeam.ToString());
+		}
+		else {//royal mode
+			Utilities.howManyGasingRoyal = numberInt;
+			Debug.Log("how many gasing royal : " + Utilities.howManyGasingRoyal.ToString());
+		}
 	}
 
 	void OnMouseOver(){
