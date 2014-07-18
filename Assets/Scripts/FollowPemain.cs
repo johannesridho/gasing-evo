@@ -8,7 +8,8 @@ public class FollowPemain : MonoBehaviour
     public Transform pemainTransform;
     private Vector3 offset;
 
-    void Awake()
+    // Use this for initialization
+    void Start()
     {
         if (!pemain)
         {
@@ -70,38 +71,8 @@ public class FollowPemain : MonoBehaviour
                 }
             }
         }
-    }
 
-    // Use this for initialization
-    void Start()
-    {
-        //if (!pemain) {
-        //    if (isMultiplayer)
-        //    {
-        //        GameObject[] players = GameObject.FindGameObjectsWithTag("MP_Player");
-        //        foreach (GameObject go in players)
-        //        {
-        //            if (go.networkView.isMine)
-        //            {
-        //                pemain = go;
-        //                break;
-        //            }
-        //        }               
-        //    }
-        //    else
-        //    {
-        //        pemain = GameObject.Find("Pemain");
-        //    }
-        //}
-        if (!pemain)
-        {
-            pemain = GameObject.Find("Pemain");
-            if (pemain == null)
-            {
-                Debug.Log("pemain null");
-            }
-            pemainTransform = pemain.transform;
-        }
+        
         offset = transform.position;
     }
 
