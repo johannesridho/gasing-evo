@@ -204,7 +204,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419733453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalPosition: {x: 0, y: -10.4981022, z: 0}
   m_LocalScale: {x: 50, y: 10, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pemain: {fileID: 0}
+  pemainTransform: {fileID: 0}
 --- !u!81 &1776176914
 AudioListener:
   m_ObjectHideFlags: 0
@@ -411,6 +412,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2131104015}
   - 114: {fileID: 2131104014}
+  - 114: {fileID: 2131104016}
   m_Layer: 0
   m_Name: GladiatorController
   m_TagString: Untagged
@@ -435,14 +437,9 @@ MonoBehaviour:
   gasingMusuh: {fileID: 0}
   jumlahMusuh: 3
   listPemain:
-  - {fileID: 100000, guid: 9ab9d13117d40194dbe28b5733666644, type: 2}
-  - {fileID: 100000, guid: 9ab9d13117d40194dbe28b5733666644, type: 2}
-  - {fileID: 100000, guid: 54952e8752b4cbd41a1b2e97e52c3387, type: 2}
+  - {fileID: 100000, guid: d2f38186a2a9ad048945a13096b9941a, type: 2}
   listMusuh:
   - {fileID: 100000, guid: 2a7a6fae7f918a34990d5cbdb6accc22, type: 2}
-  - {fileID: 100000, guid: 8f99fb93ac1ccc2459c0937c8fd3c187, type: 2}
-  - {fileID: 100000, guid: 43b2e73b6104db74a8b1706016685fbe, type: 2}
-  isMultiplayer: 0
 --- !u!4 &2131104015
 Transform:
   m_ObjectHideFlags: 0
@@ -455,3 +452,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &2131104016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131104013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929298d88a9785043a074a0cbd474bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listItem:
+  - {fileID: 100000, guid: 1813373d95a1b1d4ab3c8f9d4348b8de, type: 2}
+  - {fileID: 100000, guid: 8c65049f8ef946f41a9bba8931588081, type: 2}
+  - {fileID: 100000, guid: 4cfd2243fbe5c3c4c90f3d044b3ea3db, type: 2}
+  currentItem: {fileID: 0}
+  clockItem: 0

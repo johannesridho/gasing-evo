@@ -44,6 +44,10 @@ public class Item : MonoBehaviour {
         }
 	}
 
+	public void selfDestroy () {
+		Destroy(transform.root.gameObject);
+	}
+
     protected void handleCollision()
     {
         //MultiplayerManager.instance.handleItemCollision(transform.root.gameObject);
