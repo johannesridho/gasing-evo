@@ -150,7 +150,7 @@ public class VoiceCalibration : MonoBehaviour {
 			HaveLoad = true;
 		}
 
-		if (GUILayout.Button("<size=30>Add Word</size>", GUILayout.Height(90)))
+		if (GUILayout.Button("<size=30>Add Jurus</size>", GUILayout.Height(90)))
 		{
 			WordDetails details = new WordDetails();
 			details.Label = "Jurus " + AudioWordDetection.Words.Count.ToString();
