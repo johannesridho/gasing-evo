@@ -80,7 +80,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 215977489d11178d11005b9844295342, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 33f9e622d027e874681f8e861d3daf78, type: 2}
   - {fileID: 2100000, guid: 8ba66ed6a1a4a6a428d4ea3863faee56, type: 2}
   - {fileID: 2100000, guid: 117f59abb67d4564a8e4a6fdf992b9ce, type: 2}
