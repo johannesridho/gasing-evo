@@ -19,5 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Arcade Menu.unity
   - enabled: 0
     path: Assets/Scenes/Arcade Menu 2.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level_01.unity
