@@ -87,9 +87,9 @@ public class StoneFieldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
-        //{
-        //    Application.LoadLevel("GameOver");
-        //}
+        if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+        {
+            Application.LoadLevel("GameOver");
+        }
     }
 }

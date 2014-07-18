@@ -11,9 +11,10 @@ public class Control : MonoBehaviour {
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
 		}
-        //if(!gasing_pt){
-        //    gasing_pt = GetComponent<PhysicsTabrak>();
-        //}
+        if (!gasing_pt)
+        {
+            gasing_pt = GetComponent<PhysicsTabrak>();
+        }
 	}
 
 	void Start () {
