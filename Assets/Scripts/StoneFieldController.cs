@@ -11,18 +11,21 @@ public class StoneFieldController : MonoBehaviour
     public int jumlahMusuh;
     public GameObject[] listPemain;
     public GameObject[] listMusuh;
+	public GameObject[] listObstacle;
 
-    public bool isMultiplayer;
-
-    void Awake()
+    protected void Awake()
     {
-        if (!isMultiplayer)
+        if (GamePrefs.isMultiplayer)
+        {
+            
+        }
+        else
         {
             //		jumlahMusuh = 3;
             if (!pemain)
-            {                
+            {
                 if (listPemain.Length != 0)
-                {                  
+                {
                     pemain = (GameObject)Instantiate(listPemain[0], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
                     pemain.name = "Pemain";
                 }
@@ -31,62 +34,70 @@ public class StoneFieldController : MonoBehaviour
                     gasingPemain = pemain.GetComponent<Gasing>();
                 }
             }
-        }
-        if (!musuh)
-        {            
-            if (listMusuh.Length != 0)
+            if (!musuh)
             {
-                Instantiate(listMusuh[0], new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
-                musuh = listMusuh[0];
-            }
-            if (!gasingMusuh)
-            {
-                gasingMusuh = musuh.GetComponent<Gasing>();
-         
-                for (int i = 1; i < jumlahMusuh; i++)
+                if (listMusuh.Length != 0)
                 {
-                    if (i <= 4)
+                    Instantiate(listMusuh[0], new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+                    musuh = listMusuh[0];
+                }
+                if (!gasingMusuh)
+                {
+                    gasingMusuh = musuh.GetComponent<Gasing>();
+
+                    for (int i = 1; i < jumlahMusuh; i++)
                     {
-                        Instantiate(musuh, new Vector3(i * (-5), 1, 10), Quaternion.Euler(270, 0, 0));
-                    }
-                    else if (i <= 7)
-                    {
-                        Instantiate(musuh, new Vector3((i - 4) * 5, 1, 10), Quaternion.Euler(270, 0, 0));
-                    }
-                    else if (i <= 11)
-                    {
-                        Instantiate(musuh, new Vector3((i - 7) * 5, 1, -10), Quaternion.Euler(270, 0, 0));
-                    }
-                    else if (i <= 14)
-                    {
-                        Instantiate(musuh, new Vector3((i - 11) * (-5), 1, -10), Quaternion.Euler(270, 0, 0));
-                    }
-                    else if (i <= 17)
-                    {
-                        Instantiate(musuh, new Vector3((i - 14) * 5, 1, -15), Quaternion.Euler(270, 0, 0));
-                    }
-                    else if (i <= 20)
-                    {
-                        Instantiate(musuh, new Vector3((i - 17) * (-5), 1, -15), Quaternion.Euler(270, 0, 0));
+                        if (i <= 4)
+                        {
+                            Instantiate(musuh, new Vector3(i * (-5), 1, 10), Quaternion.Euler(270, 0, 0));
+                        }
+                        else if (i <= 7)
+                        {
+                            Instantiate(musuh, new Vector3((i - 4) * 5, 1, 10), Quaternion.Euler(270, 0, 0));
+                        }
+                        else if (i <= 11)
+                        {
+                            Instantiate(musuh, new Vector3((i - 7) * 5, 1, -10), Quaternion.Euler(270, 0, 0));
+                        }
+                        else if (i <= 14)
+                        {
+                            Instantiate(musuh, new Vector3((i - 11) * (-5), 1, -10), Quaternion.Euler(270, 0, 0));
+                        }
+                        else if (i <= 17)
+                        {
+                            Instantiate(musuh, new Vector3((i - 14) * 5, 1, -15), Quaternion.Euler(270, 0, 0));
+                        }
+                        else if (i <= 20)
+                        {
+                            Instantiate(musuh, new Vector3((i - 17) * (-5), 1, -15), Quaternion.Euler(270, 0, 0));
+                        }
                     }
                 }
             }
         }
 
+
     }
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+	protected void Update()
     {
-        if (gasingPemain.getEP() <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+        if (GamePrefs.isMultiplayer)
         {
-            Application.LoadLevel("GameOver");
+
+        }
+        else
+        {
+            if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+            {
+                Application.LoadLevel("GameOver");
+            }
         }
     }
 }

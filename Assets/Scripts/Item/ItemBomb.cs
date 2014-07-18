@@ -12,7 +12,8 @@ public class ItemBomb : Item {
 	}
 
 	void OnCollisionEnter(Collision col){
-		base.destroyOnCollide(col);
+        base.handleCollision();
+        base.destroyOnCollide(col);
 		damage(col);
 	}
 	

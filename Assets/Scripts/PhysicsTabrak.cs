@@ -71,6 +71,14 @@ public class PhysicsTabrak : MonoBehaviour {
 			changeSpeedAfterClash(col);
 			damageAfterClash(col);
 		}
+        if (col.gameObject.tag == "Item")
+        {
+            if (!isInvicibleAfterClash)
+            {
+                isInvicibleAfterClash = true;
+                timeCountAfterClash = 0f;
+            }
+        }
 		if (col.gameObject.tag == "Obstacle") {
 			if (!isInvicibleAfterClash) {
 				isInvicibleAfterClash = true;

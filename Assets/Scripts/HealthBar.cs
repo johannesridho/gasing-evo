@@ -6,8 +6,8 @@ public class HealthBar : MonoBehaviour {
 	public Gasing gasing;
 
 	public Vector3 screenPosition;
-	public float healthBarLength;
-	public float skillBarLength;
+	private float healthBarLength;
+	private float skillBarLength;
 
 	public Texture2D teksturHealth;
 	public Texture2D teksturHealth2;
