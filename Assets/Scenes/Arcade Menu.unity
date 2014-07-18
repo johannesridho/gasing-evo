@@ -170,8 +170,8 @@ GameObject:
   - 65: {fileID: 58027594}
   - 114: {fileID: 58027593}
   m_Layer: 0
-  m_Name: Back
-  m_TagString: Untagged
+  m_Name: Team Back
+  m_TagString: HasArcadeScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   isRoyalMode: 0
   isNext: 0
   isBack: 1
+  isInitialStateSet: 0
 --- !u!65 &58027594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -475,7 +476,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 224806392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.96624279, y: -.155268669, z: -.350535393}
+  m_LocalPosition: {x: -7.57456779, y: -.155268669, z: -.350535393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2141270975}
@@ -913,7 +914,7 @@ GameObject:
   - 114: {fileID: 797320853}
   m_Layer: 0
   m_Name: royal
-  m_TagString: Untagged
+  m_TagString: HasArcadeScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,7 +926,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 797320848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.5077553, y: -.0387215614, z: .253285408}
+  m_LocalPosition: {x: 16.0037804, y: -.0387215614, z: .253285408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224806395}
@@ -998,6 +999,7 @@ MonoBehaviour:
   isRoyalMode: 1
   isNext: 0
   isBack: 0
+  isInitialStateSet: 0
 --- !u!1 &890569480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,8 +1013,8 @@ GameObject:
   - 65: {fileID: 890569483}
   - 114: {fileID: 890569482}
   m_Layer: 0
-  m_Name: Back
-  m_TagString: Untagged
+  m_Name: Royal Back
+  m_TagString: HasArcadeScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,6 +1046,7 @@ MonoBehaviour:
   isRoyalMode: 0
   isNext: 0
   isBack: 1
+  isInitialStateSet: 0
 --- !u!65 &890569483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1557,6 +1560,7 @@ GameObject:
   - 92: {fileID: 1909050170}
   - 124: {fileID: 1909050169}
   - 81: {fileID: 1909050168}
+  - 114: {fileID: 1909050173}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1629,6 +1633,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1909050173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1909050167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c308f237fa4e248aa50deed512a8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
 --- !u!1 &1909274131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1656,6 @@ GameObject:
   - 23: {fileID: 1909274133}
   - 102: {fileID: 1909274132}
   - 65: {fileID: 1909274135}
-  - 114: {fileID: 1909274136}
   m_Layer: 0
   m_Name: how many
   m_TagString: Untagged
@@ -1696,7 +1711,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909274131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.9662447, y: -2.2326026, z: -.35053587}
+  m_LocalPosition: {x: -7.5745697, y: -2.2326026, z: -.35053587}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417836986}
@@ -1713,18 +1728,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.4000006, y: 1.51999998, z: 0}
   m_Center: {x: 6.20000029, y: -.75999999, z: 0}
---- !u!114 &1909274136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1909274131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c308f237fa4e248aa50deed512a8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
 --- !u!1 &2077215436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +1742,7 @@ GameObject:
   - 114: {fileID: 2077215441}
   m_Layer: 0
   m_Name: next
-  m_TagString: Untagged
+  m_TagString: HasArcadeScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1824,6 +1827,7 @@ MonoBehaviour:
   isRoyalMode: 0
   isNext: 1
   isBack: 0
+  isInitialStateSet: 0
 --- !u!1 &2141270974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1842,7 @@ GameObject:
   - 65: {fileID: 2141270978}
   m_Layer: 0
   m_Name: team
-  m_TagString: Untagged
+  m_TagString: HasArcadeScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1850,7 +1854,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141270974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.3292513, y: -.12241745, z: 0}
+  m_LocalPosition: {x: 15.8252754, y: -.12241745, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224806395}
@@ -1923,3 +1927,4 @@ MonoBehaviour:
   isRoyalMode: 0
   isNext: 0
   isBack: 0
+  isInitialStateSet: 0

@@ -19,6 +19,12 @@ public class SelectArenaScript : MonoBehaviour {
 		} else if (name == "arena b") {
 			name = "arena a";		
 		}
+		configurePref ();
+	}
+
+	public void configurePref(){
+		Utilities.chosenArena = name;
+		Debug.Log ("chosen arena prefs changed to: " + Utilities.chosenArena);
 	}
 
 	void OnMouseOver(){

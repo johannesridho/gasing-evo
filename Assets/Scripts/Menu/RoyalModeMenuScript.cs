@@ -27,9 +27,13 @@ public class RoyalModeMenuScript : MonoBehaviour {
 				if (i > 0 ) {
 					textInstance.GetComponent<SelectGasingScript> ().control = "AI";
 					textInstance.GetComponent<SelectGasingScript> ().name = "arjuna";
+					textInstance.name = "e" + i.ToString();
+					textInstance.GetComponent<SelectGasingScript>().configurePref();
 				} else {
 					textInstance.GetComponent<SelectGasingScript> ().control = "P";
 					textInstance.GetComponent<SelectGasingScript> ().name = "arjuna";
+					textInstance.name = "p1";
+					textInstance.GetComponent<SelectGasingScript>().configurePref();
 				}
 			}
 		} else {
@@ -45,6 +49,8 @@ public class RoyalModeMenuScript : MonoBehaviour {
 			textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - (2), parent.transform.position.z);
 			textInstance.AddComponent<SelectArenaScript> ();
 			textInstance.GetComponent<SelectArenaScript> ().name = "arena a";
+			textInstance.name = "arena name";
+			textInstance.GetComponent<SelectArenaScript>().configurePref();
 		} else {
 			//do nothing		
 		}

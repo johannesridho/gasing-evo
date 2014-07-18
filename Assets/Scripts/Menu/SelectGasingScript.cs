@@ -21,6 +21,27 @@ public class SelectGasingScript : MonoBehaviour {
 				} else if (name == "srikandi") {
 			name = "arjuna";		
 		}
+		configurePref ();
+	}
+
+	public void configurePref(){
+		switch (gameObject.name){
+		case "a1":
+			Utilities.ally1 = name;
+			break;
+		case "a2":
+			Utilities.ally2 = name;
+			break;
+		case "e1":
+			Utilities.enemy1 = name;
+			break;
+		case "e2":
+			Utilities.enemy2 = name;
+			break;
+		case "p1":
+			Utilities.playerGasing = name;
+			break;
+		}
 	}
 
 	void OnMouseOver(){
