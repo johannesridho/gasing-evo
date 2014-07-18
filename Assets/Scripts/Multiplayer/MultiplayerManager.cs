@@ -2,20 +2,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Sockets;
+//using System.Net.Sockets;
 
 public class MultiplayerManager : MonoBehaviour
 {
     public static MultiplayerManager instance;
 
-    public GameObject playerManagerPrefab;
-
     public string playerName;
 
-    public int serverPort = 45000;
+    #region Loadable_prefabs
+    public GameObject playerManagerPrefab;
+    public GameObject servergasingPrefab;
+    public GameObject multiplayerInputHandlerPrefab;
+    #endregion
 
+    #region server_conf
+    public int serverPort = 45000;
     public string serverName;
     public int maxPlayer;
+    public bool isAllRigidbodyOnServer = false;
+    public bool isDedicatedServer = false;
+    #endregion
 
     public List<MPPlayer> playerList = new List<MPPlayer>();
     public List<MapSetting> mapList = new List<MapSetting>();
@@ -29,6 +36,14 @@ public class MultiplayerManager : MonoBehaviour
     public GameObject[] spawnPoints;
     public bool isMapLoaded = false;
 
+    public GameObject[] items;
+
+    public GameObject instantiatedPlayer;
+    
+
+    //Server-only properies
+    public List<GameObject> serverSideGasings = new List<GameObject>();
+
     // Use this for initialization
     void Start()
     {
@@ -41,6 +56,15 @@ public class MultiplayerManager : MonoBehaviour
     void FixedUpdate()
     {
         instance = this;
+        //Debug.Log("=========");
+        //foreach (KeyValuePair<NetworkPlayer, GameObject> entry in MultiplayerManager.instance.serverSideGasings)
+        //{
+        //    if (entry.Value != null)
+        //    {
+        //        Debug.Log(entry.Value.GetComponentInChildren<Gasing>());
+        //    }
+        //}
+        //Debug.Log("+++++++");
     }
 
     /*
@@ -50,6 +74,7 @@ public class MultiplayerManager : MonoBehaviour
     {
         this.serverName = serverName;
         this.maxPlayer = maxPlayer;
+
         Network.InitializeServer(this.maxPlayer, serverPort, false);
         //Network.InitializeSecurity();
         MasterServer.RegisterHost("gasing evo", serverName);
@@ -57,8 +82,18 @@ public class MultiplayerManager : MonoBehaviour
 
     void OnServerInitialized()
     {
-        //Add the server creator as a player in the server
-        server_playerJoinRequest(playerName, Network.player);
+        if (isAllRigidbodyOnServer)
+        {
+            if (!isDedicatedServer)
+            {
+                //Add the server creator as a player in the server
+                server_playerJoinRequest(playerName, Network.player);
+                // add new gasing to server side gasing
+                GameObject newGasing = Network.Instantiate(servergasingPrefab, new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
+                newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
+                serverSideGasings.Add(newGasing);
+            }
+        }
     }
 
     void OnConnectedToServer()
@@ -74,10 +109,19 @@ public class MultiplayerManager : MonoBehaviour
             networkView.RPC("client_addPlayerToList", player, pl.playerName, pl.playerNetwork);
         }
         //send map info to the newly connected player
-        networkView.RPC("client_getMultiplayerMapSetting", player, currentMap.mapName, "");
+        networkView.RPC("client_getMultiplayerMapSetting", player, currentMap.mapName, "", isDedicatedServer);
 
         //send the server's maxPlayer
         networkView.RPC("client_getMaxPlayer", player, maxPlayer);
+
+        if (isAllRigidbodyOnServer)
+        {
+            // add new gasing to server side gasing
+            GameObject newGasing = Network.Instantiate(servergasingPrefab, new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0), 5) as GameObject;
+            newGasing.GetComponent<Server_Gasing>().networkPlayer = player;
+            serverSideGasings.Add(newGasing);
+        }
+
     }
 
     void OnPlayerDisconnected(NetworkPlayer player)
@@ -112,9 +156,18 @@ public class MultiplayerManager : MonoBehaviour
 
         if (Network.player == view)
         {
-            myPlayer = temp;
-            // instantiate player
-            GameObject play = Network.Instantiate(playerManagerPrefab, new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
+            if (isAllRigidbodyOnServer)
+            {
+                myPlayer = temp;
+                // instantiate client's input sender
+                instantiatedPlayer = Network.Instantiate(multiplayerInputHandlerPrefab, Vector3.zero, Quaternion.identity, 5) as GameObject;
+            }
+            else
+            {
+                myPlayer = temp;
+                // instantiate player
+                instantiatedPlayer = Network.Instantiate(playerManagerPrefab, new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0), 5) as GameObject;
+            }
         }
     }
 
@@ -136,9 +189,10 @@ public class MultiplayerManager : MonoBehaviour
     }
 
     [RPC]
-    void client_getMultiplayerMapSetting(string mapname, string mode)
+    void client_getMultiplayerMapSetting(string mapname, string mode, bool isDedicated)
     {
         currentMap = getMap(mapname);
+        this.isDedicatedServer = isDedicated;
     }
 
     public MapSetting getMap(string mapName)
@@ -184,8 +238,33 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void server_spawnPlayer(NetworkPlayer player)
     {
-        int spawnindex = Random.Range(0, spawnPoints.Length - 1);
-        networkView.RPC("client_spawnPlayer", RPCMode.All, player, spawnPoints[spawnindex].transform.position, Quaternion.Euler(270, 0, 0));
+        if (isAllRigidbodyOnServer)
+        {
+            if (Network.isServer)
+            {
+                foreach (GameObject entry in serverSideGasings)
+                {
+                    int spawnindex = Random.Range(0, spawnPoints.Length - 1);
+                    entry.transform.position = spawnPoints[spawnindex].transform.position;
+                    entry.transform.rotation = Quaternion.Euler(270, 0, 0);
+                    entry.GetComponent<Server_Gasing>().networkView.RPC("client_playerAlive", RPCMode.All);
+                }
+            }
+            else
+            {
+                //GameObject[] asd = GameObject.FindGameObjectsWithTag("MP_Player");
+                //Debug.Log("asdasdasdasd = " );
+                //foreach (GameObject gobj in asd)
+                //{
+                //    gobj.SetActive(true);
+                //}
+            }
+        }
+        else
+        {
+            int spawnindex = Random.Range(0, spawnPoints.Length - 1);
+            networkView.RPC("client_spawnPlayer", RPCMode.All, player, spawnPoints[spawnindex].transform.position, Quaternion.Euler(270, 0, 0));
+        }
     }
 
     /*
@@ -194,16 +273,23 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void client_spawnPlayer(NetworkPlayer player, Vector3 position, Quaternion rotation)
     {
-        if (player == myPlayer.playerNetwork)
+        if (isAllRigidbodyOnServer)
         {
-            // set player position
-            myPlayer.playerManager.gasingTransform.position = position;
-            myPlayer.playerManager.gasingTransform.rotation = rotation;
-            myPlayer.playerManager.networkView.RPC("client_playerAlive", RPCMode.All);
+            
         }
         else
         {
+            if (player == myPlayer.playerNetwork)
+            {
+                // set player position
+                myPlayer.playerManager.gasingTransform.position = position;
+                myPlayer.playerManager.gasingTransform.rotation = rotation;
+                myPlayer.playerManager.networkView.RPC("client_playerAlive", RPCMode.All);
+            }
+            else
+            {
 
+            }
         }
     }
 
@@ -214,6 +300,15 @@ public class MultiplayerManager : MonoBehaviour
             isMapLoaded = true;
             // Populate all spawnpoints
             spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+            // Populate all items
+            items = GameObject.FindGameObjectsWithTag("Item");
+
+            foreach (GameObject go in items)
+            {
+                Debug.Log("item = "+go.name);
+            }
+
             isGameStarted = true;
             networkView.RPC("client_serverLoaded", RPCMode.AllBuffered, isGameStarted);
 
@@ -236,23 +331,40 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
+    public void handleItemCollision(GameObject item)
+    {
+        networkView.RPC("client_itemCollected", RPCMode.All, item);
+    }
 
+    [RPC]
+    public void client_itemCollected(GameObject item)
+    {
+        Debug.Log("Item collected");
+    }
+
+    [RPC]
+    public void client_spawnItem()
+    {
+
+    }
+    
     //misc
 
     public string getServerIP()
     {
-        IPHostEntry host;
-        string localIP = "";
-        host = Dns.GetHostEntry(Dns.GetHostName());
-        foreach (IPAddress ip in host.AddressList)
-        {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
-            {
-                localIP += ip.ToString() + " ";
-                //break;
-            }
-        }
-        return localIP;
+        //IPHostEntry host;
+        //string localIP = "";
+        //host = Dns.GetHostEntry(Dns.GetHostName());
+        //foreach (IPAddress ip in host.AddressList)
+        //{
+        //    if (ip.AddressFamily == AddressFamily.InterNetwork)
+        //    {
+        //        localIP += ip.ToString() + " ";
+        //        //break;
+        //    }
+        //}
+
+        return Network.player.ipAddress;
     }
 
     public static MPPlayer getMPPlayer(NetworkPlayer player)
@@ -265,6 +377,18 @@ public class MultiplayerManager : MonoBehaviour
             }
         }
 
+        return null;
+    }
+
+    public GameObject getGasingOwnedByPlayer(NetworkPlayer player)
+    {
+        foreach (GameObject gobj in serverSideGasings)
+        {
+            if (gobj.GetComponent<Server_Gasing>().networkPlayer == player)
+            {
+                return gobj;
+            }
+        }
         return null;
     }
 

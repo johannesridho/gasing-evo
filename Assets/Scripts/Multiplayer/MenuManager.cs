@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        GamePrefs.isMultiplayer = true;
         currentMenu = "Main";
         maxPlayer = 2;
     }
@@ -26,21 +27,24 @@ public class MenuManager : MonoBehaviour
 
     void OnGUI()
     {
-        if (currentMenu == "Main")
+        if (!MultiplayerManager.instance.isGameStarted)
         {
-            menu_Main();
-        }
-        if (currentMenu == "Host")
-        {
-            menu_HostGame();
-        }
-        if (currentMenu == "Lobby")
-        {
-            menu_Lobby();
-        }
-        if (currentMenu == "Choose Map")
-        {
-            menu_chooseMap();
+            if (currentMenu == "Main")
+            {
+                menu_Main();
+            }
+            if (currentMenu == "Host")
+            {
+                menu_HostGame();
+            }
+            if (currentMenu == "Lobby")
+            {
+                menu_Lobby();
+            }
+            if (currentMenu == "Choose Map")
+            {
+                menu_chooseMap();
+            }
         }
     }
 
@@ -57,8 +61,13 @@ public class MenuManager : MonoBehaviour
         if (GUILayout.Button("Host"))
         {
             navigateTo("Host");
+            MultiplayerManager.instance.isDedicatedServer = false;
         }
-
+        if (GUILayout.Button("Host a Dedicated Server"))
+        {
+            navigateTo("Host");
+            MultiplayerManager.instance.isDedicatedServer = true;
+        }
         //Input nama
         GUILayout.BeginHorizontal();
         GUILayout.Label("Player Name");
@@ -203,6 +212,11 @@ public class MenuManager : MonoBehaviour
         }
         GUILayout.EndVertical();
         GUILayout.EndArea();
+    }
+
+    private void menu_inGame()
+    {
+        GUI.Label(new Rect(5, 5, 200, 50), "player :" + MultiplayerManager.instance.playerList.Count);
     }
 
     void OnServerInitialized()

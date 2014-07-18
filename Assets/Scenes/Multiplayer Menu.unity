@@ -86,7 +86,7 @@ GameObject:
   - 114: {fileID: 325154859}
   - 148: {fileID: 325154857}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Multiplayer Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,19 +127,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f407b76a1adb8734db227209bc5ebf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManagerPrefab: {fileID: 100002, guid: 3408869445d58754f9bfa5afd9596317, type: 2}
   playerName: 
+  playerManagerPrefab: {fileID: 100002, guid: 3408869445d58754f9bfa5afd9596317, type: 2}
+  servergasingPrefab: {fileID: 100002, guid: 4e82abcabdef0b941b74b78ea16c7c09, type: 2}
+  multiplayerInputHandlerPrefab: {fileID: 100000, guid: 1009d49ed4877eb4bb2fef03e02b4dfd,
+    type: 2}
   serverPort: 45000
   serverName: 
   maxPlayer: 0
+  isAllRigidbodyOnServer: 1
+  isDedicatedServer: 0
   playerList: []
   mapList:
   - mapName: Single Player Map
     mapLoadName: Single Player
     mapTexture: {fileID: 0}
   currentMap:
-    mapName: 
-    mapLoadName: 
+    mapName: Single Player Map
+    mapLoadName: Single Player
     mapTexture: {fileID: 0}
   oldprefix: 0
   isGameStarted: 0
@@ -149,6 +154,9 @@ MonoBehaviour:
     playerManager: {fileID: 0}
   spawnPoints: []
   isMapLoaded: 0
+  items: []
+  instantiatedPlayer: {fileID: 0}
+  serverSideGasings: []
 --- !u!114 &325154860
 MonoBehaviour:
   m_ObjectHideFlags: 0

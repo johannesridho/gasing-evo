@@ -37,10 +37,16 @@ public class Item : MonoBehaviour {
 	}
 
 	protected void destroyOnCollide(Collision col) {
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
-			Destroy(transform.root.gameObject); 
-		}
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy")
+        {
+            Destroy(transform.root.gameObject);
+            //Network.Destroy(transform.root.gameObject);
+        }
 	}
 
-
+    protected void handleCollision()
+    {
+        //MultiplayerManager.instance.handleItemCollision(transform.root.gameObject);
+        //Debug.Log("destroying " + transform.root.gameObject.name);
+    }
 }

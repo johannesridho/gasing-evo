@@ -3,30 +3,32 @@ using System.Collections;
 
 public class Control : MonoBehaviour {
 
-	public Gasing gasing;
+	private Gasing gasing;
+	public PhysicsTabrak gasing_pt;
 	public Texture2D buttonSkill1;
 	
 	void Awake(){
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
 		}
+        if (!gasing_pt)
+        {
+            gasing_pt = GetComponent<PhysicsTabrak>();
+        }
 	}
 
-	// Use this for initialization
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 	}
 
-	//called every fixed framerate frame
 	void FixedUpdate () {
 		float hor = 0f;
 		float ver = 0f;
-		if (gasing.isOnGround) {
+        if (gasing.isOnGround && !gasing_pt.isInvicibleAfterClash) {
 			if (Application.platform == RuntimePlatform.Android){
 				hor = Input.acceleration.x * Gasing.COEF_SPEED * gasing.speed;
 				ver = Input.acceleration.y * Gasing.COEF_SPEED * gasing.speed;
