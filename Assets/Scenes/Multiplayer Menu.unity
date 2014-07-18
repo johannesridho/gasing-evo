@@ -143,8 +143,8 @@ MonoBehaviour:
     mapLoadName: Single Player
     mapTexture: {fileID: 0}
   currentMap:
-    mapName: 
-    mapLoadName: 
+    mapName: Single Player Map
+    mapLoadName: Single Player
     mapTexture: {fileID: 0}
   oldprefix: 0
   isGameStarted: 0

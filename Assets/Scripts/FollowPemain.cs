@@ -24,7 +24,7 @@ public class FollowPemain : MonoBehaviour
                     else
                     {
                         gameObject.SetActive(false);
-                        GameObject.Find("Blank Camera").SetActive(true) ;
+                        GameObject.Find("Blank Camera").SetActive(true);
                     }
                 }
                 else
@@ -59,8 +59,15 @@ public class FollowPemain : MonoBehaviour
             }
             else
             {
-                pemain = GameObject.Find("Pemain");
-                pemainTransform = pemain.transform;
+                if (!pemain)
+                {
+                    pemain = GameObject.Find("Pemain");
+                    if (pemain == null)
+                    {
+                        Debug.Log("pemain null");
+                    }
+                    pemainTransform = pemain.transform;
+                }
             }
         }
     }
@@ -86,14 +93,29 @@ public class FollowPemain : MonoBehaviour
         //        pemain = GameObject.Find("Pemain");
         //    }
         //}
+        if (!pemain)
+        {
+            pemain = GameObject.Find("Pemain");
+            if (pemain == null)
+            {
+                Debug.Log("pemain null");
+            }
+            pemainTransform = pemain.transform;
+        }
         offset = transform.position;
     }
 
     void LateUpdate()
     {
-        if (!GamePrefs.isMultiplayer && MultiplayerManager.instance.isDedicatedServer)
+        if (GamePrefs.isMultiplayer)
         {
-
+            if (!MultiplayerManager.instance.isDedicatedServer)
+            {
+                if (pemain)
+                {
+                    transform.position = offset * 3 / 2 + pemainTransform.position;
+                }
+            }
         }
         else
         {
