@@ -21,7 +21,7 @@ public class StoneFieldController : MonoBehaviour
         }
         else
         {
-    		jumlahMusuh = 3;
+//    		jumlahMusuh = Utilities.howManyGasingRoyal-1;
             if (!pemain)
             {
                 if (listPemain.Length != 0)
