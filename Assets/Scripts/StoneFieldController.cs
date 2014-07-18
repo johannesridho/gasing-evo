@@ -11,6 +11,7 @@ public class StoneFieldController : MonoBehaviour
     public int jumlahMusuh;
     public GameObject[] listPemain;
     public GameObject[] listMusuh;
+	public GameObject[] listObstacle;
 
     protected void Awake()
     {
@@ -79,13 +80,13 @@ public class StoneFieldController : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+	protected void Update()
     {
         if (GamePrefs.isMultiplayer)
         {

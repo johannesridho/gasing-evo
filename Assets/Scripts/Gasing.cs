@@ -104,7 +104,10 @@ public class Gasing : MonoBehaviour {
 			if(audioTabrakan){
 				audio.PlayOneShot(audioTabrakan);
 			}
-		} else if (col.gameObject.name == "Tanah") {
+		} else if(col.gameObject.tag == "Obstacle"){
+			this.EPKurang(5f);
+		}
+		else if (col.gameObject.name == "Tanah") {
 			this.isOnGround = true;
 		}
 	}
