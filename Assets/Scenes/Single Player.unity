@@ -104,7 +104,6 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 215977489d11178d11005b9844295342, type: 2}
   - {fileID: 2100000, guid: 7be21e61e1fa4e94a8efb217033951ea, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -186,7 +185,6 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 215977489d11178d11005b9844295342, type: 2}
   - {fileID: 2100000, guid: 7be21e61e1fa4e94a8efb217033951ea, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -553,7 +551,6 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: c9e6294c9d11cb8d11006bf944295342, type: 2}
   - {fileID: 2100000, guid: 7be21e61e1fa4e94a8efb217033951ea, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -735,7 +732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &1038794615
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +911,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &1463156971
 Prefab:
   m_ObjectHideFlags: 0
@@ -1099,9 +1096,9 @@ Transform:
   m_LocalPosition: {x: .376797676, y: 1.78406525, z: -3.91419673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1019777496}
   - {fileID: 1683381455}
   - {fileID: 1386382320}
+  - {fileID: 1019777496}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1 &1545330245
@@ -1307,7 +1304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1779217120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,7 +1554,6 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 215977489d11178d11005b9844295342, type: 2}
   - {fileID: 2100000, guid: 7be21e61e1fa4e94a8efb217033951ea, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
