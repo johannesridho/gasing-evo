@@ -32,7 +32,7 @@ public class Item : MonoBehaviour {
 	}
 	
 	protected void spin() {
-		Vector3 rotation = new Vector3 (0f, 0f, spin_velo*Time.deltaTime);
+		Vector3 rotation = new Vector3 (0f, spin_velo*Time.deltaTime, 0f);
 		transform.Rotate(rotation);
 	}
 
@@ -42,6 +42,10 @@ public class Item : MonoBehaviour {
             Destroy(transform.root.gameObject);
             //Network.Destroy(transform.root.gameObject);
         }
+	}
+
+	public void selfDestroy () {
+		Destroy(transform.root.gameObject);
 	}
 
     protected void handleCollision()
