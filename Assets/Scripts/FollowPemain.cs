@@ -60,7 +60,7 @@ public class FollowPemain : MonoBehaviour
             else
             {
                 pemain = GameObject.Find("Pemain");
-                pemainTransform = pemain.transform;
+//                pemainTransform = pemain.transform;
             }
         }
     }
@@ -86,21 +86,26 @@ public class FollowPemain : MonoBehaviour
         //        pemain = GameObject.Find("Pemain");
         //    }
         //}
-        offset = transform.position;
+		if (!pemain) {
+			pemain = GameObject.Find ("Pemain");
+		}
+		offset = transform.position;
     }
 
     void LateUpdate()
     {
-        if (!GamePrefs.isMultiplayer && MultiplayerManager.instance.isDedicatedServer)
-        {
-
-        }
-        else
-        {
-            if (pemain)
-            {
-                transform.position = offset * 3 / 2 + pemainTransform.position;
-            }
-        }
+//        if (!GamePrefs.isMultiplayer && MultiplayerManager.instance.isDedicatedServer)
+//        {
+			if (pemain){
+				transform.position = offset * 3 / 2 + pemain.transform.position;
+			}
+//        }
+//        else
+//        {
+//            if (pemain)
+//            {
+//                transform.position = offset * 3 / 2 + pemainTransform.position;
+//            }
+//        } 
     }
 }
