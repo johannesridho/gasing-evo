@@ -6,15 +6,31 @@ public class ArcadeMenuSelection : MonoBehaviour {
 	public bool isRoyalMode;
 	public bool isNext;
 	public bool isBack;
+	public bool isInitialStateSet;
 
 	// Use this for initialization
 	void Start () {
-		chooseTeamMode ();
-		chooseCamera ("Main Camera");
+		if (!isInitialStateSet) {
+			chooseTeamMode ();
+			chooseCamera ("Main Camera");
+			isInitialStateSet = true;
+			setOtherInitialState();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	}
+
+	void setOtherInitialState(){
+		GameObject[] hasArcades = GameObject.FindGameObjectsWithTag("HasArcadeScript");
+		foreach (GameObject h in hasArcades){
+			if (h.name == gameObject.name){
+				//do nothing
+			}else{
+				h.GetComponent<ArcadeMenuSelection>().isInitialStateSet = true;
+			}
+		}
 	}
 
 	void chooseCamera(string cameraname){

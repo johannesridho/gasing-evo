@@ -107,7 +107,6 @@ Transform:
   - {fileID: 1822186793}
   - {fileID: 2021441511}
   m_Father: {fileID: 564624951}
-  m_RootOrder: 0
 --- !u!114 &304639679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,8 +177,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!1 &308380292
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +211,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1891844120}
-  m_RootOrder: 1
 --- !u!114 &308380294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +261,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &308380297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -325,7 +325,6 @@ Transform:
   - {fileID: 2092202329}
   - {fileID: 768968632}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1 &600035431
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +352,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2092202329}
-  m_RootOrder: 0
 --- !u!114 &600035433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +398,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2092202329}
-  m_RootOrder: 1
 --- !u!114 &682886072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +448,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1891844120}
-  m_RootOrder: 0
 --- !u!114 &725896137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,8 +498,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &725896140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -565,7 +562,6 @@ Transform:
   m_LocalScale: {x: 85, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 564624951}
-  m_RootOrder: 3
 --- !u!23 &768968633
 Renderer:
   m_ObjectHideFlags: 0
@@ -584,8 +580,9 @@ Renderer:
   m_UseLightProbes: 1
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!64 &768968634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -649,7 +646,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2092202329}
-  m_RootOrder: 2
 --- !u!65 &1056220014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -701,8 +697,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!114 &1056220017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,11 +798,8 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
 --- !u!4 &1062222456
 Transform:
   m_ObjectHideFlags: 0
@@ -817,7 +811,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!114 &1062222457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +853,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 304639678}
-  m_RootOrder: 0
 --- !u!114 &1107906762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,8 +915,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!114 &1107906766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,7 +983,6 @@ Transform:
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
 --- !u!1 &1420583238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1014,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1891844120}
-  m_RootOrder: 2
 --- !u!65 &1420583240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1074,8 +1065,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!114 &1420583243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,7 +1129,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 304639678}
-  m_RootOrder: 1
 --- !u!114 &1822186794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,8 +1179,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1822186797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1255,7 +1247,6 @@ Transform:
   - {fileID: 308380293}
   - {fileID: 1420583239}
   m_Father: {fileID: 564624951}
-  m_RootOrder: 1
 --- !u!114 &1891844121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,8 +1309,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!114 &1891844125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,7 +1362,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 304639678}
-  m_RootOrder: 2
 --- !u!65 &2021441512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1422,8 +1413,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!114 &2021441515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1480,6 @@ Transform:
   - {fileID: 682886071}
   - {fileID: 1056220013}
   m_Father: {fileID: 564624951}
-  m_RootOrder: 2
 --- !u!114 &2092202330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,8 +1542,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!114 &2092202334
 MonoBehaviour:
   m_ObjectHideFlags: 0
