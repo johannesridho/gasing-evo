@@ -6,6 +6,8 @@ public class PlayScript : MonoBehaviour {
 	void OnMouseUp(){
 		if(Utilities.chosenArena == "arena a"){
 			Application.LoadLevel("IceField");
+		}else if(Utilities.chosenArena == "arena b"){
+			Application.LoadLevel("Single Player");
 		}
 	}
 	void OnMouseOver(){
