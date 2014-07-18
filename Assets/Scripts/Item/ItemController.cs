@@ -14,14 +14,14 @@ public class ItemController : MonoBehaviour {
 	
 	private Vector3 getRandomPosition() {
 		float x = Random.Range (-10, 10);
-		float y = 1;
+		float y = 10;
 		float z = Random.Range (-10, 10);
 		return new Vector3(x, y, z);
 	}
 	
 	private void itemUpdate() {
 		clockItem += Time.deltaTime;
-		if (clockItem >= 1f) {
+		if (clockItem >= 5f) {
 			currentItem.GetComponent<Item>().selfDestroy();
 			spawnRandomItem(getRandomPosition());
 			clockItem = 0f;
