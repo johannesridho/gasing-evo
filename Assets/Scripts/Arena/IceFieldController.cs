@@ -3,18 +3,32 @@ using System.Collections;
 
 public class IceFieldController : StoneFieldController {
 
+	private float clock;
+
 	void Awake(){
 		base.Awake ();
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach(GameObject player in players){
 			Gasing gasing = player.GetComponent<Gasing>();
-			gasing.setSpeed(gasing.getSpeed()+10);		//tambahin speed tiap gasing
+			gasing.setSpeed(gasing.getSpeed()+3);		//tambahin speed tiap gasing
 		}
 		foreach(GameObject enemy in enemies){
 			Gasing gasing = enemy.GetComponent<Gasing>();
 			gasing.setSpeed(gasing.getSpeed()+3);
 		}
+		clock = 0f;
 	}
 
+	void Update(){
+		base.Update ();
+		clock += Time.deltaTime;
+
+		if (clock >= 2) {
+			float x = Random.Range(-25.0F, 25.0F);
+			float z = Random.Range(-25.0F, 25.0F);
+			Instantiate(listObstacle[0], new Vector3(x, 10, z), Quaternion.Euler(0, 0, 0));
+			clock = 0;
+		}
+	}
 }
