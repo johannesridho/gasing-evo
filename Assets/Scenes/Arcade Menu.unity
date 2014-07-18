@@ -567,6 +567,8 @@ GameObject:
   - 4: {fileID: 362185807}
   - 23: {fileID: 362185809}
   - 102: {fileID: 362185808}
+  - 114: {fileID: 362185810}
+  - 65: {fileID: 362185811}
   m_Layer: 0
   m_Name: Play
   m_TagString: Untagged
@@ -627,6 +629,29 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &362185810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 362185806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834f83f0f65abc547bbb5bd247bd8267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &362185811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 362185806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.60000086, y: 1.61500001, z: 0}
+  m_Center: {x: 1.30000043, y: -.807500005, z: -3.81469727e-06}
 --- !u!1 &411279229
 GameObject:
   m_ObjectHideFlags: 0

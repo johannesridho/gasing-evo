@@ -21,12 +21,19 @@ public class StoneFieldController : MonoBehaviour
         }
         else
         {
-            //		jumlahMusuh = 3;
+    		jumlahMusuh = 3;
             if (!pemain)
             {
                 if (listPemain.Length != 0)
                 {
-                    pemain = (GameObject)Instantiate(listPemain[0], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+					int nomorGasing = 0;
+					if(Utilities.playerGasing == "arjuna"){
+						nomorGasing = 0;
+					}else if(Utilities.playerGasing == "srikandi"){
+						nomorGasing = 1;
+					}
+
+                    pemain = (GameObject)Instantiate(listPemain[nomorGasing], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
                     pemain.name = "Pemain";
                 }
                 if (!gasingPemain)
