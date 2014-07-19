@@ -21,7 +21,7 @@ public class ItemController : MonoBehaviour {
 	
 	private void itemUpdate() {
 		clockItem += Time.deltaTime;
-		if (clockItem >= 5f) {
+		if (currentItem && clockItem >= 5f) {
 			currentItem.GetComponent<Item>().selfDestroy();
 			spawnRandomItem(getRandomPosition());
 			clockItem = 0f;
