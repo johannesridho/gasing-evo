@@ -11,7 +11,7 @@ public class ArcadeMenuSelection : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (!isInitialStateSet) {
-			chooseTeamMode ();
+			chooseRoyalMode ();
 			chooseCamera ("Main Camera");
 			isInitialStateSet = true;
 			setOtherInitialState();

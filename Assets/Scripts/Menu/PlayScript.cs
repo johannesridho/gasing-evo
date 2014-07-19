@@ -4,10 +4,12 @@ using System.Collections;
 public class PlayScript : MonoBehaviour {
 
 	void OnMouseUp(){
-		if(Utilities.chosenArena == "arena a"){
+		if(Utilities.chosenArena == "ice field"){
 			Application.LoadLevel("IceField");
-		}else if(Utilities.chosenArena == "arena b"){
+		}else if(Utilities.chosenArena == "stone field"){
 			Application.LoadLevel("Single Player");
+		}else if(Utilities.chosenArena == "gladiator"){
+			Application.LoadLevel("Gladiator");
 		}
 	}
 	void OnMouseOver(){

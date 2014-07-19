@@ -17,8 +17,10 @@ public class SelectGasingScript : MonoBehaviour {
 
 	void OnMouseUp(){
 		if (name == "arjuna") {
-						name = "srikandi";		
-				} else if (name == "srikandi") {
+			name = "srikandi";		
+		} else if (name == "srikandi") {
+			name = "prototype";		
+		} else if (name == "prototype") {
 			name = "arjuna";		
 		}
 		configurePref ();

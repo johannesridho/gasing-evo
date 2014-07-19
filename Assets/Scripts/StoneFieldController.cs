@@ -31,6 +31,8 @@ public class StoneFieldController : MonoBehaviour
 						nomorGasing = 0;
 					}else if(Utilities.playerGasing == "srikandi"){
 						nomorGasing = 1;
+					}else if(Utilities.playerGasing == "prototype"){
+						nomorGasing = 2;
 					}
 
                     pemain = (GameObject)Instantiate(listPemain[nomorGasing], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab

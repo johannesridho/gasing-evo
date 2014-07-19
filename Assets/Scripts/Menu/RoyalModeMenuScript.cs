@@ -48,7 +48,7 @@ public class RoyalModeMenuScript : MonoBehaviour {
 			textInstance = Instantiate (textPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
 			textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - (2), parent.transform.position.z);
 			textInstance.AddComponent<SelectArenaScript> ();
-			textInstance.GetComponent<SelectArenaScript> ().name = "arena a";
+			textInstance.GetComponent<SelectArenaScript> ().name = "ice field";
 			textInstance.name = "arena name";
 			textInstance.GetComponent<SelectArenaScript>().configurePref();
 		} else {
