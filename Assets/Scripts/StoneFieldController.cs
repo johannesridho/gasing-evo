@@ -72,7 +72,7 @@ public class StoneFieldController : MonoBehaviour
                     Instantiate(listMusuh[nomorGasing], new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
                     musuh = listMusuh[nomorGasing];
                 
-					if(jumlahMusuh > 1 && jumlahMusuh <= 2){
+					if(jumlahMusuh > 1){
 						int nomorGasingMsh2 = 0;
 						switch (Utilities.enemy2){
 						case "arjuna":
@@ -89,7 +89,9 @@ public class StoneFieldController : MonoBehaviour
 							break;
 						}
 						Instantiate(listMusuh[nomorGasingMsh2], new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
-					}else{		//karena layar ga muat buat pilih gasing, klo musuh lebih dari 2 , musuh diclone dari objek musuh pertama
+					}
+					if(jumlahMusuh > 2){
+						//karena layar ga muat buat pilih gasing, klo musuh lebih dari 2 , musuh diclone dari objek musuh pertama
 	                    for (int i = 2; i < jumlahMusuh; i++)
 	                    {
 	                        if (i <= 4)
