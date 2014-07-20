@@ -24,10 +24,10 @@ public class IceFieldController : StoneFieldController {
 		base.Update ();
 		clock += Time.deltaTime;
 
-		if (clock >= 2) {
+		if (clock >= 5) {
 			float x = Random.Range(-25.0F, 25.0F);
 			float z = Random.Range(-25.0F, 25.0F);
-			Instantiate(listObstacle[0], new Vector3(x, 10, z), Quaternion.Euler(0, 0, 0));
+			Instantiate(listObstacle[0], new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0));
 			clock = 0;
 		}
 	}

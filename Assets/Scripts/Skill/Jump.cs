@@ -42,7 +42,7 @@ public class Jump : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Jump", style) && gasing.getSP()>skillPointNeeded) {
 			if (gasing.isOnGround) {
 				float jump_coef = 15000f;
-				Vector3 movement = new Vector3 (0f, 1f, 0f);		
+				Vector3 movement = new Vector3 (0f, 6f, 0f);		
 				rigidbody.AddForce (movement * jump_coef * Time.deltaTime);	
 				gasing.isOnGround = false;
 				gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
