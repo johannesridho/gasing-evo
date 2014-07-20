@@ -8,7 +8,7 @@ public class StoneFieldController : MonoBehaviour
     public GameObject musuh;
     public Gasing gasingPemain;
     public Gasing gasingMusuh;
-    public int jumlahMusuh;
+    private int jumlahMusuh;
     public GameObject[] listPemain;
     public GameObject[] listMusuh;
 	public GameObject[] listObstacle;

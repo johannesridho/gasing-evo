@@ -9,7 +9,6 @@ public class AIMusuh : MonoBehaviour {
 	void Awake(){
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
-			gasing.setEPMax(70);
 		}
 		if(!gasing_pt){
 			gasing_pt = GetComponent<PhysicsTabrak>();

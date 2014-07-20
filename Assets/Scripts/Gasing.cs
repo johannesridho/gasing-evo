@@ -106,6 +106,9 @@ public class Gasing : MonoBehaviour {
 			}
 		} else if(col.gameObject.tag == "Obstacle"){
 			this.EPKurang(5f);
+		} else if(col.gameObject.tag == "Explosive Obstacle"){
+			this.EPKurang(30f);
+			Destroy(col.gameObject);
 		}
 		else if (col.gameObject.name == "Tanah") {
 			this.isOnGround = true;
