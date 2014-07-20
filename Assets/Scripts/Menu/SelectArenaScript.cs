@@ -19,6 +19,8 @@ public class SelectArenaScript : MonoBehaviour {
 		} else if (name == "gladiator") {
 			name = "stone field";		
 		} else if (name == "stone field") {
+			name = "explode arena";		
+		} else if (name == "explode arena") {
 			name = "ice field";		
 		}
 		configurePref ();

@@ -69,6 +69,26 @@ public class SelectHowManyScript : MonoBehaviour {
 					number = "six";
 					numberInt = 6;
 					break;
+				case "six":
+					number = "seven";
+					numberInt = 7;
+					break;
+				case "seven":
+					number = "eight";
+					numberInt = 8;
+					break;
+				case "eight":
+					number = "nine";
+					numberInt = 9;
+					break;
+				case "nine":
+					number = "ten";
+					numberInt = 10;
+					break;
+				case "ten":
+					number = "two";
+					numberInt = 2;
+					break;
 			}
 			GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = numberInt;
 		}

@@ -25,3 +25,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Voice Calibration.unity
   - enabled: 1
     path: Assets/Scenes/IceField.unity
+  - enabled: 1
+    path: Assets/Scenes/Drum Slide.unity

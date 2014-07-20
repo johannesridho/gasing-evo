@@ -10,6 +10,8 @@ public class PlayScript : MonoBehaviour {
 			Application.LoadLevel("Single Player");
 		}else if(Utilities.chosenArena == "gladiator"){
 			Application.LoadLevel("Gladiator");
+		}else if(Utilities.chosenArena == "explode arena"){
+			Application.LoadLevel("Drum Slide");
 		}
 	}
 	void OnMouseOver(){
