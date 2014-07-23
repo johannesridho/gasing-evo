@@ -27,6 +27,11 @@ public class SelectHowManyScript : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
+		configureNames ();	
+		configurePref ();
+	}
+
+	void configureNames(){
 		if (isOneExist) {
 			if(number == "one"){
 				number = "two";
@@ -47,19 +52,58 @@ public class SelectHowManyScript : MonoBehaviour {
 			} 
 		}
 		else {
-			if (number == "two")
-			{
-				number = "three";
-				numberInt = 3;
-				GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = numberInt;
-			} 
-			else if (number == "three")
-			{
-				number = "two";
-				numberInt = 2;
-				GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = numberInt;
-			} 		
-		}	
+			switch (number){
+				case "two":
+					number = "three";
+					numberInt = 3;
+					break;
+				case "three":
+					number = "four";
+					numberInt = 4;
+					break;
+				case "four":
+					number = "five";
+					numberInt = 5;
+					break;
+				case "five":
+					number = "six";
+					numberInt = 6;
+					break;
+				case "six":
+					number = "seven";
+					numberInt = 7;
+					break;
+				case "seven":
+					number = "eight";
+					numberInt = 8;
+					break;
+				case "eight":
+					number = "nine";
+					numberInt = 9;
+					break;
+				case "nine":
+					number = "ten";
+					numberInt = 10;
+					break;
+				case "ten":
+					number = "two";
+					numberInt = 2;
+					break;
+			}
+			GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = numberInt;
+		}
+	}
+
+	public void configurePref(){
+		if (isOneExist) {//team mode
+			//set how many allies	
+			Utilities.howManyGasingTeam = numberInt;
+			Debug.Log("how many gasing team : " + Utilities.howManyGasingTeam.ToString());
+		}
+		else {//royal mode
+			Utilities.howManyGasingRoyal = numberInt;
+			Debug.Log("how many gasing royal : " + Utilities.howManyGasingRoyal.ToString());
+		}
 	}
 
 	void OnMouseOver(){

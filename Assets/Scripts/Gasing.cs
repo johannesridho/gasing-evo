@@ -69,6 +69,8 @@ public class Gasing : MonoBehaviour {
 		vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
 		vel = (vec > GLOBAL_speedMax) ? vel * GLOBAL_speedMax/vec : vel;
 		gasing.rigidbody.velocity = vel;
+
+		rigidbody.AddForce(2 * Physics.gravity * rigidbody.mass); 	//gasing terpengaruh gravity 2 kali lebih besar dari objek lain
 	}
 	
 	public void EPKurang(float dmg){
@@ -104,7 +106,13 @@ public class Gasing : MonoBehaviour {
 			if(audioTabrakan){
 				audio.PlayOneShot(audioTabrakan);
 			}
-		} else if (col.gameObject.name == "Tanah") {
+		} else if(col.gameObject.tag == "Obstacle"){
+			this.EPKurang(5f);
+		} else if(col.gameObject.tag == "Explosive Obstacle"){
+			this.EPKurang(30f);
+			Destroy(col.gameObject);
+		}
+		else if (col.gameObject.name == "Tanah") {
 			this.isOnGround = true;
 		}
 	}

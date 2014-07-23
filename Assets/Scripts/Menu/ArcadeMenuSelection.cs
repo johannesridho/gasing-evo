@@ -6,15 +6,31 @@ public class ArcadeMenuSelection : MonoBehaviour {
 	public bool isRoyalMode;
 	public bool isNext;
 	public bool isBack;
+	public bool isInitialStateSet;
 
 	// Use this for initialization
 	void Start () {
-		chooseTeamMode ();
-		chooseCamera ("Main Camera");
+		if (!isInitialStateSet) {
+			chooseRoyalMode ();
+			chooseCamera ("Main Camera");
+			isInitialStateSet = true;
+			setOtherInitialState();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	}
+
+	void setOtherInitialState(){
+		GameObject[] hasArcades = GameObject.FindGameObjectsWithTag("HasArcadeScript");
+		foreach (GameObject h in hasArcades){
+			if (h.name == gameObject.name){
+				//do nothing
+			}else{
+				h.GetComponent<ArcadeMenuSelection>().isInitialStateSet = true;
+			}
+		}
 	}
 
 	void chooseCamera(string cameraname){
@@ -71,6 +87,8 @@ public class ArcadeMenuSelection : MonoBehaviour {
 		GameObject.Find("Arcade Menus").GetComponent<ArcadeCameraController>().designatedCamera = "Team Mode Camera";
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isOneExist = true;
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 1;
+		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
 	}
 
 	void chooseRoyalMode(){
@@ -95,6 +113,8 @@ public class ArcadeMenuSelection : MonoBehaviour {
 		GameObject.Find("Arcade Menus").GetComponent<ArcadeCameraController>().designatedCamera = "Royal Mode Camera";
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isOneExist = false;
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "two";
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 2;
+		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
 		GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = 2;
 	}
 

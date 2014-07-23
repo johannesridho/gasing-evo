@@ -14,11 +14,21 @@ public class SelectArenaScript : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
-		if (name == "arena a") {
-			name = "arena b";		
-		} else if (name == "arena b") {
-			name = "arena a";		
+		if (name == "ice field") {
+			name = "gladiator";		
+		} else if (name == "gladiator") {
+			name = "stone field";		
+		} else if (name == "stone field") {
+			name = "explode arena";		
+		} else if (name == "explode arena") {
+			name = "ice field";		
 		}
+		configurePref ();
+	}
+
+	public void configurePref(){
+		Utilities.chosenArena = name;
+		Debug.Log ("chosen arena prefs changed to: " + Utilities.chosenArena);
 	}
 
 	void OnMouseOver(){

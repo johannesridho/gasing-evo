@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2776ff7fcf95204ab1d0120dbd5f2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energiPointMax: 100
+  energiPointMax: 300
   skillPointMax: 100
   energiPoint: 0
   skillPoint: 0
