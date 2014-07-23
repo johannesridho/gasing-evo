@@ -32,7 +32,7 @@ public class Item : MonoBehaviour {
 	}
 	
 	protected void spin() {
-		Vector3 rotation = new Vector3 (0f, spin_velo*Time.deltaTime, 0f);
+		Vector3 rotation = new Vector3 (0f, 0f,spin_velo*Time.deltaTime);
 		transform.Rotate(rotation);
 	}
 
