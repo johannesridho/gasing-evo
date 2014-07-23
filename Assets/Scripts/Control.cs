@@ -55,7 +55,7 @@ public class Control : MonoBehaviour {
 //			Vector3 movement = new Vector3 (0f, 1f, 0f);		
 //			rigidbody.AddForce (movement * jump_coef * Time.deltaTime);	
 //		}
-		if (GUI.Button (new Rect (Screen.width * 4/5, Screen.height * 4/5, 60, 30), "Skill 2",style)) {
+		if (GUI.Button (new Rect (Screen.width * 4/5, Screen.height * 4/5, Screen.width / 7, Screen.height / 8), "Skill 2",style)) {
 			//cek apakah skill 2 ditekan
 			// This code is executed when the Button is clicked
 			//			Debug.Log("wah");
@@ -65,7 +65,7 @@ public class Control : MonoBehaviour {
 			Vector3 movement = new Vector3 (0f, 1f, 0f);		
 			rigidbody.AddForce (movement * jump_coef * Time.deltaTime);	
 		}
-		if (GUI.Button (new Rect (Screen.width * 1/10, Screen.height * 4/5, 60, 30), "Ulti",style)) {
+		if (GUI.Button (new Rect (Screen.width * 1/10, Screen.height * 4/5, Screen.width / 7, Screen.height / 8), "Ulti",style)) {
 			//cek apakah ultimate skill ditekan
 			// This code is executed when the Button is clicked
 			//			Debug.Log("wah");

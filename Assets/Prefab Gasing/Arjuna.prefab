@@ -52,10 +52,10 @@ Renderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 2795121241619d342a9a95837374169b, type: 2}
-  - {fileID: 2100000, guid: 33f9e622d027e874681f8e861d3daf78, type: 2}
-  - {fileID: 2100000, guid: 8ba66ed6a1a4a6a428d4ea3863faee56, type: 2}
-  - {fileID: 2100000, guid: 117f59abb67d4564a8e4a6fdf992b9ce, type: 2}
   - {fileID: 2100000, guid: 1fdd4b703d485014da05137103ea9201, type: 2}
+  - {fileID: 2100000, guid: 0be72801b149dd649a98e799cdca56a9, type: 2}
+  - {fileID: 2100000, guid: be804ff2b8e0f3b44bbb4bddf06d2280, type: 2}
+  - {fileID: 2100000, guid: 6222ffce179bcea4a9c19c7b1291e4b7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   skillPoint: 0
   mass: 100
   power: 1
-  speed: 1
+  speed: 4
   speedMax: 20
   isOnGround: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
