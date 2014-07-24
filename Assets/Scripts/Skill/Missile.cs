@@ -31,7 +31,7 @@ public class Missile : MonoBehaviour {
 		GUIStyle style = new GUIStyle (GUI.skin.box);
 		style.normal.background = buttonSkill1;
 		
-		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "Missile", style) && gasing.getSP()>skillPointNeeded) {
+		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 6 / 10, Screen.width / 7, Screen.width / 7), "", style) && gasing.getSP()>skillPointNeeded) {
 
 			if(targetEnemy){
 				Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position-transform.position - new Vector3(0,-90,0)));
