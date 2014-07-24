@@ -203,7 +203,7 @@ MonoBehaviour:
   skillPoint: 0
   mass: 100
   power: 1
-  speed: 1
+  speed: 4
   speedMax: 20
   isOnGround: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
