@@ -51,10 +51,10 @@ Renderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 2795121241619d342a9a95837374169b, type: 2}
-  - {fileID: 2100000, guid: 33f9e622d027e874681f8e861d3daf78, type: 2}
-  - {fileID: 2100000, guid: 8ba66ed6a1a4a6a428d4ea3863faee56, type: 2}
-  - {fileID: 2100000, guid: 117f59abb67d4564a8e4a6fdf992b9ce, type: 2}
   - {fileID: 2100000, guid: 1fdd4b703d485014da05137103ea9201, type: 2}
+  - {fileID: 2100000, guid: 0be72801b149dd649a98e799cdca56a9, type: 2}
+  - {fileID: 2100000, guid: 8a64836940a4b0d47b79fcebb1716e9e, type: 2}
+  - {fileID: 2100000, guid: 6222ffce179bcea4a9c19c7b1291e4b7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -236,10 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gasing: {fileID: 0}
   screenPosition: {x: 0, y: 0, z: 0}
-  teksturHealth: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
-  teksturHealth2: {fileID: 2800000, guid: 89ae8d135a16a40479a422962a41b7fd, type: 3}
-  teksturSkill: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
-  teksturSkill2: {fileID: 2800000, guid: 89ae8d135a16a40479a422962a41b7fd, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
