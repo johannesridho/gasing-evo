@@ -25,7 +25,7 @@ public class Blink : MonoBehaviour {
 		GUIStyle style = new GUIStyle (GUI.skin.box);
 		style.normal.background = buttonSkill1;
 		
-		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, 60, 30), "Blink", style) && gasing.getSP()>skillPointNeeded) {
+		if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "Blink", style) && gasing.getSP()>skillPointNeeded) {
 			float x;
 			float z;
 			if (Application.platform == RuntimePlatform.Android){
