@@ -677,7 +677,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_SortMode: 0
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -929,7 +929,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 4
+    type: 5
     radius: 1
     angle: 25
     length: 5
@@ -2178,7 +2178,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 4
+    type: 5
     radius: 1
     angle: 25
     length: 5
@@ -3125,7 +3125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &1115332691
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,7 +3322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &1463156971
 Prefab:
   m_ObjectHideFlags: 0
@@ -3396,9 +3396,9 @@ Transform:
   m_LocalPosition: {x: .376797676, y: 1.78406525, z: -3.91419673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1019777496}
   - {fileID: 1683381455}
   - {fileID: 1386382320}
+  - {fileID: 1019777496}
   m_Father: {fileID: 0}
   m_RootOrder: 15
 --- !u!1 &1545330245
@@ -3604,7 +3604,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1779217120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3907,11 +3907,11 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 0be72801b149dd649a98e799cdca56a9, type: 2}
-  - {fileID: 2100000, guid: 6457235621f947b45b3f338aa67475f4, type: 2}
-  - {fileID: 2100000, guid: 9222e0e21b914474681d8b723b939ba6, type: 2}
-  - {fileID: 2100000, guid: be804ff2b8e0f3b44bbb4bddf06d2280, type: 2}
-  - {fileID: 2100000, guid: 395a39de1aa413545b522b23576c9f19, type: 2}
+  - {fileID: 2100000, guid: c942b86dcc7bf254089428b86bc29683, type: 2}
+  - {fileID: 2100000, guid: dc556c685dcc4a34e970ef0ea2461815, type: 2}
+  - {fileID: 2100000, guid: 0e762ede50f6de64cb4154656c13ade1, type: 2}
+  - {fileID: 2100000, guid: e07634d6284d9404ba59df3f84609f4a, type: 2}
+  - {fileID: 2100000, guid: 69eb6e2b98e502441b5298e70c1855c1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -4755,7 +4755,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 4
+    type: 5
     radius: 1
     angle: 25
     length: 5
