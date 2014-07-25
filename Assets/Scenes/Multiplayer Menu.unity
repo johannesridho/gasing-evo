@@ -150,9 +150,15 @@ MonoBehaviour:
   - mapName: Single Player Map
     mapLoadName: Single Player
     mapTexture: {fileID: 0}
+  - mapName: Drum Slide
+    mapLoadName: Drum Slide
+    mapTexture: {fileID: 0}
+  - mapName: IceField
+    mapLoadName: IceField
+    mapTexture: {fileID: 0}
   currentMap:
-    mapName: Single Player Map
-    mapLoadName: Single Player
+    mapName: Drum Slide
+    mapLoadName: Drum Slide
     mapTexture: {fileID: 0}
   oldprefix: 0
   isGameStarted: 0
