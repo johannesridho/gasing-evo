@@ -9,16 +9,20 @@ public class HealthBar : MonoBehaviour {
 	private float healthBarLength;
 	private float skillBarLength;
 
-	public Texture2D teksturHealth;
-	public Texture2D teksturHealth2;
+	private Texture2D teksturHealth;
+	private Texture2D teksturHealth2;
 
-	public Texture2D teksturSkill;
-	public Texture2D teksturSkill2;
+	private Texture2D teksturSkill;
+	private Texture2D teksturSkill2;
 
 	void Awake(){
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
 		}
+		teksturHealth = (Texture2D)Resources.Load("Health/HUD_health_04");
+		teksturHealth2 = (Texture2D)Resources.Load("Health/HUD_health_00");
+		teksturSkill = (Texture2D)Resources.Load("Health/HUD_health_04");
+		teksturSkill2 = (Texture2D)Resources.Load("Health/HUD_health_00");
 	}
 
 	// Use this for initialization

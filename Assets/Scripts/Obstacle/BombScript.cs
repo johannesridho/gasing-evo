@@ -21,9 +21,12 @@ public class BombScript : MonoBehaviour {
 	}
 
 	void Update(){
+		if (!targetEnemy) {
+			targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
+		}
 		clock += Time.deltaTime;
 		if (clock >= 5) {
-			Destroy(this);
+			Destroy(this.gameObject);
 			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
 		}
 	}
