@@ -2,16 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 public class Jump : Skill {
-	
-	private float jump_coef;
+
 	private Gasing gasing;
 
 	void Awake(){
         skillName = "Jump";
 		skillPointNeeded = 10;
 		if(!gasing)
-			gasing = GetComponent<Gasing>();
-		jump_coef = 15000f;
+			gasing = GetComponent<Gasing>();	
 	}
 
 	void Start () {
