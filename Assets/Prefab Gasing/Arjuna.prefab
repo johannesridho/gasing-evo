@@ -316,8 +316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd28a510f0bb814d91eac660b032c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill1: {fileID: 11400000}
-  skill2: {fileID: 11400010}
+  skills:
+  - {fileID: 11400000}
+  - {fileID: 11400010}
+  - {fileID: 0}
+  - {fileID: 0}
+  skill1: {fileID: 0}
+  skill2: {fileID: 0}
   skill3: {fileID: 0}
   skillUlti: {fileID: 0}
 --- !u!198 &19800000

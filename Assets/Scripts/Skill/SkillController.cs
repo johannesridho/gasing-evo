@@ -2,10 +2,7 @@
 using System.Collections;
 
 public class SkillController : MonoBehaviour {
-    public Skill skill1;
-    public Skill skill2;
-    public Skill skill3;
-    public Skill skillUlti;
+    public Skill[] skills = new Skill[4];
 
 	// Use this for initialization
 	void Start () {
@@ -19,44 +16,63 @@ public class SkillController : MonoBehaviour {
 
     void OnGUI()
     {
-        if (skill1 != null)
+        if (GamePrefs.isMultiplayer)
+        {
+            OnGUI_MultiPlayer();
+        }
+        else
+        {
+            OnGUI_SinglePlayer();
+        }
+    }
+
+    private void OnGUI_SinglePlayer()
+    {
+        if (skills[0] != null)
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skill1.buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skill1.skillName, style))
+            style.normal.background = skills[0].buttonSkill1;
+            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[0].skillName, style))
             {
-                skill1.doSkill();
+                skills[0].doSkill();
             }
         }
 
-        if (skill2 != null)
+        if (skills[1] != null)
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skill2.buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 5 / 10, Screen.width / 7, Screen.height / 8), skill2.skillName, style))
+            style.normal.background = skills[1].buttonSkill1;
+            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 5 / 10, Screen.width / 7, Screen.height / 8), skills[1].skillName, style))
             {
-                skill2.doSkill();
+                skills[1].doSkill();
             }
         }
 
-        if (skill3 != null)
+        if (skills[2] != null)
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skill3.buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 3 / 10, Screen.width / 7, Screen.height / 8), skill3.skillName, style))
+            style.normal.background = skills[2].buttonSkill1;
+            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 3 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
             {
-                skill3.doSkill();
+                skills[2].doSkill();
             }
         }
 
-        if (skillUlti != null)
+        //ULTI
+        if (skills[3] != null)
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skillUlti.buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skillUlti.skillName, style))
+            style.normal.background = skills[3].buttonSkill1;
+            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[3].skillName, style))
             {
-                skillUlti.doSkill();
+                skills[3].doSkill();
             }
         }
     }
+
+    private void OnGUI_MultiPlayer()
+    {
+
+    }
+
 }
