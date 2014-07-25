@@ -20,30 +20,12 @@ public class StoneFieldController : MonoBehaviour
         {
     		jumlahMusuh = Utilities.howManyGasingRoyal-1;
             if (!pemain)
-            {                
-				Object objekGasing;
-				switch (Utilities.playerGasing){
-					case "arjuna":
-						objekGasing =  Resources.Load("Prefab/Prefab Gasing/Arjuna");
-						break;
-					case "srikandi":
-						objekGasing =  Resources.Load("Prefab/Prefab Gasing/Srikandi");
-						break;
-					case "prototype":
-						objekGasing =  Resources.Load("Prefab/Prefab Gasing/Prototype");
-						break;
-					case "dipati":
-						objekGasing =  Resources.Load("Prefab/Prefab Gasing/Dipati");
-						break;
-					case "jalaprang":
-						objekGasing =  Resources.Load("Prefab/Prefab Gasing/Jalaprang");
-						break;
-				default:
-						objekGasing =  Resources.Load("Prefab/Prefab Gasing/Arjuna");
-						break;
+            {   
+				if(Utilities.playerGasing != null){
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+				}else{
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}
-
-				pemain = (GameObject)Instantiate(objekGasing, new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
            		pemain.name = "Pemain";
                 
                 if (!gasingPemain)
@@ -52,54 +34,19 @@ public class StoneFieldController : MonoBehaviour
                 }
             }
             if (!musuh)
-            {                
-				Object objekGasing2;
-				switch (Utilities.enemy1){
-				case "arjuna":
-					objekGasing2 =  Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh");
-					break;
-				case "srikandi":
-					objekGasing2 =  Resources.Load("Prefab/Prefab Gasing/Srikandi_Musuh");
-					break;
-				case "prototype":
-					objekGasing2 =  Resources.Load("Prefab/Prefab Gasing/Prototype_Musuh");
-					break;
-				case "dipati":
-					objekGasing2 =  Resources.Load("Prefab/Prefab Gasing/Dipati_Musuh");
-					break;
-				case "jalaprang":
-					objekGasing2 =  Resources.Load("Prefab/Prefab Gasing/Jalaprang_Musuh");
-					break;
-				default:
-					objekGasing2 =  Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh");
-					break;
+            {
+				if(Utilities.enemy1 != null){
+					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+				}else{
+					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
 				}
-				musuh = (GameObject) Instantiate(objekGasing2, new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
-			    
         
 				if(jumlahMusuh > 1){
-					Object objekGasing3;
-					switch (Utilities.enemy2){
-					case "arjuna":
-						objekGasing3 =  Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh");
-						break;
-					case "srikandi":
-						objekGasing3 =  Resources.Load("Prefab/Prefab Gasing/Srikandi_Musuh");
-						break;
-					case "prototype":
-						objekGasing3 =  Resources.Load("Prefab/Prefab Gasing/Prototype_Musuh");
-						break;
-					case "dipati":
-						objekGasing3 =  Resources.Load("Prefab/Prefab Gasing/Dipati_Musuh");
-						break;
-					case "jalaprang":
-						objekGasing3 =  Resources.Load("Prefab/Prefab Gasing/Jalaprang_Musuh");
-						break;
-					default:
-						objekGasing3 =  Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh");
-						break;
+					if(Utilities.enemy2 != null){
+						Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+					}else{
+						Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
 					}
-					Instantiate(objekGasing3, new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
 				}
 				if(jumlahMusuh > 2){
 					//karena layar ga muat buat pilih gasing, klo musuh lebih dari 2 , musuh diclone dari objek musuh pertama
