@@ -226,10 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7227eb9b79e06f43b0f2a8ad7c3abb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
   skillName: 
-  jump_coef: 0
-  gasing: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,8 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6352f1705c138f24aa665eb1c83e3d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasing_pt: {fileID: 0}
-  buttonSkill1: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,8 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvicibleAfterClash: 0
-  timeCountAfterClash: 0
-  gasing: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

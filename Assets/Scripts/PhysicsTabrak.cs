@@ -4,9 +4,9 @@ using System.Collections;
 public class PhysicsTabrak : MonoBehaviour {
 	
 	public bool isInvicibleAfterClash;
-	public float timeCountAfterClash;
-	public Gasing gasing;
-	public static float COEF_MOMENTUM = 1.2f;
+	private float timeCountAfterClash;
+	private Gasing gasing;
+	private static float COEF_MOMENTUM = 1.2f;
 
 	void Awake(){
 		if(!gasing)

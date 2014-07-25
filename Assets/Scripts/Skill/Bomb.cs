@@ -4,8 +4,6 @@ using System.Collections;
 public class Bomb : Skill {
 	
 	private Gasing gasing;
-    //public Texture2D buttonSkill1;
-    //private float skillPointNeeded;		//skill point yg diperlukan
 	public GameObject prefabBomb;
 	
 	void Awake(){
@@ -21,15 +19,6 @@ public class Bomb : Skill {
 	
 	void Update () {
 		
-	}
-	
-	void OnGUI () {
-        //GUIStyle style = new GUIStyle (GUI.skin.box);
-        //style.normal.background = buttonSkill1;
-		
-        //if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "Fireball", style) && gasing.getSP()>skillPointNeeded) {
-        //    doSkill();
-        //}
 	}
 
     public override void doSkill()

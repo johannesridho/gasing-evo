@@ -3,9 +3,7 @@ using System.Collections;
 
 public class Blink : Skill {
 
-	public Gasing gasing;
-    //public Texture2D buttonSkill1;
-    //private float skillPointNeeded;		//skill point yg diperlukan
+	private Gasing gasing;
 	
 	void Awake(){
         skillName = "Blink";
@@ -20,15 +18,6 @@ public class Blink : Skill {
 	
 	void Update () {
 		
-	}
-
-	void OnGUI () {
-        //GUIStyle style = new GUIStyle (GUI.skin.box);
-        //style.normal.background = buttonSkill1;
-		
-        //if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "Blink", style) && gasing.getSP()>skillPointNeeded) {
-        //    doSkill();
-        //}
 	}
 
     public override void doSkill()

@@ -25,16 +25,6 @@ public class Missile : Skill {
 			targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
 		}
 	}
-	
-	void OnGUI () {
-		GUIStyle style = new GUIStyle (GUI.skin.box);
-		style.normal.background = buttonSkill1;
-		
-        //if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 6 / 10, Screen.width / 7, Screen.width / 7), "", style) && gasing.getSP()>skillPointNeeded) {
-
-			
-        //}
-	}
 
     public override void doSkill()
     {

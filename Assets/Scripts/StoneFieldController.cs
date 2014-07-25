@@ -44,6 +44,7 @@ public class StoneFieldController : MonoBehaviour
 
                     pemain = (GameObject)Instantiate(listPemain[nomorGasing], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
                     pemain.name = "Pemain";
+					pemain.renderer.material.color = Color.blue;
                 }
                 if (!gasingPemain)
                 {

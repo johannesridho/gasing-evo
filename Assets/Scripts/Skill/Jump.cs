@@ -3,10 +3,8 @@ using System.Collections;
 
 public class Jump : Skill {
 	
-	public float jump_coef;
-	public Gasing gasing;
-    //public Texture2D buttonSkill1;
-    //private float skillPointNeeded;		//skill point yg diperlukan
+	private float jump_coef;
+	private Gasing gasing;
 
 	void Awake(){
         skillName = "Jump";
@@ -14,7 +12,6 @@ public class Jump : Skill {
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 		jump_coef = 15000f;
-//		buttonSkill1 = (Texture2D)Resources.Load("HUD_health_04.psd");
 	}
 
 	void Start () {
@@ -40,14 +37,6 @@ public class Jump : Skill {
         }
 	}
 
-	void OnGUI () {
-        //GUIStyle style = new GUIStyle (GUI.skin.box);
-        //style.normal.background = buttonSkill1;
-
-        //if (GUI.Button (new Rect (Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "Jump", style) && gasing.getSP()>skillPointNeeded) {
-        //    doSkill();				
-        //}
-	}
 
     public override void doSkill()
     {
