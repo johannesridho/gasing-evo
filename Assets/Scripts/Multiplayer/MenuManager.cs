@@ -45,6 +45,10 @@ public class MenuManager : MonoBehaviour
             {
                 menu_chooseMap();
             }
+            if (currentMenu == "Choose Gasing")
+            {
+                menu_chooseGasing();
+            }
         }
     }
 
@@ -52,11 +56,10 @@ public class MenuManager : MonoBehaviour
     {
         MasterServer.RequestHostList("gasing evo");
 
-        int layoutWidth = (int)(Screen.width * 0.3);
+        int layoutWidth = (int)(Screen.width - 20);
         int layoutHeight = (int)(Screen.height);
 
-        GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
-        GUILayout.BeginHorizontal();
+        GUILayout.BeginArea(new Rect(10, 0, Screen.width, Screen.height));
         GUILayout.BeginVertical(GUILayout.MaxWidth(layoutWidth));
         if (GUILayout.Button("Host"))
         {
@@ -68,6 +71,8 @@ public class MenuManager : MonoBehaviour
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = true;
         }
+
+        #region input nama
         //Input nama
         GUILayout.BeginHorizontal();
         GUILayout.Label("Player Name");
@@ -77,7 +82,9 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetString("PlayerName", MultiplayerManager.instance.playerName);
         }
         GUILayout.EndHorizontal();
+        #endregion
 
+        #region direct connect
         //Direct connect
         GUILayout.BeginHorizontal();
         GUILayout.Label("IP");
@@ -87,24 +94,26 @@ public class MenuManager : MonoBehaviour
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
         }
         GUILayout.EndHorizontal();
+        #endregion
+
         GUILayout.EndVertical();
 
         //menampilkan list hosts
-        GUILayout.BeginVertical();
-        GUILayout.Label("Server List");
-        foreach (HostData hostdata in MasterServer.PollHostList())
-        {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label(hostdata.gameName);
-            if (GUILayout.Button("Join"))
-            {
-                //join server
-                Network.Connect(hostdata);
-            }
-            GUILayout.EndHorizontal();
-        }
-        GUILayout.EndVertical();
-        GUILayout.EndHorizontal();
+        //GUILayout.BeginVertical();
+        //GUILayout.Label("Server List");
+        //foreach (HostData hostdata in MasterServer.PollHostList())
+        //{
+        //    GUILayout.BeginHorizontal();
+        //    GUILayout.Label(hostdata.gameName);
+        //    if (GUILayout.Button("Join"))
+        //    {
+        //        //join server
+        //        Network.Connect(hostdata);
+        //    }
+        //    GUILayout.EndHorizontal();
+        //}
+        //GUILayout.EndVertical();
+
         GUILayout.EndArea();
     }
 
@@ -179,13 +188,17 @@ public class MenuManager : MonoBehaviour
                 MultiplayerManager.instance.isGameStarted = true;
             }
         }
-        //if (Network.isClient)
-        //{
-        if (GUILayout.Button("Disconnect"))
+
+        //select gasing
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Gasing");
+        GUILayout.Label(MultiplayerManager.instance.selectableGasingString[MultiplayerManager.instance.selectedGasing]);
+        if (GUILayout.Button("Choose Gasing"))
         {
-            Network.Disconnect();
+            navigateTo("Choose Gasing");
         }
-        //}
+        GUILayout.EndHorizontal();
+
         GUILayout.Label("Players:");
         scrollLobby = GUILayout.BeginScrollView(scrollLobby, GUILayout.MaxWidth(Screen.width));
         foreach (MPPlayer pl in MultiplayerManager.instance.playerList)
@@ -194,6 +207,11 @@ public class MenuManager : MonoBehaviour
         }
 
         GUILayout.EndScrollView();
+
+        if (GUILayout.Button("Disconnect"))
+        {
+            Network.Disconnect();
+        }
         GUILayout.EndVertical();
         GUILayout.EndArea();
     }
@@ -211,6 +229,36 @@ public class MenuManager : MonoBehaviour
             }
         }
         GUILayout.EndVertical();
+        GUILayout.EndArea();
+    }
+
+    private void menu_chooseGasing()
+    {
+        GUILayout.BeginArea(new Rect(5, 5, Screen.width - 10, Screen.height - 10));
+
+        #region gasing_selector
+        GUILayout.BeginVertical();
+        int selected = PlayerPrefs.GetInt("Selected Gasing");
+        int oldSelected = selected;
+        selected = GUILayout.SelectionGrid(selected, MultiplayerManager.instance.selectableGasingString, MultiplayerManager.instance.selectableGasingString.Length);
+        MultiplayerManager.instance.selectedGasing = selected;
+        PlayerPrefs.SetInt("Selected Gasing", selected);
+        GUILayout.EndVertical();
+        #endregion
+
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("OK"))
+        {
+            MultiplayerManager.instance.networkView.RPC("client_changeGasing", RPCMode.All, Network.player, selected);
+            navigateTo("Lobby");            
+        }
+        if (GUILayout.Button("Cancel"))
+        {
+            MultiplayerManager.instance.selectedGasing = oldSelected;
+            PlayerPrefs.SetInt("Selected Gasing", oldSelected);
+            navigateTo("Lobby");
+        }
+        GUILayout.EndHorizontal();
         GUILayout.EndArea();
     }
 

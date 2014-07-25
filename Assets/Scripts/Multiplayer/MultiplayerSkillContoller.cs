@@ -22,71 +22,74 @@ public class MultiplayerSkillContoller : MonoBehaviour {
 
     void OnGUI()
     {
-        if (availableSkills[0] != null)
+        if (MultiplayerManager.instance.isGameStarted)
         {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            //style.normal.background = skills[0].buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), availableSkills[0], style))
+            if (availableSkills[0] != null)
             {
-                if (Network.isServer)
+                GUIStyle style = new GUIStyle(GUI.skin.box);
+                //style.normal.background = skills[0].buttonSkill1;
+                if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), availableSkills[0], style))
                 {
-                    server_doSkill(Network.player, 0);
-                }
-                else
-                {
-                    networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 0);
+                    if (Network.isServer)
+                    {
+                        server_doSkill(Network.player, 0);
+                    }
+                    else
+                    {
+                        networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 0);
+                    }
                 }
             }
-        }
 
-        if (availableSkills[1] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            //style.normal.background = skills[1].buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 5 / 10, Screen.width / 7, Screen.height / 8), availableSkills[1], style))
+            if (availableSkills[1] != null)
             {
-                if (Network.isServer)
+                GUIStyle style = new GUIStyle(GUI.skin.box);
+                //style.normal.background = skills[1].buttonSkill1;
+                if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 5 / 10, Screen.width / 7, Screen.height / 8), availableSkills[1], style))
                 {
-                    server_doSkill(Network.player, 1);
-                }
-                else
-                {
-                    networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 1);
+                    if (Network.isServer)
+                    {
+                        server_doSkill(Network.player, 1);
+                    }
+                    else
+                    {
+                        networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 1);
+                    }
                 }
             }
-        }
 
-        if (availableSkills[2] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            //style.normal.background = skills[2].buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 3 / 10, Screen.width / 7, Screen.height / 8), availableSkills[2], style))
+            if (availableSkills[2] != null)
             {
-                if (Network.isServer)
+                GUIStyle style = new GUIStyle(GUI.skin.box);
+                //style.normal.background = skills[2].buttonSkill1;
+                if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 3 / 10, Screen.width / 7, Screen.height / 8), availableSkills[2], style))
                 {
-                    server_doSkill(Network.player, 2);
-                }
-                else
-                {
-                    networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 2);
+                    if (Network.isServer)
+                    {
+                        server_doSkill(Network.player, 2);
+                    }
+                    else
+                    {
+                        networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 2);
+                    }
                 }
             }
-        }
 
-        //ULTI
-        if (availableSkills[3] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            //style.normal.background = skills[3].buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), availableSkills[3], style))
+            //ULTI
+            if (availableSkills[3] != null)
             {
-                if (Network.isServer)
+                GUIStyle style = new GUIStyle(GUI.skin.box);
+                //style.normal.background = skills[3].buttonSkill1;
+                if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), availableSkills[3], style))
                 {
-                    server_doSkill(Network.player, 3);
-                }
-                else
-                {
-                    networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 3);
+                    if (Network.isServer)
+                    {
+                        server_doSkill(Network.player, 3);
+                    }
+                    else
+                    {
+                        networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 3);
+                    }
                 }
             }
         }

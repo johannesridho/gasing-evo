@@ -10,9 +10,12 @@ public class MultiplayerManager : MonoBehaviour
 
     public string playerName;
 
+    public int selectedGasing =1;
+
     #region Loadable_prefabs
     public GameObject playerManagerPrefab;
-    public GameObject servergasingPrefab;
+    public GameObject[] servergasingPrefab;
+    public string[] selectableGasingString = new string[] { "Arjuna", "Srikandi", "Prototype" };
     public GameObject multiplayerInputHandlerPrefab;
     #endregion
 
@@ -89,9 +92,9 @@ public class MultiplayerManager : MonoBehaviour
                 //Add the server creator as a player in the server
                 server_playerJoinRequest(playerName, Network.player);
                 // add new gasing to server side gasing
-                GameObject newGasing = Network.Instantiate(servergasingPrefab, new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
-                newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
-                serverSideGasings.Add(newGasing);
+                //GameObject newGasing = Network.Instantiate(servergasingPrefab[selectedGasing], new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
+                //newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
+                //serverSideGasings.Add(newGasing);
             }
         }
     }
@@ -114,13 +117,13 @@ public class MultiplayerManager : MonoBehaviour
         //send the server's maxPlayer
         networkView.RPC("client_getMaxPlayer", player, maxPlayer);
 
-        if (isAllRigidbodyOnServer)
-        {
-            // add new gasing to server side gasing
-            GameObject newGasing = Network.Instantiate(servergasingPrefab, new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0), 5) as GameObject;
-            newGasing.GetComponent<Server_Gasing>().networkPlayer = player;
-            serverSideGasings.Add(newGasing);
-        }
+        //if (isAllRigidbodyOnServer)
+        //{
+        //    // add new gasing to server side gasing
+        //    GameObject newGasing = Network.Instantiate(servergasingPrefab[selectedGasing], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0), 5) as GameObject;
+        //    newGasing.GetComponent<Server_Gasing>().networkPlayer = player;
+        //    serverSideGasings.Add(newGasing);
+        //}
 
     }
 
@@ -186,6 +189,10 @@ public class MultiplayerManager : MonoBehaviour
         {
             playerList.Remove(temp);
         }
+
+        Debug.Log("player disconnected. Before: " + serverSideGasings.Count);
+        serverSideGasings.Remove(getGasingOwnedByPlayer(view));
+        Debug.Log("player disconnected. After: " + serverSideGasings.Count);
     }
 
     [RPC]
@@ -216,6 +223,10 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void client_loadMultiplayerMap(string mapLoadName, int prefix)
     {
+        if (Network.isServer)
+        {
+            initializePlayers();
+        }
         //Network.SetLevelPrefix(prefix);
         Application.LoadLevel(mapLoadName);
         //GameObject go = GameObject.Find("StoneFieldController");
@@ -347,7 +358,26 @@ public class MultiplayerManager : MonoBehaviour
     {
 
     }
-    
+
+    public void initializePlayers()
+    {
+        foreach (MPPlayer mpp in playerList)
+        {
+            // add new gasing to server side gasing
+            GameObject newGasing = Network.Instantiate(servergasingPrefab[mpp.selectedGasing], new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0), 5) as GameObject;
+            newGasing.GetComponent<Server_Gasing>().networkPlayer = mpp.playerNetwork;
+            serverSideGasings.Add(newGasing);
+        }
+
+        
+    }
+
+    [RPC]
+    public void client_changeGasing(NetworkPlayer player, int newGasing)
+    {
+        Debug.Log("gasing changed");
+        getMPPlayer(player).selectedGasing = newGasing;
+    }
     //misc
 
     public string getServerIP()
@@ -401,6 +431,7 @@ public class MPPlayer
     public NetworkPlayer playerNetwork;
     public bool isAlive = true;
     public PlayerManager playerManager;
+    public int selectedGasing;
 }
 
 [System.Serializable]
