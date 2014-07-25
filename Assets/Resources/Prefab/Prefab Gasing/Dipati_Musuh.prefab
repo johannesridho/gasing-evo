@@ -23,7 +23,7 @@ GameObject:
   - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Dipati_Musuh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
-  prefabBomb: {fileID: 100000, guid: bf29ae81fc9f41b4899b36ac94c763b3, type: 2}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,7 +254,7 @@ MonoBehaviour:
   power: 1
   speed: 4
   speedMax: 20
-  isOnGround: 0
+  isOnGround: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
 --- !u!135 &13500000
 SphereCollider:
