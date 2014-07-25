@@ -36,7 +36,7 @@ public class MultiplayerInputHandler : MonoBehaviour
                 {
                     if (client_gasing.isOnGround && !client_gasing.isInvicibleAfterClash)
                     {
-                        //if (client_gasing.isOnGround)
+                        if (client_gasing.isOnGround)
                         {
                             if (Application.platform == RuntimePlatform.Android)
                             {
@@ -82,8 +82,7 @@ public class MultiplayerInputHandler : MonoBehaviour
 
                 if (client_gasing.isOnGround)
                 {
-                    //if (client_gasing.isOnGround)
-                    {
+                    
                         if (Application.platform == RuntimePlatform.Android)
                         {
                             hor = Input.acceleration.x * Gasing.COEF_SPEED * client_gasing.speed;
@@ -94,7 +93,7 @@ public class MultiplayerInputHandler : MonoBehaviour
                             hor = Input.GetAxis("Horizontal") * Gasing.COEF_SPEED * client_gasing.speed;
                             ver = Input.GetAxis("Vertical") * Gasing.COEF_SPEED * client_gasing.speed;
                         }
-                    }
+                    
                     Vector3 movement = new Vector3(hor, 0f, ver);
                     networkView.RPC("server_addForce", RPCMode.Server, Network.player, movement * 2000 * Time.deltaTime);
                 }
