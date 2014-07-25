@@ -9,7 +9,6 @@ public class StoneFieldController : MonoBehaviour
     public Gasing gasingPemain;
     public Gasing gasingMusuh;
     private int jumlahMusuh;        
-	public GameObject[] listObstacle;
 
     protected void Awake()
     {

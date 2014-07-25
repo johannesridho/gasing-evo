@@ -5,14 +5,14 @@ public class Missile : Skill {
 
 	private Gasing gasing;
 	private GameObject targetEnemy;
-	public GameObject prefabMissile;
+	private Object prefabMissile;
 	
 	void Awake(){
         skillName = "Missile";
 		skillPointNeeded = 20;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
-
+		prefabMissile = Resources.Load("Prefab/Prefab Obstacle/Missile");
 		targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
 	}
 	

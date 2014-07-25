@@ -39,11 +39,11 @@ public class IceFieldController : StoneFieldController {
                 float z = Random.Range(-25.0F, 25.0F);
                 if (GamePrefs.isMultiplayer)
                 {
-                    Network.Instantiate(listObstacle[0], new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0), 10);
+					Network.Instantiate(Resources.Load("Prefab/Prefab Obstacle/Ice Block"), new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0), 10);
                 }
                 else
                 {
-                    Instantiate(listObstacle[0], new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0));
+					Instantiate(Resources.Load("Prefab/Prefab Obstacle/Ice Block"), new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0));
                 }
                 clock = 0;
             }
