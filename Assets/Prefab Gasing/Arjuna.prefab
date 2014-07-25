@@ -320,11 +320,6 @@ MonoBehaviour:
   - {fileID: 11400000}
   - {fileID: 11400010}
   - {fileID: 0}
-  - {fileID: 0}
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill3: {fileID: 0}
-  skillUlti: {fileID: 0}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
