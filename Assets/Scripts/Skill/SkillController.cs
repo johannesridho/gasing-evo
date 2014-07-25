@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SkillController : MonoBehaviour {
-    public Skill[] skills = new Skill[4];
+    public Skill[] skills = new Skill[3];
 
 	// Use this for initialization
 	void Start () {
@@ -47,25 +47,15 @@ public class SkillController : MonoBehaviour {
                 skills[1].doSkill();
             }
         }
-
+	        
+        //ULTI
         if (skills[2] != null)
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
             style.normal.background = skills[2].buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 4 / 5, Screen.height * 3 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
+            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
             {
                 skills[2].doSkill();
-            }
-        }
-
-        //ULTI
-        if (skills[3] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skills[3].buttonSkill1;
-            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[3].skillName, style))
-            {
-                skills[3].doSkill();
             }
         }
     }
