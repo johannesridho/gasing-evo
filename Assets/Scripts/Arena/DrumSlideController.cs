@@ -17,11 +17,11 @@ public class DrumSlideController : StoneFieldController {
                 float x = Random.Range(-27.0F, 25.0F);
                 if (GamePrefs.isMultiplayer)
                 {
-                    Network.Instantiate(listObstacle[0], new Vector3(x, 50, 57), Quaternion.Euler(90, -90, 0), 10);
+					Network.Instantiate(Resources.Load("Prefab/Prefab Obstacle/Explosive Drum"), new Vector3(x, 50, 57), Quaternion.Euler(90, -90, 0), 10);
                 }
                 else
                 {
-                    Instantiate(listObstacle[0], new Vector3(x, 50, 57), Quaternion.Euler(90, -90, 0));
+					Instantiate(Resources.Load("Prefab/Prefab Obstacle/Explosive Drum"), new Vector3(x, 50, 57), Quaternion.Euler(90, -90, 0));
                 }
                 clock = 0;
             }

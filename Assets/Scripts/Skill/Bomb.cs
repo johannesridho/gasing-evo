@@ -4,13 +4,14 @@ using System.Collections;
 public class Bomb : Skill {
 	
 	private Gasing gasing;
-	public GameObject prefabBomb;
+	private Object prefabBomb;
 	
 	void Awake(){
         skillName = "Bomb";
 		skillPointNeeded = 20;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
+		prefabBomb = Resources.Load("Prefab/Prefab Obstacle/Bomb");
 	}
 	
 	void Start () {
