@@ -36,6 +36,6 @@ public class Status : MonoBehaviour {
 	}
 	
 	public virtual void efek () {
-		// dipanggil tiap timeRepeat detik
+		// dipanggil berulang-ulang, tiap timeRepeat detik
 	}
 }

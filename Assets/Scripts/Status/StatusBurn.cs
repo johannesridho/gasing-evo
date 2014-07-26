@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class StatusBurn : Status {
-	
-	public GameObject efekLedakan;
+
+	private GameObject efekLedakan;
 
 	void Start () {
 		timeRepeat = 0.75f;
+		efekLedakan = (GameObject) Resources.Load("Effect/Detonator-Simple");
 	}
 
 	public override void efek () {
