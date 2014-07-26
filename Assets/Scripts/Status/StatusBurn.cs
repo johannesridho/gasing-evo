@@ -2,21 +2,21 @@
 using System.Collections;
 
 public class StatusBurn : Status {
-	
-	public GameObject efekLedakan;
 
-	// Use this for initialization
 	void Start () {
-	
+		timeRepeat = 0.75f;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		counter += Time.deltaTime;
-		if (counter >= 0.75f) {
-			gasing.EPKurang(15f);		//kurangi EP tiap detik
+		if (counter >= timeRepeat) {
+			aksi ();
 			counter = 0f;
-			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
 		}	
+	}
+
+	void aksi () {
+		gasing.EPKurang(25f);
+		Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
 	}
 }
