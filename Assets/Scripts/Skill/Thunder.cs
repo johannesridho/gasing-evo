@@ -15,33 +15,37 @@ public class Thunder : Skill {
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 		prefab = Resources.Load("Prefab/Prefab Obstacle/Thunder");
-		targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-		if(targetEnemy)
-			gasingEnemy = targetEnemy.GetComponent<Gasing> ();
 	}
 	
 	void Start () {
-		
+
 	}
 	
 	void Update () {
-		if (!targetEnemy) {
-			targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-			if (!gasingEnemy) {
-				gasingEnemy = targetEnemy.GetComponent<Gasing> ();
-			}
-		}
+			
 	}
 	
 	public override void doSkill()
 	{
-		if (gasing.getSP() > skillPointNeeded && targetEnemy)
-		{
-			Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));			
-			Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));
-			Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));
-			gasingEnemy.EPKurang(damageInflicted);
-			gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
+		if (gasing.getSP () > skillPointNeeded) {
+			targetEnemy = findNearestEnemy ();		//cari terus musuh terdekat
+			if (targetEnemy) {
+				gasingEnemy = targetEnemy.GetComponent<Gasing> ();			
+
+				if (GamePrefs.isMultiplayer) {
+					Network.Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0), 11);
+					Network.Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0), 11);
+					Network.Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0), 11);
+				} else {
+					Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0));
+					Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0));
+					Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0));
+				}
+
+				gasingEnemy.EPKurang (damageInflicted);
+				gasing.SPKurang (skillPointNeeded);		//kurangi skillpoint gasing		
+
+			}
 		}
 	}
 }

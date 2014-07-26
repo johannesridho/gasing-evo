@@ -11,8 +11,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 148: {fileID: 14800000}
   m_Layer: 0
-  m_Name: PlayerManager
-  m_TagString: Untagged
+  m_Name: Server_Gasing
+  m_TagString: MP_Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,10 +37,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3037fdb710addf4c8fc5938a0b29597, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f1921ca802e28948a2b48fbe2e0502d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasingTransform: {fileID: 400000, guid: 520a92e2b5d160c4aa21b571efbc3799, type: 2}
+  gasingTransform: {fileID: 0}
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!148 &14800000
@@ -50,7 +50,7 @@ NetworkView:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_StateSynchronization: 1
+  m_StateSynchronization: 2
   m_Observed: {fileID: 11400000}
   m_ViewID:
     m_ID: 0

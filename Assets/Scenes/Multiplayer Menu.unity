@@ -128,22 +128,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  selectedGasing: 0
-  playerManagerPrefab: {fileID: 100002, guid: 3408869445d58754f9bfa5afd9596317, type: 2}
   servergasingPrefab:
   - {fileID: 100002, guid: 4e82abcabdef0b941b74b78ea16c7c09, type: 2}
   - {fileID: 100002, guid: 627af0cc1cd23894a97c015a320212c9, type: 2}
   - {fileID: 100002, guid: 4ad2fd0ae54743144960e5b0b5d194a1, type: 2}
+  - {fileID: 100002, guid: 09e3a15eeb3b13c40b6df6b18a133bcc, type: 2}
+  - {fileID: 100002, guid: 603dcf678c1c9994c9463dbfc51f1a9b, type: 2}
   selectableGasingString:
   - Arjuna
   - Srikandi
   - Prototype
+  - Dipati
+  - Jalaprang
   multiplayerInputHandlerPrefab: {fileID: 100000, guid: 1009d49ed4877eb4bb2fef03e02b4dfd,
     type: 2}
   serverPort: 45000
   serverName: 
   maxPlayer: 0
-  isAllRigidbodyOnServer: 1
   isDedicatedServer: 0
   playerList: []
   mapList:
@@ -167,7 +168,6 @@ MonoBehaviour:
     isAlive: 1
     playerManager: {fileID: 0}
     selectedGasing: 0
-  spawnPoints: []
   isMapLoaded: 0
   items: []
   instantiatedPlayer: {fileID: 0}
