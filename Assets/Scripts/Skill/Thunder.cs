@@ -15,22 +15,17 @@ public class Thunder : Skill {
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 		prefab = Resources.Load("Prefab/Prefab Obstacle/Thunder");
-		targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-		if(targetEnemy)
-			gasingEnemy = targetEnemy.GetComponent<Gasing> ();
 	}
 	
 	void Start () {
-		
+
 	}
 	
 	void Update () {
-		if (!targetEnemy) {
-			targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-			if (!gasingEnemy) {
+			targetEnemy = findNearestEnemy();		//cari terus musuh terdekat
+			if (targetEnemy) {
 				gasingEnemy = targetEnemy.GetComponent<Gasing> ();
 			}
-		}
 	}
 	
 	public override void doSkill()
