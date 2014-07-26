@@ -11,7 +11,7 @@ public class BombScript : MonoBehaviour {
 	void Awake() {
 		clock = 0f;
 		//taking the target:
-		targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
+		targetEnemy = findNearestEnemy();
 		enemyPosition = targetEnemy.transform.position;
 	}
 
@@ -43,5 +43,21 @@ public class BombScript : MonoBehaviour {
 			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
 			
 		}
+	}
+
+	private GameObject findNearestEnemy(){
+		GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+		GameObject nearest = new GameObject();
+		float distance = Mathf.Infinity;
+		Vector3 position = transform.position;
+		foreach (GameObject enemy in allEnemy) {
+			Vector3 diff = enemy.transform.position - position;
+			float curDistance = diff.sqrMagnitude;
+			if (curDistance < distance) {
+				nearest = enemy;
+				distance = curDistance;
+			}
+		}
+		return nearest;
 	}
 }
