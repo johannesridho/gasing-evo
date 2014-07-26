@@ -7,7 +7,8 @@ public class Skill : MonoBehaviour {
     public Texture2D buttonSkill1;
     public string skillName;
     protected float skillPointNeeded;
-	protected float damageInflicted;		//sementara baru thunder yg pake ini, ntar bakal dipake buat semua
+	protected float damageInflicted;		//dipake buat skill yg bukan rigidbody (ngga perlu detect collision)
+											//skill yg pake rigidbody damage diatur di script object yg dicreate oleh skill
 
 	// Use this for initialization
 	void Start () {
@@ -37,5 +38,11 @@ public class Skill : MonoBehaviour {
 			}
 		}
 		return nearest;
+	}
+
+	public float DamageInflicted {
+		get {
+			return damageInflicted;
+		}
 	}
 }

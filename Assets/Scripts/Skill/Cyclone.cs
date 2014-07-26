@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Thunder : Skill {
+public class Cyclone : Skill {
 
 	private Gasing gasing;
 	private Object prefab;
@@ -9,12 +9,11 @@ public class Thunder : Skill {
 	private Gasing gasingEnemy;
 	
 	void Awake(){
-		skillName = "Thunder";
+		skillName = "Cyclone";
 		skillPointNeeded = 20;
-		damageInflicted = 25;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
-		prefab = Resources.Load("Prefab/Prefab Obstacle/Thunder");
+		prefab = Resources.Load("Prefab/Prefab Obstacle/Cyclone");
 	}
 	
 	void Start () {
@@ -22,20 +21,17 @@ public class Thunder : Skill {
 	}
 	
 	void Update () {
-			
+
 	}
 	
 	public override void doSkill()
 	{
 		if (gasing.getSP() > skillPointNeeded)
 		{
-			targetEnemy = findNearestEnemy();		//cari terus musuh terdekat
+			targetEnemy = findNearestEnemy();		//cari musuh terdekat
 			if (targetEnemy) {
 				gasingEnemy = targetEnemy.GetComponent<Gasing> ();			
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));			
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));
-				gasingEnemy.EPKurang(damageInflicted);
+				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(0, 0, 0));			
 				gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
 			}
 		}
