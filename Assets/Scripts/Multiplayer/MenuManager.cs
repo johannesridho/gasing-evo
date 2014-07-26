@@ -190,14 +190,17 @@ public class MenuManager : MonoBehaviour
         }
 
         //select gasing
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Gasing");
-        GUILayout.Label(MultiplayerManager.instance.selectableGasingString[MultiplayerManager.instance.selectedGasing]);
-        if (GUILayout.Button("Choose Gasing"))
+        if (!MultiplayerManager.instance.isDedicatedServer)
         {
-            navigateTo("Choose Gasing");
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Gasing");
+            GUILayout.Label(MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
+            if (GUILayout.Button("Choose Gasing"))
+            {
+                navigateTo("Choose Gasing");
+            }
+            GUILayout.EndHorizontal();
         }
-        GUILayout.EndHorizontal();
 
         GUILayout.Label("Players:");
         scrollLobby = GUILayout.BeginScrollView(scrollLobby, GUILayout.MaxWidth(Screen.width));
@@ -241,7 +244,6 @@ public class MenuManager : MonoBehaviour
         int selected = PlayerPrefs.GetInt("Selected Gasing");
         int oldSelected = selected;
         selected = GUILayout.SelectionGrid(selected, MultiplayerManager.instance.selectableGasingString, MultiplayerManager.instance.selectableGasingString.Length);
-        MultiplayerManager.instance.selectedGasing = selected;
         PlayerPrefs.SetInt("Selected Gasing", selected);
         GUILayout.EndVertical();
         #endregion
@@ -254,7 +256,6 @@ public class MenuManager : MonoBehaviour
         }
         if (GUILayout.Button("Cancel"))
         {
-            MultiplayerManager.instance.selectedGasing = oldSelected;
             PlayerPrefs.SetInt("Selected Gasing", oldSelected);
             navigateTo("Lobby");
         }

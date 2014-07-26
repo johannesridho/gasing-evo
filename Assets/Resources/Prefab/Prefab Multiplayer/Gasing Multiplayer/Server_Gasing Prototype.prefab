@@ -49,7 +49,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -108,7 +108,7 @@ Rigidbody:
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!64 &6400000
@@ -211,7 +211,6 @@ MonoBehaviour:
   - {fileID: 11400002}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,7 +224,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 0}
   skillName: 
-  prefabBomb: {fileID: 100000, guid: bf29ae81fc9f41b4899b36ac94c763b3, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,8 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvicibleAfterClash: 0
-  timeCountAfterClash: 0
-  gasing: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1921ca802e28948a2b48fbe2e0502d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasingTransform: {fileID: 0}
+  gasingTransform: {fileID: 400000}
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!148 &14800000
