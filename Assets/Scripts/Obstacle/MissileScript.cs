@@ -46,18 +46,44 @@ public class MissileScript : MonoBehaviour {
 	}
 
 	private GameObject findNearestEnemy(){
-		GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
-		GameObject nearest = new GameObject();
-		float distance = Mathf.Infinity;
-		Vector3 position = transform.position;
-		foreach (GameObject enemy in allEnemy) {
-			Vector3 diff = enemy.transform.position - position;
-			float curDistance = diff.sqrMagnitude;
-			if (curDistance < distance) {
-				nearest = enemy;
-				distance = curDistance;
-			}
-		}
-		return nearest;
+        GameObject nearest = new GameObject();
+
+        if (GamePrefs.isMultiplayer)
+        {
+            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Player");
+            float distance = Mathf.Infinity;
+            Vector3 position = transform.position;
+            foreach (GameObject enemy in allEnemy)
+            {
+                if (enemy != this.gameObject)
+                {
+                    Vector3 diff = enemy.transform.position - position;
+                    float curDistance = diff.sqrMagnitude;
+                    if ((curDistance < distance) && (curDistance > 4))
+                    {
+                        nearest = enemy;
+                        distance = curDistance;
+                    }
+                }
+            }
+            Debug.Log("Distance = "+ distance);
+        }
+        else
+        {
+            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+            float distance = Mathf.Infinity;
+            Vector3 position = transform.position;
+            foreach (GameObject enemy in allEnemy)
+            {
+                Vector3 diff = enemy.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    nearest = enemy;
+                    distance = curDistance;
+                }
+            }
+        }
+        return nearest;
 	}
 }

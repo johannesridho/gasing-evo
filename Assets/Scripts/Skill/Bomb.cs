@@ -26,8 +26,14 @@ public class Bomb : Skill {
     {
         if (gasing.getSP() > skillPointNeeded)
         {
-            Instantiate(prefabBomb, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
-
+            if (GamePrefs.isMultiplayer)
+            {
+                Network.Instantiate(prefabBomb, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0),11);
+            }
+            else
+            {
+                Instantiate(prefabBomb, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
+            }
             gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
         }
     }

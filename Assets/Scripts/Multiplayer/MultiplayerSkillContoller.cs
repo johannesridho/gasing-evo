@@ -102,7 +102,6 @@ public class MultiplayerSkillContoller : MonoBehaviour {
             if (MultiplayerManager.instance.playerList[i].playerNetwork == Network.player)
             {
                 //for server
-                Debug.Log("panjang " + MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills.Length);
                 for (int j = 0; j < MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills.Length; j++)
                 {
                     if (MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills[j] != null)
