@@ -10,10 +10,7 @@ public class MultiplayerManager : MonoBehaviour
 
     public string playerName;
 
-    public int selectedGasing =1;
-
     #region Loadable_prefabs
-    public GameObject playerManagerPrefab;
     public GameObject[] servergasingPrefab;
     public string[] selectableGasingString = new string[] { "Arjuna", "Srikandi", "Prototype" };
     public GameObject multiplayerInputHandlerPrefab;
@@ -23,7 +20,6 @@ public class MultiplayerManager : MonoBehaviour
     public int serverPort = 45000;
     public string serverName;
     public int maxPlayer;
-    public bool isAllRigidbodyOnServer = false;
     public bool isDedicatedServer = false;
     #endregion
 
@@ -36,7 +32,7 @@ public class MultiplayerManager : MonoBehaviour
 
     // game
     public MPPlayer myPlayer;
-    public GameObject[] spawnPoints;
+    private GameObject[] spawnPoints;
     public bool isMapLoaded = false;
 
     public GameObject[] items;
@@ -85,8 +81,7 @@ public class MultiplayerManager : MonoBehaviour
 
     void OnServerInitialized()
     {
-        if (isAllRigidbodyOnServer)
-        {
+        
             if (!isDedicatedServer)
             {
                 //Add the server creator as a player in the server
@@ -96,12 +91,13 @@ public class MultiplayerManager : MonoBehaviour
                 //newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
                 //serverSideGasings.Add(newGasing);
             }
-        }
+        
     }
 
     void OnConnectedToServer()
     {
         networkView.RPC("server_playerJoinRequest", RPCMode.Server, playerName, Network.player);
+        networkView.RPC("client_changeGasing", RPCMode.All, Network.player, PlayerPrefs.GetInt("Selected Gasing"));
     }
 
     void OnPlayerConnected(NetworkPlayer player)
@@ -159,18 +155,11 @@ public class MultiplayerManager : MonoBehaviour
 
         if (Network.player == view)
         {
-            if (isAllRigidbodyOnServer)
-            {
+            
                 myPlayer = temp;
                 // instantiate client's input sender
                 instantiatedPlayer = Network.Instantiate(multiplayerInputHandlerPrefab, Vector3.zero, Quaternion.identity, 5) as GameObject;
-            }
-            else
-            {
-                myPlayer = temp;
-                // instantiate player
-                instantiatedPlayer = Network.Instantiate(playerManagerPrefab, new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0), 5) as GameObject;
-            }
+           
         }
     }
 
@@ -249,8 +238,7 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void server_spawnPlayer(NetworkPlayer player)
     {
-        if (isAllRigidbodyOnServer)
-        {
+        
             if (Network.isServer)
             {
                 foreach (GameObject entry in serverSideGasings)
@@ -270,12 +258,7 @@ public class MultiplayerManager : MonoBehaviour
                 //    gobj.SetActive(true);
                 //}
             }
-        }
-        else
-        {
-            int spawnindex = Random.Range(0, spawnPoints.Length - 1);
-            networkView.RPC("client_spawnPlayer", RPCMode.All, player, spawnPoints[spawnindex].transform.position, Quaternion.Euler(270, 0, 0));
-        }
+        
     }
 
     /*
@@ -284,12 +267,7 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void client_spawnPlayer(NetworkPlayer player, Vector3 position, Quaternion rotation)
     {
-        if (isAllRigidbodyOnServer)
-        {
-            
-        }
-        else
-        {
+        
             if (player == myPlayer.playerNetwork)
             {
                 // set player position
@@ -297,11 +275,7 @@ public class MultiplayerManager : MonoBehaviour
                 myPlayer.playerManager.gasingTransform.rotation = rotation;
                 myPlayer.playerManager.networkView.RPC("client_playerAlive", RPCMode.All);
             }
-            else
-            {
-
-            }
-        }
+            
     }
 
     void OnLevelWasLoaded(int level)

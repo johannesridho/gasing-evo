@@ -27,16 +27,24 @@ public class Thunder : Skill {
 	
 	public override void doSkill()
 	{
-		if (gasing.getSP() > skillPointNeeded)
-		{
-			targetEnemy = findNearestEnemy();		//cari terus musuh terdekat
+		if (gasing.getSP () > skillPointNeeded) {
+			targetEnemy = findNearestEnemy ();		//cari terus musuh terdekat
 			if (targetEnemy) {
 				gasingEnemy = targetEnemy.GetComponent<Gasing> ();			
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));			
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(270, 0, 0));
-				gasingEnemy.EPKurang(damageInflicted);
-				gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
+
+				if (GamePrefs.isMultiplayer) {
+					Network.Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0), 11);
+					Network.Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0), 11);
+					Network.Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0), 11);
+				} else {
+					Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0));
+					Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0));
+					Instantiate (prefab, targetEnemy.transform.position, Quaternion.Euler (270, 0, 0));
+				}
+
+				gasingEnemy.EPKurang (damageInflicted);
+				gasing.SPKurang (skillPointNeeded);		//kurangi skillpoint gasing		
+
 			}
 		}
 	}

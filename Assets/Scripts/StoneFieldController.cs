@@ -24,7 +24,7 @@ public class StoneFieldController : MonoBehaviour
 				if(Utilities.playerGasing != null){
 					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}else{
-					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Jalaprang"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}
            		pemain.name = "Pemain";
                 

@@ -25,18 +25,43 @@ public class Skill : MonoBehaviour {
     }
 
 	protected GameObject findNearestEnemy(){
-		GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
-		GameObject nearest = new GameObject();
-		float distance = Mathf.Infinity;
-		Vector3 position = transform.position;
-		foreach (GameObject enemy in allEnemy) {
-			Vector3 diff = enemy.transform.position - position;
-			float curDistance = diff.sqrMagnitude;
-			if (curDistance < distance) {
-				nearest = enemy;
-				distance = curDistance;
-			}
-		}
+        GameObject nearest = new GameObject();
+
+        if (GamePrefs.isMultiplayer)
+        {
+            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Player");
+            float distance = Mathf.Infinity;
+            Vector3 position = transform.position;
+            foreach (GameObject enemy in allEnemy)
+            {
+                if (enemy != this.gameObject)
+                {
+                    Vector3 diff = enemy.transform.position - position;
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance < distance)
+                    {
+                        nearest = enemy;
+                        distance = curDistance;
+                    }
+                }
+            }
+        }
+        else
+        {
+            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+            float distance = Mathf.Infinity;
+            Vector3 position = transform.position;
+            foreach (GameObject enemy in allEnemy)
+            {
+                Vector3 diff = enemy.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    nearest = enemy;
+                    distance = curDistance;
+                }
+            }
+        }
 		return nearest;
 	}
 

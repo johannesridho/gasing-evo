@@ -22,7 +22,7 @@ public class Missile : Skill {
 	
 	void Update () {
 		if (!targetEnemy) {
-			targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
+            targetEnemy = findNearestEnemy();		//cari terus musuh terdekat
 		}
 	}
 
@@ -30,10 +30,18 @@ public class Missile : Skill {
     {
         if (gasing.getSP() > skillPointNeeded)
         {
+            
             if (targetEnemy)
             {
-                Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)));
-                //				Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
+                if (GamePrefs.isMultiplayer)
+                {
+                    Network.Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)),11);
+                }
+                else
+                {
+                    Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)));
+                    //				Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
+                }
                 gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
             }
         }
