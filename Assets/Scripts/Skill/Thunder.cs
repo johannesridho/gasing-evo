@@ -15,82 +15,17 @@ public class Thunder : Skill {
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 		prefab = Resources.Load("Prefab/Prefab Obstacle/Thunder");
-
-        if (GamePrefs.isMultiplayer)
-        {
-            GameObject[] gos = GameObject.FindGameObjectsWithTag("Player");
-            GameObject closest = null;
-            float distance = Mathf.Infinity;
-            Vector3 position = transform.position;
-            foreach (GameObject go in gos)
-            {
-                if (go != this.gameObject)
-                {
-                    Vector3 diff = go.transform.position - position;
-                    float curDistance = diff.sqrMagnitude;
-                    if (curDistance < distance)
-                    {
-                        closest = go;
-                        distance = curDistance;
-                    }
-                }
-            }
-
-            targetEnemy = closest;
-            
-            if (targetEnemy)
-                gasingEnemy = targetEnemy.GetComponent<Gasing>();
-        }
-        else
-        {
-            targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-            if (targetEnemy)
-                gasingEnemy = targetEnemy.GetComponent<Gasing>();
-        }
 	}
 	
 	void Start () {
-		
+
 	}
 	
 	void Update () {
-
-        if (GamePrefs.isMultiplayer)
-        {
-            GameObject[] gos = GameObject.FindGameObjectsWithTag("Player");
-            GameObject closest = null;
-            float distance = Mathf.Infinity;
-            Vector3 position = transform.position;
-            foreach (GameObject go in gos)
-            {
-                if (go != this.gameObject)
-                {
-                    Vector3 diff = go.transform.position - position;
-                    float curDistance = diff.sqrMagnitude;
-                    if (curDistance < distance)
-                    {
-                        closest = go;
-                        distance = curDistance;
-                    }
-                }
-            }
-
-            targetEnemy = closest;
-
-            if (targetEnemy)
-                gasingEnemy = targetEnemy.GetComponent<Gasing>();
-        }
-        else
-        {
-            if (!targetEnemy)
-            {
-                targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-                if (!gasingEnemy)
-                {
-                    gasingEnemy = targetEnemy.GetComponent<Gasing>();
-                }
-            }
-        }
+			targetEnemy = findNearestEnemy();		//cari terus musuh terdekat
+			if (targetEnemy) {
+				gasingEnemy = targetEnemy.GetComponent<Gasing> ();
+			}
 	}
 	
 	public override void doSkill()
