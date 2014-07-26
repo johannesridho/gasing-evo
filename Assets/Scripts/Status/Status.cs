@@ -1,31 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Status : MonoBehaviour {
+public class Status : MonoBehaviour {
 	
 	protected Gasing gasing;	
 	protected float counter;
 	protected float timeRepeat;
-	protected GameObject efekLedakan;
 
-	protected void Awake(){
+	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 	}
 
-	protected void Start () {
+	void Start () {
 		timeRepeat = 0.5f;
+		aksi();
 	}
-
-	protected void Update () {
+	
+	void Update () {
+		updateCounter ();	
+	}
+	
+	void updateCounter () {
 		counter += Time.deltaTime;
 		if (counter >= timeRepeat) {
-			aksi ();
+			efek();
 			counter = 0f;
 		}	
 	}
+
+	/* silahkan dioverride */
+
+	public virtual void aksi () {
+		// dipanggil pertama kali
+	}
 	
-	protected void aksi () {
-		// dipanggil tiap timeRepeat
+	public virtual void efek () {
+		// dipanggil tiap timeRepeat detik
 	}
 }
