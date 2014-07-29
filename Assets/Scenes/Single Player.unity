@@ -19,7 +19,7 @@ RenderSettings:
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 2764be42a814bff40890fee662523f10, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 966766f4829d6ad419eaaf7cf0712f85, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2985,7 +2985,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1115332691
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +3053,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1001 &1463156971
 Prefab:
   m_ObjectHideFlags: 0
@@ -3127,9 +3127,9 @@ Transform:
   m_LocalPosition: {x: .376797676, y: 1.78406525, z: -3.91419673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1386382320}
   - {fileID: 1019777496}
   - {fileID: 1683381455}
+  - {fileID: 1386382320}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1 &1545330245
@@ -3335,7 +3335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528754952}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1779217120
 GameObject:
   m_ObjectHideFlags: 0
