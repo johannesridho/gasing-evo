@@ -25,7 +25,7 @@ public class Skill : MonoBehaviour {
     }
 
 	protected GameObject findNearestEnemy(){
-        GameObject nearest = new GameObject();
+		GameObject nearest = null;
 
         if (GamePrefs.isMultiplayer)
         {
