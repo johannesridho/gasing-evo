@@ -264,12 +264,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4b81e302424b74b9357dd39583f3e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 96d8079c67a4c4c49b36e56c9f91b8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
-  prefabBomb: {fileID: 100000, guid: bf29ae81fc9f41b4899b36ac94c763b3, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
