@@ -8,7 +8,7 @@ public class CycloneScript : MonoBehaviour {
 	
 	void Awake() {
 		clock = 0f;
-		damageInflicted = 10;
+		damageInflicted = 0.5f;
 	}
 	
 	// Use this for initialization
@@ -21,6 +21,13 @@ public class CycloneScript : MonoBehaviour {
 		if (clock >= 25) {
 			Destroy(this.gameObject);
 		}
+
+		Collider[] colls = Physics.OverlapSphere (new Vector3(transform.position.x, 1, transform.position.z), 3);
+		foreach (Collider col in colls){
+			if (col.tag == "Player") {
+				col.gameObject.GetComponent<Gasing>().EPKurang(damageInflicted);
+			}		
+		}
 	}
 	
 	void FixedUpdate () {
@@ -31,10 +38,8 @@ public class CycloneScript : MonoBehaviour {
 		rigidbody.AddForce (movement * 20 * Time.deltaTime);	
 	}
 
-	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Enemy") {
-			col.gameObject.GetComponent<Gasing>().EPKurang(damageInflicted);
-		}
+	void OnParticleCollision(GameObject objek) {	
+
 	}
 
 	private GameObject findNearestEnemy(){

@@ -216,7 +216,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 100008}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 7
   m_Height: 1
   m_Direction: 1
@@ -5164,8 +5164,8 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
-    type: 0
+    enabled: 1
+    type: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
@@ -5173,7 +5173,7 @@ ParticleSystem:
     plane4: {fileID: 0}
     plane5: {fileID: 0}
     dampen: 0
-    bounce: 1
+    bounce: 0
     energyLossOnCollision: 0
     minKillSpeed: 0
     particleRadius: .00999999978
@@ -5182,7 +5182,7 @@ ParticleSystem:
       m_Bits: 4294967295
     quality: 0
     voxelSize: .5
-    collisionMessages: 0
+    collisionMessages: 1
   SubModule:
     enabled: 0
     subEmitterBirth: {fileID: 0}

@@ -29,7 +29,7 @@ public class MeteorScript : MonoBehaviour {
 		Collider[] colls = Physics.OverlapSphere (new Vector3(transform.position.x, 1, transform.position.z), 7);
 		foreach (Collider col in colls){
 			if (col.tag == "Enemy") {
-				col.gameObject.GetComponent<Gasing>().EPKurang(10);
+				col.gameObject.GetComponent<Gasing>().EPKurang(damageInflicted);
 			}		
 		}
 	}
