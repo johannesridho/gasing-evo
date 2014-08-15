@@ -48,7 +48,7 @@ public class Skill : MonoBehaviour {
         }
         else
         {
-            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+			GameObject[] allEnemy = (GetComponent<AIMusuh>()==null) ? GameObject.FindGameObjectsWithTag("Enemy") : GameObject.FindGameObjectsWithTag("Player");
             float distance = Mathf.Infinity;
             Vector3 position = transform.position;
             foreach (GameObject enemy in allEnemy)

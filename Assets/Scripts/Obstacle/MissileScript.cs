@@ -6,11 +6,15 @@ public class MissileScript : MonoBehaviour {
 	private GameObject targetEnemy;
 	public GameObject efekLedakan;
 	private float clock;
+	private string targetTag;
+	private bool on;
 	
 	void Awake() {
 		clock = 0f;
 		//taking the target:
-		targetEnemy = findNearestEnemy();
+		//targetEnemy = findNearestEnemy();
+		targetTag = "Enemy";
+		on = false;
 	}
 	
 	// Use this for initialization
@@ -19,30 +23,37 @@ public class MissileScript : MonoBehaviour {
 	}
 	
 	void Update(){
-		if (!targetEnemy) {
-			targetEnemy = GameObject.FindGameObjectWithTag("Enemy");
-		}
-		clock += Time.deltaTime;
-		if (clock >= 5) {
-			Destroy(this.gameObject);
-			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
+		if (on) {
+			if (!targetEnemy) {
+				targetEnemy = GameObject.FindGameObjectWithTag(targetTag);
+			}
+			clock += Time.deltaTime;
+			if (clock >= 5) {
+				Destroy(this.gameObject);
+				Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
+			}
 		}
 	}
 	
 	void FixedUpdate () {
-		if (targetEnemy) {
-//			transform.position = Vector3.Lerp (transform.position, targetEnemy.transform.position,0.05f);
-			transform.position += (targetEnemy.transform.position - transform.position ).normalized * 30 * Time.deltaTime;
-			transform.LookAt(targetEnemy.transform.position);
-			transform.Rotate(new Vector3(0,-90,0));
-//			transform.rotation = (targetEnemy.transform.rotation);
+		if (on) {
+			if (targetEnemy) {
+				transform.position += (targetEnemy.transform.position - transform.position ).normalized * 30 * Time.deltaTime;
+				transform.LookAt(targetEnemy.transform.position);
+				transform.Rotate(new Vector3(0,-90,0));
+			}
 		}
 	}
-
+	
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));			
 		}
+	}
+	
+	public void nyalakan(string _targetTag){
+		targetTag = _targetTag;
+		on = true;
 	}
 
 	private GameObject findNearestEnemy(){
@@ -70,7 +81,7 @@ public class MissileScript : MonoBehaviour {
         }
         else
         {
-            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+			GameObject[] allEnemy = GameObject.FindGameObjectsWithTag(targetTag);
             float distance = Mathf.Infinity;
             Vector3 position = transform.position;
             foreach (GameObject enemy in allEnemy)
