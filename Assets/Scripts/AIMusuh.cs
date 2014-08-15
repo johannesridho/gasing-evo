@@ -49,14 +49,19 @@ public class AIMusuh : MonoBehaviour {
 	
 	void updateSkill () {
 		timeSkill += Time.deltaTime;
-		if (timeSkill >= 5) {
+		if (timeSkill >= 0.5) {
 			skill();
 			timeSkill = 0f;
 		}
 	}
 
 	void skill() {
-		skill_con.skills[1].doSkill();
+		if (Random.Range(0,100) < 7) {
+			skill_con.skills[1].doSkill();
+		}
+		if (Random.Range(0,100) < 10) {
+			skill_con.skills[0].doSkill();
+		}
 	}
 
 	void gerak() {
