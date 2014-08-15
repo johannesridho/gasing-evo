@@ -24,7 +24,7 @@ public class StoneFieldController : MonoBehaviour
 				if(Utilities.playerGasing != null){
 					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}else{
-					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Jalaprang"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}
            		pemain.name = "Pemain";
                 
@@ -38,14 +38,14 @@ public class StoneFieldController : MonoBehaviour
 				if(Utilities.enemy1 != null){
 					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
 				}else{
-					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
 				}
         
 				if(jumlahMusuh > 1){
 					if(Utilities.enemy2 != null){
 						Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
 					}else{
-						Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+						Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
 					}
 				}
 				if(jumlahMusuh > 2){
