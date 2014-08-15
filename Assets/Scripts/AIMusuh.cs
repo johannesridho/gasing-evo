@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class AIMusuh : MonoBehaviour {
-	public Gasing gasing;
-	public PhysicsTabrak gasing_pt;
+	private Gasing gasing;
+	private PhysicsTabrak gasing_pt;
 	private float speedAI;
 
 	void Awake(){

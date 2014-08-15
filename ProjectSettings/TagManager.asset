@@ -10,6 +10,8 @@ TagManager:
   - MP_Player
   - MP_InputHandler
   - Explosive Obstacle
+  - Thunder
+  - Wind
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

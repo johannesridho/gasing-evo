@@ -19,7 +19,7 @@ RenderSettings:
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .220588207, g: .220588207, b: .220588207, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: a2126534b3a11b34e977105bd9e3cc03, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 6b773812f820f5f4ea0b7b6723cc8de8, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -435,16 +435,6 @@ MonoBehaviour:
   musuh: {fileID: 0}
   gasingPemain: {fileID: 0}
   gasingMusuh: {fileID: 0}
-  jumlahMusuh: 3
-  listPemain:
-  - {fileID: 100000, guid: d2f38186a2a9ad048945a13096b9941a, type: 2}
-  - {fileID: 100000, guid: 9ab9d13117d40194dbe28b5733666644, type: 2}
-  - {fileID: 100000, guid: 54952e8752b4cbd41a1b2e97e52c3387, type: 2}
-  listMusuh:
-  - {fileID: 100000, guid: 2a7a6fae7f918a34990d5cbdb6accc22, type: 2}
-  - {fileID: 100000, guid: 8f99fb93ac1ccc2459c0937c8fd3c187, type: 2}
-  - {fileID: 100000, guid: 43b2e73b6104db74a8b1706016685fbe, type: 2}
-  listObstacle: []
 --- !u!4 &2131104015
 Transform:
   m_ObjectHideFlags: 0
