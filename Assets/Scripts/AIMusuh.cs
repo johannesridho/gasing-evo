@@ -4,8 +4,10 @@ using System.Collections;
 public class AIMusuh : MonoBehaviour {
 	private Gasing gasing;
 	private PhysicsTabrak gasing_pt;
+	private SkillController skill_con;
 	private float speedAI;
 	public float timeGerak;
+	public float timeSkill;
 	public float time;
 
 	void Awake(){
@@ -15,9 +17,13 @@ public class AIMusuh : MonoBehaviour {
 		if(!gasing_pt){
 			gasing_pt = GetComponent<PhysicsTabrak>();
 		}
+		if(!skill_con){
+			skill_con = GetComponent<SkillController>();
+		}
 		speedAI = 6000;
 		time = 0f;
 		timeGerak = 0f;
+		timeSkill = 0f;
 	}
 
 	void Start () {
@@ -30,6 +36,7 @@ public class AIMusuh : MonoBehaviour {
 
 	void FixedUpdate () {
 		updateGerakan();
+		updateSkill();
 	}
 	
 	void updateGerakan () {
@@ -38,6 +45,18 @@ public class AIMusuh : MonoBehaviour {
 			gerak();
 			timeGerak = 0f;
 		}
+	}
+	
+	void updateSkill () {
+		timeSkill += Time.deltaTime;
+		if (timeSkill >= 5) {
+			skill();
+			timeSkill = 0f;
+		}
+	}
+
+	void skill() {
+		skill_con.skills[1].doSkill();
 	}
 
 	void gerak() {
