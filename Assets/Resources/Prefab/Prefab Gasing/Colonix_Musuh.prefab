@@ -22,7 +22,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Jalaprang_Musuh
+  m_Name: Colonix_Musuh
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
