@@ -40,7 +40,7 @@ public class Gasing : MonoBehaviour {
 		//epmax, spmax, mass, power, speed diset di controller
 //		mass = 100;
 //		power = 1f;
-//		speed = 1f;
+		speed = 1f;
 		speedMax = 20f;
 	}
 
@@ -91,6 +91,10 @@ public class Gasing : MonoBehaviour {
 	
 	public void speedChange(Vector3 n){
 		gasing.rigidbody.velocity = n;
+	}
+	
+	public void dorong(Vector3 n){
+		gasing.rigidbody.AddForce(n);
 	}
 	
 	public void speedMaxChange(float n){
