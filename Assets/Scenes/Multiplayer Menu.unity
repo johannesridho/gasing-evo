@@ -186,6 +186,7 @@ MonoBehaviour:
   currentMenu: 
   serverName: 
   maxPlayer: 2
+  customSkin: {fileID: 11400000, guid: 01642b268440b304e87201a372355d6d, type: 2}
 --- !u!1 &1327148437
 GameObject:
   m_ObjectHideFlags: 0

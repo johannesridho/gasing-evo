@@ -10,11 +10,14 @@ public class MenuManager : MonoBehaviour
 
     private Vector2 scrollLobby = Vector2.zero;
 
+    //public GUIStyle customButton;
+    public GUISkin customSkin;
+
     void Start()
     {
         GamePrefs.isMultiplayer = true;
         currentMenu = "Main";
-        maxPlayer = 2;
+        maxPlayer = 4;
     }
 
     /*
@@ -27,6 +30,7 @@ public class MenuManager : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.skin = customSkin;
         if (!MultiplayerManager.instance.isGameStarted)
         {
             if (currentMenu == "Main")
@@ -61,23 +65,36 @@ public class MenuManager : MonoBehaviour
 
         GUILayout.BeginArea(new Rect(10, 0, Screen.width, Screen.height));
         GUILayout.BeginVertical(GUILayout.MaxWidth(layoutWidth));
+        GUILayout.FlexibleSpace();
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
         if (GUILayout.Button("Host"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = false;
         }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
         if (GUILayout.Button("Host a Dedicated Server"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = true;
         }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
 
         #region input nama
         //Input nama
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Player Name");
+
+        GUILayout.Label("Player Name", GUILayout.Width(Screen.width / 3));
+    
         MultiplayerManager.instance.playerName = GUILayout.TextField(MultiplayerManager.instance.playerName);
-        if (GUILayout.Button("Save Name"))
+
+        if (GUILayout.Button("Save Name", GUILayout.MaxWidth(Screen.width / 3)))
         {
             PlayerPrefs.SetString("PlayerName", MultiplayerManager.instance.playerName);
         }
@@ -87,15 +104,16 @@ public class MenuManager : MonoBehaviour
         #region direct connect
         //Direct connect
         GUILayout.BeginHorizontal();
-        GUILayout.Label("IP");
+        GUILayout.Label("IP", GUILayout.Width(Screen.width / 3));
         directConnectIP = GUILayout.TextField(directConnectIP);
-        if (GUILayout.Button("Direct Connect"))
+        if (GUILayout.Button("Direct Connect", GUILayout.MaxWidth(Screen.width / 3)))
         {
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
         }
         GUILayout.EndHorizontal();
         #endregion
 
+        GUILayout.FlexibleSpace();
         GUILayout.EndVertical();
 
         //menampilkan list hosts
@@ -123,11 +141,11 @@ public class MenuManager : MonoBehaviour
 
         GUILayout.BeginVertical();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Server Name");
+        GUILayout.Label("Server Name", GUILayout.Width(Screen.width / 3));
         serverName = GUILayout.TextField(serverName);
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Max Player");
+        GUILayout.Label("Max Player", GUILayout.Width(Screen.width / 3));
         string str_maxPlayer = GUILayout.TextField(maxPlayer.ToString());
         maxPlayer = int.Parse(str_maxPlayer);
         GUILayout.EndHorizontal();
@@ -159,41 +177,32 @@ public class MenuManager : MonoBehaviour
         GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
         GUILayout.BeginVertical();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Server Name");
+        GUILayout.Label("Server Name", GUILayout.Width(Screen.width *4/10));
         GUILayout.Label(MultiplayerManager.instance.serverName);
         GUILayout.EndHorizontal();
 
         //menampilkan server ip
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Server IP Address");
+        GUILayout.Label("Server IP Address", GUILayout.Width(Screen.width * 4 / 10));
         GUILayout.Label(MultiplayerManager.instance.getServerIP());
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Total Player");
+        GUILayout.Label("Total Player", GUILayout.Width(Screen.width * 4 / 10));
         GUILayout.Label(MultiplayerManager.instance.playerList.Count + "/" + MultiplayerManager.instance.maxPlayer);
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Map");
+        GUILayout.Label("Map", GUILayout.Width(Screen.width * 4 / 10));
         GUILayout.Label(MultiplayerManager.instance.currentMap.mapName);
         GUILayout.EndHorizontal();
 
-        if (Network.isServer)
-        {
-            if (GUILayout.Button("Start"))
-            {
-                //start the game
-                MultiplayerManager.instance.networkView.RPC("client_loadMultiplayerMap", RPCMode.AllBuffered, MultiplayerManager.instance.currentMap.mapLoadName, MultiplayerManager.instance.oldprefix + 1);
-                MultiplayerManager.instance.oldprefix += 1;
-                MultiplayerManager.instance.isGameStarted = true;
-            }
-        }
+        
 
         //select gasing
         if (!MultiplayerManager.instance.isDedicatedServer)
         {
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Gasing");
+            GUILayout.Label("Gasing", GUILayout.Width(Screen.width * 4 / 10));
             GUILayout.Label(MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
             if (GUILayout.Button("Choose Gasing"))
             {
@@ -210,6 +219,17 @@ public class MenuManager : MonoBehaviour
         }
 
         GUILayout.EndScrollView();
+
+        if (Network.isServer)
+        {
+            if (GUILayout.Button("Start"))
+            {
+                //start the game
+                MultiplayerManager.instance.networkView.RPC("client_loadMultiplayerMap", RPCMode.AllBuffered, MultiplayerManager.instance.currentMap.mapLoadName, MultiplayerManager.instance.oldprefix + 1);
+                MultiplayerManager.instance.oldprefix += 1;
+                MultiplayerManager.instance.isGameStarted = true;
+            }
+        }
 
         if (GUILayout.Button("Disconnect"))
         {
