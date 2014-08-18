@@ -66,12 +66,14 @@ public class AIMusuh : MonoBehaviour {
 
 	void gerak() {
 		if (!gasing_pt.isInvicibleAfterClash) {
-			Vector3 movement;
+			Vector3 movement = new Vector3(0,0,0);
 			if (Random.Range(0,100) < 75) {
-				GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-				Vector3 heading = player.rigidbody.position - rigidbody.position;
-				Vector3 direction = heading / heading.magnitude;
-				movement = direction * Gasing.COEF_SPEED * gasing.speed;
+				GameObject player = GameObject.FindGameObjectWithTag("Player");
+				if(player){
+					Vector3 heading = player.rigidbody.position - rigidbody.position;
+					Vector3 direction = heading / heading.magnitude;
+					movement = direction * Gasing.COEF_SPEED * gasing.speed;
+				}
 			} else {
 				float hor = Random.Range(-5.0F, 5.0F) * Gasing.COEF_SPEED * gasing.speed;
 				float ver = Random.Range(-5.0F, 5.0F) * Gasing.COEF_SPEED * gasing.speed;

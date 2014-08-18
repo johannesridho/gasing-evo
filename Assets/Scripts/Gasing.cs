@@ -119,7 +119,7 @@ public class Gasing : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
 			if(audioTabrakan){
 				audio.PlayOneShot(audioTabrakan);
 			}

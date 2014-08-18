@@ -28,7 +28,7 @@ public class BombObstacle : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
 			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));			
 		}
 	}

@@ -9,6 +9,7 @@ public class IceFieldController : StoneFieldController {
 		base.Awake ();
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		GameObject[] allies = GameObject.FindGameObjectsWithTag ("Ally");
         if (!GamePrefs.isMultiplayer || (GamePrefs.isMultiplayer && Network.isServer))
         {
             foreach (GameObject player in players)
@@ -24,6 +25,11 @@ public class IceFieldController : StoneFieldController {
                 Gasing gasing = enemy.GetComponent<Gasing>();
                 gasing.setSpeed(gasing.getSpeed() + 3);
             }
+			foreach (GameObject ally in allies)
+			{
+				Gasing gasing = ally.GetComponent<Gasing>();
+				gasing.setSpeed(gasing.getSpeed() + 3);
+			}
         }
 		clock = 0f;
 	}

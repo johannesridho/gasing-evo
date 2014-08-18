@@ -24,7 +24,7 @@ public class CycloneScript : MonoBehaviour {
 
 		Collider[] colls = Physics.OverlapSphere (new Vector3(transform.position.x, 1, transform.position.z), 3);
 		foreach (Collider col in colls){
-			if (col.tag == "Enemy") {
+			if (col.tag == "Enemy" || col.gameObject.tag == "Player" || col.gameObject.tag == "Ally") {
 				col.gameObject.GetComponent<Gasing>().EPKurang(damageInflicted);
 			}		
 		}
