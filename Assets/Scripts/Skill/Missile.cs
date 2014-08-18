@@ -40,7 +40,7 @@ public class Missile : Skill {
                 else
                 {
                     GameObject misil = (GameObject) Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)));
-					misil.GetComponent<MissileScript>().nyalakan(targetEnemy.tag);
+					misil.GetComponent<MissileScript>().nyalakan(targetEnemy);
                     //				Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
                 }
                 gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		

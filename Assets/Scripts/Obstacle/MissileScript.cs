@@ -6,14 +6,17 @@ public class MissileScript : MonoBehaviour {
 	private GameObject targetEnemy;
 	public GameObject efekLedakan;
 	private float clock;
-	private string targetTag;
+	private GameObject targetTag;
 	private bool on;
 	
 	void Awake() {
 		clock = 0f;
 		//taking the target:
 		//targetEnemy = findNearestEnemy();
-		targetTag = "Enemy";
+		targetTag = null;
+//		if (!targetEnemy) {
+//			targetEnemy = targetTag;
+//		}
 		on = false;
 	}
 	
@@ -25,7 +28,7 @@ public class MissileScript : MonoBehaviour {
 	void Update(){
 		if (on) {
 			if (!targetEnemy) {
-				targetEnemy = GameObject.FindGameObjectWithTag(targetTag);
+				targetEnemy = targetTag;
 			}
 			clock += Time.deltaTime;
 			if (clock >= 5) {
@@ -51,50 +54,10 @@ public class MissileScript : MonoBehaviour {
 		}
 	}
 	
-	public void nyalakan(string _targetTag){
+	public void nyalakan(GameObject _targetTag){
 		targetTag = _targetTag;
 		on = true;
 	}
 
-	private GameObject findNearestEnemy(){
-        GameObject nearest = new GameObject();
 
-        if (GamePrefs.isMultiplayer)
-        {
-            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Player");
-            float distance = Mathf.Infinity;
-            Vector3 position = transform.position;
-            foreach (GameObject enemy in allEnemy)
-            {
-                if (enemy != this.gameObject)
-                {
-                    Vector3 diff = enemy.transform.position - position;
-                    float curDistance = diff.sqrMagnitude;
-                    if ((curDistance < distance) && (curDistance > 4))
-                    {
-                        nearest = enemy;
-                        distance = curDistance;
-                    }
-                }
-            }
-            Debug.Log("Distance = "+ distance);
-        }
-        else
-        {
-			GameObject[] allEnemy = GameObject.FindGameObjectsWithTag(targetTag);
-            float distance = Mathf.Infinity;
-            Vector3 position = transform.position;
-            foreach (GameObject enemy in allEnemy)
-            {
-                Vector3 diff = enemy.transform.position - position;
-                float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance)
-                {
-                    nearest = enemy;
-                    distance = curDistance;
-                }
-            }
-        }
-        return nearest;
-	}
-}
+}//end class

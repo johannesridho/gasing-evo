@@ -27,7 +27,7 @@ public class TeamModeMenuScript : MonoBehaviour {
 								textInstance.AddComponent<SelectGasingScript> ();	
 								if (i > 0 || i >= 0 && teamName != "Team A") {
 										textInstance.GetComponent<SelectGasingScript> ().control = "AI";
-										textInstance.GetComponent<SelectGasingScript> ().name = "arjuna";
+										textInstance.GetComponent<SelectGasingScript> ().name = "Craseed";
 										if(teamName == "Team A"){
 											textInstance.name = "a" + i.ToString();
 										}else{
@@ -36,7 +36,7 @@ public class TeamModeMenuScript : MonoBehaviour {
 										textInstance.GetComponent<SelectGasingScript>().configurePref();
 								} else {
 										textInstance.GetComponent<SelectGasingScript> ().control = "P";
-										textInstance.GetComponent<SelectGasingScript> ().name = "arjuna";
+										textInstance.GetComponent<SelectGasingScript> ().name = "Craseed";
 										textInstance.name = "p1";
 										textInstance.GetComponent<SelectGasingScript>().configurePref();
 								}
@@ -53,7 +53,7 @@ public class TeamModeMenuScript : MonoBehaviour {
 						textInstance = Instantiate (textPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
 						textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - (2), parent.transform.position.z);
 						textInstance.AddComponent<SelectArenaScript> ();
-						textInstance.GetComponent<SelectArenaScript> ().name = "arena a";
+						textInstance.GetComponent<SelectArenaScript> ().name = "ice field";
 						textInstance.name = "arena name";
 						textInstance.GetComponent<SelectArenaScript>().configurePref();
 				} else {
