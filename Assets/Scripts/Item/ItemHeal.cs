@@ -18,7 +18,7 @@ public class ItemHeal : Item {
 	}
 
 	void heal(Collision col) {
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
 			col.collider.SendMessage("EPTambah", _HEAL, SendMessageOptions.DontRequireReceiver);
 		}
 	}

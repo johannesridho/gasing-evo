@@ -7,7 +7,7 @@ public class FollowPemain : MonoBehaviour
     public GameObject pemain;
     public Transform pemainTransform;
     private Vector3 offset;
-
+	private Vector3 posisiAwal;
     // Use this for initialization
     void Start()
     {
@@ -72,7 +72,7 @@ public class FollowPemain : MonoBehaviour
             }
         }
 
-        
+		posisiAwal = transform.position;
         offset = transform.position;
     }
 
@@ -93,7 +93,9 @@ public class FollowPemain : MonoBehaviour
             if (pemain)
             {
                 transform.position = offset * 3 / 2 + pemainTransform.position;
-            }
+            }else{
+				transform.position = new Vector3(0,25,-45);
+			}
         }
     }
 }

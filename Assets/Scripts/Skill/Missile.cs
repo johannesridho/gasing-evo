@@ -35,7 +35,8 @@ public class Missile : Skill {
             {
                 if (GamePrefs.isMultiplayer)
                 {
-                    Network.Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)),11);
+					GameObject misil = (GameObject) Network.Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)),11);
+					misil.GetComponent<MissileScript>().nyalakan(targetEnemy);
                 }
                 else
                 {

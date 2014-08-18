@@ -141,7 +141,14 @@ public class StoneFieldController : MonoBehaviour
         {
 
         }
-        else
+		else if(Utilities.chosenMode == 1) //team mode
+		{
+			if ((GameObject.FindGameObjectsWithTag("Player").Length <= 0 && GameObject.FindGameObjectsWithTag("Ally").Length <=0) || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+			{
+				Application.LoadLevel("GameOver");
+			}
+		}
+        else 		//royal mode
         {
             if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
             {

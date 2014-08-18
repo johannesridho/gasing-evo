@@ -18,7 +18,7 @@ public class ItemBomb : Item {
 	}
 	
 	void damage(Collision col) {
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
 			col.collider.SendMessage("EPKurang", _DAMAGE, SendMessageOptions.DontRequireReceiver);
 		}
 	}
