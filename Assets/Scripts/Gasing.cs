@@ -24,6 +24,7 @@ public class Gasing : MonoBehaviour {
 
 	// state
 	public bool isOnGround;
+    public bool isPlayerAlive = true;
 
 	public AudioClip audioTabrakan;
 
@@ -50,7 +51,19 @@ public class Gasing : MonoBehaviour {
 		if(energiPoint <=0 || transform.position.y <= (-4)){
 			//gasing berhenti
 			//Debug.Log("wah");
-			Destroy (transform.root.gameObject); 
+            if (GamePrefs.isMultiplayer)
+            {
+                //Debug.Log("gasing.dead");
+                isPlayerAlive = false;
+                energiPoint = 0;
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                isPlayerAlive = false;
+                energiPoint = 0;
+                Destroy(transform.root.gameObject);
+            }
 		} else if (energiPoint <= 2) {
 			removeConstraint ();
 			Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);

@@ -1,21 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillController : MonoBehaviour {
+public class SkillController : MonoBehaviour
+{
     public Skill[] skills = new Skill[3];
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnGUI()
     {
+
         if (GamePrefs.isMultiplayer)
         {
             OnGUI_MultiPlayer();
@@ -24,6 +30,8 @@ public class SkillController : MonoBehaviour {
         {
             OnGUI_SinglePlayer();
         }
+
+
     }
 
     private void OnGUI_SinglePlayer()
@@ -32,7 +40,7 @@ public class SkillController : MonoBehaviour {
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
             style.normal.background = skills[0].buttonSkill1;
-			if (GUI.Button(new Rect(Screen.width * 4 / 5 - Screen.width / 8 / 2, Screen.height * 7 / 10, Screen.width / 8, Screen.width / 8), skills[0].skillName, style))
+            if (GUI.Button(new Rect(Screen.width * 4 / 5 - Screen.width / 8 / 2, Screen.height * 7 / 10, Screen.width / 8, Screen.width / 8), skills[0].skillName, style))
             {
                 skills[0].doSkill();
             }
@@ -42,12 +50,12 @@ public class SkillController : MonoBehaviour {
         {
             GUIStyle style = new GUIStyle(GUI.skin.box);
             style.normal.background = skills[1].buttonSkill1;
-			if (GUI.Button(new Rect(Screen.width * 9 / 10 - Screen.width / 8 / 2, Screen.height * 5 / 10, Screen.width / 8, Screen.width / 8), skills[1].skillName, style))
+            if (GUI.Button(new Rect(Screen.width * 9 / 10 - Screen.width / 8 / 2, Screen.height * 5 / 10, Screen.width / 8, Screen.width / 8), skills[1].skillName, style))
             {
                 skills[1].doSkill();
             }
         }
-	        
+
         //ULTI
         if (skills[2] != null)
         {
@@ -64,5 +72,6 @@ public class SkillController : MonoBehaviour {
     {
 
     }
+
 
 }

@@ -11,7 +11,7 @@ public class Client_Gasing : MonoBehaviour {
     // state
     public bool isOnGround;
     public bool isInvicibleAfterClash;
-
+    public bool isPlayerAlive = true;
 	// Use this for initialization
 	void Start () {
 	

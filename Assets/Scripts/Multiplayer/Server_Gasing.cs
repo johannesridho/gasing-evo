@@ -7,11 +7,16 @@ using System.Collections;
 public class Server_Gasing : MonoBehaviour
 {
     public Transform gasingTransform;
+    public Gasing gasing;
 
     public Vector3 currentPosition;
     public Quaternion currentRotation;
 
     public NetworkPlayer networkPlayer;
+
+    private bool isDeathMessageSent = false;
+
+    private bool isAlive = true;
 
     // Use this for initialization
     void Start()
@@ -28,6 +33,16 @@ public class Server_Gasing : MonoBehaviour
         {
             currentPosition = gasingTransform.position;
             currentRotation = gasingTransform.rotation;
+            if (gasing.energiPoint <= 0)
+            {
+                // DEAD
+                if (!isDeathMessageSent)
+                {
+                    MultiplayerManager.instance.networkView.RPC("client_playerDead", RPCMode.All, networkPlayer);
+                    isDeathMessageSent = true;
+                }
+                isAlive = false;
+            }
         }
         else
         {
@@ -58,11 +73,13 @@ public class Server_Gasing : MonoBehaviour
 
     /*
     * Called when a player dies
+     * unused
     */
     [RPC]
     public void client_playerDied()
     {
-        gasingTransform.gameObject.SetActive(false);
+        //gasingTransform.gameObject.SetActive(false);
+        Debug.Log("player DEAD!");
     }
 
     /*

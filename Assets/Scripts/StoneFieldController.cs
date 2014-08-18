@@ -95,7 +95,10 @@ public class StoneFieldController : MonoBehaviour
     {
         if (GamePrefs.isMultiplayer)
         {
-
+            if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
+            {
+                Debug.Log("all dead");
+            }
         }
         else
         {

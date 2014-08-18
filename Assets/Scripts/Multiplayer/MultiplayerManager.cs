@@ -32,16 +32,18 @@ public class MultiplayerManager : MonoBehaviour
 
     // game
     public MPPlayer myPlayer;
-    private GameObject[] spawnPoints;
+    private List<GameObject> spawnPoints;
     public bool isMapLoaded = false;
 
     public GameObject[] items;
 
     public GameObject instantiatedPlayer;
-    
+
 
     //Server-only properies
     public List<GameObject> serverSideGasings = new List<GameObject>();
+
+    public InGameMessageViewer inGameMessageViewer;
 
     // Use this for initialization
     void Start()
@@ -81,17 +83,17 @@ public class MultiplayerManager : MonoBehaviour
 
     void OnServerInitialized()
     {
-        
-            if (!isDedicatedServer)
-            {
-                //Add the server creator as a player in the server
-                server_playerJoinRequest(playerName, Network.player);
-                // add new gasing to server side gasing
-                //GameObject newGasing = Network.Instantiate(servergasingPrefab[selectedGasing], new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
-                //newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
-                //serverSideGasings.Add(newGasing);
-            }
-        
+
+        if (!isDedicatedServer)
+        {
+            //Add the server creator as a player in the server
+            server_playerJoinRequest(playerName, Network.player);
+            // add new gasing to server side gasing
+            //GameObject newGasing = Network.Instantiate(servergasingPrefab[selectedGasing], new Vector3(0, 1, -15), Quaternion.Euler(0, 0, 0), 5) as GameObject;
+            //newGasing.GetComponent<Server_Gasing>().networkPlayer = Network.player;
+            //serverSideGasings.Add(newGasing);
+        }
+
     }
 
     void OnConnectedToServer()
@@ -155,11 +157,11 @@ public class MultiplayerManager : MonoBehaviour
 
         if (Network.player == view)
         {
-            
-                myPlayer = temp;
-                // instantiate client's input sender
-                instantiatedPlayer = Network.Instantiate(multiplayerInputHandlerPrefab, Vector3.zero, Quaternion.identity, 5) as GameObject;
-           
+
+            myPlayer = temp;
+            // instantiate client's input sender
+            instantiatedPlayer = Network.Instantiate(multiplayerInputHandlerPrefab, Vector3.zero, Quaternion.identity, 5) as GameObject;
+
         }
     }
 
@@ -238,27 +240,28 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void server_spawnPlayer(NetworkPlayer player)
     {
-        
-            if (Network.isServer)
+
+        if (Network.isServer)
+        {
+            foreach (GameObject entry in serverSideGasings)
             {
-                foreach (GameObject entry in serverSideGasings)
-                {
-                    int spawnindex = Random.Range(0, spawnPoints.Length - 1);
-                    entry.transform.position = spawnPoints[spawnindex].transform.position;
-                    entry.transform.rotation = Quaternion.Euler(270, 0, 0);
-                    entry.GetComponent<Server_Gasing>().networkView.RPC("client_playerAlive", RPCMode.All);
-                }
+                int spawnindex = Random.Range(0, spawnPoints.Count - 1);
+                entry.transform.position = spawnPoints[spawnindex].transform.position;
+                entry.transform.rotation = Quaternion.Euler(270, 0, 0);
+                entry.GetComponent<Server_Gasing>().networkView.RPC("client_playerAlive", RPCMode.All);
+                spawnPoints.Remove(spawnPoints[spawnindex]);
             }
-            else
-            {
-                //GameObject[] asd = GameObject.FindGameObjectsWithTag("MP_Player");
-                //Debug.Log("asdasdasdasd = " );
-                //foreach (GameObject gobj in asd)
-                //{
-                //    gobj.SetActive(true);
-                //}
-            }
-        
+        }
+        else
+        {
+            //GameObject[] asd = GameObject.FindGameObjectsWithTag("MP_Player");
+            //Debug.Log("asdasdasdasd = " );
+            //foreach (GameObject gobj in asd)
+            //{
+            //    gobj.SetActive(true);
+            //}
+        }
+
     }
 
     /*
@@ -267,15 +270,15 @@ public class MultiplayerManager : MonoBehaviour
     [RPC]
     void client_spawnPlayer(NetworkPlayer player, Vector3 position, Quaternion rotation)
     {
-        
-            if (player == myPlayer.playerNetwork)
-            {
-                // set player position
-                myPlayer.playerManager.gasingTransform.position = position;
-                myPlayer.playerManager.gasingTransform.rotation = rotation;
-                myPlayer.playerManager.networkView.RPC("client_playerAlive", RPCMode.All);
-            }
-            
+
+        if (player == myPlayer.playerNetwork)
+        {
+            // set player position
+            myPlayer.playerManager.gasingTransform.position = position;
+            myPlayer.playerManager.gasingTransform.rotation = rotation;
+            myPlayer.playerManager.networkView.RPC("client_playerAlive", RPCMode.All);
+        }
+
     }
 
     void OnLevelWasLoaded(int level)
@@ -284,19 +287,18 @@ public class MultiplayerManager : MonoBehaviour
         {
             isMapLoaded = true;
             // Populate all spawnpoints
-            spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+            spawnPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
 
             // Populate all items
             items = GameObject.FindGameObjectsWithTag("Item");
 
             foreach (GameObject go in items)
             {
-                Debug.Log("item = "+go.name);
+                Debug.Log("item = " + go.name);
             }
 
             isGameStarted = true;
             networkView.RPC("client_serverLoaded", RPCMode.AllBuffered, isGameStarted);
-
         }
     }
 
@@ -312,7 +314,7 @@ public class MultiplayerManager : MonoBehaviour
         }
         else
         {
-            networkView.RPC("server_spawnPlayer", RPCMode.Server, Network.player);
+            //networkView.RPC("server_spawnPlayer", RPCMode.Server, Network.player);
         }
     }
 
@@ -343,7 +345,7 @@ public class MultiplayerManager : MonoBehaviour
             serverSideGasings.Add(newGasing);
         }
 
-        
+
     }
 
     [RPC]
@@ -388,14 +390,31 @@ public class MultiplayerManager : MonoBehaviour
     {
         foreach (GameObject gobj in serverSideGasings)
         {
-            if (gobj.GetComponent<Server_Gasing>().networkPlayer == player)
+            if (gobj != null)
             {
-                return gobj;
+                if (gobj.GetComponent<Server_Gasing>().networkPlayer == player)
+                {
+                    return gobj;
+                }
             }
         }
         return null;
     }
 
+    [RPC]
+    public void client_playerDead(NetworkPlayer player)
+    {
+        Debug.Log("player DEAD!");
+        if (player == Network.player)
+        {
+            instantiatedPlayer.GetComponent<MultiplayerSkillContoller>().setActive(false);
+            inGameMessageViewer.showMyPlayerDeadScreen();
+        }
+        else
+        {
+            inGameMessageViewer.showPlayerDeadMessage(player);
+        }
+    }
 }
 
 [System.Serializable]
