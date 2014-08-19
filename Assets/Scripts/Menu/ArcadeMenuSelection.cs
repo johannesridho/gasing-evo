@@ -89,6 +89,7 @@ public class ArcadeMenuSelection : MonoBehaviour {
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 1;
 		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
+		Utilities.chosenMode = 1;
 	}
 
 	void chooseRoyalMode(){
@@ -116,6 +117,7 @@ public class ArcadeMenuSelection : MonoBehaviour {
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 2;
 		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
 		GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = 2;
+		Utilities.chosenMode = 0;
 	}
 
 	void OnMouseOver(){

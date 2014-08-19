@@ -4,7 +4,7 @@ using System.Collections;
 public class Missile : Skill {
 
 	private Gasing gasing;
-	private GameObject targetEnemy;
+	public GameObject targetEnemy;
 	private Object prefabMissile;
 	
 	void Awake(){
@@ -27,19 +27,21 @@ public class Missile : Skill {
 	}
 
     public override void doSkill()
-    {
+	{
+		targetEnemy = findNearestEnemy();		//cari terus musuh terdekat
         if (gasing.getSP() > skillPointNeeded)
         {
-            
             if (targetEnemy)
             {
                 if (GamePrefs.isMultiplayer)
                 {
-                    Network.Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)),11);
+					GameObject misil = (GameObject) Network.Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)),11);
+					misil.GetComponent<MissileScript>().nyalakan(targetEnemy);
                 }
                 else
                 {
-                    Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)));
+                    GameObject misil = (GameObject) Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.LookRotation(targetEnemy.transform.position - transform.position - new Vector3(0, -90, 0)));
+					misil.GetComponent<MissileScript>().nyalakan(targetEnemy);
                     //				Instantiate(prefabMissile, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
                 }
                 gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		

@@ -24,6 +24,7 @@ public class Gasing : MonoBehaviour {
 
 	// state
 	public bool isOnGround;
+    public bool isPlayerAlive = true;
 
 	public AudioClip audioTabrakan;
 
@@ -40,7 +41,7 @@ public class Gasing : MonoBehaviour {
 		//epmax, spmax, mass, power, speed diset di controller
 //		mass = 100;
 //		power = 1f;
-//		speed = 1f;
+		speed = 1f;
 		speedMax = 20f;
 	}
 
@@ -50,7 +51,19 @@ public class Gasing : MonoBehaviour {
 		if(energiPoint <=0 || transform.position.y <= (-4)){
 			//gasing berhenti
 			//Debug.Log("wah");
-			Destroy (transform.root.gameObject); 
+            if (GamePrefs.isMultiplayer)
+            {
+                //Debug.Log("gasing.dead");
+                isPlayerAlive = false;
+                energiPoint = 0;
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                isPlayerAlive = false;
+                energiPoint = 0;
+                Destroy(transform.root.gameObject);
+            }
 		} else if (energiPoint <= 2) {
 			removeConstraint ();
 			Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
@@ -93,6 +106,10 @@ public class Gasing : MonoBehaviour {
 		gasing.rigidbody.velocity = n;
 	}
 	
+	public void dorong(Vector3 n){
+		gasing.rigidbody.AddForce(n);
+	}
+	
 	public void speedMaxChange(float n){
 		speedMax = n;
 	}
@@ -102,7 +119,7 @@ public class Gasing : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
 			if(audioTabrakan){
 				audio.PlayOneShot(audioTabrakan);
 			}

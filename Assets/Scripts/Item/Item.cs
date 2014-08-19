@@ -32,12 +32,12 @@ public class Item : MonoBehaviour {
 	}
 	
 	protected void spin() {
-		Vector3 rotation = new Vector3 (0f, 0f,spin_velo*Time.deltaTime);
+		Vector3 rotation = new Vector3 (0f, spin_velo*Time.deltaTime, 0f);
 		transform.Rotate(rotation);
 	}
 
 	protected void destroyOnCollide(Collision col) {
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy")
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") 
         {
             Destroy(transform.root.gameObject);
             //Network.Destroy(transform.root.gameObject);

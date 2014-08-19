@@ -26,12 +26,12 @@ public class RoyalModeMenuScript : MonoBehaviour {
 				textInstance.AddComponent<SelectGasingScript> ();	
 				if (i > 0 ) {
 					textInstance.GetComponent<SelectGasingScript> ().control = "AI";
-					textInstance.GetComponent<SelectGasingScript> ().name = "arjuna";
+					textInstance.GetComponent<SelectGasingScript> ().name = "Craseed";
 					textInstance.name = "e" + i.ToString();
 					textInstance.GetComponent<SelectGasingScript>().configurePref();
 				} else {
 					textInstance.GetComponent<SelectGasingScript> ().control = "P";
-					textInstance.GetComponent<SelectGasingScript> ().name = "arjuna";
+					textInstance.GetComponent<SelectGasingScript> ().name = "Craseed";
 					textInstance.name = "p1";
 					textInstance.GetComponent<SelectGasingScript>().configurePref();
 				}

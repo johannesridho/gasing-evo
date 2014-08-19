@@ -15,15 +15,18 @@ GameObject:
   - 54: {fileID: 5400000}
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400010}
-  - 114: {fileID: 11400006}
-  - 114: {fileID: 11400004}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400000}
-  - 82: {fileID: 8200000}
   - 114: {fileID: 11400008}
+  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400002}
+  - 82: {fileID: 8200000}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400014}
+  - 114: {fileID: 11400016}
+  - 114: {fileID: 11400018}
   m_Layer: 0
-  m_Name: Jalaprang
-  m_TagString: Player
+  m_Name: Skymir_Musuh
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
-  m_LocalPosition: {x: -.572209001, y: 1.78346336, z: 3.25125861}
+  m_LocalPosition: {x: -3.3285923, y: 1, z: 5.25030422}
   m_LocalScale: {x: .125242069, y: .125242069, z: .125242069}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,11 +55,11 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 17f7899685234304393c763c300461fd, type: 2}
-  - {fileID: 2100000, guid: fe7767b8bff92e744923a7342aa27b02, type: 2}
-  - {fileID: 2100000, guid: eef19da88816b8146b19cd42a46f356c, type: 2}
-  - {fileID: 2100000, guid: 40a40ce1b43b9a04f85411190666a76c, type: 2}
-  - {fileID: 2100000, guid: 4ab207bdb25a6ae488b35e9aaa997342, type: 2}
+  - {fileID: 2100000, guid: f1294465b2532244fa56d6dfb9d57170, type: 2}
+  - {fileID: 2100000, guid: f74ecdaafb20d694d8fec3ecbb085267, type: 2}
+  - {fileID: 2100000, guid: ad49fde4950e9cf4291e181adecfcb67, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 395a39de1aa413545b522b23576c9f19, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -70,7 +73,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 0e686fb5c1af5754a987889acfac10a7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 70c3c10803c7f4f40b2fa8c11b333c1f, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -152,7 +155,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0e686fb5c1af5754a987889acfac10a7, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 70c3c10803c7f4f40b2fa8c11b333c1f, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -191,23 +194,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6352f1705c138f24aa665eb1c83e3d3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 62817590ea51f1048a2844f1e2a599a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeGerak: 0
+  timeSkill: 0
+  time: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bd28a510f0bb814d91eac660b032c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - {fileID: 11400010}
   - {fileID: 11400008}
+  - {fileID: 11400010}
   - {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
@@ -215,12 +221,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4613bf87b4a70e743b245b534df385a0, type: 3}
+  m_Script: {fileID: 11500000, guid: dd04fa1ecdf29264db93f144a8a3b89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
   skillName: 
 --- !u!114 &11400010
 MonoBehaviour:
@@ -228,12 +234,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7227eb9b79e06f43b0f2a8ad7c3abb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e4b81e302424b74b9357dd39583f3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
+  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
 --- !u!114 &11400012
 MonoBehaviour:
@@ -256,6 +262,47 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd28a510f0bb814d91eac660b032c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400016}
+  - {fileID: 11400018}
+  - {fileID: 0}
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd04fa1ecdf29264db93f144a8a3b89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
+  skillName: 
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf89846718d3d14f876004546f165d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  skillName: 
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -267,7 +314,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 9.85877895
-  m_Center: {x: .0162029266, y: .0903301463, z: .0329985693}
+  m_Center: {x: .0162029266, y: .090333961, z: .149492055}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

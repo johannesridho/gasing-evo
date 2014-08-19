@@ -48,18 +48,43 @@ public class Skill : MonoBehaviour {
         }
         else
         {
-            GameObject[] allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+//			GameObject[] allEnemy = (GetComponent<AIMusuh>()==null) ? GameObject.FindGameObjectsWithTag("Enemy") : GameObject.FindGameObjectsWithTag("Player");
+
+			GameObject[] allEnemy = null;
+			if(Utilities.chosenMode == 1){		//team mode
+				if(this.gameObject.tag.Equals("Player") || this.gameObject.tag.Equals("Ally")){
+					allEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+				}else{
+					GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
+					GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+					allEnemy = new GameObject[allies.Length+players.Length];
+					allies.CopyTo(allEnemy,0);
+					players.CopyTo(allEnemy,allies.Length);
+				}
+			}else{				//royal mode
+				GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+				GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+				allEnemy = new GameObject[enemies.Length+players.Length];
+				enemies.CopyTo(allEnemy,0);
+				players.CopyTo(allEnemy,enemies.Length);
+			}
+
             float distance = Mathf.Infinity;
             Vector3 position = transform.position;
+
             foreach (GameObject enemy in allEnemy)
             {
-                Vector3 diff = enemy.transform.position - position;
-                float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance)
-                {
-                    nearest = enemy;
-                    distance = curDistance;
-                }
+//				if(((this.gameObject.tag.Equals("Player") || this.gameObject.tag.Equals("Ally")) && enemy.tag.Equals(enemy)) || (this.gameObject.tag.Equals("Enemy") && (enemy.tag.Equals("Player") || enemy.tag.Equals("Ally")) )){
+					if (enemy != this.gameObject){		//biar ngga nembak diri sendiri
+				        Vector3 diff = enemy.transform.position - position;
+				        float curDistance = diff.sqrMagnitude;
+				        if (curDistance < distance)
+				        {
+				            nearest = enemy;
+				            distance = curDistance;
+				        }
+					}
+//				}
             }
         }
 		return nearest;

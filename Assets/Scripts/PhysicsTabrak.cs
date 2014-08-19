@@ -6,7 +6,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	public bool isInvicibleAfterClash;
 	private float timeCountAfterClash;
 	private Gasing gasing;
-	private static float COEF_MOMENTUM = 1.2f;
+	private static float COEF_MOMENTUM = 1.9f;
 
 	void Awake(){
 		if(!gasing)
@@ -23,7 +23,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	void FixedUpdate () {	
 		if (isInvicibleAfterClash) {
 			timeCountAfterClash += Time.deltaTime;
-			if (timeCountAfterClash >= 0.20f) {
+			if (timeCountAfterClash >= 0.4f) {
 				isInvicibleAfterClash = false;
 				timeCountAfterClash = 0f;
 			}
@@ -31,7 +31,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	}
 	
 	void geserAfterClash(Collision C) {
-		float coeff_geser = 0.3f;
+		float coeff_geser = 0.9f;
 		Vector3 heading = C.collider.rigidbody.position - gasing.rigidbody.position;
 		Vector3 direction = heading / heading.magnitude;
 		Vector3 posSelf = C.collider.rigidbody.position + new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
@@ -40,10 +40,9 @@ public class PhysicsTabrak : MonoBehaviour {
 		C.collider.SendMessage ("movePosition", posEnemy, SendMessageOptions.DontRequireReceiver);
 	}	
 	
-	void changeSpeedAfterClash(Collision C) {
-		Vector3 momentum = COEF_MOMENTUM * gasing.rigidbody.velocity;
-		C.collider.SendMessage ("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
-		gasing.collider.SendMessage ("speedChange", -momentum, SendMessageOptions.DontRequireReceiver);
+	void changeSpeedAfterClash(Collision C, Vector3 vel) {
+		Vector3 momentum = COEF_MOMENTUM * vel * 500;
+		C.collider.SendMessage ("dorong", momentum, SendMessageOptions.DontRequireReceiver);
 	}
 
 	void damageAfterClash(Collision C) {
@@ -62,14 +61,15 @@ public class PhysicsTabrak : MonoBehaviour {
 	}	
 	
 	void OnCollisionEnter(Collision col){
+		Vector3 vel = gasing.rigidbody.velocity;
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 			if (!isInvicibleAfterClash) {
 				isInvicibleAfterClash = true;
 				timeCountAfterClash = 0f;
 			}
-			geserAfterClash(col);
-			changeSpeedAfterClash(col);
 			damageAfterClash(col);
+			geserAfterClash(col);
+			changeSpeedAfterClash(col, vel);
 		}
         if (col.gameObject.tag == "Item")
         {

@@ -14,16 +14,16 @@ GameObject:
   - 114: {fileID: 11400012}
   - 54: {fileID: 5400000}
   - 135: {fileID: 13500000}
-  - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400014}
   m_Layer: 0
-  m_Name: Dipati_Musuh
-  m_TagString: Enemy
+  m_Name: Skymir
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62817590ea51f1048a2844f1e2a599a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6352f1705c138f24aa665eb1c83e3d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400006
@@ -200,14 +200,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bd28a510f0bb814d91eac660b032c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 11400008}
-  - {fileID: 11400010}
+  - {fileID: 11400014}
   - {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
@@ -215,25 +215,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd04fa1ecdf29264db93f144a8a3b89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
-  skillName: 
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4b81e302424b74b9357dd39583f3e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
 --- !u!114 &11400012
 MonoBehaviour:
@@ -256,6 +243,19 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf89846718d3d14f876004546f165d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  skillName: 
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

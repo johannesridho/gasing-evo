@@ -16,7 +16,7 @@ public class StoneFieldController : MonoBehaviour
         {
             
         }
-        else
+        else if(Utilities.chosenMode == 0)		//royal mode
         {
     		jumlahMusuh = Utilities.howManyGasingRoyal-1;
             if (!pemain)
@@ -24,7 +24,7 @@ public class StoneFieldController : MonoBehaviour
 				if(Utilities.playerGasing != null){
 					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}else{
-					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Jalaprang"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
 				}
            		pemain.name = "Pemain";
                 
@@ -38,14 +38,14 @@ public class StoneFieldController : MonoBehaviour
 				if(Utilities.enemy1 != null){
 					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
 				}else{
-					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
 				}
         
 				if(jumlahMusuh > 1){
 					if(Utilities.enemy2 != null){
 						Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
 					}else{
-						Instantiate(Resources.Load("Prefab/Prefab Gasing/Arjuna_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+						Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
 					}
 				}
 				if(jumlahMusuh > 2){
@@ -79,7 +79,51 @@ public class StoneFieldController : MonoBehaviour
                     }
                 }				
             }//end if !musuh
-        }//end if single player
+        } else {				//team mode
+			jumlahMusuh = Utilities.howManyGasingTeam * 2 - 1;
+			if (!pemain)
+			{   
+				if(Utilities.playerGasing != null){
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+				}else{
+					pemain = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed"), new Vector3(0, 1, -15), Quaternion.Euler(270, 0, 0));		//hidupin gasing, pilih prefab
+				}
+				pemain.name = "Pemain";
+				
+				if (!gasingPemain)
+				{
+					gasingPemain = pemain.GetComponent<Gasing>();
+				}
+			}
+			if (!musuh)
+			{
+				if(Utilities.enemy1 != null){
+					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+				}
+
+				if(Utilities.enemy2 != null){
+					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+				}
+
+				if(Utilities.enemy3 != null){
+					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy3+"_Musuh"), new Vector3(5, 1, 10), Quaternion.Euler(270, 0, 0));
+				}
+
+				if(Utilities.ally1 != null){
+					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ally1+"_Musuh"), new Vector3(5, 1, -15), Quaternion.Euler(270, 0, 0));
+					musuh.tag = "Ally";
+				}
+
+				if(Utilities.ally2 != null){
+					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ally2+"_Musuh"), new Vector3(-5, 1, -15), Quaternion.Euler(270, 0, 0));
+					musuh.tag = "Ally";
+				}
+													
+			}//end if !musuh
+
+		}//end if team mode
+
+		
 
 
     }
@@ -95,9 +139,19 @@ public class StoneFieldController : MonoBehaviour
     {
         if (GamePrefs.isMultiplayer)
         {
-
+            if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
+            {
+                Debug.Log("all dead");
+            }
         }
-        else
+		else if(Utilities.chosenMode == 1) //team mode
+		{
+			if ((GameObject.FindGameObjectsWithTag("Player").Length <= 0 && GameObject.FindGameObjectsWithTag("Ally").Length <=0) || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+			{
+				Application.LoadLevel("GameOver");
+			}
+		}
+        else 		//royal mode
         {
             if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
             {
