@@ -159,7 +159,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4292500500
+    rgba: 4279413759
 --- !u!23 &304639682
 Renderer:
   m_ObjectHideFlags: 0
@@ -482,6 +482,90 @@ MonoBehaviour:
   isRoyalRumble: 0
   isOption: 0
   isBackButton: 0
+--- !u!1 &711032640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 711032645}
+  - 20: {fileID: 711032644}
+  - 124: {fileID: 711032643}
+  - 92: {fileID: 711032642}
+  - 81: {fileID: 711032641}
+  m_Layer: 0
+  m_Name: Background Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &711032641
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711032640}
+  m_Enabled: 0
+--- !u!92 &711032642
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711032640}
+  m_Enabled: 1
+--- !u!124 &711032643
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711032640}
+  m_Enabled: 0
+--- !u!20 &711032644
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711032640}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
+--- !u!4 &711032645
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711032640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.9680481, y: -10.4945364, z: -44.2985535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &725896135
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +845,7 @@ Camera:
   m_GameObject: {fileID: 1062222451}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -777,7 +861,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -883,7 +967,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4292500500
+    rgba: 4279413759
 --- !u!23 &1107906765
 Renderer:
   m_ObjectHideFlags: 0
@@ -1312,7 +1396,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4292500500
+    rgba: 4279413759
 --- !u!23 &1822186796
 Renderer:
   m_ObjectHideFlags: 0
@@ -1364,6 +1448,53 @@ MonoBehaviour:
   isRoyalRumble: 0
   isOption: 0
   isBackButton: 0
+--- !u!1 &1851655688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1851655690}
+  - 131: {fileID: 1851655689}
+  m_Layer: 8
+  m_Name: Background Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &1851655689
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851655688}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 757435c23d350c7408e210c7f9fb65df, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 1366
+    height: 768
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &1851655690
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851655688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0469999984, y: -.158441544, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1891844119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1573,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4292500500
+    rgba: 4279413759
 --- !u!23 &1891844124
 Renderer:
   m_ObjectHideFlags: 0
@@ -1546,7 +1677,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4292500500
+    rgba: 4279413759
 --- !u!23 &2021441514
 Renderer:
   m_ObjectHideFlags: 0
@@ -1675,7 +1806,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4292500500
+    rgba: 4279413759
 --- !u!23 &2092202333
 Renderer:
   m_ObjectHideFlags: 0
