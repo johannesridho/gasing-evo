@@ -60,7 +60,7 @@ public class SelectGasingScript : MonoBehaviour {
 	}
 
 	void OnMouseOver(){
-		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
+		renderer.material.color = new Color (renderer.material.color.r,renderer.material.color.g + 40,renderer.material.color.b);
 	}
 	
 	void OnMouseExit(){
