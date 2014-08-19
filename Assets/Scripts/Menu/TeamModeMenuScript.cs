@@ -24,7 +24,7 @@ public class TeamModeMenuScript : MonoBehaviour {
 						for (int i = 0; i < amount; i++) {
 								textInstance = Instantiate (textPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
 								textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - ((i + 1) * 2), parent.transform.position.z);
-								textInstance.AddComponent<SelectGasingScript> ();	
+								textInstance.AddComponent<SelectGasingScript> ();
 								if (i > 0 || i >= 0 && teamName != "Team A") {
 										textInstance.GetComponent<SelectGasingScript> ().control = "AI";
 										textInstance.GetComponent<SelectGasingScript> ().name = "Craseed";
@@ -72,10 +72,14 @@ public class TeamModeMenuScript : MonoBehaviour {
 
 	public void setTeamModeContent(){
 		Debug.Log ("gasing per team:" + gasingPerTeam);
-		deleteAllObjectByName (textPrefab.name + "(Clone)");
+		GameObject[] texts = GameObject.FindGameObjectsWithTag ("GasingSelection");
+		foreach (GameObject text in texts) {
+			DestroyObject(text);		
+		}
 		setTeamContent ("Team A", gasingPerTeam);
 		setTeamContent ("Team B", gasingPerTeam);
 		setArenaContent ();
+		GameObject.Find ("Main Camera").GetComponent<GasingNumberSetter>().setGasingNumbers();
 		isSet = true;
 	}
 }
