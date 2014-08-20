@@ -18,8 +18,16 @@ public class BombObstacle : MonoBehaviour {
 	void Update(){
 		clock += Time.deltaTime;
 		if (clock >= 5) {
-			Destroy(this.gameObject);
-			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
+            if (GamePrefs.isMultiplayer)
+            {
+                Network.Destroy(this.gameObject);
+                networkView.RPC("client_bombObstriggerLedakan", RPCMode.All);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                Instantiate(efekLedakan, transform.position, Quaternion.Euler(0, 0, 0));
+            }
 		}
 	}
 
@@ -29,7 +37,21 @@ public class BombObstacle : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
-			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));			
+            if (GamePrefs.isMultiplayer)
+            {
+                networkView.RPC("client_bombObstriggerLedakan", RPCMode.All);
+            }
+            else
+            {
+                Instantiate(efekLedakan, transform.position, Quaternion.Euler(0, 0, 0));
+            }
 		}
 	}
+
+    //efek ledakan diinstantiate lewat RPC
+    [RPC]
+    public void client_bombObstriggerLedakan()
+    {
+        Instantiate(efekLedakan, transform.position, Quaternion.Euler(0, 0, 0));
+    }
 }

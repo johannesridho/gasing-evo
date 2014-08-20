@@ -30,8 +30,15 @@ public class Cyclone : Skill {
 		{
 			targetEnemy = findNearestEnemy();		//cari musuh terdekat
 			if (targetEnemy) {
-				gasingEnemy = targetEnemy.GetComponent<Gasing> ();			
-				Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(0, 0, 0));			
+				gasingEnemy = targetEnemy.GetComponent<Gasing> ();
+                if (GamePrefs.isMultiplayer)
+                {
+                    Network.Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(0, 0, 0),12);
+                }
+                else
+                {
+                    Instantiate(prefab, targetEnemy.transform.position, Quaternion.Euler(0, 0, 0));
+                }
 				gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
 			}
 		}
