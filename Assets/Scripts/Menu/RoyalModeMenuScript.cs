@@ -67,9 +67,13 @@ public class RoyalModeMenuScript : MonoBehaviour {
 	
 	public void setRoyalModeContent(){
 		Debug.Log ("how many gasing:" + howManyGasing);
-		deleteAllObjectByName (textPrefab.name + "(Clone)");
+		GameObject[] texts = GameObject.FindGameObjectsWithTag ("GasingSelection");
+		foreach (GameObject text in texts) {
+			DestroyObject(text);		
+		}
 		setContent (howManyGasing);
 		setArenaContent ();
+		GameObject.Find ("Main Camera").GetComponent<GasingNumberSetter>().setGasingNumbers();
 		isSet = true;
 	}
 }
