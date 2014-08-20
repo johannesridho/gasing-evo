@@ -4,8 +4,10 @@ using System.Collections;
 public class Jump : Skill {
 
 	private Gasing gasing;
+	private float cooldown;
 
 	void Awake(){
+		cooldown = 2f;
         skillName = "Jump";
 		skillPointNeeded = 10;
 		if(!gasing)
@@ -17,7 +19,7 @@ public class Jump : Skill {
 	}
 
 	void Update () {
-		
+		cooldown += Time.deltaTime;
 	}
 
 	void FixedUpdate () {
@@ -41,13 +43,16 @@ public class Jump : Skill {
         if (gasing.getSP() > skillPointNeeded)
         {
             Debug.Log("do Skill");
-            if (gasing.isOnGround)
+//            if (gasing.isOnGround)
+			if (cooldown >= 1.5)
             {
                 float jump_coef = 15000f;
-                Vector3 movement = new Vector3(0f, Physics.gravity.y / (-3), 0f);
+//                Vector3 movement = new Vector3(0f, Physics.gravity.y / (-1), 0f);
+				Vector3 movement = new Vector3(0f, 15f, 0f);
                 rigidbody.AddForce(movement * jump_coef * Time.deltaTime);
                 gasing.isOnGround = false;
                 gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
+				cooldown = 0;
             }
         }
     }

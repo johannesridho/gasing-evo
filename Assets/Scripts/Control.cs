@@ -27,7 +27,8 @@ public class Control : MonoBehaviour {
 	void FixedUpdate () {
 		float hor = 0f;
 		float ver = 0f;
-        if (gasing.isOnGround && !gasing_pt.isInvicibleAfterClash) {
+//        if (gasing.isOnGround && !gasing_pt.isInvicibleAfterClash) {
+		if (!gasing_pt.isInvicibleAfterClash) {
 			if (Application.platform == RuntimePlatform.Android){
 				hor = Input.acceleration.x * Gasing.COEF_SPEED * gasing.speed;
 				ver = Input.acceleration.y * Gasing.COEF_SPEED * gasing.speed;
