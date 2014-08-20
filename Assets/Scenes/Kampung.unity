@@ -182,7 +182,7 @@ Transform:
   m_Children:
   - {fileID: 555081942}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!95 &3993480
 Animator:
   serializedVersion: 3
@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &27670118
 Renderer:
   m_ObjectHideFlags: 0
@@ -3527,7 +3527,7 @@ Transform:
   m_Children:
   - {fileID: 1703455380}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!95 &332202431
 Animator:
   serializedVersion: 3
@@ -3759,7 +3759,7 @@ Transform:
   m_Children:
   - {fileID: 2001690206}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!95 &350625371
 Animator:
   serializedVersion: 3
@@ -4402,7 +4402,7 @@ Transform:
   m_Children:
   - {fileID: 1666936194}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 0
+  m_RootOrder: 8
 --- !u!95 &427533572
 Animator:
   serializedVersion: 3
@@ -4856,7 +4856,7 @@ Transform:
   m_Children:
   - {fileID: 2119969141}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!95 &470962638
 Animator:
   serializedVersion: 3
@@ -5018,7 +5018,7 @@ Transform:
   m_Children:
   - {fileID: 1694234138}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!95 &481640802
 Animator:
   serializedVersion: 3
@@ -6683,9 +6683,9 @@ Transform:
   m_LocalPosition: {x: -2.28231049, y: 34.249691, z: -4.37211609}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2022389483}
   - {fileID: 2004633345}
   - {fileID: 974577328}
-  - {fileID: 2022389483}
   m_Father: {fileID: 0}
   m_RootOrder: 9
 --- !u!1001 &646883686
@@ -9896,7 +9896,7 @@ Transform:
   m_Children:
   - {fileID: 1193319495}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!95 &908134288
 Animator:
   serializedVersion: 3
@@ -10378,7 +10378,7 @@ Transform:
   m_Children:
   - {fileID: 1694632643}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!95 &951299431
 Animator:
   serializedVersion: 3
@@ -10571,7 +10571,7 @@ Transform:
   - {fileID: 426716723}
   - {fileID: 349626778}
   m_Father: {fileID: 633198028}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!95 &974577329
 Animator:
   serializedVersion: 3
@@ -15364,7 +15364,7 @@ Transform:
   m_Children:
   - {fileID: 1128110362}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!95 &1528916833
 Animator:
   serializedVersion: 3
@@ -18960,7 +18960,6 @@ Transform:
   m_LocalPosition: {x: 23.5503998, y: .00123998523, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 427533571}
   - {fileID: 908134287}
   - {fileID: 332202430}
   - {fileID: 481640801}
@@ -18969,6 +18968,7 @@ Transform:
   - {fileID: 3993479}
   - {fileID: 470962637}
   - {fileID: 1528916832}
+  - {fileID: 427533571}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!1 &1867488013
@@ -20959,7 +20959,7 @@ Transform:
   - {fileID: 2120274525}
   - {fileID: 1002395679}
   m_Father: {fileID: 633198028}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!95 &2004633346
 Animator:
   serializedVersion: 3
@@ -21131,7 +21131,7 @@ Transform:
   - {fileID: 1379669792}
   - {fileID: 1523687758}
   m_Father: {fileID: 633198028}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!95 &2022389484
 Animator:
   serializedVersion: 3
