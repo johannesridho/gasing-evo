@@ -4,36 +4,43 @@ using System.Collections;
 public class SelectGasingScript : MonoBehaviour {
 	public string control;
 	public string name;
+	public Sprite[] thumbnails;
+	private SpriteRenderer thumbnail;
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<TextMesh> ().text = control+" "+name;
+		thumbnail = renderer as SpriteRenderer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<TextMesh> ().text = control+" "+name;
 	}
 
 	void OnMouseUp(){
 		switch (name){
 		case "Craseed":
 			name = "Legasic";
+			thumbnail.sprite = thumbnails[1];
 			break;
 		case "Legasic":
 			name = "Prototype";
+			thumbnail.sprite = thumbnails[2];
 			break;
 		case "Prototype":
 			name = "Skymir";
+			thumbnail.sprite = thumbnails[3];
 			break;
 		case "Skymir":
 			name = "Colonix";
+			thumbnail.sprite = thumbnails[4];
 			break;
 		case "Colonix":
 			name = "Craseed";
+			thumbnail.sprite = thumbnails[0];
 			break;
 		default:
 			name = "Legasic";
+			thumbnail.sprite = thumbnails[1];
 			break;
 		}
 		configurePref ();
@@ -60,7 +67,7 @@ public class SelectGasingScript : MonoBehaviour {
 	}
 
 	void OnMouseOver(){
-		renderer.material.color = new Color (renderer.material.color.r,renderer.material.color.g + 40,renderer.material.color.b);
+		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
 	}
 	
 	void OnMouseExit(){

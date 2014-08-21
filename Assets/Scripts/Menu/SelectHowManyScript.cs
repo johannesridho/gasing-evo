@@ -2,22 +2,12 @@
 using System.Collections;
 
 public class SelectHowManyScript : MonoBehaviour {
-	public bool isOneExist = false;
+	public bool isTeamMode = false;
 	public string number;
 	public int numberInt;
 
 	// Use this for initialization
 	void Start () {
-		if (isOneExist) {
-			number = "one";
-			numberInt = 1;
-			GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().gasingPerTeam = numberInt;
-		}
-		else {
-			number = "two";
-			numberInt = 2;
-			GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = numberInt;
-		}
 		gameObject.GetComponent<TextMesh> ().text = number;
 	}
 	
@@ -27,65 +17,76 @@ public class SelectHowManyScript : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
-		configureNames ();	
+		numberInt++;
+		configureNames (numberInt);	
 		configurePref ();
 	}
 
-	void configureNames(){
-		if (isOneExist) {
-			if(number == "one"){
-				number = "two";
-				numberInt = 2;
-				GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().gasingPerTeam = numberInt;
-			}	
-			else if (number == "two")
-			{
-				number = "three";
-				numberInt = 3;
-				GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().gasingPerTeam = numberInt;
-			} 
-			else if (number == "three")
-			{
-				number = "one";
-				numberInt = 1;
-				GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().gasingPerTeam = numberInt;
-			} 
-		}
-		else {
-			switch (number){
-				case "two":
+	public void configureNames(int index){
+		if (isTeamMode) {
+			switch(index){
+				case 1:
+					number = "one";
+					numberInt = 1;
+					break;
+				case 2:
+					number = "two";
+					numberInt = 2;
+					break;
+				case 3:
 					number = "three";
 					numberInt = 3;
 					break;
-				case "three":
+				case 4:
+					number = "one";
+					numberInt = 1;
+					break;
+			}
+			GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().gasingPerTeam = numberInt;
+		}
+		else {
+			switch (index){
+				case 1:
+					number = "two";
+					numberInt = 2;
+					break;
+				case 2:
+					number = "two";
+					numberInt = 2;
+					break;
+				case 3:
+					number = "three";
+					numberInt = 3;
+					break;
+				case 4:
 					number = "four";
 					numberInt = 4;
 					break;
-				case "four":
+				case 5:
 					number = "five";
 					numberInt = 5;
 					break;
-				case "five":
+				case 6:
 					number = "six";
 					numberInt = 6;
 					break;
-				case "six":
+				case 7:
 					number = "seven";
 					numberInt = 7;
 					break;
-				case "seven":
+				case 8:
 					number = "eight";
 					numberInt = 8;
 					break;
-				case "eight":
+				case 9:
 					number = "nine";
 					numberInt = 9;
 					break;
-				case "nine":
+				case 10:
 					number = "ten";
 					numberInt = 10;
 					break;
-				case "ten":
+				case 11:
 					number = "two";
 					numberInt = 2;
 					break;
@@ -95,7 +96,7 @@ public class SelectHowManyScript : MonoBehaviour {
 	}
 
 	public void configurePref(){
-		if (isOneExist) {//team mode
+		if (isTeamMode) {//team mode
 			//set how many allies	
 			Utilities.howManyGasingTeam = numberInt;
 			Debug.Log("how many gasing team : " + Utilities.howManyGasingTeam.ToString());
@@ -107,7 +108,7 @@ public class SelectHowManyScript : MonoBehaviour {
 	}
 
 	void OnMouseOver(){
-		renderer.material.color = new Color (renderer.material.color.r,renderer.material.color.g + 40,renderer.material.color.b);
+		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
 	}
 	
 	void OnMouseExit(){

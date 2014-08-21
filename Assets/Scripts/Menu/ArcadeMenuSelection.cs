@@ -62,62 +62,57 @@ public class ArcadeMenuSelection : MonoBehaviour {
 						chooseCamera ("Main Camera");	
 						GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().isSet = false;
 						GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().isSet = false;
+						chooseRoyalMode();
 				}
 	}
 
 	void chooseTeamMode(){
-		Renderer[] renderers = GameObject.FindObjectsOfType<Renderer> ();
-		Collider[] colliders = GameObject.FindObjectsOfType<Collider> ();
-		foreach (Renderer r in renderers) {
-			if (r.name == "royal"){
-				r.renderer.enabled = false;
+		GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
+		foreach (GameObject o in objects) {
+			if (o.name == "royal"){
+				o.renderer.enabled = false;
+				o.collider.enabled = false;
 			}		
-			else if (r.name == "team"){
-				r.renderer.enabled = true;
+			else if (o.name == "team"){
+				o.renderer.enabled = true;
+				o.collider.enabled = true;
 			}
 		}
-		foreach (Collider c in colliders) {
-			if (c.name == "royal"){
-				c.collider.enabled = false;
-			}	
-			else if (c.name == "team"){
-				c.collider.enabled = true;
-			}	
-		}
 		GameObject.Find("Arcade Menus").GetComponent<ArcadeCameraController>().designatedCamera = "Team Mode Camera";
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isOneExist = true;
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 1;
-		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
+		GameObject.Find ("how many").GetComponent<TextMesh> ().text = "gasing per team";
+		setNumbers (1);
 		Utilities.chosenMode = 1;
 	}
 
 	void chooseRoyalMode(){
-		Renderer[] renderers = GameObject.FindObjectsOfType<Renderer> ();
-		Collider[] colliders = GameObject.FindObjectsOfType<Collider> ();
-		foreach (Renderer r in renderers) {
-			if (r.name == "royal"){
-				r.renderer.enabled = true;
+		GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
+		foreach (GameObject o in objects) {
+			if (o.name == "royal"){
+				o.renderer.enabled = true;
+				o.collider.enabled = true;
 			}		
-			else if (r.name == "team"){
-				r.renderer.enabled = false;
+			else if (o.name == "team"){
+				o.renderer.enabled = false;
+				o.collider.enabled = false;
 			}
 		}
-		foreach (Collider c in colliders) {
-			if (c.name == "royal"){
-				c.collider.enabled = true;
-			}	
-			else if (c.name == "team"){
-				c.collider.enabled = false;
-			}	
-		}
 		GameObject.Find("Arcade Menus").GetComponent<ArcadeCameraController>().designatedCamera = "Royal Mode Camera";
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isOneExist = false;
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "two";
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = 2;
-		GameObject.Find ("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
-		GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().howManyGasing = 2;
+		GameObject.Find ("how many").GetComponent<TextMesh> ().text = "number of gasing";
+		setNumbers (2);
 		Utilities.chosenMode = 0;
+	}
+
+	void setNumbers(int num){
+		if (num == 1) {
+			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isTeamMode = true;
+			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
+		} else {
+			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isTeamMode = false;
+			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "two";
+		}
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = num;	
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript> ().configureNames (num);
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
 	}
 
 	void OnMouseOver(){

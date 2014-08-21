@@ -3,25 +3,47 @@ using System.Collections;
 
 public class SelectArenaScript : MonoBehaviour {
 	public string name;
+	public Sprite[] thumbnails;
+	private SpriteRenderer thumbnail;
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<TextMesh> ().text = name;
+		thumbnail = renderer as SpriteRenderer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<TextMesh> ().text = name;
 	}
 
 	void OnMouseUp(){
-		if (name == "ice field") {
-			name = "gladiator";		
-		} else if (name == "gladiator") {
-			name = "steel arena";		
-		} else if (name == "steel arena") {
-			name = "explode arena";		
-		} else if (name == "explode arena") {
-			name = "ice field";		
+		switch (name) {
+			case "ice field":
+				name = "gladiator";
+				thumbnail.sprite = thumbnails[1];
+				break;
+			case "gladiator":
+				name = "steel arena";
+				thumbnail.sprite = thumbnails[2];
+				break;
+			case "steel arena":
+				name = "gasing evo";
+				thumbnail.sprite = thumbnails[3];
+				break;
+			case "gasing evo":
+				name = "nebula";
+				thumbnail.sprite = thumbnails[4];
+				break;
+			case "nebula":
+				name = "explode arena";
+				thumbnail.sprite = thumbnails[5];
+				break;
+			case "explode arena":
+				name = "ice field";
+				thumbnail.sprite = thumbnails[0];
+				break;	
+			default:
+				name = "gladiator";
+				thumbnail.sprite = thumbnails[1];
+				break;
 		}
 		configurePref ();
 	}
@@ -32,7 +54,7 @@ public class SelectArenaScript : MonoBehaviour {
 	}
 
 	void OnMouseOver(){
-		renderer.material.color = new Color (renderer.material.color.r,renderer.material.color.g + 40,renderer.material.color.b);
+		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
 	}
 	
 	void OnMouseExit(){

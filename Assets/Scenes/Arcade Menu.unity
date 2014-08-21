@@ -310,7 +310,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 224806392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.57456779, y: -.155268669, z: -.350535393}
+  m_LocalPosition: {x: -6.2210741, y: .341813087, z: -.350535393}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children:
   - {fileID: 2141270975}
@@ -337,7 +337,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 354515424}
-  - 114: {fileID: 354515425}
   - 114: {fileID: 354515426}
   m_Layer: 0
   m_Name: Royal Mode Menus
@@ -362,20 +361,6 @@ Transform:
   - {fileID: 411279230}
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!114 &354515425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 354515423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5e88937c44b3c04c9816a11506a5d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
-  gasingPerTeam: 0
-  isSet: 0
 --- !u!114 &354515426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b0f5fbb49240047ad6016bc9cfc656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
+  selectGasingPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
+  selectArenaPrefab: {fileID: 100000, guid: af1a1b9be0a1bf746b74234aa4222868, type: 2}
   howManyGasing: 0
   isSet: 0
 --- !u!1 &362185806
@@ -521,7 +507,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 411279229}
-  m_Text: Gasing Type
+  m_Text: Select All Gasing
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -629,7 +615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e88937c44b3c04c9816a11506a5d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
+  selectGasingPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
+  selectArenaPrefab: {fileID: 100000, guid: af1a1b9be0a1bf746b74234aa4222868, type: 2}
   gasingPerTeam: 0
   isSet: 0
 --- !u!1 &623160264
@@ -640,6 +627,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 623160265}
+  - 114: {fileID: 623160267}
   - 114: {fileID: 623160266}
   m_Layer: 0
   m_Name: Arcade Menus
@@ -673,6 +661,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   designatedCamera: Team Mode Camera
+--- !u!114 &623160267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 623160264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c308f237fa4e248aa50deed512a8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 100000, guid: 30386e18d4efdac44bdebd93b717275a, type: 2}
 --- !u!1 &797320848
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +699,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 797320848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.0376663, y: -.0387215614, z: .253285408}
+  m_LocalPosition: {x: -1.16963387, y: -11.2220144, z: .253285408}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 224806395}
@@ -1358,7 +1358,6 @@ GameObject:
   - 92: {fileID: 1909050170}
   - 124: {fileID: 1909050169}
   - 81: {fileID: 1909050168}
-  - 114: {fileID: 1909050173}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1431,18 +1430,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1909050173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1909050167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c308f237fa4e248aa50deed512a8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textPrefab: {fileID: 100000, guid: 6207ef9245e0983448c9179d83967111, type: 2}
 --- !u!1 &1909274131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,7 +1496,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909274131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5745697, y: -2.2326026, z: -.35053587}
+  m_LocalPosition: {x: -1.03475618, y: .346098423, z: -.35053587}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 417836986}
@@ -1652,7 +1639,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141270974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.5685196, y: -.461850166, z: 0}
+  m_LocalPosition: {x: .149745941, y: -11.6451445, z: 0}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 224806395}
