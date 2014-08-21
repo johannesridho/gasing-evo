@@ -32,8 +32,16 @@ public class MissileScript : MonoBehaviour {
 			}
 			clock += Time.deltaTime;
 			if (clock >= 5) {
-				Destroy(this.gameObject);
-				Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
+                if (GamePrefs.isMultiplayer)
+                {
+                    Network.Destroy(this.gameObject);
+                    networkView.RPC("client_MissiletriggerLedakan", RPCMode.All);
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                    Instantiate(efekLedakan, transform.position, Quaternion.Euler(0, 0, 0));
+                }
 			}
 		}
 	}
@@ -50,7 +58,14 @@ public class MissileScript : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
-			Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));			
+            if (GamePrefs.isMultiplayer)
+            {
+                networkView.RPC("client_MissiletriggerLedakan", RPCMode.All);
+            }
+            else
+            {
+                Instantiate(efekLedakan, transform.position, Quaternion.Euler(0, 0, 0));
+            }
 		}
 	}
 	
@@ -59,5 +74,9 @@ public class MissileScript : MonoBehaviour {
 		on = true;
 	}
 
-
+    [RPC]
+    public void client_MissiletriggerLedakan()
+    {
+        Instantiate(efekLedakan, transform.position, Quaternion.Euler(0, 0, 0));
+    }
 }//end class

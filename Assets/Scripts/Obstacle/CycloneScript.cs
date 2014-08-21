@@ -19,7 +19,14 @@ public class CycloneScript : MonoBehaviour {
 	void Update(){
 		clock += Time.deltaTime;
 		if (clock >= 25) {
-			Destroy(this.gameObject);
+            if (GamePrefs.isMultiplayer)
+            {
+                Network.Destroy(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
 		}
 
 		Collider[] colls = Physics.OverlapSphere (new Vector3(transform.position.x, 1, transform.position.z), 3);

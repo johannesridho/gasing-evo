@@ -79,23 +79,23 @@ public class MultiplayerSkillContoller : MonoBehaviour {
                     }
                 }
 
-                //ULTI
-                if (availableSkills[3] != null)
-                {
-                    GUIStyle style = new GUIStyle(GUI.skin.box);
-                    //style.normal.background = skills[3].buttonSkill1;
-                    if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), availableSkills[3], style))
-                    {
-                        if (Network.isServer)
-                        {
-                            server_doSkill(Network.player, 3);
-                        }
-                        else
-                        {
-                            networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 3);
-                        }
-                    }
-                }
+                ////ULTI
+                //if (availableSkills[3] != null)
+                //{
+                //    GUIStyle style = new GUIStyle(GUI.skin.box);
+                //    //style.normal.background = skills[3].buttonSkill1;
+                //    if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), availableSkills[3], style))
+                //    {
+                //        if (Network.isServer)
+                //        {
+                //            server_doSkill(Network.player, 3);
+                //        }
+                //        else
+                //        {
+                //            networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 3);
+                //        }
+                //    }
+                //}
             }
         }
     }

@@ -3,8 +3,15 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
+    private float guiRatioX;
+    private float guiRatioY;
+    private float sWidth;
+    private float sHeight;
+    private Vector3 GUIsF;
+    private int sizegui;
+
     public string currentMenu;
-    public string serverName;
+    public string serverName = "My Server";
     public int maxPlayer = 2;
     private string directConnectIP = "127.0.0.1";
 
@@ -18,6 +25,15 @@ public class MenuManager : MonoBehaviour
         GamePrefs.isMultiplayer = true;
         currentMenu = "Main";
         maxPlayer = 4;
+
+        //get the screen's width
+        sWidth = Screen.width;
+        sHeight = Screen.height;
+        //calculate the rescale ratio
+        guiRatioX = sWidth / 1280;
+        guiRatioY = sHeight / 720;
+        //create a rescale Vector3 with the above ratio
+        GUIsF = new Vector3(guiRatioX, guiRatioY, 1);
     }
 
     /*
@@ -30,6 +46,7 @@ public class MenuManager : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
         GUI.skin = customSkin;
         if (!MultiplayerManager.instance.isGameStarted)
         {
@@ -60,169 +77,94 @@ public class MenuManager : MonoBehaviour
     {
         MasterServer.RequestHostList("gasing evo");
 
-        int layoutWidth = (int)(Screen.width - 20);
-        int layoutHeight = (int)(Screen.height);
-
-        GUILayout.BeginArea(new Rect(10, 0, Screen.width, Screen.height));
-        GUILayout.BeginVertical(GUILayout.MaxWidth(layoutWidth));
-        GUILayout.FlexibleSpace();
-        GUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("Host"))
+        if (GUI.Button(new Rect(325, 170, 630, 60), "Host a LAN Game"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = false;
         }
-        GUILayout.FlexibleSpace();
-        GUILayout.EndHorizontal();
 
-        GUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("Host a Dedicated Server"))
+        if (GUI.Button(new Rect(325, 250, 630, 60), "Host a Dedicated LAN Game"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = true;
         }
-        GUILayout.FlexibleSpace();
-        GUILayout.EndHorizontal();
 
-        #region input nama
-        //Input nama
-        GUILayout.BeginHorizontal();
-
-        GUILayout.Label("Player Name", GUILayout.Width(Screen.width / 3));
-    
-        MultiplayerManager.instance.playerName = GUILayout.TextField(MultiplayerManager.instance.playerName);
-
-        if (GUILayout.Button("Save Name", GUILayout.MaxWidth(Screen.width / 3)))
+        GUI.Label(new Rect(110, 390, 200, 60), "Player Name");
+        MultiplayerManager.instance.playerName = GUI.TextField(new Rect(325, 390, 630, 60), MultiplayerManager.instance.playerName);
+        if (GUI.Button(new Rect(970, 390, 260, 60), "Save Name"))
         {
             PlayerPrefs.SetString("PlayerName", MultiplayerManager.instance.playerName);
         }
-        GUILayout.EndHorizontal();
-        #endregion
 
-        #region direct connect
-        //Direct connect
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("IP", GUILayout.Width(Screen.width / 3));
-        directConnectIP = GUILayout.TextField(directConnectIP);
-        if (GUILayout.Button("Direct Connect", GUILayout.MaxWidth(Screen.width / 3)))
+        GUI.Label(new Rect(110, 490, 200, 60), "IP Address");
+        directConnectIP = GUI.TextField(new Rect(325, 490, 630, 60), directConnectIP);
+        if (GUI.Button(new Rect(970, 490, 260, 60), "Direct Connect"))
         {
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
         }
-        GUILayout.EndHorizontal();
-        #endregion
-
-        GUILayout.FlexibleSpace();
-        GUILayout.EndVertical();
-
-        //menampilkan list hosts
-        //GUILayout.BeginVertical();
-        //GUILayout.Label("Server List");
-        //foreach (HostData hostdata in MasterServer.PollHostList())
-        //{
-        //    GUILayout.BeginHorizontal();
-        //    GUILayout.Label(hostdata.gameName);
-        //    if (GUILayout.Button("Join"))
-        //    {
-        //        //join server
-        //        Network.Connect(hostdata);
-        //    }
-        //    GUILayout.EndHorizontal();
-        //}
-        //GUILayout.EndVertical();
-
-        GUILayout.EndArea();
     }
 
     private void menu_HostGame()
     {
-        GUILayout.BeginArea(new Rect(5, 5, Screen.width - 5, Screen.height - 5));
+        GUI.Label(new Rect(80, 175, 200, 60), "Server Name");
+        serverName = GUI.TextField(new Rect(295, 175, 905, 60), serverName);
 
-        GUILayout.BeginVertical();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Server Name", GUILayout.Width(Screen.width / 3));
-        serverName = GUILayout.TextField(serverName);
-        GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Max Player", GUILayout.Width(Screen.width / 3));
-        string str_maxPlayer = GUILayout.TextField(maxPlayer.ToString());
+        GUI.Label(new Rect(80, 250, 200, 60), "Max Player");
+        string str_maxPlayer = GUI.TextField(new Rect(295, 250, 905, 60), maxPlayer.ToString());
         maxPlayer = int.Parse(str_maxPlayer);
-        GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Map");
-        GUILayout.Label(MultiplayerManager.instance.currentMap.mapName);
-        GUILayout.EndHorizontal();
-        GUILayout.EndVertical();
 
-        GUILayout.BeginVertical();
-        if (GUILayout.Button("Choose Map"))
+        GUI.Label(new Rect(80, 325, 200, 60), "Map");
+        GUI.Label(new Rect(295, 325, 200, 60), MultiplayerManager.instance.currentMap.mapName);
+        if (GUI.Button(new Rect(950, 325, 250, 60), "Choose Map"))
         {
             navigateTo("Choose Map");
         }
-        if (GUILayout.Button("Start Server"))
+
+        if (GUI.Button(new Rect(485, 410, 250, 60), "Start Server"))
         {
             MultiplayerManager.instance.startServer(serverName, maxPlayer);
         }
-        if (GUILayout.Button("Back"))
+        if (GUI.Button(new Rect(510, 485, 200, 60), "Back"))
         {
             navigateTo("Main");
         }
-        GUILayout.EndVertical();
-        GUILayout.EndArea();
     }
 
     private void menu_Lobby()
     {
-        GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
-        GUILayout.BeginVertical();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Server Name", GUILayout.Width(Screen.width *4/10));
-        GUILayout.Label(MultiplayerManager.instance.serverName);
-        GUILayout.EndHorizontal();
+        GUI.Label(new Rect(80, 20, 200, 60), "Server Name");
+        GUI.Label(new Rect(295, 20, 910, 60), MultiplayerManager.instance.serverName);
 
-        //menampilkan server ip
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Server IP Address", GUILayout.Width(Screen.width * 4 / 10));
-        GUILayout.Label(MultiplayerManager.instance.getServerIP());
-        GUILayout.EndHorizontal();
+        GUI.Label(new Rect(80, 95, 200, 60), "Server IP Address");
+        GUI.Label(new Rect(295, 95, 910, 60), MultiplayerManager.instance.getServerIP());
 
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Total Player", GUILayout.Width(Screen.width * 4 / 10));
-        GUILayout.Label(MultiplayerManager.instance.playerList.Count + "/" + MultiplayerManager.instance.maxPlayer);
-        GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Map", GUILayout.Width(Screen.width * 4 / 10));
-        GUILayout.Label(MultiplayerManager.instance.currentMap.mapName);
-        GUILayout.EndHorizontal();
-
-        
+        GUI.Label(new Rect(80, 170, 200, 60), "Map");
+        GUI.Label(new Rect(295, 170, 910, 60), MultiplayerManager.instance.currentMap.mapName);
 
         //select gasing
         if (!MultiplayerManager.instance.isDedicatedServer)
         {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Gasing", GUILayout.Width(Screen.width * 4 / 10));
-            GUILayout.Label(MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
-            if (GUILayout.Button("Choose Gasing"))
+            GUI.Label(new Rect(80, 245, 200, 60), "Gasing");
+            GUI.Label(new Rect(295, 245, 645, 60), MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
+            if (GUI.Button(new Rect(945, 245, 260, 60), "Choose Gasing"))
             {
                 navigateTo("Choose Gasing");
             }
-            GUILayout.EndHorizontal();
         }
 
-        GUILayout.Label("Players:");
-        scrollLobby = GUILayout.BeginScrollView(scrollLobby, GUILayout.MaxWidth(Screen.width));
-        foreach (MPPlayer pl in MultiplayerManager.instance.playerList)
+        GUI.Label(new Rect(80, 320, 200, 60), "Total Player");
+        GUI.Label(new Rect(295, 320, 910, 60), MultiplayerManager.instance.playerList.Count + "/" + MultiplayerManager.instance.maxPlayer);
+
+        scrollLobby = GUI.BeginScrollView(new Rect(80, 395, 1125, 220), scrollLobby, new Rect(0, 0, 1125, MultiplayerManager.instance.playerList.Count * 60));
+        for (int i = 0; i < MultiplayerManager.instance.playerList.Count; i++)
         {
-            GUILayout.Box(pl.playerName);
+            GUI.Box(new Rect(0, i * 60, 1110, 60), MultiplayerManager.instance.playerList[i].playerName);
         }
-
-        GUILayout.EndScrollView();
+        GUI.EndScrollView();
 
         if (Network.isServer)
         {
-            if (GUILayout.Button("Start"))
+            if (GUI.Button(new Rect(300, 630, 200, 60), "Start"))
             {
                 //start the game
                 MultiplayerManager.instance.networkView.RPC("client_loadMultiplayerMap", RPCMode.AllBuffered, MultiplayerManager.instance.currentMap.mapLoadName, MultiplayerManager.instance.oldprefix + 1);
@@ -231,12 +173,10 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if (GUILayout.Button("Disconnect"))
+        if (GUI.Button(new Rect(800, 630, 200, 60), "Disconnect"))
         {
             Network.Disconnect();
         }
-        GUILayout.EndVertical();
-        GUILayout.EndArea();
     }
 
     private void menu_chooseMap()
@@ -272,7 +212,7 @@ public class MenuManager : MonoBehaviour
         if (GUILayout.Button("OK"))
         {
             MultiplayerManager.instance.networkView.RPC("client_changeGasing", RPCMode.All, Network.player, selected);
-            navigateTo("Lobby");            
+            navigateTo("Lobby");
         }
         if (GUILayout.Button("Cancel"))
         {

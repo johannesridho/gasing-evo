@@ -32,7 +32,7 @@ public class HealthBar : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
 		screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 		screenPosition.y = Screen.height - screenPosition.y;	//naikin dikit biar di atasnya gasing
 		healthBarLength = gasing.getEP () / gasing.getEPMax() * 50;		//update terus panjang bar

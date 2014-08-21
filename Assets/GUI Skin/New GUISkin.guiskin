@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: New GUISkin
   m_EditorClassIdentifier: 
-  m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
+  m_Font: {fileID: 12800000, guid: 2b60b93314928c8419bd1546848b58f2, type: 3}
   m_box:
     m_Name: box
     m_Normal:
@@ -118,7 +118,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 25
+    m_FontSize: 40
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 25
+    m_FontSize: 40
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 1
@@ -295,7 +295,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 25
+    m_FontSize: 40
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 0

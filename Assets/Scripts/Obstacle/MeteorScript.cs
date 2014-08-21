@@ -19,7 +19,14 @@ public class MeteorScript : MonoBehaviour {
 	void Update(){
 		clock += Time.deltaTime;
 		if (clock >= 15) {
-			Destroy(this.gameObject);
+            if (GamePrefs.isMultiplayer)
+            {
+                Network.Destroy(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
 		}
 	}
 

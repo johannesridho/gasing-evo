@@ -18,7 +18,14 @@ public class AutoSelfDestroy : MonoBehaviour {
 	void Update () {
 		clock += Time.deltaTime;
 		if (clock >= 2) {
-			Destroy(this.gameObject);
+            if (GamePrefs.isMultiplayer)
+            {
+                Network.Destroy(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
 		}
 	}
 }

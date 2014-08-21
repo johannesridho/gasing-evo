@@ -76,7 +76,7 @@ public class FollowPemain : MonoBehaviour
         offset = transform.position;
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (GamePrefs.isMultiplayer)
         {

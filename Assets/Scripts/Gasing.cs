@@ -127,7 +127,14 @@ public class Gasing : MonoBehaviour {
 			this.EPKurang(5f);
 		} else if(col.gameObject.tag == "Explosive Obstacle"){
 			this.EPKurang(30f);
-			Destroy(col.gameObject);
+            if (GamePrefs.isMultiplayer)
+            {
+                Network.Destroy(col.gameObject);
+            }
+            else
+            {
+                Destroy(col.gameObject);
+            }
 		}
 		else if (col.gameObject.name == "Tanah") {
 			this.isOnGround = true;
