@@ -16,32 +16,32 @@ public class SelectArenaScript : MonoBehaviour {
 
 	void OnMouseUp(){
 		switch (name) {
-			case "ice field":
-				name = "gladiator";
+			case "Ice Field":
+				name = "Gladiator";
 				thumbnail.sprite = thumbnails[1];
 				break;
-			case "gladiator":
-				name = "steel arena";
+			case "Gladiator":
+				name = "Steel Arena";
 				thumbnail.sprite = thumbnails[2];
 				break;
-			case "steel arena":
-				name = "gasing evo";
+			case "Steel Arena":
+				name = "Gasing Evo Arena";
 				thumbnail.sprite = thumbnails[3];
 				break;
-			case "gasing evo":
-				name = "nebula";
+			case "Gasing Evo Arena":
+				name = "Nebula";
 				thumbnail.sprite = thumbnails[4];
 				break;
-			case "nebula":
-				name = "explode arena";
+			case "Nebula":
+				name = "Explode Arena";
 				thumbnail.sprite = thumbnails[5];
 				break;
-			case "explode arena":
-				name = "ice field";
+			case "Explode Arena":
+				name = "Ice Field";
 				thumbnail.sprite = thumbnails[0];
 				break;	
 			default:
-				name = "gladiator";
+				name = "Gladiator";
 				thumbnail.sprite = thumbnails[1];
 				break;
 		}

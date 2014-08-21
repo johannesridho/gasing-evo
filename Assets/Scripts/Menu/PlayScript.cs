@@ -4,15 +4,33 @@ using System.Collections;
 public class PlayScript : MonoBehaviour {
 
 	void OnMouseUp(){
-		if(Utilities.chosenArena == "ice field"){
-			Application.LoadLevel("IceField");
-		}else if(Utilities.chosenArena == "steel arena"){
-			Application.LoadLevel("Single Player");
-		}else if(Utilities.chosenArena == "gladiator"){
-			Application.LoadLevel("Gladiator");
-		}else if(Utilities.chosenArena == "explode arena"){
-			Application.LoadLevel("Drum Slide");
-		}
+		Application.LoadLevel(Utilities.chosenArena);
+//		switch (Utilities.chosenArena){
+//		case "ice field":
+//			Application.LoadLevel("IceField");
+//			break;
+//		case "steel arena":
+//			Application.LoadLevel("Single Player");
+//			break;
+//		case "gladiator":
+//			Application.LoadLevel("Gladiator");
+//			break;
+//		case "explode arena":
+//			Application.LoadLevel("Drum Slide");
+//			break;
+//		case "nebula":
+//			Application.LoadLevel("Nebula");
+//			break;
+//		case "gasing evo":
+//			Application.LoadLevel("Drum Slide");
+//			break;
+//		case "explode arena":
+//			Application.LoadLevel("Drum Slide");
+//			break;
+//		default:
+//			Application.LoadLevel("Drum Slide");
+//			break;
+//		}
 	}
 	void OnMouseOver(){
 		renderer.material.color = new Color (renderer.material.color.r,renderer.material.color.g + 40,renderer.material.color.b);
