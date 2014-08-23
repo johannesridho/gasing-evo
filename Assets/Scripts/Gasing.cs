@@ -56,10 +56,9 @@ public class Gasing : MonoBehaviour {
 		speedMax = 20f;
 
 		if(audioPutaran){
-			audio.loop = true;
-			audio.clip = audioPutaran;
-			audio.Play();
-//			audio.PlayOneShot(audioPutaran);
+//			audio.loop = true;
+//			audio.clip = audioPutaran;
+//			audio.Play();
 		}
 	}
 

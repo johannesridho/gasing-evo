@@ -182,7 +182,7 @@ Transform:
   m_Children:
   - {fileID: 555081942}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 5
+  m_RootOrder: 0
 --- !u!95 &3993480
 Animator:
   serializedVersion: 3
@@ -3388,7 +3388,7 @@ Transform:
   m_Children:
   - {fileID: 1703455380}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 1
+  m_RootOrder: 5
 --- !u!95 &332202431
 Animator:
   serializedVersion: 3
@@ -3620,7 +3620,7 @@ Transform:
   m_Children:
   - {fileID: 2001690206}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 3
+  m_RootOrder: 7
 --- !u!95 &350625371
 Animator:
   serializedVersion: 3
@@ -4263,7 +4263,7 @@ Transform:
   m_Children:
   - {fileID: 1666936194}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 8
+  m_RootOrder: 3
 --- !u!95 &427533572
 Animator:
   serializedVersion: 3
@@ -4717,7 +4717,7 @@ Transform:
   m_Children:
   - {fileID: 2119969141}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 6
+  m_RootOrder: 1
 --- !u!95 &470962638
 Animator:
   serializedVersion: 3
@@ -4879,7 +4879,7 @@ Transform:
   m_Children:
   - {fileID: 1694234138}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 2
+  m_RootOrder: 6
 --- !u!95 &481640802
 Animator:
   serializedVersion: 3
@@ -6544,9 +6544,9 @@ Transform:
   m_LocalPosition: {x: -2.28231049, y: 34.249691, z: -4.37211609}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2022389483}
   - {fileID: 2004633345}
   - {fileID: 974577328}
+  - {fileID: 2022389483}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!1001 &646883686
@@ -9757,7 +9757,7 @@ Transform:
   m_Children:
   - {fileID: 1193319495}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 0
+  m_RootOrder: 4
 --- !u!95 &908134288
 Animator:
   serializedVersion: 3
@@ -10239,7 +10239,7 @@ Transform:
   m_Children:
   - {fileID: 1694632643}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 4
+  m_RootOrder: 8
 --- !u!95 &951299431
 Animator:
   serializedVersion: 3
@@ -10432,7 +10432,7 @@ Transform:
   - {fileID: 426716723}
   - {fileID: 349626778}
   m_Father: {fileID: 633198028}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!95 &974577329
 Animator:
   serializedVersion: 3
@@ -15056,7 +15056,7 @@ Transform:
   m_Children:
   - {fileID: 1128110362}
   m_Father: {fileID: 1866448211}
-  m_RootOrder: 7
+  m_RootOrder: 2
 --- !u!95 &1528916833
 Animator:
   serializedVersion: 3
@@ -18652,15 +18652,15 @@ Transform:
   m_LocalPosition: {x: 3.71732712, y: .00123998523, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3993479}
+  - {fileID: 470962637}
+  - {fileID: 1528916832}
+  - {fileID: 427533571}
   - {fileID: 908134287}
   - {fileID: 332202430}
   - {fileID: 481640801}
   - {fileID: 350625370}
   - {fileID: 951299430}
-  - {fileID: 3993479}
-  - {fileID: 470962637}
-  - {fileID: 1528916832}
-  - {fileID: 427533571}
   m_Father: {fileID: 0}
   m_RootOrder: 8
 --- !u!1 &1867488013
@@ -19842,6 +19842,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1965326430}
   - 114: {fileID: 1965326431}
+  - 82: {fileID: 1965326432}
   m_Layer: 0
   m_Name: KampungController
   m_TagString: Untagged
@@ -19876,6 +19877,64 @@ MonoBehaviour:
   musuh: {fileID: 0}
   gasingPemain: {fileID: 0}
   gasingMusuh: {fileID: 0}
+--- !u!82 &1965326432
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1965326429}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1975252711
 Prefab:
   m_ObjectHideFlags: 0
@@ -20582,7 +20641,7 @@ Transform:
   - {fileID: 2120274525}
   - {fileID: 1002395679}
   m_Father: {fileID: 633198028}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!95 &2004633346
 Animator:
   serializedVersion: 3
@@ -20754,7 +20813,7 @@ Transform:
   - {fileID: 1379669792}
   - {fileID: 1523687758}
   m_Father: {fileID: 633198028}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!95 &2022389484
 Animator:
   serializedVersion: 3
