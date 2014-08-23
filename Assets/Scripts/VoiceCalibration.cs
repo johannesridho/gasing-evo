@@ -6,6 +6,21 @@ using System.Collections;
 
 public class VoiceCalibration : MonoBehaviour {
 
+	// menu related
+	private float guiRatioX;
+	private float guiRatioY;
+	private float sWidth;
+	private float sHeight;
+	private Vector3 GUIsF;
+	private int sizegui;
+	//public GUIStyle customButton;
+	public GUISkin customSkin;
+
+	// voice option
+	public string bgmText = "ON";
+	public string sfxText = "ON";
+	public string voiceText = "ON";
+
 	// frame-rate
 	private int m_frames = 0;
 	private float m_framesPerSecond = 0f;
@@ -30,7 +45,7 @@ public class VoiceCalibration : MonoBehaviour {
 	// key untuk save profile
 	private const string FILE_PROFILES = "GasingEvo.profiles";
 	// flag untuk load profile
-	private bool HaveLoad;
+	private bool haveLoad = false;
 
 	// Ambil word yang sudah direkam
 	private WordDetails GetWord(string label)
@@ -58,6 +73,15 @@ public class VoiceCalibration : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//get the screen's width
+		sWidth = Screen.width;
+		sHeight = Screen.height;
+		//calculate the rescale ratio
+		guiRatioX = sWidth / 1280;
+		guiRatioY = sHeight / 720;
+		//create a rescale Vector3 with the above ratio
+		GUIsF = new Vector3(guiRatioX, guiRatioY, 1);
+
 		if (null == AudioWordDetection ||
 		    null == Mic)
 		{
@@ -67,11 +91,10 @@ public class VoiceCalibration : MonoBehaviour {
 		
 		// prepopulate words
 		AudioWordDetection.Words.Add(new WordDetails() { Label = "Noise" });
+		AudioWordDetection.Words.Add(new WordDetails() { Label = "Ultimate" });
 		
 		//subscribe detection event
 		AudioWordDetection.WordDetectedEvent += WordDetectedHandler;
-
-		HaveLoad = false;
 	}
 	
 	// Update is called once per frame
@@ -91,9 +114,51 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 	}
 
+	public void VoiceOption() {
+		GUI.Label(new Rect(400,100,500,100), "Music");
+		GUI.Label(new Rect(400,150,500,100), "Sound Effect");
+		GUI.Label(new Rect(400,250,500,100), "Voice Control");
+		GUI.Label(new Rect(400,300,500,100), "<size=20>(Used to activate your gasing's ultimate skill)</size>");
+		if (GUI.Button(new Rect(800, 100, 100, 50), bgmText))
+		{
+			if (GamePrefs.isBGM) 
+			{
+				GamePrefs.isBGM = false;
+				bgmText = "OFF";
+			} else {
+				GamePrefs.isBGM = true;
+				bgmText = "ON";
+			}
+		}
+		if (GUI.Button(new Rect(800, 150, 100, 50), sfxText))
+		{
+			if (GamePrefs.isSFX) 
+			{
+				GamePrefs.isSFX = false;
+				sfxText = "OFF";
+			} else {
+				GamePrefs.isSFX = true;
+				sfxText = "ON";
+			}
+		}
+		if (GUI.Button(new Rect(800, 250, 100, 50), voiceText))
+		{
+			if (GamePrefs.isVoiceUsed) 
+			{
+				GamePrefs.isVoiceUsed = false;
+				voiceText = "OFF";
+			} else {
+				GamePrefs.isVoiceUsed = true;
+				voiceText = "ON";
+			}
+		}
+	}
+
 	// Update GUI
 	// Print FPS ke layar dan Set Microphone
 	void OnGUI() {
+		GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
+		GUI.skin = customSkin;
 		try {
 			// Hitung jumlah FPS
 			++m_frames;
@@ -111,11 +176,10 @@ public class VoiceCalibration : MonoBehaviour {
 				m_timerFrames = DateTime.Now + TimeSpan.FromSeconds(1);
 				m_frames = 0;
 			}
-			
-			// Set default Mic untuk word detection
-			GUILayout.Label(string.Format("<size=40>FPS: {0:F2}                      Detected Mic: " + Mic.DeviceName + "</size>", m_framesPerSecond));
-			GUILayout.Space(40);
-			
+
+			GUI.Label(new Rect(1100,10,500,100), string.Format("<size=20>FPS: {0:F2}</size>", m_framesPerSecond));
+			GUI.Label(new Rect(500,10,800,100), string.Format("<size=20>Detected Mic: " + Mic.DeviceName + "</size>"));
+
 			if (string.IsNullOrEmpty(Mic.DeviceName))
 			{	
 				foreach (string device in Microphone.devices)
@@ -133,7 +197,10 @@ public class VoiceCalibration : MonoBehaviour {
 		{
 			Debug.Log(string.Format("OnGUI exception={0}", ex));
 		}
-		
+
+		// Opsi suara
+		VoiceOption();
+
 		// Fungsi word detection diluar try-catch
 		if (null == AudioWordDetection ||
 		    null == Mic ||
@@ -142,140 +209,141 @@ public class VoiceCalibration : MonoBehaviour {
 			return;
 		}
 
-		DisplayProfile(FILE_PROFILES);
+		SaveProfile(FILE_PROFILES);
 
-		if (!HaveLoad) 
+		if (!haveLoad) 
 		{
 			LoadProfile(FILE_PROFILES);
-			HaveLoad = true;
+			haveLoad = true;
 		}
 
-		if (GUILayout.Button("<size=30>Add Jurus</size>", GUILayout.Height(90)))
-		{
-			WordDetails details = new WordDetails();
-			details.Label = "Jurus " + AudioWordDetection.Words.Count.ToString();
-			AudioWordDetection.Words.Add(details);
-		}
-		
-		GUILayout.Space(10);
+//		if (GUILayout.Button("<size=30>Add Jurus</size>", GUILayout.Height(90)))
+//		{
+//			WordDetails details = new WordDetails();
+//			details.Label = "Jurus " + AudioWordDetection.Words.Count.ToString();
+//			AudioWordDetection.Words.Add(details);
+//		}
+
 		Color backgroundColor = GUI.backgroundColor;
-		
-		// Untuk setiap word yang direkam, maka.....
-		for (int wordIndex = 0; wordIndex < AudioWordDetection.Words.Count; ++wordIndex)
-		{
-			// word yang terdeteksi diwarnain
-			if (AudioWordDetection.ClosestIndex == wordIndex)
+		GUILayout.BeginArea(new Rect(320,380,800,800));
+
+		if (GamePrefs.isVoiceUsed) {
+			// Untuk setiap word yang direkam, maka.....
+			for (int wordIndex = 0; wordIndex < AudioWordDetection.Words.Count; ++wordIndex)
 			{
-				GUI.backgroundColor = Color.green;
-			}
-			else
-			{
-				GUI.backgroundColor = backgroundColor;
-			}
-			
-			// GUI berfungsi jika Noise tidak null
-			if (wordIndex > 0)
-			{
-				GUI.enabled = null != GetWord("Noise").SpectrumReal;
-			}
-			
-			// print GUI untuk tiap word
-			GUILayout.BeginHorizontal();
-			WordDetails details = AudioWordDetection.Words[wordIndex];
-			if (wordIndex == 0)
-			{
-				GUILayout.Label("<size=30>"+details.Label+"</size>", GUILayout.Width(150), GUILayout.Height(90));
-			}
-			else
-			{
-				details.Label = GUILayout.TextField(details.Label, GUILayout.Width(150), GUILayout.Height(90));
-			}
-			GUILayout.Button(string.Format("{0}", (null == details.SpectrumReal) ? "<size=30>not set</size>" : "<size=30>set</size>"), GUILayout.Height(90));
-			
-			// rekam word dan catat labelnya
-			Event e = Event.current;
-			if (null != e)
-			{
-				Rect rect = GUILayoutUtility.GetLastRect();
-				bool overButton = rect.Contains(e.mousePosition);
+				// word yang terdeteksi diwarnain
+				if (AudioWordDetection.ClosestIndex == wordIndex)
+				{
+					GUI.backgroundColor = Color.green;
+				}
+				else
+				{
+					GUI.backgroundColor = backgroundColor;
+				}
+				// GUI berfungsi jika Noise tidak null
+	//			if (wordIndex > 0)
+	//			{
+	//				GUI.enabled = null != GetWord("Noise").SpectrumReal;
+	//			}
 				
-				if (m_buttonIndex == -1 &&
-				    m_timerStart == DateTime.MinValue &&
-				    Input.GetMouseButton(0) &&
-				    overButton)
+				// print GUI untuk tiap word
+				GUILayout.BeginHorizontal();
+				WordDetails details = AudioWordDetection.Words[wordIndex];
+				if (wordIndex == 0)
 				{
-					//Debug.Log("Initial button down");
-					m_buttonIndex = wordIndex;
-					m_startPosition = Mic.GetPosition();
-					m_timerStart = DateTime.Now + TimeSpan.FromSeconds(Mic.CaptureTime);
+					GUILayout.Label(details.Label, GUILayout.Width(150), GUILayout.Height(90));
 				}
-				if (m_buttonIndex == wordIndex)
+				else
 				{
-					bool buttonUp = Input.GetMouseButtonUp(0);
-					if (m_timerStart > DateTime.Now &&
-					    !buttonUp)
-					{
-						//Debug.Log("Button still pressed");
-					}
-					else if (m_timerStart != DateTime.MinValue &&
-					         m_timerStart < DateTime.Now)
-					{
-						//Debug.Log("Button timed out");
-						SetupWordProfile(false);
-						m_timerStart = DateTime.MinValue;
-						m_buttonIndex = -1;
-					}
-					else if (m_timerStart != DateTime.MinValue &&
-					         buttonUp &&
-					         m_buttonIndex != -1)
-					{
-						//Debug.Log("Button is no longer pressed");
-						SetupWordProfile(true);
-						m_timerStart = DateTime.MinValue;
-						m_buttonIndex = -1;
-					}
+					details.Label = GUILayout.TextField(details.Label, GUILayout.Width(150), GUILayout.Height(90));
 				}
-			}
-			
-			// play audio untuk word yang udah direkam
-			GUI.enabled = null != details.Audio;
-			if (GUILayout.Button("<size=30>Play</size>", GUILayout.Height(90)))
-			{
-				if (null != details.Audio)
+				GUILayout.Button(string.Format("{0}", (null == details.SpectrumReal) ? "<size=30>not set</size>" : "<size=30>set</size>"), GUILayout.Height(90));
+				
+				// rekam word dan catat labelnya
+				Event e = Event.current;
+				if (null != e)
 				{
-					if (NormalizeWave)
+					Rect rect = GUILayoutUtility.GetLastRect();
+					bool overButton = rect.Contains(e.mousePosition);
+					
+					if (m_buttonIndex == -1 &&
+					    m_timerStart == DateTime.MinValue &&
+					    Input.GetMouseButton(0) &&
+					    overButton)
 					{
-						audio.PlayOneShot(details.Audio, 0.1f);
+						//Debug.Log("Initial button down");
+						m_buttonIndex = wordIndex;
+						m_startPosition = Mic.GetPosition();
+						m_timerStart = DateTime.Now + TimeSpan.FromSeconds(Mic.CaptureTime);
 					}
-					else
+					if (m_buttonIndex == wordIndex)
 					{
-						audio.PlayOneShot(details.Audio);
+						bool buttonUp = Input.GetMouseButtonUp(0);
+						if (m_timerStart > DateTime.Now &&
+						    !buttonUp)
+						{
+							//Debug.Log("Button still pressed");
+						}
+						else if (m_timerStart != DateTime.MinValue &&
+						         m_timerStart < DateTime.Now)
+						{
+							//Debug.Log("Button timed out");
+							SetupWordProfile(false);
+							m_timerStart = DateTime.MinValue;
+							m_buttonIndex = -1;
+						}
+						else if (m_timerStart != DateTime.MinValue &&
+						         buttonUp &&
+						         m_buttonIndex != -1)
+						{
+							//Debug.Log("Button is no longer pressed");
+							SetupWordProfile(true);
+							m_timerStart = DateTime.MinValue;
+							m_buttonIndex = -1;
+						}
 					}
 				}
-			}
-			
-			// GUI untuk menghapus word yang sudah direkam
-			GUI.enabled = wordIndex > 0;
-			if (wordIndex > 0 &&
-			    GUILayout.Button("<size=30>Remove</size>", GUILayout.Height(90)))
-			{
-				AudioWordDetection.Words.RemoveAt(wordIndex);
-				--wordIndex;
-			}
-			
-			// tampilkan score
-			Color color = GUI.color;
-			GUI.color = Color.black;
-			GUILayout.Label("<size=30>"+details.Score.ToString()+"</size>");
-			GUI.color = color;
-			GUILayout.EndHorizontal();
-			
-			if (wordIndex > 0)
-			{
-				GUI.enabled = null != GetWord("Noise").SpectrumReal;
+				
+				// play audio untuk word yang udah direkam
+				GUI.enabled = null != details.Audio;
+				if (GUILayout.Button("<size=30>Play</size>", GUILayout.Height(90)))
+				{
+					if (null != details.Audio)
+					{
+						if (NormalizeWave)
+						{
+							audio.PlayOneShot(details.Audio, 0.1f);
+						}
+						else
+						{
+							audio.PlayOneShot(details.Audio);
+						}
+					}
+				}
+				
+				// GUI untuk menghapus word yang sudah direkam
+	//			GUI.enabled = wordIndex > 0;
+	//			if (wordIndex > 0 &&
+	//			    GUILayout.Button("<size=30>Remove</size>", GUILayout.Height(90)))
+	//			{
+	//				AudioWordDetection.Words.RemoveAt(wordIndex);
+	//				--wordIndex;
+	//			}
+				
+				// tampilkan score
+				Color color = GUI.color;
+				GUI.color = Color.white;
+				GUILayout.Label("<size=30>"+details.Score.ToString()+"</size>");
+				GUI.color = color;
+				GUILayout.EndHorizontal();
+				
+				if (wordIndex > 0)
+				{
+					GUI.enabled = null != GetWord("Noise").SpectrumReal;
+				}
 			}
 		}
-		
+		GUILayout.EndArea();
 		GUI.backgroundColor = backgroundColor;
 	}
 
@@ -440,16 +508,15 @@ public class VoiceCalibration : MonoBehaviour {
 	}
 
 	// print tombol untuk save profile pemain
-	private void DisplayProfile(string key) 
+	private void SaveProfile(string key) 
 	{
-		GUILayout.BeginHorizontal();
-		if (GUILayout.Button("<size=30>Save Profile</size>", GUILayout.MinHeight(90)))
-		{
-			//AudioWordDetection.SaveProfiles(new FileInfo(key));
-			AudioWordDetection.SaveProfilesPrefs(key);
+		if (GamePrefs.isVoiceUsed) {
+			if (GUI.Button(new Rect(500, 630, 300, 50), "Save Voice"))
+			{
+				//AudioWordDetection.SaveProfiles(new FileInfo(key));
+				AudioWordDetection.SaveProfilesPrefs(key);
+			}
 		}
-		
-		GUILayout.EndHorizontal();
 	}
 
 	// Load Profile pemain jika ada
