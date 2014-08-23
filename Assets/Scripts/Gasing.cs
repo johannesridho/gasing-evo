@@ -56,7 +56,10 @@ public class Gasing : MonoBehaviour {
 		speedMax = 20f;
 
 		if(audioPutaran){
-			audio.PlayOneShot(audioPutaran);
+			audio.loop = true;
+			audio.clip = audioPutaran;
+			audio.Play();
+//			audio.PlayOneShot(audioPutaran);
 		}
 	}
 
@@ -137,7 +140,7 @@ public class Gasing : MonoBehaviour {
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
 			if(audioTabrakan1 && audioTabrakan2 && audioTabrakan3 && audioTabrakan4){
 				int n = Random.Range(1,5);
-				Debug.Log(n+" 11111111111111111111111111");
+
 				switch(n){
 					case 1:
 						audio.PlayOneShot(audioTabrakan1);	
