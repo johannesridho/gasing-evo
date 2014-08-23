@@ -6,7 +6,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	public bool isInvicibleAfterClash;
 	private float timeCountAfterClash;
 	private Gasing gasing;
-	private static float COEF_MOMENTUM = 1.9f;
+	private static float COEF_MOMENTUM = 2.4f;
 
 	void Awake(){
 		if(!gasing)
@@ -31,7 +31,7 @@ public class PhysicsTabrak : MonoBehaviour {
 	}
 	
 	void geserAfterClash(Collision C) {
-		float coeff_geser = 0.9f;
+		float coeff_geser = 0.1f;
 		Vector3 heading = C.collider.rigidbody.position - gasing.rigidbody.position;
 		Vector3 direction = heading / heading.magnitude;
 		Vector3 posSelf = C.collider.rigidbody.position + new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
@@ -41,7 +41,8 @@ public class PhysicsTabrak : MonoBehaviour {
 	}	
 	
 	void changeSpeedAfterClash(Collision C, Vector3 vel) {
-		Vector3 momentum = COEF_MOMENTUM * vel * 500;
+		Vector3 velXZ = new Vector3(vel.x, 0, vel.z);
+		Vector3 momentum = COEF_MOMENTUM * velXZ * 500;
 		C.collider.SendMessage ("dorong", momentum, SendMessageOptions.DontRequireReceiver);
 	}
 
