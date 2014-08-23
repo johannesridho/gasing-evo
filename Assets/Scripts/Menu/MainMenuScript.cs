@@ -24,7 +24,7 @@ public class MainMenuScript : MonoBehaviour {
 			showMultiplayerMenu();
 		} else if (isOption) {
 			//showOptionMenu();
-			//Application.LoadLevel ("Voice Calibration");
+			Application.LoadLevel ("Voice Calibration");
 		} else if (isArcadeMode) {
 			Application.LoadLevel ("Arcade Menu");
 		} else if (isRoyalRumble) {
