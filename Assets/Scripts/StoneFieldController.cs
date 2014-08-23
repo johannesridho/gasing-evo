@@ -141,7 +141,7 @@ public class StoneFieldController : MonoBehaviour
 			audio.loop = true;
 			audio.clip = audioBattle;
 			audio.panLevel = 0;
-			audio.volume = 0.03f;
+			audio.volume = 0.1f;
 			audio.Play();
 		}
     }
