@@ -17,9 +17,9 @@ public class VoiceCalibration : MonoBehaviour {
 	public GUISkin customSkin;
 
 	// voice option
-	public string bgmText = "ON";
-	public string sfxText = "ON";
-	public string voiceText = "ON";
+	private string bgmText = "ON";
+	private string sfxText = "ON";
+	private string voiceText = "ON";
 
 	// frame-rate
 	private int m_frames = 0;
@@ -225,21 +225,21 @@ public class VoiceCalibration : MonoBehaviour {
 //		}
 
 		Color backgroundColor = GUI.backgroundColor;
-		GUILayout.BeginArea(new Rect(320,380,800,800));
+		GUILayout.BeginArea(new Rect(280,380,900,800));
 
 		if (GamePrefs.isVoiceUsed) {
 			// Untuk setiap word yang direkam, maka.....
 			for (int wordIndex = 0; wordIndex < AudioWordDetection.Words.Count; ++wordIndex)
 			{
 				// word yang terdeteksi diwarnain
-				if (AudioWordDetection.ClosestIndex == wordIndex)
-				{
-					GUI.backgroundColor = Color.green;
-				}
-				else
-				{
-					GUI.backgroundColor = backgroundColor;
-				}
+//				if (AudioWordDetection.ClosestIndex == wordIndex)
+//				{
+//					GUI.backgroundColor = Color.green;
+//				}
+//				else
+//				{
+//					GUI.backgroundColor = backgroundColor;
+//				}
 				// GUI berfungsi jika Noise tidak null
 	//			if (wordIndex > 0)
 	//			{
@@ -249,15 +249,8 @@ public class VoiceCalibration : MonoBehaviour {
 				// print GUI untuk tiap word
 				GUILayout.BeginHorizontal();
 				WordDetails details = AudioWordDetection.Words[wordIndex];
-				if (wordIndex == 0)
-				{
-					GUILayout.Label(details.Label, GUILayout.Width(150), GUILayout.Height(90));
-				}
-				else
-				{
-					details.Label = GUILayout.TextField(details.Label, GUILayout.Width(150), GUILayout.Height(90));
-				}
-				GUILayout.Button(string.Format("{0}", (null == details.SpectrumReal) ? "<size=30>not set</size>" : "<size=30>set</size>"), GUILayout.Height(90));
+				GUILayout.Label(details.Label);
+				GUILayout.Button(string.Format("{0}", (null == details.SpectrumReal) ? "not set" : "set"));
 				
 				// rekam word dan catat labelnya
 				Event e = Event.current;
@@ -306,7 +299,7 @@ public class VoiceCalibration : MonoBehaviour {
 				
 				// play audio untuk word yang udah direkam
 				GUI.enabled = null != details.Audio;
-				if (GUILayout.Button("<size=30>Play</size>", GUILayout.Height(90)))
+				if (GUILayout.Button("Play", GUILayout.Height(90)))
 				{
 					if (null != details.Audio)
 					{
@@ -333,14 +326,9 @@ public class VoiceCalibration : MonoBehaviour {
 				// tampilkan score
 				Color color = GUI.color;
 				GUI.color = Color.white;
-				GUILayout.Label("<size=30>"+details.Score.ToString()+"</size>");
+				GUILayout.Label(details.Score.ToString());
 				GUI.color = color;
 				GUILayout.EndHorizontal();
-				
-				if (wordIndex > 0)
-				{
-					GUI.enabled = null != GetWord("Noise").SpectrumReal;
-				}
 			}
 		}
 		GUILayout.EndArea();
