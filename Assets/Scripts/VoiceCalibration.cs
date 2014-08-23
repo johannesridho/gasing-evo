@@ -152,6 +152,12 @@ public class VoiceCalibration : MonoBehaviour {
 				voiceText = "ON";
 			}
 		}
+
+		// Back to MainMenu
+		if (GUI.Button(new Rect(1100, 630, 100, 50), "Back"))
+		{
+			Application.LoadLevel("Main Menu");
+		}
 	}
 
 	// Update GUI
