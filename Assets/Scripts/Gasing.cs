@@ -26,14 +26,25 @@ public class Gasing : MonoBehaviour {
 	public bool isOnGround;
     public bool isPlayerAlive = true;
 
-	public AudioClip audioTabrakan;
+	public AudioClip audioPutaran;
+	private AudioClip audioTabrakTembok;
+	private AudioClip audioTabrakan1;
+	private AudioClip audioTabrakan2;
+	private AudioClip audioTabrakan3;
+	private AudioClip audioTabrakan4;
 
 	void Awake(){
 		if(!gasing)
-			gasing = GetComponent<Gasing>();
+			gasing = GetComponent<Gasing>();	
 	}
 
 	void Start () {	
+		audioTabrakTembok = (AudioClip) Resources.Load("Audio/gasing_mental1");
+		audioTabrakan1 = (AudioClip) Resources.Load("Audio/gasing_tabrakan");
+		audioTabrakan2 = (AudioClip) Resources.Load("Audio/gasing_tabrakan2");
+		audioTabrakan3 = (AudioClip) Resources.Load("Audio/gasing_tabrakan3");
+		audioTabrakan4 = (AudioClip) Resources.Load("Audio/pedang_slash");
+
 		energiPoint = energiPointMax;
 		skillPoint = skillPointMax;
 
@@ -43,6 +54,10 @@ public class Gasing : MonoBehaviour {
 //		power = 1f;
 		speed = 1f;
 		speedMax = 20f;
+
+		if(audioPutaran){
+			audio.PlayOneShot(audioPutaran);
+		}
 	}
 
 	void Update () {
@@ -114,17 +129,38 @@ public class Gasing : MonoBehaviour {
 		speedMax = n;
 	}
 	void movePosition(Vector3 v){
-        Debug.Log("move position");
+//        Debug.Log("move position");
         gasing.rigidbody.MovePosition(v);
 	}
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Ally") {
-			if(audioTabrakan){
-				audio.PlayOneShot(audioTabrakan);
+			if(audioTabrakan1 && audioTabrakan2 && audioTabrakan3 && audioTabrakan4){
+				int n = Random.Range(1,5);
+				Debug.Log(n+" 11111111111111111111111111");
+				switch(n){
+					case 1:
+						audio.PlayOneShot(audioTabrakan1);	
+						break;
+					case 2:
+						audio.PlayOneShot(audioTabrakan2);	
+						break;
+					case 3:
+						audio.PlayOneShot(audioTabrakan3);	
+						break;
+					case 4:
+						audio.PlayOneShot(audioTabrakan4);	
+						break;
+					default:
+						audio.PlayOneShot(audioTabrakan1);	
+						break;
+				}
 			}
 		} else if(col.gameObject.tag == "Obstacle"){
 			this.EPKurang(5f);
+			if(audioTabrakTembok){
+				audio.PlayOneShot(audioTabrakTembok);
+			}
 		} else if(col.gameObject.tag == "Explosive Obstacle"){
 			this.EPKurang(30f);
             if (GamePrefs.isMultiplayer)
