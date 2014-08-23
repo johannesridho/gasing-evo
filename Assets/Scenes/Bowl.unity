@@ -369,7 +369,7 @@ GameObject:
   - 64: {fileID: 892864039}
   m_Layer: 0
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -966,6 +966,10 @@ Prefab:
     - target: {fileID: 100002, guid: ba8614684acf0b14ab3203bf21d95d83, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ba8614684acf0b14ab3203bf21d95d83, type: 3}
+      propertyPath: m_TagString
+      value: Tanah
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba8614684acf0b14ab3203bf21d95d83, type: 3}

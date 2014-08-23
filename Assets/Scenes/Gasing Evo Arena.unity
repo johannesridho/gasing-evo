@@ -87,7 +87,7 @@ GameObject:
   - 23: {fileID: 27670118}
   m_Layer: 0
   m_Name: Tanah
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ GameObject:
   - 23: {fileID: 147047227}
   m_Layer: 0
   m_Name: Tanah Atas
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   - 23: {fileID: 475101509}
   m_Layer: 0
   m_Name: Tanah Kiri
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +413,7 @@ GameObject:
   - 23: {fileID: 593222277}
   m_Layer: 0
   m_Name: Tanah Kanan
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,7 +483,7 @@ GameObject:
   - 23: {fileID: 698379581}
   m_Layer: 0
   m_Name: Tanah Bawah
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -915,7 +915,7 @@ GameObject:
   - 23: {fileID: 2039738721}
   m_Layer: 0
   m_Name: Penutup Atas
-  m_TagString: Explosive Obstacle
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

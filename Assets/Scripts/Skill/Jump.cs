@@ -43,8 +43,8 @@ public class Jump : Skill {
     {
         if (gasing.getSP() > skillPointNeeded)
         {            
-//            if (gasing.isOnGround)
-			if (cooldown >= 1.5)
+            if (gasing.isOnGround)
+//			if (cooldown >= 1.5)
             {
                 float jump_coef = 15000f;
 //                Vector3 movement = new Vector3(0f, Physics.gravity.y / (-1), 0f);

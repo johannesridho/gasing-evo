@@ -333,7 +333,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2090416160}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &435217570
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +728,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 8acce1a15871e1045a165893e1c87e50, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Tanah
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8acce1a15871e1045a165893e1c87e50, type: 3}
       propertyPath: m_LocalScale.z
@@ -769,7 +769,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2090416160}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!1 &1098589226
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +784,7 @@ GameObject:
   - 64: {fileID: 1098589227}
   m_Layer: 0
   m_Name: pyramid
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -884,7 +884,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2090416160}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1001 &1510261077
 Prefab:
   m_ObjectHideFlags: 0
@@ -959,7 +959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2090416160}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &1817053589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1116,7 @@ GameObject:
   - 23: {fileID: 2067555166}
   m_Layer: 0
   m_Name: Tanah
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,9 +1198,9 @@ Transform:
   m_LocalPosition: {x: -10.1905937, y: -10.1551056, z: 47.740757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1478903205}
-  - {fileID: 1558249376}
   - {fileID: 906074819}
   - {fileID: 293337763}
+  - {fileID: 1478903205}
+  - {fileID: 1558249376}
   m_Father: {fileID: 0}
   m_RootOrder: 6

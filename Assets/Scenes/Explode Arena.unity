@@ -156,7 +156,7 @@ GameObject:
   - 23: {fileID: 27670118}
   m_Layer: 0
   m_Name: Tanah
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,7 +342,7 @@ GameObject:
   - 23: {fileID: 561198906}
   m_Layer: 0
   m_Name: Tanah
-  m_TagString: Untagged
+  m_TagString: Tanah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

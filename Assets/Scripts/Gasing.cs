@@ -175,7 +175,7 @@ public class Gasing : MonoBehaviour {
                 Destroy(col.gameObject);
             }
 		}
-		else if (col.gameObject.name == "Tanah") {
+		else if (col.gameObject.tag == "Tanah") {
 			this.isOnGround = true;
 		}
 	}
