@@ -6,7 +6,8 @@ public class PhysicsTabrak : MonoBehaviour {
 	public bool isInvicibleAfterClash;
 	private float timeCountAfterClash;
 	private Gasing gasing;
-	private static float COEF_MOMENTUM = 2.4f;
+	private static float COEF_MOMENTUM = 70f;
+	private Vector3 geserForce;
 
 	void Awake(){
 		if(!gasing)
@@ -16,34 +17,28 @@ public class PhysicsTabrak : MonoBehaviour {
 	void Start () {	
 		isInvicibleAfterClash = false;
 		timeCountAfterClash = 0f;
+		geserForce = new Vector3(0,0,0);
 	}
+
 	void Update () {
 	}
 
 	void FixedUpdate () {	
 		if (isInvicibleAfterClash) {
 			timeCountAfterClash += Time.deltaTime;
-			if (timeCountAfterClash >= 0.4f) {
+			gasing.dorong(geserForce);
+			if (timeCountAfterClash >= 0.2f) {
 				isInvicibleAfterClash = false;
 				timeCountAfterClash = 0f;
 			}
 		}
 	}
 	
-	void geserAfterClash(Collision C) {
-		float coeff_geser = 0.1f;
+	void changeSpeedAfterClash(Collision C, Vector3 vel) {
 		Vector3 heading = C.collider.rigidbody.position - gasing.rigidbody.position;
 		Vector3 direction = heading / heading.magnitude;
-		Vector3 posSelf = C.collider.rigidbody.position + new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
-		Vector3 posEnemy = gasing.rigidbody.position - new Vector3(direction.x * coeff_geser, 0, direction.z * coeff_geser);
-		gasing.rigidbody.MovePosition(posSelf);
-		C.collider.SendMessage ("movePosition", posEnemy, SendMessageOptions.DontRequireReceiver);
-	}	
-	
-	void changeSpeedAfterClash(Collision C, Vector3 vel) {
-		Vector3 velXZ = new Vector3(vel.x, 0, vel.z);
-		Vector3 momentum = COEF_MOMENTUM * velXZ * 500;
-		C.collider.SendMessage ("dorong", momentum, SendMessageOptions.DontRequireReceiver);
+		Vector3 mdirXZ = new Vector3(-direction.x , 0, -direction.z);
+		geserForce = COEF_MOMENTUM * mdirXZ * vel.magnitude;
 	}
 
 	void damageAfterClash(Collision C) {
@@ -69,7 +64,6 @@ public class PhysicsTabrak : MonoBehaviour {
 				timeCountAfterClash = 0f;
 			}
 			damageAfterClash(col);
-			geserAfterClash(col);
 			changeSpeedAfterClash(col, vel);
 		}
         if (col.gameObject.tag == "Item")
