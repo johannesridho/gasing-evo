@@ -83,7 +83,7 @@ public class MenuManager : MonoBehaviour
             MultiplayerManager.instance.isDedicatedServer = false;
         }
 
-        if (GUI.Button(new Rect(325, 250, 630, 60), "Host a Dedicated LAN Game"))
+        if (GUI.Button(new Rect(325, 250, 630, 60), "Start a Big Screen Mode"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = true;
@@ -142,7 +142,7 @@ public class MenuManager : MonoBehaviour
         GUI.Label(new Rect(295, 170, 910, 60), MultiplayerManager.instance.currentMap.mapName);
 
         //select gasing
-        if (!MultiplayerManager.instance.isDedicatedServer)
+        if ((!MultiplayerManager.instance.isDedicatedServer) || (MultiplayerManager.instance.isDedicatedServer && Network.isClient))
         {
             GUI.Label(new Rect(80, 245, 200, 60), "Gasing");
             GUI.Label(new Rect(295, 245, 645, 60), MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
@@ -181,6 +181,7 @@ public class MenuManager : MonoBehaviour
 
     private void menu_chooseMap()
     {
+
         GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
         GUILayout.BeginVertical();
         foreach (MapSetting map in MultiplayerManager.instance.mapList)

@@ -19,6 +19,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: Prototype
   m_TagString: Player
@@ -208,8 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
+  - {fileID: 11400012}
   - {fileID: 11400002}
-  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -269,6 +270,7 @@ MonoBehaviour:
   speed: 4
   speedMax: 20
   isOnGround: 1
+  isPlayerAlive: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
@@ -285,6 +287,19 @@ MonoBehaviour:
   gasing: {fileID: 11400008}
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7227eb9b79e06f43b0f2a8ad7c3abb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 0}
+  skillName: 
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
