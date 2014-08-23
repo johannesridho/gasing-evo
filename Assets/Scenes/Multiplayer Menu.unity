@@ -193,17 +193,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player
   servergasingPrefab:
+  - {fileID: 100002, guid: 603dcf678c1c9994c9463dbfc51f1a9b, type: 2}
   - {fileID: 100002, guid: 4e82abcabdef0b941b74b78ea16c7c09, type: 2}
   - {fileID: 100002, guid: 627af0cc1cd23894a97c015a320212c9, type: 2}
   - {fileID: 100002, guid: 4ad2fd0ae54743144960e5b0b5d194a1, type: 2}
   - {fileID: 100002, guid: 09e3a15eeb3b13c40b6df6b18a133bcc, type: 2}
-  - {fileID: 100002, guid: 603dcf678c1c9994c9463dbfc51f1a9b, type: 2}
   selectableGasingString:
-  - Arjuna
-  - Srikandi
+  - Colonix
+  - Craseed
+  - Legasic
   - Prototype
-  - Dipati
-  - Jalaprang
+  - Skymir
   multiplayerInputHandlerPrefab: {fileID: 100000, guid: 1009d49ed4877eb4bb2fef03e02b4dfd,
     type: 2}
   serverPort: 45000
@@ -212,18 +212,33 @@ MonoBehaviour:
   isDedicatedServer: 0
   playerList: []
   mapList:
-  - mapName: Single Player Map
-    mapLoadName: Single Player
+  - mapName: Bowl
+    mapLoadName: Bowl
     mapTexture: {fileID: 0}
-  - mapName: Drum Slide
-    mapLoadName: Drum Slide
+  - mapName: Explode Arena
+    mapLoadName: Explode Arena
     mapTexture: {fileID: 0}
-  - mapName: IceField
-    mapLoadName: IceField
+  - mapName: Gladiator
+    mapLoadName: Gladiator
+    mapTexture: {fileID: 0}
+  - mapName: Ice Field
+    mapLoadName: Ice Field
+    mapTexture: {fileID: 0}
+  - mapName: Kampung
+    mapLoadName: Kampung
+    mapTexture: {fileID: 0}
+  - mapName: Nebula
+    mapLoadName: Nebula
+    mapTexture: {fileID: 0}
+  - mapName: Space
+    mapLoadName: Space
+    mapTexture: {fileID: 0}
+  - mapName: Steel Arena
+    mapLoadName: Steel Arena
     mapTexture: {fileID: 0}
   currentMap:
-    mapName: Drum Slide
-    mapLoadName: Drum Slide
+    mapName: Steel Arena
+    mapLoadName: Steel Arena
     mapTexture: {fileID: 0}
   oldprefix: 0
   isGameStarted: 0

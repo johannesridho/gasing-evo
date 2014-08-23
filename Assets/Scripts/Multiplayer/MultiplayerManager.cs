@@ -50,7 +50,6 @@ public class MultiplayerManager : MonoBehaviour
     {
         instance = this;
         playerName = PlayerPrefs.GetString("PlayerName");
-        currentMap = mapList[0];
         DontDestroyOnLoad(gameObject);
     }
 
