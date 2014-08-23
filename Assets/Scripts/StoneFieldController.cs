@@ -9,9 +9,14 @@ public class StoneFieldController : MonoBehaviour
     public Gasing gasingPemain;
     public Gasing gasingMusuh;
     private int jumlahMusuh;        
+	private AudioClip audioBattle;
 
     protected void Awake()
     {
+		GameObject menuMusic = GameObject.Find ("Background Music");
+		if (menuMusic) {				
+			Destroy(menuMusic);			//hancurin background music menu
+		}
         if (GamePrefs.isMultiplayer)
         {
             
@@ -131,7 +136,14 @@ public class StoneFieldController : MonoBehaviour
     // Use this for initialization
     protected void Start()
     {
-
+		audioBattle = (AudioClip) Resources.Load("Audio/Battle");
+		if(audioBattle){
+			audio.loop = true;
+			audio.clip = audioBattle;
+			audio.panLevel = 0;
+			audio.volume = 0.03f;
+			audio.Play();
+		}
     }
 
     // Update is called once per frame

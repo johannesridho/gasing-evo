@@ -5,6 +5,7 @@ public class Jump : Skill {
 
 	private Gasing gasing;
 	private float cooldown;
+	private AudioClip audioJump;
 
 	void Awake(){
 		cooldown = 2f;
@@ -15,7 +16,7 @@ public class Jump : Skill {
 	}
 
 	void Start () {
-        
+		audioJump = (AudioClip) Resources.Load("Audio/gasing_mental1");
 	}
 
 	void Update () {
@@ -41,14 +42,14 @@ public class Jump : Skill {
     public override void doSkill()
     {
         if (gasing.getSP() > skillPointNeeded)
-        {
-            Debug.Log("do Skill");
-//            if (gasing.isOnGround)
-			if (cooldown >= 1.5)
+        {            
+            if (gasing.isOnGround)
+//			if (cooldown >= 1.5)
             {
                 float jump_coef = 15000f;
 //                Vector3 movement = new Vector3(0f, Physics.gravity.y / (-1), 0f);
 				Vector3 movement = new Vector3(0f, 15f, 0f);
+				if(audioJump) audio.PlayOneShot(audioJump);
                 rigidbody.AddForce(movement * jump_coef * Time.deltaTime);
                 gasing.isOnGround = false;
                 gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
