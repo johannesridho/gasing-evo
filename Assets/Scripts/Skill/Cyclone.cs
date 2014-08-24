@@ -26,7 +26,9 @@ public class Cyclone : Skill {
 	
 	public override void doSkill()
 	{
-		if (gasing.getSP() > skillPointNeeded)
+		Application.LoadLevelAdditive("ArjunaUltimate");
+		Debug.Log("succeed");
+		/*if (gasing.getSP() > skillPointNeeded)
 		{
 			targetEnemy = findNearestEnemy();		//cari musuh terdekat
 			if (targetEnemy) {
@@ -41,6 +43,6 @@ public class Cyclone : Skill {
                 }
 				gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
 			}
-		}
+		}*/
 	}
 }
