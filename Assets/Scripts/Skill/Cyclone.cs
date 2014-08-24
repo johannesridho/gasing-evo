@@ -7,6 +7,8 @@ public class Cyclone : Skill {
 	private Object prefab;
 	private GameObject targetEnemy;
 	private Gasing gasingEnemy;
+
+	public string targetEnemyName;
 	
 	void Awake(){
 		skillName = "Cyclone";
@@ -26,8 +28,24 @@ public class Cyclone : Skill {
 	
 	public override void doSkill()
 	{
+		Object[] objects = FindObjectsOfType (typeof(GameObject));
+		foreach (GameObject go in objects) {
+			go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+		}
+		targetEnemy = findNearestEnemy();
+
 		Application.LoadLevelAdditive("ArjunaUltimate");
-		Debug.Log("succeed");
+
+		if (targetEnemy) {
+			Utilities.ultiTarget = targetEnemy.transform.name.Substring(0,targetEnemy.transform.name.IndexOf("_"));
+
+		}
+
+		Debug.Log(Utilities.ultiTarget);
+
+		
+		
+
 		/*if (gasing.getSP() > skillPointNeeded)
 		{
 			targetEnemy = findNearestEnemy();		//cari musuh terdekat

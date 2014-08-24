@@ -10,6 +10,8 @@ public class AIMusuh : MonoBehaviour {
 	public float timeSkill;
 	public float time;
 
+	protected bool paused = false;
+
 	void Awake(){
 		if(!gasing){
 			gasing = GetComponent<Gasing>();
@@ -35,8 +37,10 @@ public class AIMusuh : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		updateGerakan();
-		updateSkill();
+		if (!paused) {
+			updateGerakan();
+			updateSkill();
+		}
 	}
 	
 	void updateGerakan () {
@@ -81,6 +85,16 @@ public class AIMusuh : MonoBehaviour {
 			}
 			rigidbody.AddForce ( movement * speedAI * Time.deltaTime);	
 		}
+	}
+
+	protected void OnPauseGame ()
+	{
+		paused = true;
+	}
+	 
+	protected void OnResumeGame ()
+	{
+		paused = false;
 	}
 
 }//end class
