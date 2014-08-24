@@ -20,9 +20,7 @@ public class UltiEmptySoul : Skill {
 	}
 	
 	void Update () {
-		//		if (!targetEnemy) {
-		//
-		//		}
+
 	}
 	
 	public override void doSkill()
@@ -45,10 +43,6 @@ public class UltiEmptySoul : Skill {
 							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.5f);
 						}
 					}
-					//					while (targetEnemySC!=null) {
-					//						targetEnemySC = targetEnemy.GetComponent<StatusController>();
-					//					}
-					//					gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
 				}
 			}
 		}

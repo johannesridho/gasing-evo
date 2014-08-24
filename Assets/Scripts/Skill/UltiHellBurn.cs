@@ -20,9 +20,7 @@ public class UltiHellBurn : Skill {
 	}
 	
 	void Update () {
-//		if (!targetEnemy) {
-//
-//		}
+
 	}
 	
 	public override void doSkill()
@@ -44,11 +42,7 @@ public class UltiHellBurn : Skill {
 						if (targetEnemySC) {
 							targetEnemySC.applyStatus("StatusBurn", 10);
 						}
-					}
-//					while (targetEnemySC!=null) {
-//						targetEnemySC = targetEnemy.GetComponent<StatusController>();
-//					}
-//					gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
+					}	
 				}
 			}
 		}
