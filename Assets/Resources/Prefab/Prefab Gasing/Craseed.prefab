@@ -24,6 +24,8 @@ GameObject:
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400014}
+  - 114: {fileID: 11400016}
   m_Layer: 0
   m_Name: Craseed
   m_TagString: Player
@@ -261,7 +263,8 @@ MonoBehaviour:
   speed: 4
   speedMax: 20
   isOnGround: 1
-  audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
+  isPlayerAlive: 1
+  audioPutaran: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
+  targetEnemy: {fileID: 0}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +317,32 @@ MonoBehaviour:
   - {fileID: 11400000}
   - {fileID: 11400010}
   - {fileID: 0}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686e624ab3a3abc41807c9f17ebac95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCanUlti: 0
+  temp: 0
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88860c093a87bd342b5714d8c9da0a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: 
+  isStatusApplied: 0
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -10,7 +10,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Multiplayer Menu.unity
   - enabled: 1
-    path: Assets/Scenes/Single Player.unity
+    path: Assets/Scenes/Steel Arena.unity
   - enabled: 1
     path: Assets/Scenes/Gladiator.unity
   - enabled: 1
@@ -21,9 +21,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Arcade Menu 2.unity
   - enabled: 0
     path: Assets/Scenes/Level_01.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Voice Calibration.unity
   - enabled: 1
-    path: Assets/Scenes/IceField.unity
+    path: Assets/Scenes/Ice Field.unity
   - enabled: 1
-    path: Assets/Scenes/Drum Slide.unity
+    path: Assets/Scenes/Explode Arena.unity
+  - enabled: 1
+    path: Assets/Scenes/Nebula.unity
+  - enabled: 1
+    path: Assets/Scenes/Space.unity
+  - enabled: 1
+    path: Assets/Scenes/Gasing Evo Arena.unity
+  - enabled: 1
+    path: Assets/Scenes/Kampung.unity

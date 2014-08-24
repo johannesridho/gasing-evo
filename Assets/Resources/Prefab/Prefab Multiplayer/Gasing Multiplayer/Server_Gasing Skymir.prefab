@@ -11,16 +11,17 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400008}
-  - 114: {fileID: 11400006}
-  - 82: {fileID: 8200000}
+  - 114: {fileID: 11400012}
   - 54: {fileID: 5400000}
-  - 64: {fileID: 6400000}
+  - 135: {fileID: 13500000}
+  - 114: {fileID: 11400010}
+  - 114: {fileID: 11400008}
   - 114: {fileID: 11400004}
+  - 82: {fileID: 8200000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Srikandi
+  m_Name: Skymir
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,10 +35,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  - 114: {fileID: 11400010}
+  - 114: {fileID: 11400014}
   - 148: {fileID: 14800000}
   m_Layer: 0
-  m_Name: Server_Gasing Srikandi
+  m_Name: Server_Gasing Skymir
   m_TagString: MP_Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,11 +81,11 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 2f6b6dcb82c03774084e79cbc1189e26, type: 2}
-  - {fileID: 2100000, guid: 5489c3f407a0e5145b6f60d7943d19dd, type: 2}
-  - {fileID: 2100000, guid: 655ea8e876663e8438832d78ac271d24, type: 2}
-  - {fileID: 2100000, guid: 2c58b63eb90863b4496db7908ab3aacf, type: 2}
-  - {fileID: 2100000, guid: a8067d90c6b831049ad6b403e960ab85, type: 2}
+  - {fileID: 2100000, guid: f1294465b2532244fa56d6dfb9d57170, type: 2}
+  - {fileID: 2100000, guid: f74ecdaafb20d694d8fec3ecbb085267, type: 2}
+  - {fileID: 2100000, guid: ad49fde4950e9cf4291e181adecfcb67, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 395a39de1aa413545b522b23576c9f19, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -98,7 +99,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 58d1cdcc8edcc4d4984ddf677a8ab8f8, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 70c3c10803c7f4f40b2fa8c11b333c1f, type: 3}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -111,22 +112,9 @@ Rigidbody:
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!64 &6400000
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 58d1cdcc8edcc4d4984ddf677a8ab8f8, type: 3}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -193,7 +181,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 58d1cdcc8edcc4d4984ddf677a8ab8f8, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 70c3c10803c7f4f40b2fa8c11b333c1f, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -207,13 +195,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd28a510f0bb814d91eac660b032c4d, type: 3}
+  m_Script: {fileID: 11500000, guid: baf89846718d3d14f876004546f165d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - {fileID: 11400004}
-  - {fileID: 0}
-  - {fileID: 0}
+  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  skillName: 
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,12 +220,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd04fa1ecdf29264db93f144a8a3b89f, type: 3}
+  m_Script: {fileID: 11500000, guid: e5abf135e4863334da439e7e908d583b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSkill1: {fileID: 2800000, guid: eb29e8e553847ba4e8702a932b7af3d7, type: 3}
-  skillName: 
---- !u!114 &11400006
+  gasing: {fileID: 0}
+  screenPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -247,12 +233,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5abf135e4863334da439e7e908d583b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bd28a510f0bb814d91eac660b032c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasing: {fileID: 0}
-  screenPosition: {x: 0, y: 0, z: 0}
---- !u!114 &11400008
+  skills:
+  - {fileID: 11400010}
+  - {fileID: 11400000}
+  - {fileID: 0}
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd04fa1ecdf29264db93f144a8a3b89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
+  skillName: 
+--- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -272,8 +273,9 @@ MonoBehaviour:
   speed: 4
   speedMax: 20
   isOnGround: 1
+  isPlayerAlive: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
---- !u!114 &11400010
+--- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -285,9 +287,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gasingTransform: {fileID: 400000}
-  gasing: {fileID: 11400008}
+  gasing: {fileID: 11400012}
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!135 &13500000
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 9.85877895
+  m_Center: {x: .0162029266, y: .090333961, z: .149492055}
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
@@ -296,7 +310,7 @@ NetworkView:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_StateSynchronization: 2
-  m_Observed: {fileID: 11400010}
+  m_Observed: {fileID: 11400014}
   m_ViewID:
     m_ID: 0
     m_Type: 0
