@@ -9,10 +9,28 @@ public class GameOverScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		Debug.LogError (Utilities.chosenArena+"-----------------");
+		Debug.LogError (Utilities.chosenArena+"-----------------");
 		switch (Utilities.chosenArena) {
 		case "ice field":
 			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceBlue/DSB");
+			break;		
+		case "Gladiator":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/sky5x/sky5x_skyboxes/sky5x3");
+			break;		
+		case "Steel Arena":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceRed/DSR");
+			break;		
+		case "Gasing Evo Arena":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
+			break;		
+		case "Nebula":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepsSpaceRedWithPlanet/DSRWP");
+			break;		
+		case "Explode Arena":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
+			break;		
+		case "Space":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
 			break;		
 		default:
 			break;
