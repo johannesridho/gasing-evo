@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  aftermatchPrefab: {fileID: 100000, guid: e4dbafd63b795c24abc248ac77e4a176, type: 2}
 --- !u!1 &435380024
 GameObject:
   m_ObjectHideFlags: 0

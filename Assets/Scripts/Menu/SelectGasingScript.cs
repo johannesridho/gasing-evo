@@ -60,6 +60,9 @@ public class SelectGasingScript : MonoBehaviour {
 		case "e2":
 			Utilities.enemy2 = name;
 			break;
+		case "e3":
+			Utilities.enemy3 = name;
+			break;
 		case "p1":
 			Utilities.playerGasing = name;
 			break;

@@ -13,6 +13,7 @@ public class StoneFieldController : MonoBehaviour
 
     protected void Awake()
     {
+		Debug.Log ("---------------- "+Utilities.chosenMode);
 		GameObject menuMusic = GameObject.Find ("Background Music");
 		if (menuMusic) {				
 			Destroy(menuMusic);			//hancurin background music menu
@@ -113,15 +114,15 @@ public class StoneFieldController : MonoBehaviour
 				if(Utilities.enemy3 != null){
 					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy3+"_Musuh"), new Vector3(5, 1, 10), Quaternion.Euler(270, 0, 0));
 				}
-
+				Debug.Log("++++++++++++++++ "+Utilities.ally1);
 				if(Utilities.ally1 != null){
-					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ally1+"_Musuh"), new Vector3(5, 1, -15), Quaternion.Euler(270, 0, 0));
-					musuh.tag = "Ally";
+					GameObject teman1 = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ally1+"_Musuh"), new Vector3(5, 1, -15), Quaternion.Euler(270, 0, 0));
+					teman1.tag = "Ally";
 				}
 
 				if(Utilities.ally2 != null){
-					Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ally2+"_Musuh"), new Vector3(-5, 1, -15), Quaternion.Euler(270, 0, 0));
-					musuh.tag = "Ally";
+					GameObject teman2 = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ally2+"_Musuh"), new Vector3(-5, 1, -15), Quaternion.Euler(270, 0, 0));
+					teman2.tag = "Ally";
 				}
 													
 			}//end if !musuh
@@ -158,17 +159,45 @@ public class StoneFieldController : MonoBehaviour
         }
 		else if(Utilities.chosenMode == 1) //team mode
 		{
-			if ((GameObject.FindGameObjectsWithTag("Player").Length <= 0 && GameObject.FindGameObjectsWithTag("Ally").Length <=0) || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+			if ((GameObject.FindGameObjectsWithTag("Player").Length <= 0 && GameObject.FindGameObjectsWithTag("Ally").Length <=0))
 			{
+				//losing condition
+				Utilities.victory = false;
+				Application.LoadLevel("GameOver");
+			}
+			else if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
+				//winning condition
+				Utilities.victory = true;
 				Application.LoadLevel("GameOver");
 			}
 		}
-        else 		//royal mode
+		else if(Utilities.chosenMode == 0)		//royal mode
         {
-            if (GameObject.FindGameObjectsWithTag("Player").Length <= 0 || GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+            if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
             {
+				//losing condition
+				Utilities.victory = false;
                 Application.LoadLevel("GameOver");
             }
+			else if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
+				//winning condition
+				Utilities.victory = true;
+				Application.LoadLevel("GameOver");
+			}
         }
+		else 	//story mode
+		{
+			if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
+			{
+				//losing condition
+				Utilities.victory = false;
+				Application.LoadLevel("GameOver");
+			}
+			else if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
+				//winning condition
+				Utilities.victory = true;
+				Application.LoadLevel("GameOver");
+			}
+		}
     }
 }
