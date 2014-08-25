@@ -35,6 +35,8 @@ public class MultiplayerManager : MonoBehaviour
     private List<GameObject> spawnPoints;
     public bool isMapLoaded = false;
 
+    public bool isAllPlayerReady = false;
+
     public GameObject[] items;
 
     public GameObject instantiatedPlayer;
@@ -218,6 +220,7 @@ public class MultiplayerManager : MonoBehaviour
             initializePlayers();
         }
         //Network.SetLevelPrefix(prefix);
+        LoadingScreen.show();
         Application.LoadLevel(mapLoadName);
         //GameObject go = GameObject.Find("StoneFieldController");
         //StoneFieldController script = (StoneFieldController)go.GetComponent(typeof(StoneFieldController));
@@ -309,6 +312,7 @@ public class MultiplayerManager : MonoBehaviour
         //spawn the player
         if (Network.isServer)
         {
+            Debug.Log(getMPPlayer(Network.player).playerName + " Ready");
             server_spawnPlayer(Network.player);
         }
         else
@@ -413,6 +417,21 @@ public class MultiplayerManager : MonoBehaviour
         {
             inGameMessageViewer.showPlayerDeadMessage(player);
         }
+    }
+
+    public void disconnectServer()
+    {
+        foreach (GameObject gobj in serverSideGasings)
+        {
+            Destroy(gobj);
+        }
+        serverSideGasings = new List<GameObject>();
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            playerList[i] = null;
+        }
+        playerList = new List<MPPlayer>();
     }
 }
 

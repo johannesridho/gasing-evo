@@ -5,7 +5,7 @@ public class MultiplayerSkillContoller : MonoBehaviour
 {
     public string[] availableSkills = new string[4] { "", "", "", "" };
 
-    private bool isActive = true;
+    private bool isActive = false;
 
     public Texture2D[] skillButtons;
 
@@ -47,13 +47,14 @@ public class MultiplayerSkillContoller : MonoBehaviour
 
     void OnGUI()
     {
+
         if (isActive)
         {
+            GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
             if (MultiplayerManager.instance.isGameStarted)
             {
                 if (MultiplayerManager.instance.isDedicatedServer && !Network.isServer && MultiplayerManager.instance.isGameStarted)
                 {
-                    GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
                     //health
                     GUI.DrawTexture(new Rect(0, 0, 1280, 720), mpInputHandler.blackScreenTexture);
                     GUIStyle style = new GUIStyle(GUI.skin.box);
@@ -139,6 +140,7 @@ public class MultiplayerSkillContoller : MonoBehaviour
                 }
             }
         }
+
     }
 
     private void initializeClientsSkills()
@@ -212,5 +214,10 @@ public class MultiplayerSkillContoller : MonoBehaviour
             hasil = skillButtons[1];
         }
         return hasil;
+    }
+
+    void OnLevelWasLoaded(int level)
+    {
+        isActive = true;
     }
 }
