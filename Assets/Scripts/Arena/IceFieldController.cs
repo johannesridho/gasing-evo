@@ -18,7 +18,8 @@ public class IceFieldController : StoneFieldController {
             foreach (GameObject player in players)
             {
                 Gasing gasing = player.GetComponent<Gasing>();
-                gasing.setSpeed(gasing.getSpeed() + 3);		//tambahin speed tiap gasing
+                if (gasing)
+                    gasing.setSpeed(gasing.getSpeed() + 3);		//tambahin speed tiap gasing
             }
         }
         if (!GamePrefs.isMultiplayer)
@@ -40,23 +41,26 @@ public class IceFieldController : StoneFieldController {
 	}
 
 	void Update(){
-		base.Update ();
-		clock += Time.deltaTime;
-        if (!GamePrefs.isMultiplayer || (GamePrefs.isMultiplayer && Network.isServer))
-        {
-            if (clock >= 5)
+
+        if (!paused) {
+    		base.Update ();
+    		clock += Time.deltaTime;
+            if (!GamePrefs.isMultiplayer || (GamePrefs.isMultiplayer && Network.isServer))
             {
-                float x = Random.Range(-25.0F, 25.0F);
-                float z = Random.Range(-25.0F, 25.0F);
-                if (GamePrefs.isMultiplayer)
+                if (clock >= 5)
                 {
-					Network.Instantiate(Resources.Load("Prefab/Prefab Obstacle/Ice Block"), new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0), 10);
+                    float x = Random.Range(-25.0F, 25.0F);
+                    float z = Random.Range(-25.0F, 25.0F);
+                    if (GamePrefs.isMultiplayer)
+                    {
+    					Network.Instantiate(Resources.Load("Prefab/Prefab Obstacle/Ice Block"), new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0), 10);
+                    }
+                    else
+                    {
+    					Instantiate(Resources.Load("Prefab/Prefab Obstacle/Ice Block"), new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0));
+                    }
+                    clock = 0;
                 }
-                else
-                {
-					Instantiate(Resources.Load("Prefab/Prefab Obstacle/Ice Block"), new Vector3(x, 20, z), Quaternion.Euler(0, 0, 0));
-                }
-                clock = 0;
             }
         }
 	}

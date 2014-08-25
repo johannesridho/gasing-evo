@@ -10,6 +10,7 @@ public class StoneFieldController : MonoBehaviour
     public Gasing gasingMusuh;
     private int jumlahMusuh;        
 	private AudioClip audioBattle;
+	protected bool paused = false;
 
     protected void Awake()
     {

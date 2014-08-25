@@ -46,6 +46,8 @@ public class SkillController : MonoBehaviour
     private int sizegui;
     #endregion
 
+    public bool isAvailable = true;
+
     // Use this for initialization
     void Start()
     {
@@ -98,17 +100,18 @@ public class SkillController : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
-        if (GamePrefs.isMultiplayer)
-        {
-            OnGUI_MultiPlayer();
+        if(isAvailable) {
+            GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
+            if (GamePrefs.isMultiplayer)
+            {
+                OnGUI_MultiPlayer();
+            }
+            else
+            {
+                OnGUI_SinglePlayer();
+            }
+            UpdateMic();
         }
-        else
-        {
-            OnGUI_SinglePlayer();
-        }
-
-		UpdateMic();
     }
 
 	private void UpdateMic() {
