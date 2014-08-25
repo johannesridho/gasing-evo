@@ -822,7 +822,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062222451}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1062222453
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1107906760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.86000001, y: 0, z: 1}
+  m_LocalPosition: {x: -.370190144, y: 0, z: .999999046}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 304639678}
@@ -1060,7 +1060,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1107906760}
-  m_Text: Story Mode
+  m_Text: Arcade Mode
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1467,7 +1467,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1822186792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.20000005, y: -9, z: 1}
+  m_LocalPosition: {x: 2.61466265, y: -9.00000095, z: .999999046}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children: []
   m_Father: {fileID: 304639678}
@@ -1490,7 +1490,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1822186792}
-  m_Text: Arcade Mode
+  m_Text: Battle Mode
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

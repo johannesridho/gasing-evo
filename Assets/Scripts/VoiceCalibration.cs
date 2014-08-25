@@ -231,7 +231,7 @@ public class VoiceCalibration : MonoBehaviour {
 //		}
 
 		Color backgroundColor = GUI.backgroundColor;
-		GUILayout.BeginArea(new Rect(280,380,900,800));
+		GUILayout.BeginArea(new Rect(390,380,600,800));
 
 		if (GamePrefs.isVoiceUsed) {
 			// Untuk setiap word yang direkam, maka.....
@@ -330,10 +330,10 @@ public class VoiceCalibration : MonoBehaviour {
 	//			}
 				
 				// tampilkan score
-				Color color = GUI.color;
-				GUI.color = Color.white;
-				GUILayout.Label(details.Score.ToString());
-				GUI.color = color;
+//				Color color = GUI.color;
+//				GUI.color = Color.white;
+//				GUILayout.Label(details.Score.ToString());
+//				GUI.color = color;
 				GUILayout.EndHorizontal();
 			}
 		}
@@ -349,7 +349,7 @@ public class VoiceCalibration : MonoBehaviour {
 			return;
 		}
 		
-		//Debug.Log(string.Format("Detected: {0}", args.Details.Label));
+		Debug.Log(string.Format("Detected: {0}", args.Details.Label));
 	}
 
 	private void SetupWordProfile(bool playAudio)
