@@ -54,13 +54,13 @@ public static class Utilities {
 		get{return PlayerPrefs.GetString("enemy3");}
 		set{PlayerPrefs.SetString("enemy3", value);}
 	}
-	public static string ultiTarget{
-		get{return PlayerPrefs.GetString("ultiTarget");}
-		set{PlayerPrefs.SetString("ultiTarget", value);}	
+	public static string ultiTarget {
+		get{ return PlayerPrefs.GetString ("ultiTarget");}
+		set{ PlayerPrefs.SetString ("ultiTarget", value);}
+	}
 
 	public static bool victory{
 		get{return PlayerPrefs.GetBool("victory");}
 		set{PlayerPrefs.SetBool("victory", value);}
-	}
-		
+	}	
 }
