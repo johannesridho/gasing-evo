@@ -16,7 +16,8 @@ public class MenuManager : MonoBehaviour
     private string directConnectIP = "127.0.0.1";
 
     private Vector2 scrollLobby = Vector2.zero;
-
+    private Vector2 scrollMap = Vector2.zero;
+    private Vector2 scrollGasing = Vector2.zero;
     //public GUIStyle customButton;
     public GUISkin customSkin;
 
@@ -181,47 +182,103 @@ public class MenuManager : MonoBehaviour
 
     private void menu_chooseMap()
     {
+        GUI.Label(new Rect(51, 30, 1170, 60), "Select Map");
 
-        GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
-        GUILayout.BeginVertical();
-        foreach (MapSetting map in MultiplayerManager.instance.mapList)
+        GUI.Box(new Rect(46, 100, 1180, 510), "");
+        scrollMap = GUI.BeginScrollView(new Rect(51, 105, 1170, 500), scrollMap, new Rect(0, 0, MultiplayerManager.instance.mapList.Count * 405, 470), true, false);
+
+        for (int i = 0; i < MultiplayerManager.instance.mapList.Count; i++)
         {
-            if (GUILayout.Button(map.mapName))
+            if (GUI.Button(new Rect((400 * i) + 10, 0, 400, 400), MultiplayerManager.instance.mapList[i].mapTexture))
             {
-                MultiplayerManager.instance.currentMap = map;
+                MultiplayerManager.instance.currentMap = MultiplayerManager.instance.mapList[i];
+                navigateTo("Host");
+            }
+            if (GUI.Button(new Rect((400 * i) + 10, 405, 400, 60), MultiplayerManager.instance.mapList[i].mapName))
+            {
+                MultiplayerManager.instance.currentMap = MultiplayerManager.instance.mapList[i];
                 navigateTo("Host");
             }
         }
-        GUILayout.EndVertical();
-        GUILayout.EndArea();
+
+        GUI.EndScrollView();
+
+        //if (GUI.Button(new Rect(51, 626, 250, 60), "OK"))
+        //{
+
+        //}
+
+        if (GUI.Button(new Rect(971, 626, 250, 60), "Back"))
+        {
+            navigateTo("Host");
+        }
     }
 
     private void menu_chooseGasing()
     {
-        GUILayout.BeginArea(new Rect(5, 5, Screen.width - 10, Screen.height - 10));
+        GUI.Label(new Rect(51, 30, 1170, 60), "Select Gasing");
 
-        #region gasing_selector
-        GUILayout.BeginVertical();
         int selected = PlayerPrefs.GetInt("Selected Gasing");
         int oldSelected = selected;
-        selected = GUILayout.SelectionGrid(selected, MultiplayerManager.instance.selectableGasingString, MultiplayerManager.instance.selectableGasingString.Length);
-        PlayerPrefs.SetInt("Selected Gasing", selected);
-        GUILayout.EndVertical();
-        #endregion
 
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("OK"))
+        GUI.Box(new Rect(51, 105, 550, 506), "");
+
+        scrollGasing = GUI.BeginScrollView(new Rect(51, 105, 550, 506), scrollGasing, new Rect(0, 0, 500, MultiplayerManager.instance.selectableGasingString.Length * 65));
+
+        for (int i = 0; i < MultiplayerManager.instance.selectableGasingString.Length; i++)
+        {
+            if (GUI.Button(new Rect(0, (i * 60) + 5, 550, 60), MultiplayerManager.instance.selectableGasingString[i]))
+            {
+                selected = i;
+                PlayerPrefs.SetInt("Selected Gasing", selected);
+            }
+        }
+
+        GUI.EndScrollView();
+
+        GUI.Box(new Rect(629, 105, 550, 506), "");
+        GUI.Label(new Rect(635, 115, 550, 60), MultiplayerManager.instance.selectableGasingString[selected]);
+
+
+        if (GUI.Button(new Rect(51, 626, 250, 60), "OK"))
         {
             MultiplayerManager.instance.networkView.RPC("client_changeGasing", RPCMode.All, Network.player, selected);
+            PlayerPrefs.SetInt("Selected Gasing", selected);
             navigateTo("Lobby");
         }
-        if (GUILayout.Button("Cancel"))
+
+        if (GUI.Button(new Rect(971, 626, 250, 60), "Cancel"))
         {
-            PlayerPrefs.SetInt("Selected Gasing", oldSelected);
+            selected = oldSelected;
+            PlayerPrefs.SetInt("Selected Gasing", selected);
             navigateTo("Lobby");
         }
-        GUILayout.EndHorizontal();
-        GUILayout.EndArea();
+
+
+        //GUILayout.BeginArea(new Rect(5, 5, Screen.width - 10, Screen.height - 10));
+
+        //#region gasing_selector
+        //GUILayout.BeginVertical();
+        //int selected = PlayerPrefs.GetInt("Selected Gasing");
+        //int oldSelected = selected;
+        //selected = GUILayout.SelectionGrid(selected, MultiplayerManager.instance.selectableGasingString, MultiplayerManager.instance.selectableGasingString.Length);
+        //PlayerPrefs.SetInt("Selected Gasing", selected);
+        //GUILayout.EndVertical();
+        //#endregion
+
+        //GUILayout.BeginHorizontal();
+        //if (GUILayout.Button("OK"))
+        //{
+        //    MultiplayerManager.instance.networkView.RPC("client_changeGasing", RPCMode.All, Network.player, selected);
+        //    navigateTo("Lobby");
+        //}
+        //if (GUILayout.Button("Cancel"))
+        //{
+        //    PlayerPrefs.SetInt("Selected Gasing", oldSelected);
+        //    navigateTo("Lobby");
+        //}
+        //GUILayout.EndHorizontal();
+        //GUILayout.EndArea();
     }
 
     private void menu_inGame()

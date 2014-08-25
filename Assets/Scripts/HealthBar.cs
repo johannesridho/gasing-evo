@@ -16,7 +16,9 @@ public class HealthBar : MonoBehaviour
     private Texture2D teksturSkill;
     private Texture2D teksturSkill2;
 
-    void Awake()
+    public bool isAvailable = true;
+
+    void Awake() 
     {
         if (!gasing)
         {
@@ -41,53 +43,57 @@ public class HealthBar : MonoBehaviour
         screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         screenPosition.y = Screen.height - screenPosition.y;	//naikin dikit biar di atasnya gasing
         healthBarLength = gasing.getEP() / gasing.getEPMax() * 50;		//update terus panjang bar
+		if(healthBarLength <=10) healthBarLength = 10;
         skillBarLength = gasing.getSP() / gasing.getSPMax() * 50;
+		if(skillBarLength <=10) skillBarLength = 10;
     }
 
     void OnGUI()
     {
-        bool isDrawing = false;
+        if (isAvailable) {
+            bool isDrawing = false;
 
-        if (GamePrefs.isMultiplayer)
-        {
-            if ((!MultiplayerManager.instance.isDedicatedServer) || (MultiplayerManager.instance.isDedicatedServer && Network.isServer))
+            if (GamePrefs.isMultiplayer)
+            {
+                if ((!MultiplayerManager.instance.isDedicatedServer) || (MultiplayerManager.instance.isDedicatedServer && Network.isServer))
+                {
+                    isDrawing = true;
+                }
+            }
+            else
             {
                 isDrawing = true;
             }
-        }
-        else
-        {
-            isDrawing = true;
-        }
 
-        if (isDrawing)
-        {
+            if (isDrawing)
+            {
 
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            //		Texture2D texture = new Texture2D(1, 1);
-            //		texture.SetPixel (1, 1, Color.green);
-            //		texture.Apply ();
-            style.normal.background = teksturHealth;
+                GUIStyle style = new GUIStyle(GUI.skin.box);
+                //		Texture2D texture = new Texture2D(1, 1);
+                //		texture.SetPixel (1, 1, Color.green);
+                //		texture.Apply ();
+                style.normal.background = teksturHealth;
 
-            GUIStyle style2 = new GUIStyle(GUI.skin.box);
-            //		Texture2D texture2 = new Texture2D(1, 1);
-            //		texture2.SetPixel (1, 1, Color.red);
-            //		texture2.Apply ();
-            style2.normal.background = teksturHealth2;
+                GUIStyle style2 = new GUIStyle(GUI.skin.box);
+                //		Texture2D texture2 = new Texture2D(1, 1);
+                //		texture2.SetPixel (1, 1, Color.red);
+                //		texture2.Apply ();
+                style2.normal.background = teksturHealth2;
 
-            GUIStyle styleSkill = new GUIStyle(GUI.skin.box);
-            styleSkill.normal.background = teksturSkill;
+                GUIStyle styleSkill = new GUIStyle(GUI.skin.box);
+                styleSkill.normal.background = teksturSkill;
 
-            GUIStyle styleSkill2 = new GUIStyle(GUI.skin.box);
-            styleSkill2.normal.background = teksturSkill2;
+                GUIStyle styleSkill2 = new GUIStyle(GUI.skin.box);
+                styleSkill2.normal.background = teksturSkill2;
 
-            GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, 50, 7), "", style2);
-            GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, healthBarLength, 7), "", style);
-            //		GUI.Label (new Rect(screenPosition.x - 25, screenPosition.y - 45, 50, 7),"Nama gasing");	
+                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, 50, 7), "", style2);
+                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, healthBarLength, 7), "", style);
+                //		GUI.Label (new Rect(screenPosition.x - 25, screenPosition.y - 45, 50, 7),"Nama gasing");	
 
-            GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 30, 50, 7), "", styleSkill2);
-            GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 30, skillBarLength, 7), "", styleSkill);
+                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 30, 50, 7), "", styleSkill2);
+                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 30, skillBarLength, 7), "", styleSkill);
 
+            }
         }
     }
 

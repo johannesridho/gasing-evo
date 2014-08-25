@@ -1285,7 +1285,7 @@ GameObject:
   - 81: {fileID: 337403223}
   - 114: {fileID: 337403228}
   m_Layer: 0
-  m_Name: ChargeCamera
+  m_Name: StartCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1351,7 +1351,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337403222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.08421469, y: 14.068573, z: -6.21870899}
+  m_LocalPosition: {x: -1.08421469, y: 14.0375004, z: -6.26246262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5022,7 +5022,7 @@ GameObject:
   - 92: {fileID: 1676542002}
   - 81: {fileID: 1676542001}
   m_Layer: 0
-  m_Name: StartCamera
+  m_Name: ChargeCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

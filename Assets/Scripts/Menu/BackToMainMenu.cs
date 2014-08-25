@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartStoryMode : MonoBehaviour {
+public class BackToMainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +14,7 @@ public class StartStoryMode : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
-		Utilities.storyModeLevel = 1;
-		Application.LoadLevel ("Loading Screen");
-		Utilities.enemy1 = "craseed";
+		Application.LoadLevel ("Main Menu");
 	}
 
 	void OnMouseOver(){

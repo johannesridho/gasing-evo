@@ -15,6 +15,7 @@ public class CutsceneScript : MonoBehaviour {
     	caster = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(-1.061489f, 12.74201f, -2.033135f), Quaternion.Euler(270, 0, 0));
     	caster.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     	caster.name = "Caster";
+    	caster.GetComponent<HealthBar>().isAvailable = false;
     	/*caster2 = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.playerGasing), new Vector3(49.98103f, 2.399985f, -50.14171f), Quaternion.Euler(270, 0, 0));
     	caster2.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     	caster2.name = "CasterMid";
@@ -25,6 +26,7 @@ public class CutsceneScript : MonoBehaviour {
     	target = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.ultiTarget), new Vector3(-0.004385955f, 0.5325689f, 0.01271754f), Quaternion.Euler(270, 0, 0));
     	target.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     	target.name = "Target";
+    	target.GetComponent<HealthBar>().isAvailable = false;
     	
     	/*caster2.transform.parent = GameObject.Find("MovingParticle").transform;
     	caster2.transform.position = new Vector3(0, 0, 0);
@@ -32,6 +34,9 @@ public class CutsceneScript : MonoBehaviour {
     	caster3.transform.position = new Vector3(0, 0, 0);*/
     	target.transform.parent = GameObject.Find("TargetParent").transform;
     	target.transform.position = new Vector3(0, 0, 0);
+
+    	GameObject.Find("Caster").GetComponent<SkillController>().isAvailable = false;
+    	GameObject.Find("Target").GetComponent<SkillController>().isAvailable = false;
 
     }
 
@@ -82,7 +87,11 @@ public class CutsceneScript : MonoBehaviour {
 		Object[] objects = FindObjectsOfType (typeof(GameObject));
 		foreach (GameObject go in objects) {
 			go.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+			if (go.GetComponent<HealthBar>())
+				go.GetComponent<HealthBar>().isAvailable = true;
 		}
+
+		GameObject.Find("Pemain").GetComponent<SkillController>().isAvailable = true;
 	}
 
 	void Update (){

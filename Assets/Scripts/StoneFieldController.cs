@@ -10,6 +10,7 @@ public class StoneFieldController : MonoBehaviour
     public Gasing gasingMusuh;
     private int jumlahMusuh;        
 	private AudioClip audioBattle;
+	protected bool paused = false;
 
     protected void Awake()
     {
@@ -209,7 +210,7 @@ public class StoneFieldController : MonoBehaviour
             {
 				//losing condition
 				Utilities.victory = false;
-                Application.LoadLevel("GameOver");
+				Application.LoadLevel("GameOver");
             }
 			else if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
 				//winning condition
