@@ -68,7 +68,7 @@ public class Gasing : MonoBehaviour {
 		if (!paused) {
 			EPKurang(0.05f);		//kurangi EP tiap detik
 			SPTambah (0.01f);		//tambah SP tiap detik
-			if(energiPoint <=0 || transform.position.y <= (-4)){
+			if(energiPoint <=0 || transform.position.y <= (-10)){
 				//gasing berhenti
 				//Debug.Log("wah");
 	            if (GamePrefs.isMultiplayer)
