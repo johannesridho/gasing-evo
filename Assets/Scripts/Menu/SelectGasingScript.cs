@@ -47,43 +47,47 @@ public class SelectGasingScript : MonoBehaviour {
 	}
 
 	public void configurePref(){
-		switch (gameObject.name){
-		case "a1":
-			Utilities.ally1 = name;
-			break;
-		case "a2":
-			Utilities.ally2 = name;
-			break;
-		case "e1":
-			Utilities.enemy1 = name;
-			break;
-		case "e2":
-			Utilities.enemy2 = name;
-			break;
-		case "e3":
-			Utilities.enemy3 = name;
-			break;
-		case "e4":
-			Utilities.enemy4 = name;
-			break;
-		case "e5":
-			Utilities.enemy5 = name;
-			break;
-		case "e6":
-			Utilities.enemy6 = name;
-			break;
-		case "e7":
-			Utilities.enemy7 = name;
-			break;
-		case "e8":
-			Utilities.enemy8 = name;
-			break;
-		case "e9":
-			Utilities.enemy9 = name;
-			break;
-		case "p1":
+		if (Utilities.chosenMode == 0 || Utilities.chosenMode == 1) {
+			switch (gameObject.name){
+			case "a1":
+				Utilities.ally1 = name;
+				break;
+			case "a2":
+				Utilities.ally2 = name;
+				break;
+			case "e1":
+				Utilities.enemy1 = name;
+				break;
+			case "e2":
+				Utilities.enemy2 = name;
+				break;
+			case "e3":
+				Utilities.enemy3 = name;
+				break;
+			case "e4":
+				Utilities.enemy4 = name;
+				break;
+			case "e5":
+				Utilities.enemy5 = name;
+				break;
+			case "e6":
+				Utilities.enemy6 = name;
+				break;
+			case "e7":
+				Utilities.enemy7 = name;
+				break;
+			case "e8":
+				Utilities.enemy8 = name;
+				break;
+			case "e9":
+				Utilities.enemy9 = name;
+				break;
+			case "p1":
+				Utilities.playerGasing = name;
+				break;
+			}
+		} else {
 			Utilities.playerGasing = name;
-			break;
 		}
 	}
 
