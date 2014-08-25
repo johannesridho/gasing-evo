@@ -15,7 +15,7 @@ public class StartStoryMode : MonoBehaviour {
 
 	void OnMouseUp(){
 		Utilities.storyModeLevel = 1;
-		Application.LoadLevel ("Ice Field");
+		Application.LoadLevel ("Loading Screen");
 		Utilities.enemy1 = "craseed";
 	}
 

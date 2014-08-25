@@ -25,17 +25,21 @@ public class AftermatchScript : MonoBehaviour {
 				Application.LoadLevel ("Main Menu");		
 			} else {
 				//set story level here
-				switch(Utilities.storyModeLevel){
+				if(Utilities.victory == true){
+					switch(Utilities.storyModeLevel){
 					case 1:
 						Utilities.storyModeLevel = 2;
 						Utilities.enemy1 = "craseed";
-						Application.LoadLevel("Nebula");
 						break;
 					case 2:
 						Utilities.storyModeLevel = 3;
 						Utilities.enemy1 = "craseed";
-						Application.LoadLevel("Space");
 						break;
+					}
+					Application.LoadLevel("Loading Screen");
+				}
+				else{
+					Application.LoadLevel("Loading Screen");
 				}
 			}
 		}
