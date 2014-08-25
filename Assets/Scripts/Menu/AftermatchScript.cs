@@ -14,10 +14,34 @@ public class AftermatchScript : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
-		if (gameObject.name == "quit") {
-			Application.LoadLevel ("Main Menu");		
+		if (Utilities.chosenMode == 0 || Utilities.chosenMode == 1) {
+			if (gameObject.name == "quit") {
+					Application.LoadLevel ("Main Menu");		
+			} else {
+					Application.LoadLevel (Utilities.chosenArena);	
+			}
 		} else {
-			Application.LoadLevel(Utilities.chosenArena);	
+			if (gameObject.name == "quit") {
+				Application.LoadLevel ("Main Menu");		
+			} else {
+				//set story level here
+				if(Utilities.victory == true){
+					switch(Utilities.storyModeLevel){
+					case 1:
+						Utilities.storyModeLevel = 2;
+						Utilities.enemy1 = "craseed";
+						break;
+					case 2:
+						Utilities.storyModeLevel = 3;
+						Utilities.enemy1 = "craseed";
+						break;
+					}
+					Application.LoadLevel("Loading Screen");
+				}
+				else{
+					Application.LoadLevel("Loading Screen");
+				}
+			}
 		}
 	}
 

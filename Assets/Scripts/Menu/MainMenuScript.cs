@@ -25,7 +25,10 @@ public class MainMenuScript : MonoBehaviour {
 		} else if (isOption) {
 			//showOptionMenu();
 			Application.LoadLevel ("Voice Calibration");
-		} else if (isArcadeMode) {
+		} else if(isStoryMode){
+			Utilities.chosenMode = 2;
+			Application.LoadLevel("Story Menu");
+		}else if (isArcadeMode) {
 			Application.LoadLevel ("Arcade Menu");
 		} else if (isRoyalRumble) {
 			Application.LoadLevel ("Multiplayer Menu");

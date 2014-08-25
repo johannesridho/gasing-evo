@@ -5,8 +5,8 @@ public class BackgroundMusicMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject music = GameObject.Find ("Background Music");		
-		DontDestroyOnLoad (music);		//biar di scene menu background music tetap hidup
+//		GameObject music = GameObject.Find ("Background Music");		
+		DontDestroyOnLoad (this.gameObject);		//biar di scene menu background music tetap hidup
 //		if (!Application.loadedLevelName.Contains("Menu")) {
 //			Destroy(music);
 //		}
