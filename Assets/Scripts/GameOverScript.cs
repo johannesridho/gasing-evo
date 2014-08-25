@@ -43,9 +43,14 @@ public class GameOverScript : MonoBehaviour {
 		textInstance = Instantiate (aftermatchPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
 		textInstance.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
 		textInstance.transform.position = new Vector3 (parent.transform.position.x - 3, parent.transform.position.y - 1, parent.transform.position.z);
-		textInstance.GetComponent<TextMesh>().text = "next";
-		textInstance.name = "next";
-		
+		if (Utilities.victory == true) {
+			textInstance.GetComponent<TextMesh> ().text = "next";
+			textInstance.name = "next";	
+		} else {
+			textInstance.GetComponent<TextMesh> ().text = "retry";
+			textInstance.name = "retry";	
+		}
+
 		textInstance = Instantiate (aftermatchPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
 		textInstance.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
 		textInstance.transform.position = new Vector3 (parent.transform.position.x + 2.2f, parent.transform.position.y - 1, parent.transform.position.z);
