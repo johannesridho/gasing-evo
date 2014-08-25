@@ -15,6 +15,11 @@ public static class Utilities {
 		set{PlayerPrefs.SetInt("chosenMode", value);}
 	}
 
+	public static int storyModeLevel{
+		get{return PlayerPrefs.GetInt("storyModeLevel");}
+		set{PlayerPrefs.SetInt("storyModeLevel", value);}
+	}
+
 	public static int howManyGasingRoyal{
 		get{return PlayerPrefs.GetInt("howManyGasingRoyal");}
 		set{PlayerPrefs.SetInt("howManyGasingRoyal", value);}
@@ -54,6 +59,7 @@ public static class Utilities {
 		get{return PlayerPrefs.GetString("enemy3");}
 		set{PlayerPrefs.SetString("enemy3", value);}
 	}
+
 	public static string ultiTarget {
 		get{ return PlayerPrefs.GetString ("ultiTarget");}
 		set{ PlayerPrefs.SetString ("ultiTarget", value);}

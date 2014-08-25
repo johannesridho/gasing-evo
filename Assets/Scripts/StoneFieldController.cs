@@ -171,7 +171,7 @@ public class StoneFieldController : MonoBehaviour
 				Application.LoadLevel("GameOver");
 			}
 		}
-        else 		//royal mode
+		else if(Utilities.chosenMode == 0)		//royal mode
         {
             if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
             {
@@ -185,5 +185,19 @@ public class StoneFieldController : MonoBehaviour
 				Application.LoadLevel("GameOver");
 			}
         }
+		else 	//story mode
+		{
+			if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
+			{
+				//losing condition
+				Utilities.victory = false;
+				Application.LoadLevel("GameOver");
+			}
+			else if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
+				//winning condition
+				Utilities.victory = true;
+				Application.LoadLevel("GameOver");
+			}
+		}
     }
 }
