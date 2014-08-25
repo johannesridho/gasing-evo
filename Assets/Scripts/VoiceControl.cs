@@ -100,14 +100,13 @@ public class VoiceControl : MonoBehaviour {
 			haveLoad = true;
 		}
 
-//		if (GamePrefs.isVoiceUsed) {
-//			// Untuk setiap word yang direkam, maka.....
-//			for (int wordIndex = 0; wordIndex < AudioWordDetection.Words.Count; ++wordIndex)
-//			{
-//				WordDetails details = AudioWordDetection.Words[wordIndex];
-//				Debug.Log(details.Score.ToString());
-//			}
-//		}
+		if (GamePrefs.isVoiceUsed) {
+			// Deteksi Jurus
+			if (AudioWordDetection.ClosestIndex == 1) {
+				// pake skill
+				//SkillController.DoUltimate();
+			}
+		}
 	}
 
 	// Handler untuk event word detection
