@@ -29,14 +29,14 @@ public class StatusController : MonoBehaviour {
 		}	
 	}
 	
-	void applyStatus (string _name, float _time) {
+	public void applyStatus (string _name, float _time) {
 		timeLimit = _time;
 		statusName = _name;
 		gameObject.AddComponent(statusName);
 		isStatusApplied = true;
 	}
 	
-	void removeStatus () {
+	public void removeStatus () {
 		timeLimit = default_timeLimit;
 		Destroy(gameObject.GetComponent(statusName));
 		statusName = "";
