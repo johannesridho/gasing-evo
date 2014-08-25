@@ -37,6 +37,10 @@ public class SelectArenaScript : MonoBehaviour {
 				thumbnail.sprite = thumbnails[5];
 				break;
 			case "Explode Arena":
+				name = "Space";
+				thumbnail.sprite = thumbnails[6];
+				break;	
+			case "Space":
 				name = "Ice Field";
 				thumbnail.sprite = thumbnails[0];
 				break;	
@@ -51,13 +55,5 @@ public class SelectArenaScript : MonoBehaviour {
 	public void configurePref(){
 		Utilities.chosenArena = name;
 		Debug.Log ("chosen arena prefs changed to: " + Utilities.chosenArena);
-	}
-
-	void OnMouseOver(){
-		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
-	}
-	
-	void OnMouseExit(){
-		renderer.material.color = Color.white;
 	}
 }
