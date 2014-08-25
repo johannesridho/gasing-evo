@@ -60,6 +60,36 @@ public static class Utilities {
 		set{PlayerPrefs.SetString("enemy3", value);}
 	}
 
+	public static string enemy4{
+		get{return PlayerPrefs.GetString("enemy4");}
+		set{PlayerPrefs.SetString("enemy4", value);}
+	}
+
+	public static string enemy5{
+		get{return PlayerPrefs.GetString("enemy5");}
+		set{PlayerPrefs.SetString("enemy5", value);}
+	}
+
+	public static string enemy6{
+		get{return PlayerPrefs.GetString("enemy6");}
+		set{PlayerPrefs.SetString("enemy6", value);}
+	}
+
+	public static string enemy7{
+		get{return PlayerPrefs.GetString("enemy7");}
+		set{PlayerPrefs.SetString("enemy7", value);}
+	}
+
+	public static string enemy8{
+		get{return PlayerPrefs.GetString("enemy8");}
+		set{PlayerPrefs.SetString("enemy8", value);}
+	}
+
+	public static string enemy9{
+		get{return PlayerPrefs.GetString("enemy9");}
+		set{PlayerPrefs.SetString("enemy9", value);}
+	}
+
 	public static string ultiTarget {
 		get{ return PlayerPrefs.GetString ("ultiTarget");}
 		set{ PlayerPrefs.SetString ("ultiTarget", value);}

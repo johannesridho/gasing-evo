@@ -39,52 +39,84 @@ public class StoneFieldController : MonoBehaviour
                     gasingPemain = pemain.GetComponent<Gasing>();
                 }
             }
-            if (!musuh)
-            {
-				if(Utilities.enemy1 != null){
-					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
-				}else{
-					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
-				}
-        
-				if(jumlahMusuh > 1){
-					if(Utilities.enemy2 != null){
-						Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
-					}else{
-						Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
-					}
-				}
-				if(jumlahMusuh > 2){
+
+			if(Utilities.enemy1 != null){
+				musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+			}else{
+				musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+
+			if(Utilities.enemy2 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy3 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy3+"_Musuh"), new Vector3(5, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy4 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy4+"_Musuh"), new Vector3(-10, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy5 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy5+"_Musuh"), new Vector3(10, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy6 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy6+"_Musuh"), new Vector3(-15, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy7 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy7+"_Musuh"), new Vector3(15, 1, 10), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy8 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy8+"_Musuh"), new Vector3(-5, 1, 15), Quaternion.Euler(270, 0, 0));
+			}
+			if(Utilities.enemy9 != null){
+				Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy9+"_Musuh"), new Vector3(5, 1, 15), Quaternion.Euler(270, 0, 0));
+			}
+
+//            if (!musuh)
+//            {
+//				if(Utilities.enemy1 != null){
+//					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy1+"_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+//				}else{
+//					musuh = (GameObject) Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(0, 1, 10), Quaternion.Euler(270, 0, 0));
+//				}
+//        
+//				if(jumlahMusuh > 1){
+//					if(Utilities.enemy2 != null){
+//						Instantiate(Resources.Load("Prefab/Prefab Gasing/"+Utilities.enemy2+"_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+//					}else{
+//						Instantiate(Resources.Load("Prefab/Prefab Gasing/Craseed_Musuh"), new Vector3(-5, 1, 10), Quaternion.Euler(270, 0, 0));
+//					}
+//				}
+//				if(jumlahMusuh > 2){
 					//karena layar ga muat buat pilih gasing, klo musuh lebih dari 2 , musuh diclone dari objek musuh pertama
-                    for (int i = 2; i < jumlahMusuh; i++)
-                    {
-                        if (i <= 4)
-                        {
-                            Instantiate(musuh, new Vector3(i * (-5), 1, 10), Quaternion.Euler(270, 0, 0));
-                        }
-                        else if (i <= 7)
-                        {
-                            Instantiate(musuh, new Vector3((i - 4) * 5, 1, 10), Quaternion.Euler(270, 0, 0));
-                        }
-                        else if (i <= 11)
-                        {
-                            Instantiate(musuh, new Vector3((i - 7) * 5, 1, -10), Quaternion.Euler(270, 0, 0));
-                        }
-                        else if (i <= 14)
-                        {
-                            Instantiate(musuh, new Vector3((i - 11) * (-5), 1, -10), Quaternion.Euler(270, 0, 0));
-                        }
-                        else if (i <= 17)
-                        {
-                            Instantiate(musuh, new Vector3((i - 14) * 5, 1, -15), Quaternion.Euler(270, 0, 0));
-                        }
-                        else if (i <= 20)
-                        {
-                            Instantiate(musuh, new Vector3((i - 17) * (-5), 1, -15), Quaternion.Euler(270, 0, 0));
-                        }
-                    }
-                }				
-            }//end if !musuh
+//                    for (int i = 2; i < jumlahMusuh; i++)
+//                    {
+//                        if (i <= 4)
+//                        {
+//                            Instantiate(musuh, new Vector3(i * (-5), 1, 10), Quaternion.Euler(270, 0, 0));
+//                        }
+//                        else if (i <= 7)
+//                        {
+//                            Instantiate(musuh, new Vector3((i - 4) * 5, 1, 10), Quaternion.Euler(270, 0, 0));
+//                        }
+//                        else if (i <= 11)
+//                        {
+//                            Instantiate(musuh, new Vector3((i - 7) * 5, 1, -10), Quaternion.Euler(270, 0, 0));
+//                        }
+//                        else if (i <= 14)
+//                        {
+//                            Instantiate(musuh, new Vector3((i - 11) * (-5), 1, -10), Quaternion.Euler(270, 0, 0));
+//                        }
+//                        else if (i <= 17)
+//                        {
+//                            Instantiate(musuh, new Vector3((i - 14) * 5, 1, -15), Quaternion.Euler(270, 0, 0));
+//                        }
+//                        else if (i <= 20)
+//                        {
+//                            Instantiate(musuh, new Vector3((i - 17) * (-5), 1, -15), Quaternion.Euler(270, 0, 0));
+//                        }
+//                    }
+//                }				
+//            }//end if !musuh
         } else {				//team mode
 			jumlahMusuh = Utilities.howManyGasingTeam * 2 - 1;
 			if (!pemain)
