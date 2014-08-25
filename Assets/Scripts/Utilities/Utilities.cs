@@ -56,6 +56,11 @@ public static class Utilities {
 	}
 	public static string ultiTarget{
 		get{return PlayerPrefs.GetString("ultiTarget");}
-		set{PlayerPrefs.SetString("ultiTarget", value);}	public static bool victory{
+		set{PlayerPrefs.SetString("ultiTarget", value);}	
+
+	public static bool victory{
 		get{return PlayerPrefs.GetBool("victory");}
-		set{PlayerPrefs.SetBool("victory", value);}}
+		set{PlayerPrefs.SetBool("victory", value);}
+	}
+		
+}
