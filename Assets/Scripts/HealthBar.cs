@@ -43,7 +43,9 @@ public class HealthBar : MonoBehaviour
         screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         screenPosition.y = Screen.height - screenPosition.y;	//naikin dikit biar di atasnya gasing
         healthBarLength = gasing.getEP() / gasing.getEPMax() * 50;		//update terus panjang bar
+		if(healthBarLength <=10) healthBarLength = 10;
         skillBarLength = gasing.getSP() / gasing.getSPMax() * 50;
+		if(skillBarLength <=10) skillBarLength = 10;
     }
 
     void OnGUI()
