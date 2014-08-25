@@ -12,7 +12,25 @@ public class MultiplayerInputHandler : MonoBehaviour
 
     public Texture blackScreenTexture;
 
-   
+    #region untuk GUI
+    private float guiRatioX;
+    private float guiRatioY;
+    private float sWidth;
+    private float sHeight;
+    private Vector3 GUIsF;
+    private int sizegui;
+    #endregion
+
+    #region health bar
+    public float healthBarLength;
+    public float skillBarLength;
+
+    public Texture2D teksturHealth;
+    public Texture2D teksturHealth2;
+
+    public Texture2D teksturSkill;
+    public Texture2D teksturSkill2;
+    #endregion
 
     // Use this for initialization
     void Start()
@@ -20,6 +38,25 @@ public class MultiplayerInputHandler : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
         followPoint = transform;
+
+        //screen size
+        //get the screen's width
+        sWidth = Screen.width;
+        sHeight = Screen.height;
+        //calculate the rescale ratio
+        guiRatioX = sWidth / 1280;
+        guiRatioY = sHeight / 720;
+        //create a rescale Vector3 with the above ratio
+        GUIsF = new Vector3(guiRatioX, guiRatioY, 1);
+
+        //health bar
+        teksturHealth = (Texture2D)Resources.Load("Health/HUD_health_04");
+        teksturHealth2 = (Texture2D)Resources.Load("Health/HUD_health_00");
+        teksturSkill = (Texture2D)Resources.Load("Health/HUD_health_04");
+        teksturSkill2 = (Texture2D)Resources.Load("Health/HUD_health_00");
+
+        healthBarLength = 1200;
+        skillBarLength = 1200;
     }
 
     // Update is called once per frame
@@ -36,21 +73,20 @@ public class MultiplayerInputHandler : MonoBehaviour
                 // do calculation for server's gasing (as a player)
                 if (!MultiplayerManager.instance.isDedicatedServer)
                 {
-                    if (client_gasing.isOnGround && !client_gasing.isInvicibleAfterClash)
+                    if (!client_gasing.isInvicibleAfterClash)
                     {
-                        if (client_gasing.isOnGround)
+
+                        if (Application.platform == RuntimePlatform.Android)
                         {
-                            if (Application.platform == RuntimePlatform.Android)
-                            {
-                                hor = Input.acceleration.x * Gasing.COEF_SPEED * client_gasing.speed;
-                                ver = Input.acceleration.y * Gasing.COEF_SPEED * client_gasing.speed;
-                            }
-                            else
-                            {
-                                hor = Input.GetAxis("Horizontal") * Gasing.COEF_SPEED * client_gasing.speed;
-                                ver = Input.GetAxis("Vertical") * Gasing.COEF_SPEED * client_gasing.speed;
-                            }
+                            hor = Input.acceleration.x * Gasing.COEF_SPEED * client_gasing.speed;
+                            ver = Input.acceleration.y * Gasing.COEF_SPEED * client_gasing.speed;
                         }
+                        else
+                        {
+                            hor = Input.GetAxis("Horizontal") * Gasing.COEF_SPEED * client_gasing.speed;
+                            ver = Input.GetAxis("Vertical") * Gasing.COEF_SPEED * client_gasing.speed;
+                        }
+
                         Vector3 movement = new Vector3(hor, 0f, ver);
 
                         server_addForce(Network.player, movement * 2000 * Time.deltaTime);
@@ -80,7 +116,10 @@ public class MultiplayerInputHandler : MonoBehaviour
                             bool isOnGround = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().isOnGround;
                             bool isInvicibleAfterClash = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<PhysicsTabrak>().isInvicibleAfterClash;
                             float energiPoint = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().energiPoint;
-                            networkView.RPC("client_sendGasingUpdate", MultiplayerManager.instance.playerList[i].playerNetwork, speed, isOnGround, isInvicibleAfterClash, energiPoint);
+                            float skillPoint = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().skillPoint;
+                            float energiPointMax = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().energiPointMax;
+                            float skillPointMax = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().skillPointMax;
+                            networkView.RPC("client_sendGasingUpdate", MultiplayerManager.instance.playerList[i].playerNetwork, speed, isOnGround, isInvicibleAfterClash, energiPoint, skillPoint, energiPointMax, skillPointMax);
                         }
                     }
                 }
@@ -116,20 +155,21 @@ public class MultiplayerInputHandler : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        //health bar
+        healthBarLength = client_gasing.energiPoint / client_gasing.energiPointMax * 1200;		//update terus panjang bar
+        skillBarLength = client_gasing.skillPoint / client_gasing.skillPointMax * 1200;
+    }
+
     void OnGUI()
     {
         if (MultiplayerManager.instance.isDedicatedServer && !Network.isServer && MultiplayerManager.instance.isGameStarted)
         {
-
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), blackScreenTexture);
-            GUILayout.BeginArea(new Rect(5, 5, Screen.width - 10, Screen.height - 10));
-            GUILayout.BeginVertical();
-            GUI.contentColor = Color.white;
-            GUILayout.Label("Energi = " + client_gasing.energiPoint);
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-
+            GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
             
+
+
 
         }
     }
@@ -146,15 +186,18 @@ public class MultiplayerInputHandler : MonoBehaviour
     }
 
     [RPC]
-    public void client_sendGasingUpdate(float speed, bool isOnGround, bool isInvicibleAfterClash, float energyPoint)
+    public void client_sendGasingUpdate(float speed, bool isOnGround, bool isInvicibleAfterClash, float energyPoint, float skillPoint, float energyPointMax, float skillPointMax)
     {
         client_gasing.speed = speed;
         client_gasing.isOnGround = isOnGround;
         client_gasing.isInvicibleAfterClash = isInvicibleAfterClash;
         client_gasing.energiPoint = energyPoint;
+        client_gasing.skillPoint = skillPoint;
+        client_gasing.energiPointMax = energyPointMax;
+        client_gasing.skillPointMax = skillPointMax;
     }
 
-    
 
-    
+
+
 }

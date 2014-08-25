@@ -25,7 +25,7 @@ public class FollowPemain : MonoBehaviour
                     else
                     {
                         gameObject.SetActive(false);
-                        GameObject.Find("Blank Camera").SetActive(true);
+                        //GameObject.Find("Blank Camera").SetActive(true);
                     }
                 }
                 else

@@ -15,13 +15,13 @@ GameObject:
   - 54: {fileID: 5400000}
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
   - 82: {fileID: 8200000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Jalaprang
+  m_Name: Colonix
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ GameObject:
   - 114: {fileID: 11400012}
   - 148: {fileID: 14800000}
   m_Layer: 0
-  m_Name: Server_Gasing Jalaprang
+  m_Name: Server_Gasing Colonix
   m_TagString: MP_Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   speed: 4
   speedMax: 20
   isOnGround: 1
+  isPlayerAlive: 1
   audioTabrakan: {fileID: 8300000, guid: ea24185bd2430d447aae7d18ef3dd7de, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4b81e302424b74b9357dd39583f3e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4613bf87b4a70e743b245b534df385a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}

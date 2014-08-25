@@ -38,11 +38,14 @@ public class CycloneScript : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		float hor = Random.Range(-10.0F, 10.0F) * Gasing.COEF_SPEED;
-		float ver = Random.Range(-10.0F, 10.0F) * Gasing.COEF_SPEED;
-		
-		Vector3 movement = new Vector3 (hor,0.0f,ver);
-		rigidbody.AddForce (movement * 20 * Time.deltaTime);	
+        if (networkView.owner == Network.player)
+        {
+            float hor = Random.Range(-10.0F, 10.0F) * Gasing.COEF_SPEED;
+            float ver = Random.Range(-10.0F, 10.0F) * Gasing.COEF_SPEED;
+
+            Vector3 movement = new Vector3(hor, 0.0f, ver);
+            rigidbody.AddForce(movement * 20 * Time.deltaTime);
+        }
 	}
 
 	void OnParticleCollision(GameObject objek) {	

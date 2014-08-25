@@ -5,6 +5,7 @@ public class Control : MonoBehaviour {
 
 	private Gasing gasing;
 	private PhysicsTabrak gasing_pt;
+	private static float coefVelAndroid = 2f;
 	
 	void Awake(){
 		if(!gasing){
@@ -27,11 +28,10 @@ public class Control : MonoBehaviour {
 	void FixedUpdate () {
 		float hor = 0f;
 		float ver = 0f;
-//        if (gasing.isOnGround && !gasing_pt.isInvicibleAfterClash) {
 		if (!gasing_pt.isInvicibleAfterClash) {
 			if (Application.platform == RuntimePlatform.Android){
-				hor = Input.acceleration.x * Gasing.COEF_SPEED * gasing.speed;
-				ver = Input.acceleration.y * Gasing.COEF_SPEED * gasing.speed;
+				hor = Input.acceleration.x * Gasing.COEF_SPEED * gasing.speed * coefVelAndroid;
+				ver = Input.acceleration.y * Gasing.COEF_SPEED * gasing.speed * coefVelAndroid;
 			}else{
 				hor = Input.GetAxis("Horizontal") * Gasing.COEF_SPEED * gasing.speed;
 				ver = Input.GetAxis("Vertical") * Gasing.COEF_SPEED * gasing.speed;

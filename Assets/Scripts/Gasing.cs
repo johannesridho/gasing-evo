@@ -33,6 +33,8 @@ public class Gasing : MonoBehaviour {
 	private AudioClip audioTabrakan3;
 	private AudioClip audioTabrakan4;
 
+	protected bool paused = false;
+
 	void Awake(){
 		if(!gasing)
 			gasing = GetComponent<Gasing>();	
@@ -63,44 +65,48 @@ public class Gasing : MonoBehaviour {
 	}
 
 	void Update () {
-		EPKurang(0.05f);		//kurangi EP tiap detik
-		SPTambah (0.01f);		//tambah SP tiap detik
-		if(energiPoint <=0 || transform.position.y <= (-4)){
-			//gasing berhenti
-			//Debug.Log("wah");
-            if (GamePrefs.isMultiplayer)
-            {
-                //Debug.Log("gasing.dead");
-                isPlayerAlive = false;
-                energiPoint = 0;
-                gameObject.SetActive(false);
-            }
-            else
-            {
-                isPlayerAlive = false;
-                energiPoint = 0;
-                Destroy(transform.root.gameObject);
-            }
-		} else if (energiPoint <= 2) {
-			removeConstraint ();
-			Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
-			transform.Rotate(rotation);
+		if (!paused) {
+			EPKurang(0.05f);		//kurangi EP tiap detik
+			SPTambah (0.01f);		//tambah SP tiap detik
+			if(energiPoint <=0 || transform.position.y <= (-4)){
+				//gasing berhenti
+				//Debug.Log("wah");
+	            if (GamePrefs.isMultiplayer)
+	            {
+	                //Debug.Log("gasing.dead");
+	                isPlayerAlive = false;
+	                energiPoint = 0;
+	                gameObject.SetActive(false);
+	            }
+	            else
+	            {
+	                isPlayerAlive = false;
+	                energiPoint = 0;
+	                Destroy(transform.root.gameObject);
+	            }
+			} else if (energiPoint <= 2) {
+				removeConstraint ();
+				Vector3 rotation = new Vector3 (0f, COEF_SPIN*Time.deltaTime, 0f);
+				transform.Rotate(rotation);
+			}
 		}
 	}
 
 	void FixedUpdate () {	
-		if (energiPoint > 0) {
-			spin ();
-			this.rigidbody.rotation.Set (0f, this.rigidbody.rotation.y, 0f, 0f);
-		}
-		Vector3 vel = gasing.rigidbody.velocity;
-		float vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
-		vel = (vec > speedMax) ? vel * speedMax/vec : vel;
-		vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
-		vel = (vec > GLOBAL_speedMax) ? vel * GLOBAL_speedMax/vec : vel;
-		gasing.rigidbody.velocity = vel;
+		if (!paused) {
+			if (energiPoint > 0) {
+				spin ();
+				this.rigidbody.rotation.Set (0f, this.rigidbody.rotation.y, 0f, 0f);
+			}
+			Vector3 vel = gasing.rigidbody.velocity;
+			float vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
+			vel = (vec > speedMax) ? vel * speedMax/vec : vel;
+			vec = Mathf.Sqrt(Mathf.Pow(vel.x,2) + Mathf.Pow(vel.y,2) + Mathf.Pow(vel.z,2));
+			vel = (vec > GLOBAL_speedMax) ? vel * GLOBAL_speedMax/vec : vel;
+			gasing.rigidbody.velocity = vel;
 
-		rigidbody.AddForce(2 * Physics.gravity * rigidbody.mass); 	//gasing terpengaruh gravity 2 kali lebih besar dari objek lain
+			rigidbody.AddForce(2 * Physics.gravity * rigidbody.mass); 	//gasing terpengaruh gravity 2 kali lebih besar dari objek lain
+		}
 	}
 	
 	public void EPKurang(float dmg){
@@ -237,6 +243,19 @@ public class Gasing : MonoBehaviour {
 
 	public void removeConstraint() {
 		rigidbody.constraints = RigidbodyConstraints.None;
+	}
+
+	protected void OnPauseGame ()
+	{
+		paused = true;
+		rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+		Debug.Log("paused");
+	}
+	 
+	protected void OnResumeGame ()
+	{
+		paused = false;
+		rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 	}
 
 }//end class

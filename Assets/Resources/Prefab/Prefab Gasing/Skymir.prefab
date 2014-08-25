@@ -22,6 +22,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400014}
   - 114: {fileID: 11400010}
+  - 114: {fileID: 11400016}
+  - 114: {fileID: 11400018}
   m_Layer: 0
   m_Name: Skymir
   m_TagString: Player
@@ -209,7 +211,7 @@ MonoBehaviour:
   skills:
   - {fileID: 11400008}
   - {fileID: 11400014}
-  - {fileID: 0}
+  - {fileID: 11400018}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,6 +273,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88860c093a87bd342b5714d8c9da0a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: 
+  isStatusApplied: 0
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33134d8bd24c7a04ea224fe3c21833df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  skillName: 
+  targetEnemies: []
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -24,7 +24,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Arjuna
+  m_Name: Craseed
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   - 114: {fileID: 11400012}
   - 148: {fileID: 14800000}
   m_Layer: 0
-  m_Name: Server_Gasing Arjuna
+  m_Name: Server_Gasing Craseed
   m_TagString: MP_Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

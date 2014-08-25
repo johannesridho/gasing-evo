@@ -54,4 +54,9 @@ public static class Utilities {
 		get{return PlayerPrefs.GetString("enemy3");}
 		set{PlayerPrefs.SetString("enemy3", value);}
 	}
+
+	public static string ultiTarget{
+		get{return PlayerPrefs.GetString("ultiTarget");}
+		set{PlayerPrefs.SetString("ultiTarget", value);}
+	}
 }
