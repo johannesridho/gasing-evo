@@ -12,7 +12,6 @@ public class NewCutsceneScript : MonoBehaviour {
 	public string playerGasing;
 	public string chosenArena;
 
-	public GameObject caster;
 	public GameObject instantiation;
 	public bool centering = false;
 
@@ -76,15 +75,13 @@ public class NewCutsceneScript : MonoBehaviour {
 				instantiation.tag = "CutsceneSprite";
 			}
     	} else if (playerGasing == "Craseed") {
-    		instantiation.tag = "CutsceneSprite";
 			foreach (GameObject enemy in enemies) {
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Dark Mist"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Spurt"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
 			}
-    	} else if (playerGasing == "Legasic") {    		
-			instantiation.tag = "CutsceneSprite";
+    	} else if (playerGasing == "Legasic") { 
 			foreach (GameObject enemy in enemies) {
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Meteor Storm"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
@@ -94,7 +91,6 @@ public class NewCutsceneScript : MonoBehaviour {
     	} else if (playerGasing == "Prototype") {
     		  
     	} else if (playerGasing == "Skymir") {
-    		instantiation.tag = "CutsceneSprite";
 			foreach (GameObject enemy in enemies) {
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Snowstorm"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
@@ -110,7 +106,6 @@ public class NewCutsceneScript : MonoBehaviour {
 
 	void ExitScene() {
 
-		Destroy(GameObject.Find("Caster"));
 		GameObject[] cutsceneSprites = GameObject.FindGameObjectsWithTag("CutsceneSprite");
 
 		foreach (GameObject cutsceneSprite in cutsceneSprites) {
