@@ -76,13 +76,31 @@ public class NewCutsceneScript : MonoBehaviour {
 				instantiation.tag = "CutsceneSprite";
 			}
     	} else if (playerGasing == "Craseed") {
-    		 
-    	} else if (playerGasing == "Legasic") {
-    		  
+    		instantiation.tag = "CutsceneSprite";
+			foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Dark Mist"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Spurt"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			}
+    	} else if (playerGasing == "Legasic") {    		
+			instantiation.tag = "CutsceneSprite";
+			foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Meteor Storm"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Landmine"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			} 
     	} else if (playerGasing == "Prototype") {
     		  
     	} else if (playerGasing == "Skymir") {
-    		  
+    		instantiation.tag = "CutsceneSprite";
+			foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Snowstorm"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Heavy Snowfall"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			} 
     	} else {
     		Debug.Log("Gasing Unknown");
     	}
