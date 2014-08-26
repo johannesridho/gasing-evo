@@ -64,7 +64,7 @@ public class AIMusuh : MonoBehaviour {
 			if (Random.Range(0,100) < 7) {
 				skill_con.skills[1].doSkill();
 			}
-			if (Random.Range(0,100) < 10) {
+			if (Random.Range(0,100) < 20) {
 				skill_con.skills[0].doSkill();
 			}
 		}
