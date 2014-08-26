@@ -45,8 +45,8 @@ public class CutsceneScript : MonoBehaviour {
 		camera3.enabled = false;
 		camera2.enabled = false;
 		camera1.enabled = true;
-		Invoke("AnimateEntrance", 3);
 		Invoke("AnimateAttack", 5);
+		Invoke("AnimateEntrance", 3);
 	}
 
 	void AnimateEntrance() {
