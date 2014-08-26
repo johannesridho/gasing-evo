@@ -16,13 +16,15 @@ public class AftermatchScript : MonoBehaviour {
 	void OnMouseUp(){
 		if (Utilities.chosenMode == 0 || Utilities.chosenMode == 1) {
 			if (gameObject.name == "quit") {
-					Application.LoadLevel ("Main Menu");		
+				Application.LoadLevel ("Main Menu");	
+				Utilities.deleteAllGasingSelected();		//kosongin data gasing2
 			} else {
 					Application.LoadLevel (Utilities.chosenArena);	
 			}
 		} else {		//arcade mode
 			if (gameObject.name == "quit") {
 				Application.LoadLevel ("Main Menu");		
+				Utilities.deleteAllGasingSelected();		//kosongin data gasing2
 			} else {		//button next dipilih
 
 				Debug.Log("---------------------------------------------"+Utilities.storyModeLevel);
@@ -77,6 +79,9 @@ public class AftermatchScript : MonoBehaviour {
 						Utilities.enemy8 = "Legasic";
 						Utilities.enemy9 = "Prototype";
 						break;
+					case 7:
+						Utilities.storyModeLevel = 8;
+						break;					
 					}
 					Application.LoadLevel("Loading Screen");
 				}
