@@ -15,6 +15,8 @@ public class QuitApp : MonoBehaviour {
 				Application.Quit(); 
 			}else if(Application.loadedLevelName == "Arcade Menu" || Application.loadedLevelName == "Story Menu" || Application.loadedLevelName == "Voice Calibration"){
 				Application.LoadLevel("Main Menu");
+			}else if(Application.loadedLevelName == "Multiplayer Menu"){
+
 			}else{	//arena
 				if (Time.timeScale == 0) Time.timeScale = 1;
 					else Time.timeScale = 0;		//pause game

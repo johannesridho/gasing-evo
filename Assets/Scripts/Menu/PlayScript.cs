@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayScript : MonoBehaviour {
 
 	void OnMouseUp(){
-		LoadingScreen.show ();
+//		LoadingScreen.show ();		//sementara ga pake dulu
 		Application.LoadLevel(Utilities.chosenArena);
 //		switch (Utilities.chosenArena){
 //		case "ice field":
