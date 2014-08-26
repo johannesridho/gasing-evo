@@ -14,7 +14,6 @@ public class StoneFieldController : MonoBehaviour
 
     protected void Awake()
     {
-		Debug.Log ("---------------- "+Utilities.chosenMode);
 		GameObject menuMusic = GameObject.Find ("Background Music");
 		if (menuMusic) {				
 			Destroy(menuMusic);			//hancurin background music menu

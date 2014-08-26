@@ -23,7 +23,7 @@ public class GasingNumberSetter : MonoBehaviour {
 		GameObject parent = GameObject.Find ("how many");
 		textInstance = Instantiate (textPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
 		textInstance.name = "numbers";
-		textInstance.transform.position = new Vector3 (parent.transform.position.x + 4.5f, parent.transform.position.y - 2.5f, parent.transform.position.z);
+		textInstance.transform.position = new Vector3 (parent.transform.position.x + 4.5f, parent.transform.position.y - 1.7f, parent.transform.position.z);
 		textInstance.AddComponent<SelectHowManyScript> ();
 	}
 }

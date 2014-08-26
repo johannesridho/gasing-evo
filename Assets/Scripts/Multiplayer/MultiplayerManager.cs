@@ -12,7 +12,7 @@ public class MultiplayerManager : MonoBehaviour
 
     #region Loadable_prefabs
     public GameObject[] servergasingPrefab;
-    public string[] selectableGasingString = new string[] { "Arjuna", "Srikandi", "Prototype" };
+    public string[] selectableGasingString;
     public GameObject multiplayerInputHandlerPrefab;
     #endregion
 
@@ -41,6 +41,7 @@ public class MultiplayerManager : MonoBehaviour
 
     public GameObject instantiatedPlayer;
 
+    private int playerReady;
 
     //Server-only properies
     public List<GameObject> serverSideGasings = new List<GameObject>();
@@ -58,6 +59,7 @@ public class MultiplayerManager : MonoBehaviour
     void FixedUpdate()
     {
         instance = this;
+        //Debug.Log("Player Ready = "+ playerReady);
         //Debug.Log("=========");
         //foreach (KeyValuePair<NetworkPlayer, GameObject> entry in MultiplayerManager.instance.serverSideGasings)
         //{
@@ -76,7 +78,8 @@ public class MultiplayerManager : MonoBehaviour
     {
         this.serverName = serverName;
         this.maxPlayer = maxPlayer;
-
+        playerReady = 0;
+        isAllPlayerReady = false;
         Network.InitializeServer(this.maxPlayer, serverPort, false);
         //Network.InitializeSecurity();
         MasterServer.RegisterHost("gasing evo", serverName);
@@ -245,10 +248,12 @@ public class MultiplayerManager : MonoBehaviour
 
         if (Network.isServer)
         {
+            // Populate all spawnpoints
+            spawnPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
             foreach (GameObject entry in serverSideGasings)
             {
                 int spawnindex = Random.Range(0, spawnPoints.Count - 1);
-                entry.transform.position = spawnPoints[spawnindex].transform.position;
+                entry.transform.position = spawnPoints[spawnindex ].transform.position;
                 entry.transform.rotation = Quaternion.Euler(270, 0, 0);
                 entry.GetComponent<Server_Gasing>().networkView.RPC("client_playerAlive", RPCMode.All);
                 spawnPoints.Remove(spawnPoints[spawnindex]);
@@ -312,8 +317,16 @@ public class MultiplayerManager : MonoBehaviour
         //spawn the player
         if (Network.isServer)
         {
+            // BUG: INI DIPANGGIL SETIAP CLIENT READY. JADI ADA SI SERVER SPAWN SEMUA PLAYER BERKALI-KALI
             Debug.Log(getMPPlayer(Network.player).playerName + " Ready");
-            server_spawnPlayer(Network.player);
+            
+            playerReady += 1;
+            Debug.Log("==============client_serverLoaded PLAYER READY = " + playerReady);
+            if (playerReady == playerList.Count)
+            {
+                isAllPlayerReady = true;
+                server_spawnPlayer(Network.player);
+            }
         }
         else
         {

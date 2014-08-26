@@ -168,17 +168,20 @@ public class MultiplayerSkillContoller : MonoBehaviour
                 }
                 else
                 {
-                    //for other clients
-                    string[] stringOfSkills = new string[MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills.Length];
-                    for (int j = 0; j < MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills.Length; j++)
+                    if (MultiplayerManager.instance.isAllPlayerReady)
                     {
-                        if (MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills[j] != null)
+                        //for other clients
+                        string[] stringOfSkills = new string[MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills.Length];
+                        for (int j = 0; j < MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills.Length; j++)
                         {
-                            stringOfSkills[j] = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills[j].skillName;
+                            if (MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills[j] != null)
+                            {
+                                stringOfSkills[j] = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<SkillController>().skills[j].skillName;
 
+                            }
                         }
+                        networkView.RPC("client_sendAvailableSkills", MultiplayerManager.instance.playerList[i].playerNetwork, string.Join("-", stringOfSkills));
                     }
-                    networkView.RPC("client_sendAvailableSkills", MultiplayerManager.instance.playerList[i].playerNetwork, string.Join("-", stringOfSkills));
                 }
             }
         }

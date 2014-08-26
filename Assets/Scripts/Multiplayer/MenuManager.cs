@@ -227,11 +227,21 @@ public class MenuManager : MonoBehaviour
 
         for (int i = 0; i < MultiplayerManager.instance.selectableGasingString.Length; i++)
         {
-            if (GUI.Button(new Rect(0, (i * 60) + 5, 550, 60), MultiplayerManager.instance.selectableGasingString[i]))
+            if (i == selected)
             {
-                selected = i;
-                PlayerPrefs.SetInt("Selected Gasing", selected);
+                GUIStyle centered = customSkin.GetStyle("Label");
+                centered.alignment = TextAnchor.MiddleCenter;
+                GUI.Label(new Rect(0, (i * 60) + 5, 550, 60), MultiplayerManager.instance.selectableGasingString[i], centered);
             }
+            else
+            {
+                if (GUI.Button(new Rect(0, (i * 60) + 5, 550, 60), MultiplayerManager.instance.selectableGasingString[i]))
+                {
+                    selected = i;
+                    PlayerPrefs.SetInt("Selected Gasing", selected);
+                }
+            }
+            
         }
 
         GUI.EndScrollView();
