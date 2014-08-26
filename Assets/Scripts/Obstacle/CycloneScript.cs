@@ -8,7 +8,7 @@ public class CycloneScript : MonoBehaviour {
 	
 	void Awake() {
 		clock = 0f;
-		damageInflicted = 0.5f;
+		damageInflicted = 1f;
 	}
 	
 	// Use this for initialization
@@ -18,7 +18,7 @@ public class CycloneScript : MonoBehaviour {
 	
 	void Update(){
 		clock += Time.deltaTime;
-		if (clock >= 25) {
+		if (clock >= 10) {
             if (GamePrefs.isMultiplayer)
             {
                 Network.Destroy(this.gameObject);

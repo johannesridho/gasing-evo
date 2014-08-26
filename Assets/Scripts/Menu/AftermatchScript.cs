@@ -81,6 +81,7 @@ public class AftermatchScript : MonoBehaviour {
 						break;
 					case 7:
 						Utilities.storyModeLevel = 8;
+						Utilities.deleteAllGasingSelected();		//kosongin data gasing2
 						break;					
 					}
 					Application.LoadLevel("Loading Screen");
