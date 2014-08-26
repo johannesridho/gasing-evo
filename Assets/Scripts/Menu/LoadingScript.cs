@@ -51,7 +51,12 @@ public class LoadingScript : MonoBehaviour {
 			case 7:
 				Application.LoadLevel("Space");
 				break;
+			case 8:
+				Application.LoadLevel("Credit");
+				break;
 			}
+
 		}
 	}
 }
+

@@ -99,4 +99,19 @@ public static class Utilities {
 		get{return PlayerPrefs.GetBool("victory");}
 		set{PlayerPrefs.SetBool("victory", value);}
 	}	
+
+	public static void deleteAllGasingSelected(){
+		PlayerPrefs.DeleteKey ("enemy1");
+		PlayerPrefs.DeleteKey ("enemy2");
+		PlayerPrefs.DeleteKey ("enemy3");
+		PlayerPrefs.DeleteKey ("enemy4");
+		PlayerPrefs.DeleteKey ("enemy4");
+		PlayerPrefs.DeleteKey ("enemy5");
+		PlayerPrefs.DeleteKey ("enemy6");
+		PlayerPrefs.DeleteKey ("enemy7");
+		PlayerPrefs.DeleteKey ("enemy8");
+		PlayerPrefs.DeleteKey ("enemy9");
+		PlayerPrefs.DeleteKey ("ally1");
+		PlayerPrefs.DeleteKey ("ally2");
+	}
 }
