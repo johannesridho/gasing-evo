@@ -121,7 +121,7 @@ public class NewCutsceneScript : MonoBehaviour {
 				instantiation.tag = "CutsceneSprite";
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Explosion"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
-				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Fire Burst"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Fire Burst"), enemy.transform.position, Quaternion.Euler(-90, 0, 0));
 				instantiation.tag = "CutsceneSprite";
 			} 
     	} else if (playerGasing == "Skymir") {
