@@ -23,6 +23,9 @@ GameObject:
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400014}
+  - 114: {fileID: 11400016}
+  - 114: {fileID: 11400018}
   m_Layer: 0
   m_Name: Craseed
   m_TagString: Player
@@ -264,8 +267,12 @@ MonoBehaviour:
   skills:
   - {fileID: 11400010}
   - {fileID: 11400002}
-  - {fileID: 0}
+  - {fileID: 11400018}
   isAvailable: 1
+  ultiAvailable: 1
+  ultiReady: 0
+  countdownStarted: 0
+  startTime: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +320,7 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 1
   isPlayerAlive: 1
+  isCanMove: 1
   audioPutaran: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
@@ -356,6 +364,46 @@ MonoBehaviour:
   gasing: {fileID: 11400006}
   currentPosition: {x: 0, y: 0, z: 0}
   currentRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686e624ab3a3abc41807c9f17ebac95b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCanUlti: 0
+  temp: 0
+--- !u!114 &11400016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88860c093a87bd342b5714d8c9da0a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: 
+  isStatusApplied: 0
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f293a3c46a2db1042b5b22fe08890f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
+  skillName: 
+  targetEnemies: []
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

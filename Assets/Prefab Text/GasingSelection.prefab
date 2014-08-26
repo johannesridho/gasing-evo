@@ -11,6 +11,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: GasingSelection
   m_TagString: GasingSelection
@@ -61,6 +62,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cf2fc01466a121441b68449e549b0eed, type: 3}
   - {fileID: 21300000, guid: 260a29cdcf411414192fe8db8f4c7031, type: 3}
   - {fileID: 21300000, guid: be14f90736b8ee8478432d6716544172, type: 3}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3546052285db149acd0f300f0ff249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guiFont: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

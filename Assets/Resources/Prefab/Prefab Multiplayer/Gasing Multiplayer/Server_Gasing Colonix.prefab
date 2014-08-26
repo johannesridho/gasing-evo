@@ -208,6 +208,7 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 1
   isPlayerAlive: 1
+  isCanMove: 1
   audioPutaran: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -258,6 +259,10 @@ MonoBehaviour:
   - {fileID: 11400004}
   - {fileID: 0}
   isAvailable: 1
+  ultiAvailable: 1
+  ultiReady: 0
+  countdownStarted: 0
+  startTime: 0
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1

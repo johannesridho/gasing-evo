@@ -26,9 +26,9 @@ public class RoyalModeMenuScript : MonoBehaviour {
 				textInstance.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 				Vector3 newPos; 
 				if(i < 5){
-					newPos = i == 0 ? new Vector3(parent.transform.position.x , parent.transform.position.y - 4, parent.transform.position.z - 1) : new Vector3(parent.transform.position.x , parent.transform.position.y - 4, GameObject.Find("p1").transform.position.z - (i * 2));
+					newPos = i == 0 ? new Vector3(parent.transform.position.x , parent.transform.position.y - 3, parent.transform.position.z - 1) : new Vector3(parent.transform.position.x , parent.transform.position.y - 3, GameObject.Find("p1").transform.position.z - (i * 2));
 				} else{
-					newPos = i == 5 ? new Vector3(parent.transform.position.x , parent.transform.position.y - 6, parent.transform.position.z - 1) : new Vector3(parent.transform.position.x , parent.transform.position.y - 6, GameObject.Find("p1").transform.position.z - ((i - 5) * 2));
+					newPos = i == 5 ? new Vector3(parent.transform.position.x , parent.transform.position.y - 5, parent.transform.position.z - 1) : new Vector3(parent.transform.position.x , parent.transform.position.y - 5, GameObject.Find("p1").transform.position.z - ((i - 5) * 2));
 				}
 				textInstance.transform.position = newPos;
 				if (i > 0 ) {
@@ -52,7 +52,7 @@ public class RoyalModeMenuScript : MonoBehaviour {
 		if (!isSet) {
 			GameObject parent = GameObject.Find ("Royal Arena");
 			textInstance = Instantiate (selectArenaPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
-			textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - 4, parent.transform.position.z - 2);
+			textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - 3.5f, parent.transform.position.z - 2);
 			textInstance.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
 			textInstance.GetComponent<SelectArenaScript> ().name = "ice field";
 			textInstance.name = "arena name";
@@ -80,6 +80,7 @@ public class RoyalModeMenuScript : MonoBehaviour {
 		}
 		setContent (howManyGasing);
 		setArenaContent ();
+		GameObject.Find("royal").GetComponent<ArcadeMenuSelection>().activateGUI(true);
 		isSet = true;
 	}
 }

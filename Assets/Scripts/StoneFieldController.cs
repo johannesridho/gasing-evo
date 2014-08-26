@@ -22,7 +22,7 @@ public class StoneFieldController : MonoBehaviour
         {
             
         }
-        else if(Utilities.chosenMode == 0)		//royal mode
+		else if(Utilities.chosenMode == 0 || Utilities.chosenMode == 2)		//royal mode atau arcade mode
         {
     		jumlahMusuh = Utilities.howManyGasingRoyal-1;
             if (!pemain)
