@@ -1308,6 +1308,7 @@ MonoBehaviour:
   speedMax: 0
   isOnGround: 0
   isPlayerAlive: 1
+  isCanMove: 1
   audioPutaran: {fileID: 0}
 --- !u!1001 &1750388469
 Prefab:
