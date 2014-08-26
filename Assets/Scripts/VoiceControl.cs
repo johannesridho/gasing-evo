@@ -38,7 +38,7 @@ public class VoiceControl : MonoBehaviour {
 		if (null == AudioWordDetection ||
 		    null == Mic)
 		{
-			Debug.LogError("Missing meta references");
+			//Debug.LogError("Missing meta references");
 			return;
 		}
 
@@ -63,7 +63,7 @@ public class VoiceControl : MonoBehaviour {
 		}
 		catch (System.Exception ex)
 		{
-			Debug.Log(string.Format("Update exception={0}", ex));
+			//Debug.Log(string.Format("Update exception={0}", ex));
 		}
 	}
 
@@ -116,7 +116,7 @@ public class VoiceControl : MonoBehaviour {
 		{
 			return;
 		}
-		Debug.Log(string.Format("Detected: {0}", args.Details.Label));
+		//Debug.Log(string.Format("Detected: {0}", args.Details.Label));
 	}
 
 	private void LoadProfile(string key) 

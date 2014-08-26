@@ -85,7 +85,7 @@ public class VoiceCalibration : MonoBehaviour {
 		if (null == AudioWordDetection ||
 		    null == Mic)
 		{
-			Debug.LogError("Missing meta references");
+			//Debug.LogError("Missing meta references");
 			return;
 		}
 		
@@ -110,7 +110,7 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 		catch (System.Exception ex)
 		{
-			Debug.Log(string.Format("Update exception={0}", ex));
+			//Debug.Log(string.Format("Update exception={0}", ex));
 		}
 	}
 
@@ -154,7 +154,7 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 
 		// Back to MainMenu
-		if (GUI.Button(new Rect(1100, 630, 100, 50), "Back"))
+		if (GUI.Button(new Rect(800, 630, 500, 80), "Back"))
 		{
 			Application.LoadLevel("Main Menu");
 		}
@@ -201,7 +201,7 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 		catch (System.Exception ex)
 		{
-			Debug.Log(string.Format("OnGUI exception={0}", ex));
+			//Debug.Log(string.Format("OnGUI exception={0}", ex));
 		}
 
 		// Opsi suara
@@ -231,7 +231,7 @@ public class VoiceCalibration : MonoBehaviour {
 //		}
 
 		Color backgroundColor = GUI.backgroundColor;
-		GUILayout.BeginArea(new Rect(390,380,600,800));
+		GUILayout.BeginArea(new Rect(330,410,780,800));
 
 		if (GamePrefs.isVoiceUsed) {
 			// Untuk setiap word yang direkam, maka.....
@@ -349,7 +349,7 @@ public class VoiceCalibration : MonoBehaviour {
 			return;
 		}
 		
-		Debug.Log(string.Format("Detected: {0}", args.Details.Label));
+		//Debug.Log(string.Format("Detected: {0}", args.Details.Label));
 	}
 
 	private void SetupWordProfile(bool playAudio)
