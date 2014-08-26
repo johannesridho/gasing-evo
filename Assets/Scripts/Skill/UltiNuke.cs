@@ -39,7 +39,6 @@ public class UltiNuke : Skill {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
-						Debug.Log(targetEnemy.GetComponent<StatusController>());
 						if (targetEnemySC) {
 							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.333f);
 							targetEnemySC.applyStatus("StatusStun", 3);

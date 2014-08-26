@@ -38,7 +38,6 @@ public class UltiHellBurn : Skill {
 				{
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
-						Debug.Log(targetEnemy.GetComponent<StatusController>());
 						if (targetEnemySC) {
 							targetEnemySC.applyStatus("StatusBurn", 10);
 						}

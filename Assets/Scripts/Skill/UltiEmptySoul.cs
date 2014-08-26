@@ -38,7 +38,6 @@ public class UltiEmptySoul : Skill {
 				{
 					foreach (GameObject targetEnemy in targetEnemies) {
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
-						Debug.Log(targetEnemy.GetComponent<StatusController>());
 						if (targetEnemyGasing) {
 							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.5f);
 						}
