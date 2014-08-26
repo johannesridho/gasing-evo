@@ -9,7 +9,7 @@ public class GameOverScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.LogError (Utilities.chosenArena+"-----------------");
+//		Debug.LogError (Utilities.chosenArena+"-----------------");
 		switch (Utilities.chosenArena) {
 		case "ice field":
 			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceBlue/DSB");
@@ -33,6 +33,7 @@ public class GameOverScript : MonoBehaviour {
 			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
 			break;		
 		default:
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceBlue/DSB");
 			break;
 		}
 

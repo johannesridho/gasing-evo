@@ -52,7 +52,7 @@ public class TeamModeMenuScript : MonoBehaviour {
 		if (!isSet) {
 						GameObject parent = GameObject.Find ("Team Arena");
 						textInstance = Instantiate (selectArenaPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
-						textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - 4, parent.transform.position.z - 2);
+						textInstance.transform.position = new Vector3 (parent.transform.position.x, parent.transform.position.y - 3.5f, parent.transform.position.z - 2);
 						textInstance.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
 						textInstance.GetComponent<SelectArenaScript> ().name = "ice field";
 						textInstance.name = "arena name";
@@ -81,6 +81,7 @@ public class TeamModeMenuScript : MonoBehaviour {
 		setTeamContent ("Team A", gasingPerTeam);
 		setTeamContent ("Team B", gasingPerTeam);
 		setArenaContent ();
+		GameObject.Find("team").GetComponent<ArcadeMenuSelection>().activateGUI(true);
 		isSet = true;
 	}
 }

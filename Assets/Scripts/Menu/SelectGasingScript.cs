@@ -11,7 +11,7 @@ public class SelectGasingScript : MonoBehaviour {
 	void Start () {
 		thumbnail = renderer as SpriteRenderer;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	}
