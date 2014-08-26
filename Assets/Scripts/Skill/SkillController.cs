@@ -210,17 +210,19 @@ public class SkillController : MonoBehaviour
         }
 
         //ULTI
-        if (skills[2] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skills[2].buttonSkill1;
-//            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
-            if (GUI.Button(new Rect(60, 370, 300, 300), "", style))
-            {
-				if (!GamePrefs.isVoiceUsed)
-                	skills[2].doSkill();
-            }
-        }
+		if (!GamePrefs.isVoiceUsed) {
+	        if (skills[2] != null)
+	        {
+	            GUIStyle style = new GUIStyle(GUI.skin.box);
+	            style.normal.background = skills[2].buttonSkill1;
+	//            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
+	            if (GUI.Button(new Rect(60, 370, 300, 300), "", style))
+	            {
+					if (!GamePrefs.isVoiceUsed)
+	                	skills[2].doSkill();
+	            }
+	        }
+		}
     }
 
     private void OnGUI_MultiPlayer()
