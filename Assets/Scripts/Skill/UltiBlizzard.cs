@@ -47,6 +47,7 @@ public class UltiBlizzard : Skill {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+						Instantiate ((GameObject) Resources.Load("Prefab/Prefab Obstacle/Holy Blast"), targetEnemyGasing.transform.position, Quaternion.Euler (0, 0, 0));
 						if (targetEnemySC) {
 							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.333f);
 							targetEnemySC.applyStatus("StatusFreeze", 10);
