@@ -33,18 +33,18 @@ public class AftermatchScript : MonoBehaviour {
 					switch(Utilities.storyModeLevel){
 					case 1:
 						Utilities.storyModeLevel = 2;
-						Utilities.enemy1 = "Colonix";
+						Utilities.enemy1 = "Legasic";
 						Utilities.enemy2 = "Skymir";
 						break;
 					case 2:
 						Utilities.storyModeLevel = 3;
-						Utilities.enemy1 = "Colonix";
+						Utilities.enemy1 = "Legasic";
 						Utilities.enemy2 = "Skymir";
 						Utilities.enemy3 = "Legasic";
 						break;
 					case 3:
 						Utilities.storyModeLevel = 4;
-						Utilities.enemy1 = "Colonix";
+						Utilities.enemy1 = "Legasic";
 						Utilities.enemy2 = "Skymir";
 						Utilities.enemy3 = "Legasic";
 						Utilities.enemy4 = "Prototype";
