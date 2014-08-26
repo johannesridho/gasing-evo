@@ -212,9 +212,6 @@ MonoBehaviour:
   isDedicatedServer: 0
   playerList: []
   mapList:
-  - mapName: Bowl
-    mapLoadName: Bowl
-    mapTexture: {fileID: 2800000, guid: 7eeb8add30f355947a7e876c6361af73, type: 3}
   - mapName: Explode Arena
     mapLoadName: Explode Arena
     mapTexture: {fileID: 2800000, guid: c69c6adc5367a924388a4f926459af83, type: 3}
@@ -224,15 +221,12 @@ MonoBehaviour:
   - mapName: Ice Field
     mapLoadName: Ice Field
     mapTexture: {fileID: 2800000, guid: 8943895ccdc2db44cb05c6a3cb0de603, type: 3}
-  - mapName: Kampung
-    mapLoadName: Kampung
-    mapTexture: {fileID: 2800000, guid: 7eeb8add30f355947a7e876c6361af73, type: 3}
   - mapName: Nebula
     mapLoadName: Nebula
-    mapTexture: {fileID: 2800000, guid: 7eeb8add30f355947a7e876c6361af73, type: 3}
+    mapTexture: {fileID: 2800000, guid: 0928306568e1d5c48a644dafbd6a7767, type: 3}
   - mapName: Space
     mapLoadName: Space
-    mapTexture: {fileID: 2800000, guid: 7eeb8add30f355947a7e876c6361af73, type: 3}
+    mapTexture: {fileID: 2800000, guid: 519f4c08e430df5429aa961e9a7ba57d, type: 3}
   - mapName: Steel Arena
     mapLoadName: Steel Arena
     mapTexture: {fileID: 2800000, guid: b0aaa0bbe27fe8c4cb2948d056b88826, type: 3}
