@@ -78,28 +78,28 @@ public class MenuManager : MonoBehaviour
     {
         MasterServer.RequestHostList("gasing evo");
 
-        if (GUI.Button(new Rect(325, 170, 630, 60), "Host a LAN Game"))
+        if (GUI.Button(new Rect(300, 170, 680, 60), "Host a LAN Game"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = false;
         }
 
-        if (GUI.Button(new Rect(325, 250, 630, 60), "Start a Big Screen Mode"))
+        if (GUI.Button(new Rect(300, 250, 680, 60), "Start a Big Screen Mode"))
         {
             navigateTo("Host");
             MultiplayerManager.instance.isDedicatedServer = true;
         }
 
-        GUI.Label(new Rect(110, 390, 200, 60), "Player Name");
-        MultiplayerManager.instance.playerName = GUI.TextField(new Rect(325, 390, 630, 60), MultiplayerManager.instance.playerName);
-        if (GUI.Button(new Rect(970, 390, 260, 60), "Save Name"))
+        GUI.Label(new Rect(60, 390, 350, 60), "Player Name");
+        MultiplayerManager.instance.playerName = GUI.TextField(new Rect(425, 390, 500, 60), MultiplayerManager.instance.playerName);
+        if (GUI.Button(new Rect(950, 390, 300, 60), "Save Name"))
         {
             PlayerPrefs.SetString("PlayerName", MultiplayerManager.instance.playerName);
         }
 
-        GUI.Label(new Rect(110, 490, 200, 60), "IP Address");
-        directConnectIP = GUI.TextField(new Rect(325, 490, 630, 60), directConnectIP);
-        if (GUI.Button(new Rect(970, 490, 260, 60), "Direct Connect"))
+        GUI.Label(new Rect(60, 490, 350, 60), "IP Address");
+        directConnectIP = GUI.TextField(new Rect(425, 490, 500, 60), directConnectIP);
+        if (GUI.Button(new Rect(950, 490, 300, 60), "Connect"))
         {
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
         }
@@ -107,21 +107,23 @@ public class MenuManager : MonoBehaviour
 
     private void menu_HostGame()
     {
-        GUI.Label(new Rect(80, 175, 200, 60), "Server Name");
-        serverName = GUI.TextField(new Rect(295, 175, 905, 60), serverName);
+        GUI.Label(new Rect(80, 175, 350, 60), "Server Name");
+        serverName = GUI.TextField(new Rect(445, 175, 750, 60), serverName);
 
-        GUI.Label(new Rect(80, 250, 200, 60), "Max Player");
-        string str_maxPlayer = GUI.TextField(new Rect(295, 250, 905, 60), maxPlayer.ToString());
+        GUI.Label(new Rect(80, 250, 350, 60), "Max Player");
+        string str_maxPlayer = GUI.TextField(new Rect(445, 250, 750, 60), maxPlayer.ToString());
         maxPlayer = int.Parse(str_maxPlayer);
 
-        GUI.Label(new Rect(80, 325, 200, 60), "Map");
-        GUI.Label(new Rect(295, 325, 200, 60), MultiplayerManager.instance.currentMap.mapName);
-        if (GUI.Button(new Rect(950, 325, 250, 60), "Choose Map"))
+        GUIStyle style = customSkin.GetStyle("Label");
+        style.alignment = TextAnchor.MiddleLeft;
+        GUI.Label(new Rect(80, 325, 350, 60), "Map");
+        GUI.Label(new Rect(445, 325, 550, 60), MultiplayerManager.instance.currentMap.mapName, style);
+        if (GUI.Button(new Rect(850, 325, 350, 60), "Choose Map"))
         {
             navigateTo("Choose Map");
         }
 
-        if (GUI.Button(new Rect(485, 410, 250, 60), "Start Server"))
+        if (GUI.Button(new Rect(435, 410, 350, 60), "Start Server"))
         {
             MultiplayerManager.instance.startServer(serverName, maxPlayer);
         }
@@ -129,32 +131,34 @@ public class MenuManager : MonoBehaviour
         {
             navigateTo("Main");
         }
+        style.alignment = TextAnchor.MiddleLeft;
     }
 
     private void menu_Lobby()
     {
-        GUI.Label(new Rect(80, 20, 200, 60), "Server Name");
-        GUI.Label(new Rect(295, 20, 910, 60), MultiplayerManager.instance.serverName);
+        customSkin.GetStyle("Label").alignment = TextAnchor.MiddleLeft;
+        GUI.Label(new Rect(80, 20, 350, 60), "Server Name");
+        GUI.Label(new Rect(445, 20, 910, 60), MultiplayerManager.instance.serverName);
 
-        GUI.Label(new Rect(80, 95, 200, 60), "Server IP Address");
-        GUI.Label(new Rect(295, 95, 910, 60), MultiplayerManager.instance.getServerIP());
+        GUI.Label(new Rect(80, 95, 350, 60), "Server IP");
+        GUI.Label(new Rect(445, 95, 910, 60), MultiplayerManager.instance.getServerIP());
 
-        GUI.Label(new Rect(80, 170, 200, 60), "Map");
-        GUI.Label(new Rect(295, 170, 910, 60), MultiplayerManager.instance.currentMap.mapName);
+        GUI.Label(new Rect(80, 170, 350, 60), "Map");
+        GUI.Label(new Rect(445, 170, 910, 60), MultiplayerManager.instance.currentMap.mapName);
 
         //select gasing
         if ((!MultiplayerManager.instance.isDedicatedServer) || (MultiplayerManager.instance.isDedicatedServer && Network.isClient))
         {
-            GUI.Label(new Rect(80, 245, 200, 60), "Gasing");
-            GUI.Label(new Rect(295, 245, 645, 60), MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
-            if (GUI.Button(new Rect(945, 245, 260, 60), "Choose Gasing"))
+            GUI.Label(new Rect(80, 245, 350, 60), "Gasing");
+            GUI.Label(new Rect(445, 245, 645, 60), MultiplayerManager.instance.selectableGasingString[MultiplayerManager.getMPPlayer(Network.player).selectedGasing]);
+            if (GUI.Button(new Rect(775, 245, 400, 60), "Choose Gasing"))
             {
                 navigateTo("Choose Gasing");
             }
         }
 
-        GUI.Label(new Rect(80, 320, 200, 60), "Total Player");
-        GUI.Label(new Rect(295, 320, 910, 60), MultiplayerManager.instance.playerList.Count + "/" + MultiplayerManager.instance.maxPlayer);
+        GUI.Label(new Rect(80, 320, 350, 60), "Players");
+        GUI.Label(new Rect(445, 320, 910, 60), MultiplayerManager.instance.playerList.Count + "/" + MultiplayerManager.instance.maxPlayer);
 
         scrollLobby = GUI.BeginScrollView(new Rect(80, 395, 1125, 220), scrollLobby, new Rect(0, 0, 1125, MultiplayerManager.instance.playerList.Count * 60));
         for (int i = 0; i < MultiplayerManager.instance.playerList.Count; i++)
@@ -174,7 +178,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if (GUI.Button(new Rect(800, 630, 200, 60), "Disconnect"))
+        if (GUI.Button(new Rect(700, 630, 400, 60), "Disconnect"))
         {
             Network.Disconnect();
         }
