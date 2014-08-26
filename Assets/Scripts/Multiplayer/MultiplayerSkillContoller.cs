@@ -410,7 +410,10 @@ public class MultiplayerSkillContoller : MonoBehaviour
         List<GameObject> asd = MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].mp_findAllTarget();
         MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].doSkill();
         networkView.RPC("client_setSiapaYangUlti", RPCMode.All, player);
-        networkView.RPC("client_animateUlti", RPCMode.All);
+        if (skillIndex == 2)
+        {
+            networkView.RPC("client_animateUlti", RPCMode.All);
+        }
     }
 
     [RPC]
