@@ -11,7 +11,7 @@ public class StatusBurn : Status {
 	}
 
 	public override void efek () {
-		gasing.EPKurang(25f);
+		gasing.EPKurang(20f);
 		Instantiate (efekLedakan, transform.position, Quaternion.Euler (0, 0, 0));
 	}
 }
