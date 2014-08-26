@@ -25,7 +25,14 @@ public class UltiHellBurn : Skill {
 	
 	public override void doSkill()
 	{
-		targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (GamePrefs.isMultiplayer)
+        {
+            targetEnemies = mp_findAllTarget().ToArray() ;
+        }
+        else
+        {
+            targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        }
 		if (gasing.getSP() > skillPointNeeded)
 		{
 			if (targetEnemies.Length > 0)
@@ -38,7 +45,6 @@ public class UltiHellBurn : Skill {
 				{
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
-						Debug.Log(targetEnemy.GetComponent<StatusController>());
 						if (targetEnemySC) {
 							targetEnemySC.applyStatus("StatusBurn", 10);
 						}

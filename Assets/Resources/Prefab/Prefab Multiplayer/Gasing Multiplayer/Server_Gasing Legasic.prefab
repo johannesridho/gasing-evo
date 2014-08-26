@@ -222,6 +222,10 @@ MonoBehaviour:
   - {fileID: 11400012}
   - {fileID: 0}
   isAvailable: 1
+  ultiAvailable: 1
+  ultiReady: 0
+  countdownStarted: 0
+  startTime: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +286,7 @@ MonoBehaviour:
   speedMax: 20
   isOnGround: 1
   isPlayerAlive: 1
+  isCanMove: 1
   audioPutaran: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:

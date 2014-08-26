@@ -25,7 +25,15 @@ public class UltiEmptySoul : Skill {
 	
 	public override void doSkill()
 	{
-		targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (GamePrefs.isMultiplayer)
+        {
+            targetEnemies = mp_findAllTarget().ToArray();
+        }
+        else
+        {
+            targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        }
+
 		if (gasing.getSP() > skillPointNeeded)
 		{
 			if (targetEnemies.Length > 0)
@@ -38,7 +46,6 @@ public class UltiEmptySoul : Skill {
 				{
 					foreach (GameObject targetEnemy in targetEnemies) {
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
-						Debug.Log(targetEnemy.GetComponent<StatusController>());
 						if (targetEnemyGasing) {
 							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.5f);
 						}
