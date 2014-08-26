@@ -7,6 +7,10 @@ public class GasingNumberSetter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+	}
+
+	void Awake() {
 		setGasingNumbers ();
 	}
 	
