@@ -191,7 +191,7 @@ public class StoneFieldController : MonoBehaviour
                     Debug.Log("1 player left");
                     if (Network.isServer)
                     {
-                        MultiplayerManager.instance.decideWinner();
+                        //MultiplayerManager.instance.decideWinner();
                     }
                 }
             }

@@ -274,23 +274,42 @@ public class MultiplayerSkillContoller : MonoBehaviour
                 // pake skill
                 ultiAvailable = false;
                 ultiReady = false;
-                DoUltimate();
+                if (Network.isServer)
+                {
+                    server_doSkill(Network.player, 2);
+                }
+                else
+                {
+                    networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 2);
+                }
+                //DoUltimate();
                 WordDetails details = AudioWordDetection.Words[0];
                 //				Debug.Log(details.Score.ToString());
             }
         }
     }
 
-    public void DoUltimate()
+    [RPC]
+    public void client_animateUlti()
     {
+        UnityEngine.Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            if (go.GetComponent<HealthBar>())
+                go.GetComponent<HealthBar>().isAvailable = false;
+        }
+        //GetComponent<SkillController>().isAvailable = false;
+        Application.LoadLevelAdditive("ArjunaUltimate");
         if (Network.isServer)
         {
-            server_doSkill(Network.player, 2);
+            Invoke("InvokeUlti", 12);
         }
-        else
-        {
-            networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 2);
-        }
+    }
+
+    public void InvokeUlti()
+    {
+        //skills[2].doSkill();
     }
 
     public void startUltiCountdown()
@@ -390,6 +409,14 @@ public class MultiplayerSkillContoller : MonoBehaviour
     {
         List<GameObject> asd = MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].mp_findAllTarget();
         MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].doSkill();
+        networkView.RPC("client_setSiapaYangUlti", RPCMode.All, player);
+        networkView.RPC("client_animateUlti", RPCMode.All);
+    }
+
+    [RPC]
+    public void client_setSiapaYangUlti(NetworkPlayer player)
+    {
+        MultiplayerManager.instance.siapaYangUlti = player;
     }
 
     public void setActive(bool active)

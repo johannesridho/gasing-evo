@@ -48,6 +48,9 @@ public class MultiplayerManager : MonoBehaviour
 
     public InGameMessageViewer inGameMessageViewer;
 
+
+    public NetworkPlayer siapaYangUlti;
+
     // Use this for initialization
     void Start()
     {

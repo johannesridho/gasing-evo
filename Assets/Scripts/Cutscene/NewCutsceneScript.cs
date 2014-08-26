@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NewCutsceneScript : MonoBehaviour {
 
@@ -17,8 +18,30 @@ public class NewCutsceneScript : MonoBehaviour {
 
     protected void Awake()
     {
-    	enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    	player = GameObject.Find("Pemain");
+        if (GamePrefs.isMultiplayer)
+        {
+            player = MultiplayerManager.instance.getGasingOwnedByPlayer(MultiplayerManager.instance.siapaYangUlti);
+            if (player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+            }
+            GameObject[] temp  = GameObject.FindGameObjectsWithTag("Player");
+            List<GameObject> asdf = new List<GameObject>();
+            foreach (GameObject gobj in temp)
+            {
+                if (gobj != player)
+                {
+                    asdf.Add(gobj);
+                }
+            }
+            Debug.LogError("asd = "+asdf.Count);
+            enemies = asdf.ToArray();
+        }
+        else
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            player = GameObject.Find("Pemain");
+        }
     	playerGasing = Utilities.playerGasing;
     	chosenArena = Utilities.chosenArena;
 
@@ -48,6 +71,10 @@ public class NewCutsceneScript : MonoBehaviour {
 	}
 
 	void AnimateCasting(){
+        if (player == null)
+        {
+            Debug.LogError("player null");
+        }
 		GameObject.Find("Particle System").transform.position = player.transform.position;
 		GameObject.Find("Particle System2").transform.position = player.transform.position;
 		//camera1.transform.position = new Vector3(player.transform.position.x, player.transform.position.y +4, player.transform.position.z -7);
@@ -126,7 +153,14 @@ public class NewCutsceneScript : MonoBehaviour {
 				go.GetComponent<HealthBar>().isAvailable = true;
 		}
 
-		GameObject.Find("Pemain").GetComponent<SkillController>().isAvailable = true;
+        if (GamePrefs.isMultiplayer)
+        {
+
+        }
+        else
+        {
+            GameObject.Find("Pemain").GetComponent<SkillController>().isAvailable = true;
+        }
 	}
 
 	void Update (){

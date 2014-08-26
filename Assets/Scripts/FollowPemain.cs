@@ -19,8 +19,8 @@ public class FollowPemain : MonoBehaviour
                 {
                     if (Network.isServer)
                     {
-                        transform.rotation = Quaternion.Euler(60, 0, 0);
-                        transform.position = new Vector3(0, 30, -20);
+                        //transform.rotation = Quaternion.Euler(60, 0, 0);
+                        //transform.position = new Vector3(0, 30, -20);
                     }
                     else
                     {
