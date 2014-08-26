@@ -16,13 +16,14 @@ public class Server_Gasing : MonoBehaviour
 
     private bool isDeathMessageSent = false;
 
-    private bool isAlive = true;
+    public bool isAlive = true;
 
     // Use this for initialization
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         gasingTransform.gameObject.SetActive(false);
+        isAlive = true;
         ////gasingTransform.rigidbody.detectCollisions = false;
         ////gasingTransform.rigidbody.useGravity = false;
     }

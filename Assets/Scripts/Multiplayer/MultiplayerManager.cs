@@ -468,7 +468,7 @@ public class MultiplayerManager : MonoBehaviour
         GameObject winner = null;
         foreach (GameObject gobj in serverSideGasings)
         {
-            if (gobj.GetComponentInChildren<Gasing>().energiPoint > 0)
+            if (gobj.GetComponent<Server_Gasing>().isAlive)
             {
                 winner = gobj;
             }
