@@ -193,6 +193,14 @@ public class StoneFieldController : MonoBehaviour
     // Update is called once per frame
 	protected void Update()
     {
+		if(GamePrefs.isBGM == false){
+			AudioListener.pause = true;
+			AudioListener.volume = 0;
+		}else{
+			AudioListener.pause = false;
+			AudioListener.volume = 1;
+		}
+
         if (GamePrefs.isMultiplayer)
         {
             if (MultiplayerManager.instance.isGameStarted)

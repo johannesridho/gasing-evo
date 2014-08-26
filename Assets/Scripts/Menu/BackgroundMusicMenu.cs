@@ -14,6 +14,13 @@ public class BackgroundMusicMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(GamePrefs.isBGM == false){
+			AudioListener.pause = true;
+			AudioListener.volume = 0;
+		}else{
+			AudioListener.pause = false;
+			AudioListener.volume = 1;
+		}
+
 	}
 }
