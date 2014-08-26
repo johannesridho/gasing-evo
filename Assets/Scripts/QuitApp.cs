@@ -10,7 +10,14 @@ public class QuitApp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	if (Input.GetKeyDown(KeyCode.Escape)) 
-		Application.Quit(); 
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			if(Application.loadedLevelName == "Main Menu"){
+				Application.Quit(); 
+			}else if(Application.loadedLevelName == "Arcade Menu" || Application.loadedLevelName == "Story Menu"){
+				Application.LoadLevel("Main Menu");
+			}else{	//arena
+
+			}
+		}
 	}
 }
