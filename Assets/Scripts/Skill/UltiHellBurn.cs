@@ -37,15 +37,19 @@ public class UltiHellBurn : Skill {
 		{
 			if (targetEnemies.Length > 0)
 			{
-                foreach (GameObject targetEnemy in targetEnemies)
-                {
-                    StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
-                    Debug.Log(targetEnemy.GetComponent<StatusController>());
-                    if (targetEnemySC)
-                    {
-                        targetEnemySC.applyStatus("StatusBurn", 10);
-                    }
-                }
+				if (GamePrefs.isMultiplayer)
+				{
+
+				}
+				else
+				{
+					foreach (GameObject targetEnemy in targetEnemies) {
+						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
+						if (targetEnemySC) {
+							targetEnemySC.applyStatus("StatusBurn", 10);
+						}
+					}	
+				}
 			}
 		}
 	}

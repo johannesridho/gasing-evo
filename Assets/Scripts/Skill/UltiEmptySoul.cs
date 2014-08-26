@@ -38,15 +38,19 @@ public class UltiEmptySoul : Skill {
 		{
 			if (targetEnemies.Length > 0)
 			{
-                foreach (GameObject targetEnemy in targetEnemies)
-                {
-                    Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
-                    Debug.Log(targetEnemy.GetComponent<StatusController>());
-                    if (targetEnemyGasing)
-                    {
-                        targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint * 0.5f);
-                    }
-                }
+				if (GamePrefs.isMultiplayer)
+				{
+					
+				}
+				else
+				{
+					foreach (GameObject targetEnemy in targetEnemies) {
+						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+						if (targetEnemyGasing) {
+							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.5f);
+						}
+					}
+				}
 			}
 		}
 	}

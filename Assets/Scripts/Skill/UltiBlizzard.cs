@@ -38,15 +38,21 @@ public class UltiBlizzard : Skill {
 		{
 			if (targetEnemies.Length > 0)
 			{
-                foreach (GameObject targetEnemy in targetEnemies)
-                {
-                    StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
-                    Debug.Log(targetEnemy.GetComponent<StatusController>());
-                    if (targetEnemySC)
-                    {
-                        targetEnemySC.applyStatus("StatusFreeze", 10);
-                    }
-                }
+				if (GamePrefs.isMultiplayer)
+				{
+					
+				}
+				else
+				{
+					foreach (GameObject targetEnemy in targetEnemies) {
+						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
+						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+						if (targetEnemySC) {
+							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.333f);
+							targetEnemySC.applyStatus("StatusFreeze", 10);
+						}
+					}
+				}
 			}
 		}
 	}
