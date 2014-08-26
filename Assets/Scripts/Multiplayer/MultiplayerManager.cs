@@ -48,6 +48,9 @@ public class MultiplayerManager : MonoBehaviour
 
     public InGameMessageViewer inGameMessageViewer;
 
+
+    public NetworkPlayer siapaYangUlti;
+
     // Use this for initialization
     void Start()
     {
@@ -318,15 +321,28 @@ public class MultiplayerManager : MonoBehaviour
         if (Network.isServer)
         {
             // BUG: INI DIPANGGIL SETIAP CLIENT READY. JADI ADA SI SERVER SPAWN SEMUA PLAYER BERKALI-KALI
-            Debug.Log(getMPPlayer(Network.player).playerName + " Ready");
             
             playerReady += 1;
             Debug.Log("==============client_serverLoaded PLAYER READY = " + playerReady);
-            if (playerReady == playerList.Count)
+            if (isDedicatedServer)
             {
-                isAllPlayerReady = true;
-                server_spawnPlayer(Network.player);
+                Debug.Log("playerlist.count = " + playerList.Count);
+                if (playerReady == playerList.Count)
+                {
+                    Debug.Log("maaaaaaaaaaaaasuuuuuuuuk");
+                    isAllPlayerReady = true;
+                    server_spawnPlayer(Network.player);
+                }
             }
+            else
+            {
+                if (playerReady == playerList.Count)
+                {
+                    isAllPlayerReady = true;
+                    server_spawnPlayer(Network.player);
+                }
+            }
+            
         }
         else
         {
@@ -445,6 +461,36 @@ public class MultiplayerManager : MonoBehaviour
             playerList[i] = null;
         }
         playerList = new List<MPPlayer>();
+    }
+
+    public void decideWinner()
+    {
+        GameObject winner = null;
+        foreach (GameObject gobj in serverSideGasings)
+        {
+            if (gobj.GetComponentInChildren<Gasing>().energiPoint > 0)
+            {
+                winner = gobj;
+            }
+        }
+
+        networkView.RPC("client_gameOver", RPCMode.All, getMPPlayer(winner.GetComponent<Server_Gasing>().networkPlayer).playerNetwork);
+    }
+
+    [RPC]
+    public void client_gameOver(NetworkPlayer winner)
+    {
+        if (Network.isServer)
+        {
+            foreach (GameObject gobj in serverSideGasings)
+            {
+                gobj.SetActive(false);
+            }
+        }
+        isGameStarted = false;
+        Debug.Log("~~~~~~~ WINNER = "+ getMPPlayer(winner).playerName +" ~~~~~~~");
+        PlayerPrefs.SetString("MP Winner", getMPPlayer(winner).playerName);
+        Application.LoadLevel("GameOver");
     }
 }
 

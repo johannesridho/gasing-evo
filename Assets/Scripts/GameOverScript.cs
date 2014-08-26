@@ -37,11 +37,21 @@ public class GameOverScript : MonoBehaviour {
 			break;
 		}
 
-		if (Utilities.victory == true) {
-			GameObject.Find ("GameOverText").GetComponent<TextMesh>().text = "YOU WIN";	
-		} else {
-			GameObject.Find ("GameOverText").GetComponent<TextMesh>().text = "YOU LOSE";		
-		}
+        if (GamePrefs.isMultiplayer)
+        {
+            GameObject.Find("GameOverText").GetComponent<TextMesh>().text = PlayerPrefs.GetString("MP Winner")+ " WINS THE GAME";
+        }
+        else
+        {
+            if (Utilities.victory == true)
+            {
+                GameObject.Find("GameOverText").GetComponent<TextMesh>().text = "YOU WIN";
+            }
+            else
+            {
+                GameObject.Find("GameOverText").GetComponent<TextMesh>().text = "YOU LOSE";
+            }
+        }
 
 
 		if (Utilities.chosenMode == 1 || Utilities.chosenMode == 0) {
