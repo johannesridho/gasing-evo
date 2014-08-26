@@ -22,6 +22,7 @@ public class UltiControl : MonoBehaviour {
 		if ((gasing.energiPoint <= gasing.energiPointMax * 0.25) && !ultiActive) {
 			isCanUlti = true;
 			ultiActive = true;
+			GetComponent<SkillController>().startUltiCountdown();
 		}
 		if (ultiActive) {
 			timeCount += Time.deltaTime;

@@ -110,16 +110,19 @@ public class MultiplayerInputHandler : MonoBehaviour
                     }
                     else
                     {
-                        if (MultiplayerManager.instance.serverSideGasings[i] != null)
+                        if (MultiplayerManager.instance.isAllPlayerReady)
                         {
-                            float speed = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().speed;
-                            bool isOnGround = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().isOnGround;
-                            bool isInvicibleAfterClash = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<PhysicsTabrak>().isInvicibleAfterClash;
-                            float energiPoint = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().energiPoint;
-                            float skillPoint = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().skillPoint;
-                            float energiPointMax = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().energiPointMax;
-                            float skillPointMax = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().skillPointMax;
-                            networkView.RPC("client_sendGasingUpdate", MultiplayerManager.instance.playerList[i].playerNetwork, speed, isOnGround, isInvicibleAfterClash, energiPoint, skillPoint, energiPointMax, skillPointMax);
+                            if (MultiplayerManager.instance.serverSideGasings[i] != null)
+                            {
+                                float speed = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().speed;
+                                bool isOnGround = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().isOnGround;
+                                bool isInvicibleAfterClash = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<PhysicsTabrak>().isInvicibleAfterClash;
+                                float energiPoint = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().energiPoint;
+                                float skillPoint = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().skillPoint;
+                                float energiPointMax = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().energiPointMax;
+                                float skillPointMax = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<Gasing>().skillPointMax;
+                                networkView.RPC("client_sendGasingUpdate", MultiplayerManager.instance.playerList[i].playerNetwork, speed, isOnGround, isInvicibleAfterClash, energiPoint, skillPoint, energiPointMax, skillPointMax);
+                            }
                         }
                     }
                 }

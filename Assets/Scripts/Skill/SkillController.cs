@@ -48,6 +48,11 @@ public class SkillController : MonoBehaviour
 
     public bool isAvailable = true;
 
+    public bool ultiAvailable = true;
+    public bool ultiReady = false;
+    public bool countdownStarted = false;
+    public float startTime;
+
     // Use this for initialization
     void Start()
     {
@@ -96,6 +101,17 @@ public class SkillController : MonoBehaviour
 		{
 			Debug.Log(string.Format("Update exception={0}", ex));
 		}
+
+		if (countdownStarted) {
+			if (Time.time  - startTime > 2000) {
+				ultiReady = false;
+			}
+		}
+
+		if (ultiReady && !countdownStarted) {
+			countdownStarted = true;
+			startTime = Time.time;
+		}
     }
 
     void OnGUI()
@@ -110,7 +126,11 @@ public class SkillController : MonoBehaviour
             {
                 OnGUI_SinglePlayer();
             }
-            UpdateMic();
+
+            if (ultiAvailable && ultiReady) {
+            	GUI.Label(new Rect(0,0,500,100), "ULTIMATEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+            	UpdateMic();
+            }
         }
     }
 
@@ -145,13 +165,20 @@ public class SkillController : MonoBehaviour
 		
 		if (GamePrefs.isVoiceUsed) {
 			// Deteksi Jurus
-			if (AudioWordDetection.ClosestIndex == 1) {
+			if (AudioWordDetection.ClosestIndex == 1 && ultiAvailable) {
 				// pake skill
-				//DoUltimate();
-//				WordDetails details = AudioWordDetection.Words[0];
+				ultiAvailable = false;
+				ultiReady = false;
+				DoUltimate();
+				WordDetails details = AudioWordDetection.Words[0];
 //				Debug.Log(details.Score.ToString());
 			}
 		}
+	}
+
+	public void startUltiCountdown() {
+		ultiReady = true;
+		Debug.Log("Ulti readyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 	}
 
 	public void DoUltimate() {

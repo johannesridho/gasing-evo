@@ -9,6 +9,34 @@ public class GameOverScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+//		Debug.LogError (Utilities.chosenArena+"-----------------");
+		switch (Utilities.chosenArena) {
+		case "ice field":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceBlue/DSB");
+			break;		
+		case "Gladiator":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/sky5x/sky5x_skyboxes/sky5x3");
+			break;		
+		case "Steel Arena":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceRed/DSR");
+			break;		
+		case "Gasing Evo Arena":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
+			break;		
+		case "Nebula":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepsSpaceRedWithPlanet/DSRWP");
+			break;		
+		case "Explode Arena":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
+			break;		
+		case "Space":
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceGreen/DSG");
+			break;		
+		default:
+			RenderSettings.skybox = (Material) Resources.Load("Skybox/SkyBox Volume 2/DeepSpaceBlue/DSB");
+			break;
+		}
+
 		if (Utilities.victory == true) {
 			GameObject.Find ("GameOverText").GetComponent<TextMesh>().text = "YOU WIN";	
 		} else {
@@ -62,13 +90,4 @@ public class GameOverScript : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnGUI(){
-		GUIStyle style = new GUIStyle (GUI.skin.box);
-		style.normal.background = button;
-		style.fontSize = 15;
-
-		if (GUI.Button (new Rect (Screen.width * 1 / 2 - Screen.width / 6 / 2, Screen.height * 7 / 10, Screen.width / 6, Screen.height / 8), "Back To Menu", style)) {
-			Application.LoadLevel("Main Menu");
-		}
-	}
 }

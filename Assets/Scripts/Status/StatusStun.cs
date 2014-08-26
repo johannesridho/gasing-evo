@@ -2,8 +2,16 @@
 using System.Collections;
 
 public class StatusStun : Status {
-	
+
+	private PhysicsTabrak gasingpt;
+
+
 	public override void aksi () {
-		gasing.speedMaxChange(0.0001f);
+		gasing.rigidbody.velocity = new Vector3(0,0,0);
+		gasing.isCanMove = false;
+	}
+
+	~StatusStun() {
+		gasing.isCanMove = true;
 	}
 }

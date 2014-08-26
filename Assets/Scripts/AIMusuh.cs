@@ -60,16 +60,18 @@ public class AIMusuh : MonoBehaviour {
 	}
 
 	void skill() {
-		if (Random.Range(0,100) < 7) {
-			skill_con.skills[1].doSkill();
-		}
-		if (Random.Range(0,100) < 10) {
-			skill_con.skills[0].doSkill();
+		if (gasing.isCanMove) {
+			if (Random.Range(0,100) < 7) {
+				skill_con.skills[1].doSkill();
+			}
+			if (Random.Range(0,100) < 10) {
+				skill_con.skills[0].doSkill();
+			}
 		}
 	}
 
 	void gerak() {
-		if (!gasing_pt.isInvicibleAfterClash) {
+		if (!gasing_pt.isInvicibleAfterClash && gasing.isCanMove) {
 			Vector3 movement = new Vector3(0,0,0);
 			if (Random.Range(0,100) < 75) {
 				GameObject player = GameObject.FindGameObjectWithTag("Player");

@@ -113,12 +113,16 @@ public class ArcadeMenuSelection : MonoBehaviour {
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isTeamMode = true;
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
 		} else {
+			if (GameObject.Find("numbers")) {
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isTeamMode = false;
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "two";
+			} else {
+				Debug.Log("Gameobject numbers not found");
+			}
 		}
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = num;	
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript> ().configureNames (num);
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().configureNames (num);
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().configurePref ();
 	}
 
 	public void activateGUI(bool set){

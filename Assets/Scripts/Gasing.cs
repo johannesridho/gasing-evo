@@ -24,7 +24,8 @@ public class Gasing : MonoBehaviour {
 
 	// state
 	public bool isOnGround;
-    public bool isPlayerAlive = true;
+	public bool isPlayerAlive = true;
+	public bool isCanMove = true;
 
 	public AudioClip audioPutaran;
 	private AudioClip audioTabrakTembok;
