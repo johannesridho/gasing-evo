@@ -186,35 +186,6 @@ public class SkillController : MonoBehaviour
 	}
 
     private void OnGUI_SinglePlayer()
-<<<<<<< HEAD
-    {
-        if (skills[0] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skills[0].buttonSkill1;
-//            if (GUI.Button(new Rect(Screen.width * 4 / 5 - Screen.width / 8 / 2, Screen.height * 7 / 10, Screen.width / 8, Screen.width / 8), skills[0].skillName, style))
-            if (GUI.Button(new Rect(855, 470, 200, 200), "", style))
-            {
-                skills[0].doSkill();
-            }
-        }
-
-        if (skills[1] != null)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box);
-            style.normal.background = skills[1].buttonSkill1;
-//            if (GUI.Button(new Rect(Screen.width * 9 / 10 - Screen.width / 8 / 2, Screen.height * 5 / 10, Screen.width / 8, Screen.width / 8), skills[1].skillName, style))
-            if (GUI.Button(new Rect(1027, 303, 200, 200), "", style))
-            {
-                skills[1].doSkill();
-            }
-        }
-
-        //ULTI
-		if (!GamePrefs.isVoiceUsed) {
-
-	        if (skills[2] != null)
-=======
 	{
 		if (gameObject.tag == "Player") {
 	        if (skills[0] != null)
@@ -228,7 +199,6 @@ public class SkillController : MonoBehaviour
 	            }
 	        }
 	        if (skills[1] != null)
->>>>>>> f81deca56e1c214892a23654b28d66e582a87e91
 	        {
 	            GUIStyle style = new GUIStyle(GUI.skin.box);
 	            style.normal.background = skills[1].buttonSkill1;
@@ -239,7 +209,7 @@ public class SkillController : MonoBehaviour
 	            }
 	        }
         	//ULTI
-			if (!GamePrefs.isVoiceUsed && GetComponent<UltiControl>().isCanUlti) {
+			//if (!GamePrefs.isVoiceUsed && GetComponent<UltiControl>().isCanUlti) {
 		        if (skills[2] != null)
 		        {
 		            GUIStyle style = new GUIStyle(GUI.skin.box);
@@ -260,7 +230,7 @@ public class SkillController : MonoBehaviour
 		                }
 		            }
 		        }
-			}
+			//}
 		}
     }
 
