@@ -166,6 +166,17 @@ public class StoneFieldController : MonoBehaviour
 
     }
 
+    protected void OnPauseGame ()
+	{
+		paused = true;
+		Debug.Log("paused");
+	}
+	 
+	protected void OnResumeGame ()
+	{
+		paused = false;
+	}
+
     // Use this for initialization
     protected void Start()
     {
@@ -184,9 +195,16 @@ public class StoneFieldController : MonoBehaviour
     {
         if (GamePrefs.isMultiplayer)
         {
-            if (GameObject.FindGameObjectsWithTag("Player").Length <= 0)
+            if (MultiplayerManager.instance.isGameStarted)
             {
-                Debug.Log("all dead");
+                if (GameObject.FindGameObjectsWithTag("Player").Length == 1)
+                {
+                    Debug.Log("1 player left");
+                    if (Network.isServer)
+                    {
+                        MultiplayerManager.instance.decideWinner();
+                    }
+                }
             }
         }
 		else if(Utilities.chosenMode == 1) //team mode

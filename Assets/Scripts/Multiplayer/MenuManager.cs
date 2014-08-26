@@ -47,29 +47,32 @@ public class MenuManager : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
-        GUI.skin = customSkin;
-        if (!MultiplayerManager.instance.isGameStarted)
+        if (Application.loadedLevelName == "Multiplayer Menu")
         {
-            if (currentMenu == "Main")
+            GUI.matrix = Matrix4x4.TRS(new Vector3(GUIsF.x, GUIsF.y, 0), Quaternion.identity, GUIsF);
+            GUI.skin = customSkin;
+            if (!MultiplayerManager.instance.isGameStarted)
             {
-                menu_Main();
-            }
-            if (currentMenu == "Host")
-            {
-                menu_HostGame();
-            }
-            if (currentMenu == "Lobby")
-            {
-                menu_Lobby();
-            }
-            if (currentMenu == "Choose Map")
-            {
-                menu_chooseMap();
-            }
-            if (currentMenu == "Choose Gasing")
-            {
-                menu_chooseGasing();
+                if (currentMenu == "Main")
+                {
+                    menu_Main();
+                }
+                if (currentMenu == "Host")
+                {
+                    menu_HostGame();
+                }
+                if (currentMenu == "Lobby")
+                {
+                    menu_Lobby();
+                }
+                if (currentMenu == "Choose Map")
+                {
+                    menu_chooseMap();
+                }
+                if (currentMenu == "Choose Gasing")
+                {
+                    menu_chooseGasing();
+                }
             }
         }
     }
@@ -102,6 +105,11 @@ public class MenuManager : MonoBehaviour
         if (GUI.Button(new Rect(950, 490, 300, 60), "Connect"))
         {
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
+        }
+
+        if (GUI.Button(new Rect(950, 590, 680, 60), "Back"))
+        {
+            Application.LoadLevel("Main Menu");
         }
     }
 

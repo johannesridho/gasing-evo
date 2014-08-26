@@ -28,28 +28,6 @@ public class Cyclone : Skill {
 	
 	public override void doSkill()
 	{
-//		Object[] objects = FindObjectsOfType (typeof(GameObject));
-//		foreach (GameObject go in objects) {
-//			go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-//			if (go.GetComponent<HealthBar>())
-//			go.GetComponent<HealthBar>().isAvailable = false;
-//		}
-//		targetEnemy = findNearestEnemy();
-//
-//		GetComponent<SkillController>().isAvailable = false;
-//
-//		Application.LoadLevelAdditive("ArjunaUltimate");
-//
-//		Debug.Log("targetEnemyName = "+targetEnemy.transform.name);
-//		if (targetEnemy) {
-//			Utilities.ultiTarget = targetEnemy.transform.name.Substring(0,targetEnemy.transform.name.IndexOf("_"));
-//
-//		}
-//
-//		Debug.Log(Utilities.ultiTarget);
-
-		
-		
 
 		if (gasing.getSP() > skillPointNeeded)
 		{
