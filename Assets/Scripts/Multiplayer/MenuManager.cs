@@ -53,24 +53,30 @@ public class MenuManager : MonoBehaviour
             GUI.skin = customSkin;
             if (!MultiplayerManager.instance.isGameStarted)
             {
+                Debug.Log("MENU = " + currentMenu);
                 if (currentMenu == "Main")
                 {
+                    Debug.Log("1");
                     menu_Main();
                 }
-                if (currentMenu == "Host")
+                else if (currentMenu == "Host")
                 {
+                    Debug.Log("2");
                     menu_HostGame();
                 }
-                if (currentMenu == "Lobby")
+                else if (currentMenu == "Lobby")
                 {
+                    Debug.Log("3");
                     menu_Lobby();
                 }
-                if (currentMenu == "Choose Map")
+                else if (currentMenu == "Choose Map")
                 {
+                    Debug.Log("4");
                     menu_chooseMap();
                 }
-                if (currentMenu == "Choose Gasing")
+                else if (currentMenu == "Choose Gasing")
                 {
+                    Debug.Log("5");
                     menu_chooseGasing();
                 }
             }
@@ -109,6 +115,7 @@ public class MenuManager : MonoBehaviour
 
         if (GUI.Button(new Rect(300, 590, 680, 60), "Back"))
         {
+            navigateTo("Main Menu");
             Application.LoadLevel("Main Menu");
         }
     }
