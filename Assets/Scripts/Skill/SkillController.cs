@@ -182,6 +182,18 @@ public class SkillController : MonoBehaviour
 	}
 
 	public void DoUltimate() {
+		UnityEngine.Object[] objects = FindObjectsOfType (typeof(GameObject));
+		foreach (GameObject go in objects) {
+			go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+			if (go.GetComponent<HealthBar>())
+			go.GetComponent<HealthBar>().isAvailable = false;
+		}
+		GetComponent<SkillController>().isAvailable = false;
+		Application.LoadLevelAdditive("ArjunaUltimate");
+		Invoke("InvokeUlti",12);
+	}
+
+	public void InvokeUlti() {
 		skills[2].doSkill();
 	}
 
@@ -209,7 +221,7 @@ public class SkillController : MonoBehaviour
 	            }
 	        }
         	//ULTI
-			//if (!GamePrefs.isVoiceUsed && GetComponent<UltiControl>().isCanUlti) {
+			if (!GamePrefs.isVoiceUsed && GetComponent<UltiControl>().isCanUlti) {
 		        if (skills[2] != null)
 		        {
 		            GUIStyle style = new GUIStyle(GUI.skin.box);
@@ -218,19 +230,11 @@ public class SkillController : MonoBehaviour
 		            if (GUI.Button(new Rect(60, 370, 300, 300), "", style))
 		            {
 						if (!GamePrefs.isVoiceUsed) {
-							UnityEngine.Object[] objects = FindObjectsOfType (typeof(GameObject));
-							foreach (GameObject go in objects) {
-								go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-								if (go.GetComponent<HealthBar>())
-								go.GetComponent<HealthBar>().isAvailable = false;
-							}
-							GetComponent<SkillController>().isAvailable = false;
-							Application.LoadLevelAdditive("ArjunaUltimate");
-		                	Invoke("DoUltimate",12);
+		                	DoUltimate();
 		                }
 		            }
 		        }
-			//}
+			}
 		}
     }
 

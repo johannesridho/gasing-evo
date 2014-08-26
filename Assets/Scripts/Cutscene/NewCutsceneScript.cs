@@ -66,8 +66,6 @@ public class NewCutsceneScript : MonoBehaviour {
 		camera2.transform.rotation = Quaternion.Euler(43.52179f, 0, 0);
 		camera2.enabled = true;
 		if (playerGasing == "Colonix") {
-			instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Eternal Light"), player.transform.position, Quaternion.Euler(-90, 0, 0));
-			instantiation.tag = "CutsceneSprite";
 			foreach (GameObject enemy in enemies) {
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Flame Enchant"), enemy.transform.position, Quaternion.Euler(-90, 0, 0));
 				instantiation.tag = "CutsceneSprite";
@@ -91,7 +89,14 @@ public class NewCutsceneScript : MonoBehaviour {
 				instantiation.tag = "CutsceneSprite";
 			} 
     	} else if (playerGasing == "Prototype") {
-    		  
+    		foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Boom"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Explosion"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Fire Burst"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			} 
     	} else if (playerGasing == "Skymir") {
 			foreach (GameObject enemy in enemies) {
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Lightning Field"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
