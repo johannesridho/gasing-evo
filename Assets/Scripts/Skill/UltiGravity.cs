@@ -47,8 +47,9 @@ public class UltiGravity : Skill {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+						Instantiate ((GameObject) Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler (0, 0, 0));
 						if (targetEnemySC) {
-							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.333f);
+							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.25f);
 							targetEnemySC.applyStatus("StatusStun", 5);
 						}
 					}	

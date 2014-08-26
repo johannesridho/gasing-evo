@@ -12,7 +12,6 @@ public class NewCutsceneScript : MonoBehaviour {
 	public string playerGasing;
 	public string chosenArena;
 
-	public GameObject caster;
 	public GameObject instantiation;
 	public bool centering = false;
 
@@ -76,13 +75,30 @@ public class NewCutsceneScript : MonoBehaviour {
 				instantiation.tag = "CutsceneSprite";
 			}
     	} else if (playerGasing == "Craseed") {
-    		 
-    	} else if (playerGasing == "Legasic") {
-    		  
+			foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Dark Mist"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Spurt"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			}
+    	} else if (playerGasing == "Legasic") { 
+			foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Meteor Storm"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Landmine"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Magma Burst"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			} 
     	} else if (playerGasing == "Prototype") {
     		  
     	} else if (playerGasing == "Skymir") {
-    		  
+			foreach (GameObject enemy in enemies) {
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Lightning Field"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Heavy Snowfall"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
+			} 
     	} else {
     		Debug.Log("Gasing Unknown");
     	}
@@ -92,7 +108,6 @@ public class NewCutsceneScript : MonoBehaviour {
 
 	void ExitScene() {
 
-		Destroy(GameObject.Find("Caster"));
 		GameObject[] cutsceneSprites = GameObject.FindGameObjectsWithTag("CutsceneSprite");
 
 		foreach (GameObject cutsceneSprite in cutsceneSprites) {
