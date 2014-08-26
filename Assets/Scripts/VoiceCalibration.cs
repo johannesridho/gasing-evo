@@ -231,7 +231,7 @@ public class VoiceCalibration : MonoBehaviour {
 //		}
 
 		Color backgroundColor = GUI.backgroundColor;
-		GUILayout.BeginArea(new Rect(350,410,750,800));
+		GUILayout.BeginArea(new Rect(330,410,780,800));
 
 		if (GamePrefs.isVoiceUsed) {
 			// Untuk setiap word yang direkam, maka.....
