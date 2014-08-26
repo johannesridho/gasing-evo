@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UltiEmptySoul : Skill {
+public class UltiGravity : Skill {
 	
 	private Gasing gasing;
 	public GameObject[] targetEnemies;
 	private Object prefabMissile;
 	
 	void Awake(){
-		skillName = "Empty Soul";
+		skillName = "Gravity";
 		skillPointNeeded = 20;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
@@ -20,7 +20,7 @@ public class UltiEmptySoul : Skill {
 	}
 	
 	void Update () {
-
+		
 	}
 	
 	public override void doSkill()
@@ -45,11 +45,13 @@ public class UltiEmptySoul : Skill {
 				else
 				{
 					foreach (GameObject targetEnemy in targetEnemies) {
+						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
-						if (targetEnemyGasing) {
-							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.5f);
+						if (targetEnemySC) {
+							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.333f);
+							targetEnemySC.applyStatus("StatusStun", 5);
 						}
-					}
+					}	
 				}
 			}
 		}

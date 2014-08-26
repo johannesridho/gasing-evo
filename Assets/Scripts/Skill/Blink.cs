@@ -7,7 +7,7 @@ public class Blink : Skill {
 	
 	void Awake(){
         skillName = "Blink";
-		skillPointNeeded = 10;
+		skillPointNeeded = 5;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
 	}

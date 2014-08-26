@@ -20,20 +20,62 @@ public class AftermatchScript : MonoBehaviour {
 			} else {
 					Application.LoadLevel (Utilities.chosenArena);	
 			}
-		} else {
+		} else {		//arcade mode
 			if (gameObject.name == "quit") {
 				Application.LoadLevel ("Main Menu");		
-			} else {
+			} else {		//button next dipilih
+
+				Debug.Log("---------------------------------------------"+Utilities.storyModeLevel);
 				//set story level here
 				if(Utilities.victory == true){
 					switch(Utilities.storyModeLevel){
 					case 1:
 						Utilities.storyModeLevel = 2;
-						Utilities.enemy1 = "craseed";
+						Utilities.enemy1 = "Colonix";
+						Utilities.enemy2 = "Skymir";
 						break;
 					case 2:
 						Utilities.storyModeLevel = 3;
-						Utilities.enemy1 = "craseed";
+						Utilities.enemy1 = "Colonix";
+						Utilities.enemy2 = "Skymir";
+						Utilities.enemy3 = "Legasic";
+						break;
+					case 3:
+						Utilities.storyModeLevel = 4;
+						Utilities.enemy1 = "Colonix";
+						Utilities.enemy2 = "Skymir";
+						Utilities.enemy3 = "Legasic";
+						Utilities.enemy4 = "Prototype";
+						break;
+					case 4:
+						Utilities.storyModeLevel = 5;
+						Utilities.enemy1 = "Colonix";
+						Utilities.enemy2 = "Skymir";
+						Utilities.enemy3 = "Legasic";
+						Utilities.enemy4 = "Prototype";
+						Utilities.enemy5 = "Craseed";
+						break;
+					case 5:
+						Utilities.storyModeLevel = 6;
+						Utilities.enemy1 = "Colonix";
+						Utilities.enemy2 = "Skymir";
+						Utilities.enemy3 = "Legasic";
+						Utilities.enemy4 = "Prototype";
+						Utilities.enemy5 = "Craseed";
+						Utilities.enemy6 = "Colonix";
+						Utilities.enemy7 = "Skymir";
+						break;
+					case 6:
+						Utilities.storyModeLevel = 7;
+						Utilities.enemy1 = "Colonix";
+						Utilities.enemy2 = "Skymir";
+						Utilities.enemy3 = "Legasic";
+						Utilities.enemy4 = "Prototype";
+						Utilities.enemy5 = "Craseed";
+						Utilities.enemy6 = "Colonix";
+						Utilities.enemy7 = "Skymir";
+						Utilities.enemy8 = "Legasic";
+						Utilities.enemy9 = "Prototype";
 						break;
 					}
 					Application.LoadLevel("Loading Screen");

@@ -16,6 +16,9 @@ public class HealthBar : MonoBehaviour
     private Texture2D teksturSkill;
     private Texture2D teksturSkill2;
 
+	int lebar;
+	int tinggi;
+
     public bool isAvailable = true;
 
     void Awake() 
@@ -33,18 +36,21 @@ public class HealthBar : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        healthBarLength = 50;
-        skillBarLength = 50;
+		lebar = Screen.width/17;
+//		tinggi = Screen.height/50;
+		tinggi = 7;
+        healthBarLength = lebar;
+        skillBarLength = lebar;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        screenPosition.y = Screen.height - screenPosition.y;	//naikin dikit biar di atasnya gasing
-        healthBarLength = gasing.getEP() / gasing.getEPMax() * 50;		//update terus panjang bar
+        screenPosition.y = Screen.height - screenPosition.y - tinggi * 4;	//naikin dikit biar di atasnya gasing
+		healthBarLength = gasing.getEP() / gasing.getEPMax() * lebar;		//update terus panjang bar
 		if(healthBarLength <=10) healthBarLength = 10;
-        skillBarLength = gasing.getSP() / gasing.getSPMax() * 50;
+		skillBarLength = gasing.getSP() / gasing.getSPMax() * lebar;
 		if(skillBarLength <=10) skillBarLength = 10;
     }
 
@@ -86,12 +92,12 @@ public class HealthBar : MonoBehaviour
                 GUIStyle styleSkill2 = new GUIStyle(GUI.skin.box);
                 styleSkill2.normal.background = teksturSkill2;
 
-                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, 50, 7), "", style2);
-                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 35, healthBarLength, 7), "", style);
+				GUI.Box(new Rect(screenPosition.x - lebar/2, screenPosition.y - tinggi, lebar, tinggi), "", style2);
+				GUI.Box(new Rect(screenPosition.x - lebar/2, screenPosition.y - tinggi, healthBarLength, tinggi), "", style);
                 //		GUI.Label (new Rect(screenPosition.x - 25, screenPosition.y - 45, 50, 7),"Nama gasing");	
 
-                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 30, 50, 7), "", styleSkill2);
-                GUI.Box(new Rect(screenPosition.x - 25, screenPosition.y - 30, skillBarLength, 7), "", styleSkill);
+				GUI.Box(new Rect(screenPosition.x - lebar/2, screenPosition.y, lebar, tinggi), "", styleSkill2);
+				GUI.Box(new Rect(screenPosition.x - lebar/2, screenPosition.y, skillBarLength, tinggi), "", styleSkill);
 
             }
         }

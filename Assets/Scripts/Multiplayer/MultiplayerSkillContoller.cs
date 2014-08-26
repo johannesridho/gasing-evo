@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MultiplayerSkillContoller : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class MultiplayerSkillContoller : MonoBehaviour
 
     public MultiplayerInputHandler mpInputHandler;
 
+    private bool isSkillInitialized = false;
+
+    private bool isUltiReady = false;
     #region untuk GUI
     private float guiRatioX;
     private float guiRatioY;
@@ -40,7 +44,13 @@ public class MultiplayerSkillContoller : MonoBehaviour
         {
             if (Network.isServer)
             {
-                initializeClientsSkills();
+                if (!isSkillInitialized)
+                {
+                    initializeClientsSkills();
+                    isSkillInitialized = true;
+                }
+
+                checkForUlti();
             }
         }
     }
@@ -120,20 +130,23 @@ public class MultiplayerSkillContoller : MonoBehaviour
                         }
                     }
 
-                    if (availableSkills[2] != null)
+                    if (isUltiReady)
                     {
-                        GUIStyle style1 = new GUIStyle(GUI.skin.box);
-                        style1.normal.background = getButton(availableSkills[2]);
-                        //            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
-                        if (GUI.Button(new Rect(60, 370, 300, 300), "", style1))
+                        if (availableSkills[2] != null)
                         {
-                            if (Network.isServer)
+                            GUIStyle style1 = new GUIStyle(GUI.skin.box);
+                            style1.normal.background = getButton(availableSkills[2]);
+                            //            if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), skills[2].skillName, style))
+                            if (GUI.Button(new Rect(60, 370, 300, 300), "", style1))
                             {
-                                server_doSkill(Network.player, 2);
-                            }
-                            else
-                            {
-                                networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 2);
+                                if (Network.isServer)
+                                {
+                                    server_doSkill(Network.player, 2);
+                                }
+                                else
+                                {
+                                    networkView.RPC("server_doSkill", RPCMode.Server, Network.player, 2);
+                                }
                             }
                         }
                     }
@@ -187,6 +200,41 @@ public class MultiplayerSkillContoller : MonoBehaviour
         }
     }
 
+    private void checkForUlti()
+    {
+        for (int i = 0; i < MultiplayerManager.instance.serverSideGasings.Count; i++)
+        {
+            if (MultiplayerManager.instance.serverSideGasings[i] != null)
+            {
+                if (MultiplayerManager.instance.playerList[i].playerNetwork == Network.player)
+                {
+                    //for server
+                    if (MultiplayerManager.instance.serverSideGasings[i] != null)
+                    {
+                        if (MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<UltiControl>() != null)
+                        {
+                            isUltiReady = MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<UltiControl>().isCanUlti;
+                        }
+                    }
+                }
+                else
+                {
+                    //for others
+                    if (MultiplayerManager.instance.isAllPlayerReady)
+                    {
+                        if (MultiplayerManager.instance.serverSideGasings[i] != null)
+                        {
+                            if (MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<UltiControl>() != null)
+                            {
+                                networkView.RPC("client_setUltiReady", MultiplayerManager.instance.playerList[i].playerNetwork, MultiplayerManager.instance.serverSideGasings[i].GetComponentInChildren<UltiControl>().isCanUlti);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     [RPC]
     public void client_sendAvailableSkills(string stringOfSkills)
     {
@@ -197,6 +245,7 @@ public class MultiplayerSkillContoller : MonoBehaviour
     [RPC]
     public void server_doSkill(NetworkPlayer player, int skillIndex)
     {
+        List<GameObject> asd = MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].mp_findAllTarget();
         MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].doSkill();
     }
 
@@ -222,5 +271,14 @@ public class MultiplayerSkillContoller : MonoBehaviour
     void OnLevelWasLoaded(int level)
     {
         isActive = true;
+    }
+
+    /*
+     * dikirim ke player yang ultinya ready saja
+     */
+    [RPC]
+    public void client_setUltiReady(bool ready)
+    {
+        isUltiReady = ready;
     }
 }
