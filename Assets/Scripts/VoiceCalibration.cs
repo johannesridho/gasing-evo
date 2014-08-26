@@ -85,7 +85,7 @@ public class VoiceCalibration : MonoBehaviour {
 		if (null == AudioWordDetection ||
 		    null == Mic)
 		{
-			Debug.LogError("Missing meta references");
+			//Debug.LogError("Missing meta references");
 			return;
 		}
 		
@@ -110,7 +110,7 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 		catch (System.Exception ex)
 		{
-			Debug.Log(string.Format("Update exception={0}", ex));
+			//Debug.Log(string.Format("Update exception={0}", ex));
 		}
 	}
 
@@ -201,7 +201,7 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 		catch (System.Exception ex)
 		{
-			Debug.Log(string.Format("OnGUI exception={0}", ex));
+			//Debug.Log(string.Format("OnGUI exception={0}", ex));
 		}
 
 		// Opsi suara
@@ -349,7 +349,7 @@ public class VoiceCalibration : MonoBehaviour {
 			return;
 		}
 		
-		Debug.Log(string.Format("Detected: {0}", args.Details.Label));
+		//Debug.Log(string.Format("Detected: {0}", args.Details.Label));
 	}
 
 	private void SetupWordProfile(bool playAudio)
