@@ -30,14 +30,26 @@ public class LoadingScript : MonoBehaviour {
 			} 	
 		} else {
 			switch(Utilities.storyModeLevel){
-				case 1:
+			case 1:
 				Application.LoadLevel("Ice Field");
 				break;
-				case 2:
-				Application.LoadLevel("Space");
+			case 2:
+				Application.LoadLevel("Gladiator");
 				break;
-				case 3:
+			case 3:
+				Application.LoadLevel("Steel Arena");
+				break;
+			case 4:
+				Application.LoadLevel("Gasing Evo Arena");
+				break;
+			case 5:
 				Application.LoadLevel("Nebula");
+				break;
+			case 6:
+				Application.LoadLevel("Explode Arena");
+				break;
+			case 7:
+				Application.LoadLevel("Space");
 				break;
 			}
 		}
