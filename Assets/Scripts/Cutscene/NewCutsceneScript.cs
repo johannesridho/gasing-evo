@@ -87,12 +87,14 @@ public class NewCutsceneScript : MonoBehaviour {
 				instantiation.tag = "CutsceneSprite";
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Landmine"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Magma Burst"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation.tag = "CutsceneSprite";
 			} 
     	} else if (playerGasing == "Prototype") {
     		  
     	} else if (playerGasing == "Skymir") {
 			foreach (GameObject enemy in enemies) {
-				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Snowstorm"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
+				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Lightning Field"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
 				instantiation = (GameObject)Instantiate(Resources.Load("Prefab/Prefab Obstacle/Heavy Snowfall"), enemy.transform.position, Quaternion.Euler(0, 0, 0));
 				instantiation.tag = "CutsceneSprite";
