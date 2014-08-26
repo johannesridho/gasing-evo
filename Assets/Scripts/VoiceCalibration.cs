@@ -154,7 +154,7 @@ public class VoiceCalibration : MonoBehaviour {
 		}
 
 		// Back to MainMenu
-		if (GUI.Button(new Rect(1100, 630, 100, 50), "Back"))
+		if (GUI.Button(new Rect(800, 630, 500, 80), "Back"))
 		{
 			Application.LoadLevel("Main Menu");
 		}
@@ -231,7 +231,7 @@ public class VoiceCalibration : MonoBehaviour {
 //		}
 
 		Color backgroundColor = GUI.backgroundColor;
-		GUILayout.BeginArea(new Rect(390,380,600,800));
+		GUILayout.BeginArea(new Rect(350,410,750,800));
 
 		if (GamePrefs.isVoiceUsed) {
 			// Untuk setiap word yang direkam, maka.....
