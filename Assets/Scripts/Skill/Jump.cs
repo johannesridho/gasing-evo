@@ -4,13 +4,13 @@ using System.Collections;
 public class Jump : Skill {
 
 	private Gasing gasing;
-	private float cooldown;
+//	private float cooldown;
 	private AudioClip audioJump;
 
 	void Awake(){
-		cooldown = 2f;
+//		cooldown = 2f;
         skillName = "Jump";
-		skillPointNeeded = 10;
+		skillPointNeeded = 5;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();	
 	}
@@ -20,7 +20,7 @@ public class Jump : Skill {
 	}
 
 	void Update () {
-		cooldown += Time.deltaTime;
+		//cooldown += Time.deltaTime;
 	}
 
 	void FixedUpdate () {
@@ -53,7 +53,7 @@ public class Jump : Skill {
                 rigidbody.AddForce(movement * jump_coef * Time.deltaTime);
                 gasing.isOnGround = false;
                 gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
-				cooldown = 0;
+				//cooldown = 0;
             }
         }
     }
