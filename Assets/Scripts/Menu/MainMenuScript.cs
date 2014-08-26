@@ -21,7 +21,8 @@ public class MainMenuScript : MonoBehaviour {
 		if (isSinglePlayer) {
 			showSinglePlayerMenu();
 		} else if (isMultiPlayer) {
-			showMultiplayerMenu();
+//			showMultiplayerMenu();
+			Application.LoadLevel ("Multiplayer Menu");
 		} else if (isOption) {
 			//showOptionMenu();
 			Application.LoadLevel ("Voice Calibration");

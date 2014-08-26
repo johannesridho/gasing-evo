@@ -11,6 +11,8 @@ public class FollowPemain : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		transform.position = new Vector3 (0f,10.5f,-11f);
+		transform.rotation = Quaternion.Euler (45,0,0);
         if (!pemain)
         {
             if (GamePrefs.isMultiplayer)
@@ -95,6 +97,7 @@ public class FollowPemain : MonoBehaviour
                 transform.position = offset * 3 / 2 + pemainTransform.position;
             }else{
 				transform.position = new Vector3(0,25,-45);
+//				transform.position = posisiAwal;
 			}
         }
     }
