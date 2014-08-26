@@ -107,7 +107,7 @@ public class MenuManager : MonoBehaviour
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
         }
 
-        if (GUI.Button(new Rect(950, 590, 680, 60), "Back"))
+        if (GUI.Button(new Rect(300, 590, 680, 60), "Back"))
         {
             Application.LoadLevel("Main Menu");
         }
