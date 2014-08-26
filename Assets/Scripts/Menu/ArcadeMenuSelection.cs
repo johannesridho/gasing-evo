@@ -60,9 +60,15 @@ public class ArcadeMenuSelection : MonoBehaviour {
 						}
 				} else if (isBack) {
 						chooseCamera ("Main Camera");	
+						GameObject[] texts = GameObject.FindGameObjectsWithTag ("GasingSelection");
+						foreach (GameObject text in texts) {
+							if (text.name != "numbers")
+								DestroyObject(text);	
+						}
 						GameObject.Find ("Team Mode Menus").GetComponent<TeamModeMenuScript> ().isSet = false;
 						GameObject.Find ("Royal Mode Menus").GetComponent<RoyalModeMenuScript> ().isSet = false;
 						chooseRoyalMode();
+						activateGUI(false);
 				}
 	}
 
@@ -107,12 +113,24 @@ public class ArcadeMenuSelection : MonoBehaviour {
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isTeamMode = true;
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "one";
 		} else {
+			if (GameObject.Find("numbers")) {
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().isTeamMode = false;
 			GameObject.Find("numbers").GetComponent<SelectHowManyScript>().number = "two";
+			} else {
+				Debug.Log("Gameobject numbers not found");
+			}
 		}
 		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().numberInt = num;	
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript> ().configureNames (num);
-		GameObject.Find("numbers").GetComponent<SelectHowManyScript> ().configurePref ();
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().configureNames (num);
+		GameObject.Find("numbers").GetComponent<SelectHowManyScript>().configurePref ();
+	}
+
+	public void activateGUI(bool set){
+		GameObject[] GUIGasing = GameObject.FindGameObjectsWithTag("GasingSelection");
+		foreach (GameObject gui in GUIGasing) {
+			gui.GetComponent<NameGUI>().isActive = set;	
+			Debug.Log(gui.name + " gui deactivated");
+		}
 	}
 
 	void OnMouseOver(){

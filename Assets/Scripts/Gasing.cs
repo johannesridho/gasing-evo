@@ -24,7 +24,8 @@ public class Gasing : MonoBehaviour {
 
 	// state
 	public bool isOnGround;
-    public bool isPlayerAlive = true;
+	public bool isPlayerAlive = true;
+	public bool isCanMove = true;
 
 	public AudioClip audioPutaran;
 	private AudioClip audioTabrakTembok;
@@ -65,7 +66,7 @@ public class Gasing : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!paused) {
+		if (!paused && Time.timeScale != 0) {
 			EPKurang(0.05f);		//kurangi EP tiap detik
 			SPTambah (0.01f);		//tambah SP tiap detik
 			if(energiPoint <=0 || transform.position.y <= (-10)){

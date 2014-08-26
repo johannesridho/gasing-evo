@@ -11,7 +11,7 @@ public class SelectGasingScript : MonoBehaviour {
 	void Start () {
 		thumbnail = renderer as SpriteRenderer;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	}
@@ -89,13 +89,5 @@ public class SelectGasingScript : MonoBehaviour {
 		} else {
 			Utilities.playerGasing = name;
 		}
-	}
-
-	void OnMouseOver(){
-		renderer.material.color = new Color (renderer.material.color.r + 40,renderer.material.color.g,renderer.material.color.b);
-	}
-	
-	void OnMouseExit(){
-		renderer.material.color = Color.white;
 	}
 }

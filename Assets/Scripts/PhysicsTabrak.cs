@@ -4,10 +4,10 @@ using System.Collections;
 public class PhysicsTabrak : MonoBehaviour {
 	
 	public bool isInvicibleAfterClash;
-	private float timeCountAfterClash;
+	public float timeCountAfterClash;
 	private Gasing gasing;
 	private static float COEF_MOMENTUM = 70f;
-	private Vector3 geserForce;
+	public Vector3 geserForce;
 
 	void Awake(){
 		if(!gasing)
@@ -48,12 +48,12 @@ public class PhysicsTabrak : MonoBehaviour {
 	}
 	
 	void bounceAgainstObstacles(Collision C) {
-		float coeff_obs = 30f;
+		float coeff_obs = 15f;
 		ContactPoint cp = C.contacts[0];
 		Vector3 dir = gasing.rigidbody.position - cp.point;
 		Vector3 direction = dir / dir.magnitude;
 		Vector3 momentum = COEF_MOMENTUM * direction * coeff_obs;
-		gasing.collider.SendMessage("speedChange", momentum, SendMessageOptions.DontRequireReceiver);
+		geserForce = momentum;
 	}	
 	
 	void OnCollisionEnter(Collision col){
@@ -68,11 +68,10 @@ public class PhysicsTabrak : MonoBehaviour {
 		}
         if (col.gameObject.tag == "Item")
         {
-            if (!isInvicibleAfterClash)
-            {
-                isInvicibleAfterClash = true;
-                timeCountAfterClash = 0f;
-            }
+//            if (!isInvicibleAfterClash) {
+//                isInvicibleAfterClash = true;
+//                timeCountAfterClash = 0f;
+//            }
         }
 		if (col.gameObject.tag == "Obstacle") {
 			if (!isInvicibleAfterClash) {
