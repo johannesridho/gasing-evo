@@ -106,6 +106,11 @@ public class MenuManager : MonoBehaviour
         {
             Network.Connect(directConnectIP, MultiplayerManager.instance.serverPort);
         }
+
+        if (GUI.Button(new Rect(950, 590, 680, 60), "Back"))
+        {
+            Application.LoadLevel("Main Menu");
+        }
     }
 
     private void menu_HostGame()
