@@ -38,8 +38,6 @@ public class StatusController : MonoBehaviour {
 	
 	public void removeStatus () {
 		timeLimit = default_timeLimit;
-//		Status s = (Status)gameObject.GetComponent(statusName);
-//		s.aksiRollback();
 		Destroy(gameObject.GetComponent(statusName));
 		statusName = "";
 		isStatusApplied = false;
