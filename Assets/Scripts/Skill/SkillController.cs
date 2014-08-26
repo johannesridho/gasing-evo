@@ -170,7 +170,7 @@ public class SkillController : MonoBehaviour
 				ultiAvailable = false;
 				ultiReady = false;
 				DoUltimate();
-				WordDetails details = AudioWordDetection.Words[0];
+//				WordDetails details = AudioWordDetection.Words[0];
 //				Debug.Log(details.Score.ToString());
 			}
 		}
