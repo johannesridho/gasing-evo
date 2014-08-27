@@ -21,6 +21,8 @@ public class MenuManager : MonoBehaviour
     //public GUIStyle customButton;
     public GUISkin customSkin;
 
+    public Texture[] gambargasing;
+
     void Start()
     {
         GamePrefs.isMultiplayer = true;
@@ -266,7 +268,8 @@ public class MenuManager : MonoBehaviour
         GUI.EndScrollView();
 
         GUI.Box(new Rect(629, 105, 550, 506), "");
-        GUI.Label(new Rect(635, 115, 550, 60), MultiplayerManager.instance.selectableGasingString[selected]);
+        //GUI.Label(new Rect(635, 115, 550, 60), MultiplayerManager.instance.selectableGasingString[selected]);
+        GUI.DrawTexture(new Rect(700, 145, 400, 400), gambargasing[selected]);
 
 
         if (GUI.Button(new Rect(51, 626, 250, 60), "OK"))

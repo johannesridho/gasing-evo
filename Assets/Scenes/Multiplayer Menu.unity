@@ -262,6 +262,12 @@ MonoBehaviour:
   serverName: My Server
   maxPlayer: 2
   customSkin: {fileID: 11400000, guid: 01642b268440b304e87201a372355d6d, type: 2}
+  gambargasing:
+  - {fileID: 2800000, guid: be14f90736b8ee8478432d6716544172, type: 3}
+  - {fileID: 2800000, guid: bd9d5333201813240a78a502fad65cb2, type: 3}
+  - {fileID: 2800000, guid: cafbd3fd7111aff48b8b1241f55dbb59, type: 3}
+  - {fileID: 2800000, guid: cf2fc01466a121441b68449e549b0eed, type: 3}
+  - {fileID: 2800000, guid: 260a29cdcf411414192fe8db8f4c7031, type: 3}
 --- !u!114 &325154861
 MonoBehaviour:
   m_ObjectHideFlags: 0
