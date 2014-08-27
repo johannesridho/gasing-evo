@@ -35,19 +35,21 @@ public class AftermatchScript : MonoBehaviour {
 						Utilities.storyModeLevel = 2;
 						Utilities.enemy1 = "Legasic";
 						Utilities.enemy2 = "Skymir";
+						Utilities.chosenArena = "Explode Arena";
 						break;
 					case 2:
 						Utilities.storyModeLevel = 3;
 						Utilities.enemy1 = "Legasic";
 						Utilities.enemy2 = "Skymir";
 						Utilities.enemy3 = "Legasic";
+						Utilities.chosenArena = "Gladiator";
 						break;
 					case 3:
 						Utilities.storyModeLevel = 4;
 						Utilities.enemy1 = "Legasic";
 						Utilities.enemy2 = "Skymir";
 						Utilities.enemy3 = "Legasic";
-						Utilities.enemy4 = "Prototype";
+						Utilities.chosenArena = "Steel Arena";
 						break;
 					case 4:
 						Utilities.storyModeLevel = 5;
@@ -56,6 +58,7 @@ public class AftermatchScript : MonoBehaviour {
 						Utilities.enemy3 = "Legasic";
 						Utilities.enemy4 = "Prototype";
 						Utilities.enemy5 = "Craseed";
+						Utilities.chosenArena = "Gasing Evo Arena";
 						break;
 					case 5:
 						Utilities.storyModeLevel = 6;
@@ -66,6 +69,7 @@ public class AftermatchScript : MonoBehaviour {
 						Utilities.enemy5 = "Craseed";
 						Utilities.enemy6 = "Colonix";
 						Utilities.enemy7 = "Skymir";
+						Utilities.chosenArena = "Nebula";
 						break;
 					case 6:
 						Utilities.storyModeLevel = 7;
@@ -78,13 +82,15 @@ public class AftermatchScript : MonoBehaviour {
 						Utilities.enemy7 = "Skymir";
 						Utilities.enemy8 = "Legasic";
 						Utilities.enemy9 = "Prototype";
+						Utilities.chosenArena = "Space";
 						break;
 					case 7:
-						Utilities.storyModeLevel = 8;
-						Utilities.deleteAllGasingSelected();		//kosongin data gasing2
+						Utilities.storyModeLevel = 8;					
 						break;					
 					}
-					Application.LoadLevel("Loading Screen");
+					if(Utilities.storyModeLevel < 8) {		//klo udah 8 brarti udah tamat & lgsg masuk credit
+						Application.LoadLevel("Loading Screen");		
+					}
 				}
 				else{
 					Application.LoadLevel("Loading Screen");

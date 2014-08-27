@@ -254,7 +254,11 @@ public class StoneFieldController : MonoBehaviour
 			else if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0){
 				//winning condition
 				Utilities.victory = true;
-				Application.LoadLevel("GameOver");
+				if(Utilities.storyModeLevel == 7){			//klo udah menang level 7 lgsg masuk credit
+					Application.LoadLevel("Credit");
+				}else{
+					Application.LoadLevel("GameOver");
+				}
 			}
 		}
     }

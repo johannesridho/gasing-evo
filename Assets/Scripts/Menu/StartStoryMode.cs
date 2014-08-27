@@ -17,6 +17,7 @@ public class StartStoryMode : MonoBehaviour {
 		Utilities.storyModeLevel = 1;
 		Application.LoadLevel ("Loading Screen");
 		Utilities.enemy1 = "Legasic";
+		Utilities.chosenArena = "Ice Field";
 	}
 
 	void OnMouseOver(){
