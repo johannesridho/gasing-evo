@@ -8,6 +8,11 @@ public class UltiControl : MonoBehaviour {
 	private Gasing gasing;
 	private float timeCount;
 	public float temp;
+	public float timeUltiActive = 3f;
+
+	private bool ultiCondition () {
+		return gasing.energiPoint <= gasing.energiPointMax * 0.25;
+	}
 
 	void Start () {
 		if(!gasing)
@@ -19,14 +24,13 @@ public class UltiControl : MonoBehaviour {
 
 	void Update () {
 		temp = gasing.energiPoint / gasing.energiPointMax;
-		if ((gasing.energiPoint <= gasing.energiPointMax * 0.25) && !ultiActive) {
+		if (ultiCondition() && !ultiActive) {
 			isCanUlti = true;
 			ultiActive = true;
-			GetComponent<SkillController>().startUltiCountdown();
 		}
 		if (ultiActive) {
 			timeCount += Time.deltaTime;
-			if (timeCount >= 2f) {
+			if (timeCount >= timeUltiActive) {
 				isCanUlti = false;
 				timeCount = 0f;
 			}
@@ -36,10 +40,7 @@ public class UltiControl : MonoBehaviour {
 	void OnGUI(){
 		if(isCanUlti){
 			GUIStyle style = new GUIStyle(GUI.skin.box);
-			//		style.normal.background = skills.buttonSkill1;
-			//		    if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "tes", style))
-			if (GUI.Button(new Rect(Screen.width * 1/2 - 150, 20, 300, 30), "You Can Use Ultimate Skill Now", style))
-			{
+			if (GUI.Button(new Rect(Screen.width * 1/2 - 150, 20, 300, 30), "Ultimate Skill Now!!!", style)) {
 
 			}
 		}
