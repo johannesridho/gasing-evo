@@ -48,8 +48,6 @@ public class SkillController : MonoBehaviour
 
     public bool isAvailable = true;
 
-    public bool ultiAvailable = true;
-    public bool ultiReady = false;
     public bool countdownStarted = false;
     public float startTime;
 
@@ -101,17 +99,6 @@ public class SkillController : MonoBehaviour
 		{
 			//Debug.Log(string.Format("Update exception={0}", ex));
 		}
-
-		if (countdownStarted) {
-			if (Time.time  - startTime > 2000) {
-				ultiReady = false;
-			}
-		}
-
-		if (ultiReady && !countdownStarted) {
-			countdownStarted = true;
-			startTime = Time.time;
-		}
     }
 
     void OnGUI()
@@ -126,11 +113,13 @@ public class SkillController : MonoBehaviour
             {
                 OnGUI_SinglePlayer();
             }
-
-            if (ultiAvailable && ultiReady) {
-            	GUI.Label(new Rect(0,0,500,100), "ULTIMATEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-            	UpdateMic();
-            }
+			
+			if (gameObject.tag == "Player") {
+				if (GetComponent<UltiControl>().isCanUlti) {
+	            	GUI.Label(new Rect(0,0,500,100), "ULTIMATEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+	            	UpdateMic();
+	            }
+			}
         }
     }
 
@@ -165,20 +154,11 @@ public class SkillController : MonoBehaviour
 		
 		if (GamePrefs.isVoiceUsed) {
 			// Deteksi Jurus
-			if (AudioWordDetection.ClosestIndex == 1 && ultiAvailable) {
+			if (AudioWordDetection.ClosestIndex == 1) {
 				// pake skill
-				ultiAvailable = false;
-				ultiReady = false;
 				DoUltimate();
-//				WordDetails details = AudioWordDetection.Words[0];
-//				Debug.Log(details.Score.ToString());
 			}
 		}
-	}
-
-	public void startUltiCountdown() {
-		ultiReady = true;
-		//Debug.Log("Ulti readyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 	}
 
 	public void DoUltimate() {
@@ -186,7 +166,7 @@ public class SkillController : MonoBehaviour
 		foreach (GameObject go in objects) {
 			go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
 			if (go.GetComponent<HealthBar>())
-			go.GetComponent<HealthBar>().isAvailable = false;
+				go.GetComponent<HealthBar>().isAvailable = false;
 		}
 		GetComponent<SkillController>().isAvailable = false;
 		Application.LoadLevelAdditive("ArjunaUltimate");
