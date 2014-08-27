@@ -113,5 +113,6 @@ public static class Utilities {
 		PlayerPrefs.DeleteKey ("enemy9");
 		PlayerPrefs.DeleteKey ("ally1");
 		PlayerPrefs.DeleteKey ("ally2");
+		PlayerPrefs.DeleteKey ("storyModeLevel");
 	}
 }

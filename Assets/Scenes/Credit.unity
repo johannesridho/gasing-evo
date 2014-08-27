@@ -98,7 +98,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402718031}
-  m_Text: Game Over
+  m_Text: The End
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -111,7 +111,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: e6f51c20111e3c94dac9190f3dd9d5e2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4279414015
+    rgba: 4294967295
 --- !u!23 &402718033
 Renderer:
   m_ObjectHideFlags: 0

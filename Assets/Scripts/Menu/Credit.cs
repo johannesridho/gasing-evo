@@ -14,6 +14,7 @@ public class Credit : MonoBehaviour {
 	}
 
 	void OnMouseUp(){
+		Utilities.deleteAllGasingSelected();		//hapus data gasing & level story mode
 		Application.LoadLevel ("Main Menu");
 	}
 
