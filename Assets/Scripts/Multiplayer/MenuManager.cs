@@ -158,7 +158,7 @@ public class MenuManager : MonoBehaviour
         GUI.Label(new Rect(445, 20, 910, 60), MultiplayerManager.instance.serverName);
 
         GUI.Label(new Rect(80, 95, 350, 60), "Server IP");
-        GUI.Label(new Rect(445, 95, 910, 60), MultiplayerManager.instance.getServerIP());
+        GUI.Label(new Rect(445, 95, 910, 60), MultiplayerManager.instance.serverIP);
 
         GUI.Label(new Rect(80, 170, 350, 60), "Map");
         GUI.Label(new Rect(445, 170, 910, 60), MultiplayerManager.instance.currentMap.mapName);

@@ -51,6 +51,8 @@ public class MultiplayerManager : MonoBehaviour
 
     public NetworkPlayer siapaYangUlti;
 
+    public string serverIP = "";
+
     // Use this for initialization
     void Start()
     {
@@ -86,6 +88,7 @@ public class MultiplayerManager : MonoBehaviour
         Network.InitializeServer(this.maxPlayer, serverPort, false);
         //Network.InitializeSecurity();
         MasterServer.RegisterHost("gasing evo", serverName);
+        serverIP = getServerIP();
     }
 
     void OnServerInitialized()
@@ -122,6 +125,7 @@ public class MultiplayerManager : MonoBehaviour
         //send the server's maxPlayer
         networkView.RPC("client_getMaxPlayer", player, maxPlayer);
 
+        networkView.RPC("client_getServerIP", player, getServerIP());
         //if (isAllRigidbodyOnServer)
         //{
         //    // add new gasing to server side gasing
@@ -491,6 +495,12 @@ public class MultiplayerManager : MonoBehaviour
         Debug.Log("~~~~~~~ WINNER = "+ getMPPlayer(winner).playerName +" ~~~~~~~");
         PlayerPrefs.SetString("MP Winner", getMPPlayer(winner).playerName);
         Application.LoadLevel("GameOver");
+    }
+
+    [RPC]
+    public void client_getServerIP(string IP)
+    {
+        serverIP = IP;
     }
 }
 
