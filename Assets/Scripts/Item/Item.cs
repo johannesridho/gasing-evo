@@ -45,7 +45,14 @@ public class Item : MonoBehaviour {
 	}
 
 	public void selfDestroy () {
-		Destroy(transform.root.gameObject);
+        if (GamePrefs.isMultiplayer)
+        {
+            Network.Destroy(transform.root.gameObject);
+        }
+        else
+        {
+            Destroy(transform.root.gameObject);
+        }
 	}
 
     protected void handleCollision()

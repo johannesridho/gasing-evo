@@ -9,7 +9,14 @@ public class ItemController : MonoBehaviour {
 	
 	private void spawnRandomItem(Vector3 _pos) {
 		int itemIdx = Random.Range(0, listItem.Length);
-		currentItem = (GameObject) Instantiate(listItem[itemIdx], _pos, Quaternion.Euler(0, 0, 0));
+        if (GamePrefs.isMultiplayer)
+        {
+            currentItem = (GameObject)Network.Instantiate(listItem[itemIdx], _pos, Quaternion.Euler(0, 0, 0), 17);
+        }
+        else
+        {
+            currentItem = (GameObject)Instantiate(listItem[itemIdx], _pos, Quaternion.Euler(0, 0, 0));
+        }
 	}
 	
 	private Vector3 getRandomPosition() {
@@ -20,14 +27,19 @@ public class ItemController : MonoBehaviour {
 	}
 	
 	private void itemUpdate() {
-		clockItem += Time.deltaTime;
-		if (clockItem >= 5f) {
-			if(currentItem){
-				currentItem.GetComponent<Item>().selfDestroy();
-			}
-			spawnRandomItem(getRandomPosition());
-			clockItem = 0f;
-		}
+        if ((!GamePrefs.isMultiplayer) || (GamePrefs.isMultiplayer && Network.isServer))
+        {
+            clockItem += Time.deltaTime;
+            if (clockItem >= 5f)
+            {
+                if (currentItem)
+                {
+                    currentItem.GetComponent<Item>().selfDestroy();
+                }
+                spawnRandomItem(getRandomPosition());
+                clockItem = 0f;
+            }
+        }
 	}
 	
 	void Awake(){
