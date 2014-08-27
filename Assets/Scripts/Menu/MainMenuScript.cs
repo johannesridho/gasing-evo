@@ -19,6 +19,7 @@ public class MainMenuScript : MonoBehaviour {
 	void OnMouseUp(){
 		//atur yang mana yang hilang yang mana yang muncul
 		if (isSinglePlayer) {
+			GamePrefs.isMultiplayer = false;
 			showSinglePlayerMenu();
 		} else if (isMultiPlayer) {
 //			showMultiplayerMenu();
