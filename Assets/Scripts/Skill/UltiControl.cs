@@ -32,4 +32,16 @@ public class UltiControl : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnGUI(){
+		if(isCanUlti){
+			GUIStyle style = new GUIStyle(GUI.skin.box);
+			//		style.normal.background = skills.buttonSkill1;
+			//		    if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "tes", style))
+			if (GUI.Button(new Rect(Screen.width * 1/2 - 150, 20, 300, 30), "You Can Use Ultimate Skill Now", style))
+			{
+
+			}
+		}
+	}
 }

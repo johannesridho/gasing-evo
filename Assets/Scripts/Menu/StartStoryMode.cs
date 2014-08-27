@@ -16,7 +16,7 @@ public class StartStoryMode : MonoBehaviour {
 	void OnMouseUp(){
 		Utilities.storyModeLevel = 1;
 		Application.LoadLevel ("Loading Screen");
-		Utilities.enemy1 = "Colonix";
+		Utilities.enemy1 = "Legasic";
 	}
 
 	void OnMouseOver(){
