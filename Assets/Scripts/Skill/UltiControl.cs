@@ -11,7 +11,7 @@ public class UltiControl : MonoBehaviour {
 	public float timeUltiActive = 3f;
 
 	private bool ultiCondition () {
-		return gasing.energiPoint <= gasing.energiPointMax * 0.75;
+		return gasing.energiPoint <= gasing.energiPointMax * 0.25;
 	}
 
 	void Start () {
