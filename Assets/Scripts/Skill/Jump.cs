@@ -16,22 +16,15 @@ public class Jump : Skill {
 	}
 
 	void Start () {
+		base.Start();
 		audioJump = (AudioClip) Resources.Load("Audio/gasing_mental1");
 	}
 
 	void Update () {
-		//cooldown += Time.deltaTime;
+		base.Update();
 	}
 
 	void FixedUpdate () {
-        //float jump = 0f;		
-        //if (gasing.isOnGround) {
-        //    jump = (Input.GetKeyDown("space")) ? 1f : jump;
-        //    if (Input.GetKeyDown("space"))
-        //        gasing.isOnGround = false;
-        //}		
-        //Vector3 movement = new Vector3(0f, jump, 0f);
-        //rigidbody.AddForce(movement * jump_coef * Time.deltaTime);	
         if (Input.GetKeyDown("space"))
         {
             doSkill();
@@ -39,21 +32,16 @@ public class Jump : Skill {
 	}
 
 
-    public override void doSkill()
-    {
-        if (gasing.getSP() > skillPointNeeded)
-        {            
-            if (gasing.isOnGround)
-//			if (cooldown >= 1.5)
-            {
+    public override void doSkill() {
+        if (gasing.getSP() > skillPointNeeded) {            
+            if (gasing.isOnGround) {
                 float jump_coef = 15000f;
-//                Vector3 movement = new Vector3(0f, Physics.gravity.y / (-1), 0f);
 				Vector3 movement = new Vector3(0f, 15f, 0f);
 				if(audioJump) audio.PlayOneShot(audioJump);
                 rigidbody.AddForce(movement * jump_coef * Time.deltaTime);
                 gasing.isOnGround = false;
-                gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
-				//cooldown = 0;
+                gasing.SPKurang(skillPointNeeded);
+				base.doSkill();
             }
         }
     }

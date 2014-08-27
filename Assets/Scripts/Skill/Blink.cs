@@ -13,35 +13,30 @@ public class Blink : Skill {
 	}
 	
 	void Start () {
-		
+		base.Start();
 	}
 	
 	void Update () {
-		
+		base.Update();
 	}
 
     public override void doSkill()
     {
-        if (gasing.getSP() > skillPointNeeded)
-        {
+        if (gasing.getSP() > skillPointNeeded) {
             float x;
             float z;
-            if (Application.platform == RuntimePlatform.Android)
-            {
+            if (Application.platform == RuntimePlatform.Android) {
                 x = transform.position.x + 50 * Input.acceleration.x;
                 z = transform.position.z + 50 * Input.acceleration.y;
-            }
-            else
-            {
+            } else {
                 x = transform.position.x + 15 * Input.GetAxis("Horizontal");
                 z = transform.position.z + 15 * Input.GetAxis("Vertical");
             }
-            if (x < 20 && z < 20 && x > -20 && z > -20)
-            {			//hardcode buat stonefield aja
+            if (x < 20 && z < 20 && x > -20 && z > -20) {			//hardcode buat stonefield aja
                 transform.position = new Vector3(x, 1f, z);
             }
-            //			transform.position+=transform.;
-            gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing
+			gasing.SPKurang(skillPointNeeded);
+			base.doSkill();
         }
     }
 }

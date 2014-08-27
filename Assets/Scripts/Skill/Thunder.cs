@@ -18,11 +18,11 @@ public class Thunder : Skill {
 	}
 	
 	void Start () {
-
+		base.Start();
 	}
 	
 	void Update () {
-			
+		base.Update();
 	}
 	
 	public override void doSkill()
@@ -44,7 +44,8 @@ public class Thunder : Skill {
 
 				gasingEnemy.EPKurang (damageInflicted);
 				gasing.SPKurang (skillPointNeeded);		//kurangi skillpoint gasing		
-
+				
+				base.doSkill();
 			}
 		}
 	}

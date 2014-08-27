@@ -8,7 +8,7 @@ public class UltiGravity : Skill {
 	private Object prefabMissile;
 	
 	void Awake(){
-		skillName = "Gravity";
+		skillName = "GRAVITY";
 		skillPointNeeded = 20;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
@@ -16,34 +16,25 @@ public class UltiGravity : Skill {
 	}
 	
 	void Start () {
-		
+		base.Start();
 	}
 	
 	void Update () {
-		
+		base.Update();
 	}
 	
-	public override void doSkill()
-	{
-        if (GamePrefs.isMultiplayer)
-        {
+	public override void doSkill() {
+        if (GamePrefs.isMultiplayer) {
             targetEnemies = mp_findAllTarget().ToArray();
-        }
-        else
-        {
+        } else {
             targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         }
 
-		if (gasing.getSP() > skillPointNeeded)
-		{
-			if (targetEnemies.Length > 0)
-			{
-				if (GamePrefs.isMultiplayer)
-				{
+		if (gasing.getSP() > skillPointNeeded) {
+			if (targetEnemies.Length > 0) {
+				if (GamePrefs.isMultiplayer) {
 					
-				}
-				else
-				{
+				} else {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
@@ -54,6 +45,7 @@ public class UltiGravity : Skill {
 						}
 					}	
 				}
+				base.doSkill();
 			}
 		}
 	}

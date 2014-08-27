@@ -8,7 +8,7 @@ public class UltiEmptySoul : Skill {
 	private Object prefabMissile;
 	
 	void Awake(){
-		skillName = "Empty Soul";
+		skillName = "EMPTY SOUL";
 		skillPointNeeded = 20;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
@@ -16,34 +16,25 @@ public class UltiEmptySoul : Skill {
 	}
 	
 	void Start () {
-		
+		base.Start();
 	}
 	
 	void Update () {
-
+		base.Update();
 	}
 	
-	public override void doSkill()
-	{
-        if (GamePrefs.isMultiplayer)
-        {
+	public override void doSkill() {
+        if (GamePrefs.isMultiplayer) {
             targetEnemies = mp_findAllTarget().ToArray();
-        }
-        else
-        {
+        } else {
             targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         }
 
-		if (gasing.getSP() > skillPointNeeded)
-		{
-			if (targetEnemies.Length > 0)
-			{
-				if (GamePrefs.isMultiplayer)
-				{
+		if (gasing.getSP() > skillPointNeeded) {
+			if (targetEnemies.Length > 0) {
+				if (GamePrefs.isMultiplayer) {
 					
-				}
-				else
-				{
+				} else {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
 						Instantiate ((GameObject) Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler (0, 0, 0));
@@ -52,6 +43,7 @@ public class UltiEmptySoul : Skill {
 						}
 					}
 				}
+				base.doSkill();
 			}
 		}
 	}

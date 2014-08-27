@@ -11,21 +11,34 @@ public class Skill : MonoBehaviour
     protected float skillPointNeeded;
     protected float damageInflicted;		//dipake buat skill yg bukan rigidbody (ngga perlu detect collision)
     //skill yg pake rigidbody damage diatur di script object yg dicreate oleh skill
+	protected float timeLimitSkillNameAppear = 0f;
+	public Camera cam;
 
     // Use this for initialization
-    void Start()
+	protected void Start()
     {
-
+		cam = GameObject.Find("Main Camera").camera;
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-
+		timeLimitSkillNameAppear -= Time.deltaTime;
+		if (timeLimitSkillNameAppear <= 0) {
+			timeLimitSkillNameAppear = 0;
+		}
     }
+
+	void OnGUI() {
+		if (timeLimitSkillNameAppear>0) {
+			Vector3 screenPos = cam.WorldToScreenPoint(gameObject.rigidbody.position);
+			if (GUI.Button(new Rect(screenPos.x-45, Screen.height-screenPos.y-75, 90, 30), skillName, new GUIStyle(GUI.skin.box))) {}
+		}
+	}
 
     public virtual void doSkill()
     {
+		timeLimitSkillNameAppear = 1f;
     }
 
     protected GameObject findNearestEnemy()

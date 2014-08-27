@@ -15,28 +15,25 @@ public class Bomb : Skill {
 	}
 	
 	void Start () {
-		
+		base.Start();
 	}
 	
 	void Update () {
-		
+		base.Update();
 	}
 
-    public override void doSkill()
-    {
-        if (gasing.getSP() > skillPointNeeded)
-        {
-            if (GamePrefs.isMultiplayer)
-            {
+    public override void doSkill() {
+        if (gasing.getSP() > skillPointNeeded) {
+            if (GamePrefs.isMultiplayer) {
 				GameObject bom = (GameObject) Network.Instantiate(prefabBomb, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0),11);
 				bom.GetComponent<BombScript>().nyalakan(this.gameObject, findNearestEnemy());
             }
-            else
-            {
+            else {
 				GameObject bom = (GameObject) Instantiate(prefabBomb, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.Euler(0, 0, 0));
 				bom.GetComponent<BombScript>().nyalakan(this.gameObject, findNearestEnemy());
             }
-            gasing.SPKurang(skillPointNeeded);		//kurangi skillpoint gasing		
+			gasing.SPKurang(skillPointNeeded);	
+			base.doSkill();	
         }
     }
 }//end class

@@ -8,7 +8,7 @@ public class UltiBlizzard : Skill {
 	private Object prefabMissile;
 	
 	void Awake(){
-		skillName = "Blizzard";
+		skillName = "BLIZZARD";
 		skillPointNeeded = 20;
 		if(!gasing)
 			gasing = GetComponent<Gasing>();
@@ -16,11 +16,11 @@ public class UltiBlizzard : Skill {
 	}
 	
 	void Start () {
-		
+		base.Start();
 	}
 	
 	void Update () {
-		
+		base.Update();
 	}
 	
 	public override void doSkill()
@@ -34,16 +34,11 @@ public class UltiBlizzard : Skill {
             targetEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         }
 
-		if (gasing.getSP() > skillPointNeeded)
-		{
-			if (targetEnemies.Length > 0)
-			{
-				if (GamePrefs.isMultiplayer)
-				{
+		if (gasing.getSP() > skillPointNeeded) {
+			if (targetEnemies.Length > 0) {
+				if (GamePrefs.isMultiplayer) {
 					
-				}
-				else
-				{
+				} else {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
@@ -54,6 +49,7 @@ public class UltiBlizzard : Skill {
 						}
 					}
 				}
+				base.doSkill();
 			}
 		}
 	}
