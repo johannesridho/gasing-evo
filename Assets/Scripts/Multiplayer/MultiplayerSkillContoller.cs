@@ -453,7 +453,7 @@ public class MultiplayerSkillContoller : MonoBehaviour
     private Texture2D getButton(string skillName)
     {
         Texture2D hasil = null;
-        if (skillName == "Jump") || (skillName == "Blink")
+        if ((skillName == "Jump") || (skillName == "Blink"))
         {
             hasil = skillButtons[0];
         }
