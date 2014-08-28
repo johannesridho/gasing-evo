@@ -67,15 +67,15 @@ public class GameOverScript : MonoBehaviour {
         {
             textInstance = Instantiate(aftermatchPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
             textInstance.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-            textInstance.transform.position = new Vector3(parent.transform.position.x - 3, parent.transform.position.y - 1, parent.transform.position.z);
+		textInstance.transform.position = new Vector3 (parent.transform.position.x - 2.7f, parent.transform.position.y - 2, parent.transform.position.z);
             textInstance.GetComponent<TextMesh>().text = "REMATCH";
             textInstance.name = "rematch";
         }
 
 		textInstance = Instantiate (aftermatchPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
-		textInstance.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
-		textInstance.transform.position = new Vector3 (parent.transform.position.x + 2.2f, parent.transform.position.y - 1, parent.transform.position.z);
-		textInstance.GetComponent<TextMesh>().text = "QUIT";
+//		textInstance.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
+		textInstance.transform.position = new Vector3 (parent.transform.position.x - 3.3f, parent.transform.position.y - 3.2f, parent.transform.position.z);
+		textInstance.GetComponent<TextMesh>().text = "Main Menu";
 		textInstance.name = "quit";
 	}
 
