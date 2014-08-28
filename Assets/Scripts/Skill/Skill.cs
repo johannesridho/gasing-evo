@@ -30,10 +30,14 @@ public class Skill : MonoBehaviour
     }
 
 	void OnGUI() {
-		if (timeLimitSkillNameAppear>0) {
-			Vector3 screenPos = cam.WorldToScreenPoint(gameObject.rigidbody.position);
-			if (GUI.Button(new Rect(screenPos.x-45, Screen.height-screenPos.y-75, 90, 30), skillName, new GUIStyle(GUI.skin.box))) {}
-		}
+        if (!GamePrefs.isMultiplayer)
+        {
+            if (timeLimitSkillNameAppear > 0)
+            {
+                Vector3 screenPos = cam.WorldToScreenPoint(gameObject.rigidbody.position);
+                if (GUI.Button(new Rect(screenPos.x - 45, Screen.height - screenPos.y - 75, 90, 30), skillName, new GUIStyle(GUI.skin.box))) { }
+            }
+        }
 	}
 
     public virtual void doSkill()

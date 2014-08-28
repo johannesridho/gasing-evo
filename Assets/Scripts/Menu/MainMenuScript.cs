@@ -40,6 +40,7 @@ public class MainMenuScript : MonoBehaviour {
 	}
 	
 	void setInitialState(){
+        GamePrefs.isMultiplayer = false;
 		Renderer[] renderers = GameObject.Find ("Single Player").GetComponentsInChildren<Renderer> ();
 		Renderer[] MultiPlayerRenderers = GameObject.Find ("Multiplayer").GetComponentsInChildren<Renderer> ();
 		Renderer[] OptionsRenderers = GameObject.Find ("Options").GetComponentsInChildren<Renderer> ();

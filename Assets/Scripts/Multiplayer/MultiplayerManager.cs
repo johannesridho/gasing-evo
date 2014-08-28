@@ -42,7 +42,7 @@ public class MultiplayerManager : MonoBehaviour
     public GameObject instantiatedPlayer;
 
     private int playerReady;
-
+    private int playerOnGameOverScene;
     //Server-only properies
     public List<GameObject> serverSideGasings = new List<GameObject>();
 
@@ -52,6 +52,7 @@ public class MultiplayerManager : MonoBehaviour
     public NetworkPlayer siapaYangUlti;
 
     public string serverIP = "";
+
 
     // Use this for initialization
     void Start()
@@ -84,10 +85,11 @@ public class MultiplayerManager : MonoBehaviour
         this.serverName = serverName;
         this.maxPlayer = maxPlayer;
         playerReady = 0;
+        playerOnGameOverScene = 0;
         isAllPlayerReady = false;
         Network.InitializeServer(this.maxPlayer, serverPort, false);
         //Network.InitializeSecurity();
-        MasterServer.RegisterHost("gasing evo", serverName);
+        //MasterServer.RegisterHost("gasing evo", serverName);
         serverIP = getServerIP();
     }
 
@@ -260,7 +262,7 @@ public class MultiplayerManager : MonoBehaviour
             foreach (GameObject entry in serverSideGasings)
             {
                 int spawnindex = Random.Range(0, spawnPoints.Count - 1);
-                entry.transform.position = spawnPoints[spawnindex ].transform.position;
+                entry.transform.position = spawnPoints[spawnindex].transform.position;
                 entry.transform.rotation = Quaternion.Euler(270, 0, 0);
                 entry.GetComponent<Server_Gasing>().networkView.RPC("client_playerAlive", RPCMode.All);
                 spawnPoints.Remove(spawnPoints[spawnindex]);
@@ -314,6 +316,11 @@ public class MultiplayerManager : MonoBehaviour
             isGameStarted = true;
             networkView.RPC("client_serverLoaded", RPCMode.AllBuffered, isGameStarted);
         }
+        if (Application.loadedLevelName == "GameOver")
+        {
+            networkView.RPC("server_iAmOnGameOverScrene", RPCMode.Server);
+            Network.DestroyPlayerObjects(Network.player);
+        }
     }
 
     [RPC]
@@ -325,7 +332,7 @@ public class MultiplayerManager : MonoBehaviour
         if (Network.isServer)
         {
             // BUG: INI DIPANGGIL SETIAP CLIENT READY. JADI ADA SI SERVER SPAWN SEMUA PLAYER BERKALI-KALI
-            
+
             playerReady += 1;
             Debug.Log("==============client_serverLoaded PLAYER READY = " + playerReady);
             if (isDedicatedServer)
@@ -346,7 +353,7 @@ public class MultiplayerManager : MonoBehaviour
                     server_spawnPlayer(Network.player);
                 }
             }
-            
+
         }
         else
         {
@@ -456,7 +463,7 @@ public class MultiplayerManager : MonoBehaviour
     {
         foreach (GameObject gobj in serverSideGasings)
         {
-            Destroy(gobj);
+            Network.Destroy(gobj);
         }
         serverSideGasings = new List<GameObject>();
 
@@ -465,6 +472,8 @@ public class MultiplayerManager : MonoBehaviour
             playerList[i] = null;
         }
         playerList = new List<MPPlayer>();
+
+        Network.Disconnect();
     }
 
     public void decideWinner()
@@ -486,21 +495,48 @@ public class MultiplayerManager : MonoBehaviour
     {
         if (Network.isServer)
         {
-            foreach (GameObject gobj in serverSideGasings)
-            {
-                gobj.SetActive(false);
-            }
+            
         }
         isGameStarted = false;
-        Debug.Log("~~~~~~~ WINNER = "+ getMPPlayer(winner).playerName +" ~~~~~~~");
+        Debug.Log("~~~~~~~ WINNER = " + getMPPlayer(winner).playerName + " ~~~~~~~");
         PlayerPrefs.SetString("MP Winner", getMPPlayer(winner).playerName);
-        Application.LoadLevel("GameOver");
+
+        if (Network.isClient)
+        {
+            Application.LoadLevel("GameOver");
+        }
     }
 
     [RPC]
     public void client_getServerIP(string IP)
     {
         serverIP = IP;
+    }
+
+    [RPC]
+    public void server_iAmOnGameOverScrene()
+    {
+        playerOnGameOverScene++;
+        Debug.Log("server_iAmOnGameOverScrene");
+        Debug.Log("playerOnGameOverScene = "+ playerOnGameOverScene);
+        Debug.Log("playerList.Count = "+ playerList.Count);
+        if(playerOnGameOverScene == playerList.Count - 1)
+        {
+            // ready to disconnect and destroy
+            foreach (MPPlayer pl in playerList)
+            {
+                if (pl.playerNetwork != Network.player)
+                {
+                    Network.DestroyPlayerObjects(pl.playerNetwork);
+                }
+            }
+            Debug.Log("ready to destroy");
+            Network.DestroyPlayerObjects(Network.player);
+            disconnectServer();
+            Network.Disconnect();
+            DestroyImmediate(this.gameObject);
+            Application.LoadLevel("GameOver");
+        }
     }
 }
 
