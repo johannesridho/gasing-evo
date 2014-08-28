@@ -262,4 +262,30 @@ public class StoneFieldController : MonoBehaviour
 			}
 		}
     }
+
+	void OnGUI(){
+		if(Time.timeScale == 0){		//if paused 
+			GUIStyle style = new GUIStyle(GUI.skin.box);
+			float lebar = Screen.width / 2;
+			float tinggi = Screen.height / 4;
+			//		style.normal.background = skills.buttonSkill1;
+			//		    if (GUI.Button(new Rect(Screen.width * 1 / 5, Screen.height * 7 / 10, Screen.width / 7, Screen.height / 8), "tes", style))
+			if (GUI.Button(new Rect(Screen.width * 1/2 - lebar / 2, tinggi / 2, lebar, tinggi), "Restart", style))
+			{
+				Application.LoadLevel(Utilities.chosenArena);
+				Time.timeScale = 1;
+			}
+			if (GUI.Button(new Rect(Screen.width * 1/2 - lebar / 2, tinggi * 3 / 2, lebar, tinggi), "Main Menu", style))
+			{
+				Application.LoadLevel("Main Menu");
+				Time.timeScale = 1;
+			}
+			if (GUI.Button(new Rect(Screen.width * 1/2 - lebar / 2, tinggi * 5 / 2, lebar, tinggi), "Quit Game", style))
+			{
+				Application.Quit();
+				Time.timeScale = 1;
+			}
+			
+		}
+	}
 }

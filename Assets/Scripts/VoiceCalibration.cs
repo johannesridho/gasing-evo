@@ -47,6 +47,13 @@ public class VoiceCalibration : MonoBehaviour {
 	// flag untuk load profile
 	private bool haveLoad = false;
 
+	protected void Awake(){
+		GameObject menuMusic = GameObject.Find ("Background Music");
+		if (menuMusic) {				
+			Destroy(menuMusic);			//hancurin background music menu
+		}
+	}
+
 	// Ambil word yang sudah direkam
 	private WordDetails GetWord(string label)
 	{
