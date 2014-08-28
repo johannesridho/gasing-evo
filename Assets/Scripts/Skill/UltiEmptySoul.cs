@@ -33,7 +33,15 @@ public class UltiEmptySoul : Skill {
 		if (gasing.getSP() > skillPointNeeded) {
 			if (targetEnemies.Length > 0) {
 				if (GamePrefs.isMultiplayer) {
-					
+                    foreach (GameObject targetEnemy in targetEnemies)
+                    {
+                        Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+                        Network.Instantiate((GameObject)Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler(0, 0, 0),20);
+                        if (targetEnemyGasing)
+                        {
+                            targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint * 0.5f);
+                        }
+                    }
 				} else {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();

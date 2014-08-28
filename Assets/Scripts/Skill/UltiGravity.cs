@@ -33,7 +33,17 @@ public class UltiGravity : Skill {
 		if (gasing.getSP() > skillPointNeeded) {
 			if (targetEnemies.Length > 0) {
 				if (GamePrefs.isMultiplayer) {
-					
+                    foreach (GameObject targetEnemy in targetEnemies)
+                    {
+                        StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
+                        Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+                        Network.Instantiate((GameObject)Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler(0, 0, 0),20);
+                        if (targetEnemySC)
+                        {
+                            targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint * 0.25f);
+                            targetEnemySC.applyStatus("StatusStun", 5);
+                        }
+                    }	
 				} else {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();

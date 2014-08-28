@@ -73,9 +73,9 @@ public class MultiplayerSkillContoller : MonoBehaviour
         //create a rescale Vector3 with the above ratio
         GUIsF = new Vector3(guiRatioX, guiRatioY, 1);
 
-        
 
-        
+
+
     }
 
     // Update is called once per frame
@@ -409,7 +409,29 @@ public class MultiplayerSkillContoller : MonoBehaviour
     {
         List<GameObject> asd = MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].mp_findAllTarget();
         MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].doSkill();
-        networkView.RPC("client_setSiapaYangUlti", RPCMode.All, player);
+        string jenisGasing = "";
+        if (PlayerPrefs.GetInt("Selected Gasing") == 0)
+        {
+            jenisGasing = "Colonix";
+        }
+        else if (PlayerPrefs.GetInt("Selected Gasing") ==1)
+        {
+            jenisGasing = "Craseed";
+        }
+        else if (PlayerPrefs.GetInt("Selected Gasing") == 2)
+        {
+            jenisGasing = "Legasic";
+        }
+        else if (PlayerPrefs.GetInt("Selected Gasing") == 3)
+        {
+            jenisGasing = "Prototype";
+        }
+        else if (PlayerPrefs.GetInt("Selected Gasing") == 4)
+        {
+            jenisGasing = "Skymir";
+        }
+
+        networkView.RPC("client_setSiapaYangUlti", RPCMode.All, MultiplayerManager.instance.getGasingOwnedByPlayer(player).transform.position, jenisGasing);
         if (skillIndex == 2)
         {
             networkView.RPC("client_animateUlti", RPCMode.All);
@@ -417,9 +439,10 @@ public class MultiplayerSkillContoller : MonoBehaviour
     }
 
     [RPC]
-    public void client_setSiapaYangUlti(NetworkPlayer player)
+    public void client_setSiapaYangUlti(Vector3 playerTransform, string jenisGasing)
     {
-        MultiplayerManager.instance.siapaYangUlti = player;
+        MultiplayerManager.instance.siapaYangUlti = playerTransform;
+        MultiplayerManager.instance.jenisGasing = jenisGasing;
     }
 
     public void setActive(bool active)

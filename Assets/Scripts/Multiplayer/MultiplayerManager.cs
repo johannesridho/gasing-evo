@@ -49,7 +49,8 @@ public class MultiplayerManager : MonoBehaviour
     public InGameMessageViewer inGameMessageViewer;
 
 
-    public NetworkPlayer siapaYangUlti;
+    public Vector3 siapaYangUlti;
+    public string jenisGasing;
 
     public string serverIP = "";
 
@@ -65,6 +66,7 @@ public class MultiplayerManager : MonoBehaviour
     void FixedUpdate()
     {
         instance = this;
+        //Debug.Log("########## "+playerList.Count+" ##########");
         //Debug.Log("Player Ready = "+ playerReady);
         //Debug.Log("=========");
         //foreach (KeyValuePair<NetworkPlayer, GameObject> entry in MultiplayerManager.instance.serverSideGasings)
@@ -140,11 +142,17 @@ public class MultiplayerManager : MonoBehaviour
 
     void OnPlayerDisconnected(NetworkPlayer player)
     {
+        Network.DestroyPlayerObjects(player);
         networkView.RPC("client_removePlayer", RPCMode.All, player);
     }
 
     void OnDisconnectedFromServer(NetworkDisconnection info)
     {
+        
+        foreach (GameObject gobj in GameObject.FindGameObjectsWithTag("MP_InputHandler"))
+        {
+            Destroy(gobj);
+        }
         playerList.Clear();
     }
 
@@ -173,7 +181,7 @@ public class MultiplayerManager : MonoBehaviour
 
             myPlayer = temp;
             // instantiate client's input sender
-            instantiatedPlayer = Network.Instantiate(multiplayerInputHandlerPrefab, Vector3.zero, Quaternion.identity, 5) as GameObject;
+            Network.Instantiate(multiplayerInputHandlerPrefab, Vector3.zero, Quaternion.identity, 5);
 
         }
     }
@@ -186,17 +194,20 @@ public class MultiplayerManager : MonoBehaviour
         {
             if (pl.playerNetwork == view)
             {
+                Debug.Log("FOUND");
                 temp = pl;
             }
         }
         if (temp != null)
         {
             playerList.Remove(temp);
+            temp = null;
         }
 
         Debug.Log("player disconnected. Before: " + serverSideGasings.Count);
         serverSideGasings.Remove(getGasingOwnedByPlayer(view));
         Debug.Log("player disconnected. After: " + serverSideGasings.Count);
+        Network.DestroyPlayerObjects(view);
     }
 
     [RPC]

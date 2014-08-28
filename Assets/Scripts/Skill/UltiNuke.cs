@@ -38,7 +38,14 @@ public class UltiNuke : Skill {
                     PhysicsTabrak targetEnemyPT = targetEnemy.GetComponent<PhysicsTabrak>();
                     if (targetEnemySC) {
 						targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint * 0.333f);
-						Instantiate ((GameObject) Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler (0, 0, 0));
+                        if (GamePrefs.isMultiplayer)
+                        {
+                            Network.Instantiate((GameObject)Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler(0, 0, 0), 20);
+                        }
+                        else
+                        {
+                            Instantiate((GameObject)Resources.Load("Effect/Detonator-Simple"), targetEnemyGasing.transform.position, Quaternion.Euler(0, 0, 0));
+                        }
                         targetEnemySC.applyStatus("StatusStun", 2.5f);
                         Vector3 heading = targetEnemyGasing.rigidbody.position - gasing.rigidbody.position;
                         Vector3 direction = heading / heading.magnitude;

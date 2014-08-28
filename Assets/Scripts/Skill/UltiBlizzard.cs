@@ -37,7 +37,15 @@ public class UltiBlizzard : Skill {
 		if (gasing.getSP() > skillPointNeeded) {
 			if (targetEnemies.Length > 0) {
 				if (GamePrefs.isMultiplayer) {
-					
+					foreach (GameObject targetEnemy in targetEnemies) {
+						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();
+						Gasing targetEnemyGasing = targetEnemy.GetComponent<Gasing>();
+						Network.Instantiate ((GameObject) Resources.Load("Prefab/Prefab Obstacle/Holy Blast"), targetEnemyGasing.transform.position, Quaternion.Euler (0, 0, 0),20);
+						if (targetEnemySC) {
+							targetEnemyGasing.EPKurang(targetEnemyGasing.energiPoint*0.333f);
+							targetEnemySC.applyStatus("StatusFreeze", 10);
+						}
+					}
 				} else {
 					foreach (GameObject targetEnemy in targetEnemies) {
 						StatusController targetEnemySC = targetEnemy.GetComponent<StatusController>();

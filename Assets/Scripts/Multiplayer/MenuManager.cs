@@ -197,6 +197,13 @@ public class MenuManager : MonoBehaviour
 
         if (GUI.Button(new Rect(700, 630, 400, 60), "Disconnect"))
         {
+            
+                Debug.Log("asdfasdf " + GameObject.FindGameObjectsWithTag("MP_InputHandler").Length);
+                foreach (GameObject gobj in GameObject.FindGameObjectsWithTag("MP_InputHandler"))
+                {
+                    Network.Destroy(gobj);
+                }
+            
             Network.Disconnect();
         }
     }
