@@ -55,30 +55,30 @@ public class MenuManager : MonoBehaviour
             GUI.skin = customSkin;
             if (!MultiplayerManager.instance.isGameStarted)
             {
-                Debug.Log("MENU = " + currentMenu);
+//                Debug.Log("MENU = " + currentMenu);
                 if (currentMenu == "Main")
                 {
-                    Debug.Log("1");
+//                    Debug.Log("1");
                     menu_Main();
                 }
                 else if (currentMenu == "Host")
                 {
-                    Debug.Log("2");
+//                    Debug.Log("2");
                     menu_HostGame();
                 }
                 else if (currentMenu == "Lobby")
                 {
-                    Debug.Log("3");
+//                    Debug.Log("3");
                     menu_Lobby();
                 }
                 else if (currentMenu == "Choose Map")
                 {
-                    Debug.Log("4");
+//                    Debug.Log("4");
                     menu_chooseMap();
                 }
                 else if (currentMenu == "Choose Gasing")
                 {
-                    Debug.Log("5");
+//                    Debug.Log("5");
                     menu_chooseGasing();
                 }
             }
