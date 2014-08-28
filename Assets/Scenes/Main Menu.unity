@@ -191,7 +191,6 @@ GameObject:
   - 65: {fileID: 308380297}
   - 23: {fileID: 308380296}
   - 102: {fileID: 308380295}
-  - 114: {fileID: 308380294}
   - 114: {fileID: 308380298}
   m_Layer: 0
   m_Name: Royal Rumble
@@ -212,17 +211,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1891844120}
   m_RootOrder: 1
---- !u!114 &308380294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308380292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!102 &308380295
 TextMesh:
   serializedVersion: 3
@@ -577,7 +565,6 @@ GameObject:
   - 65: {fileID: 725896140}
   - 23: {fileID: 725896139}
   - 102: {fileID: 725896138}
-  - 114: {fileID: 725896137}
   - 114: {fileID: 725896141}
   m_Layer: 0
   m_Name: Team Mode
@@ -598,17 +585,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1891844120}
   m_RootOrder: 0
---- !u!114 &725896137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 725896135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!102 &725896138
 TextMesh:
   serializedVersion: 3
@@ -689,7 +665,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1056220013}
-  - 114: {fileID: 1056220017}
   - 23: {fileID: 1056220016}
   - 102: {fileID: 1056220015}
   - 65: {fileID: 1056220014}
@@ -766,17 +741,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &1056220017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1056220012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1056220018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +866,6 @@ GameObject:
   - 4: {fileID: 1107906761}
   - 23: {fileID: 1107906765}
   - 102: {fileID: 1107906764}
-  - 114: {fileID: 1107906762}
   - 114: {fileID: 1107906766}
   - 65: {fileID: 1107906763}
   m_Layer: 0
@@ -924,17 +887,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 304639678}
   m_RootOrder: 0
---- !u!114 &1107906762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1107906760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5186479f99a6a7b48965b55db35e0f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1107906763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1062,7 +1014,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1420583239}
-  - 114: {fileID: 1420583243}
   - 23: {fileID: 1420583242}
   - 102: {fileID: 1420583241}
   - 65: {fileID: 1420583240}
@@ -1139,17 +1090,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &1420583243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1420583238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1420583244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,7 +1337,6 @@ GameObject:
   - 4: {fileID: 1822186793}
   - 23: {fileID: 1822186796}
   - 102: {fileID: 1822186795}
-  - 114: {fileID: 1822186794}
   - 114: {fileID: 1822186798}
   - 65: {fileID: 1822186797}
   m_Layer: 0
@@ -1419,17 +1358,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 304639678}
   m_RootOrder: 1
---- !u!114 &1822186794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1822186792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5186479f99a6a7b48965b55db35e0f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!102 &1822186795
 TextMesh:
   serializedVersion: 3
@@ -1559,7 +1487,6 @@ GameObject:
   - 4: {fileID: 1891844120}
   - 23: {fileID: 1891844124}
   - 102: {fileID: 1891844123}
-  - 114: {fileID: 1891844121}
   - 114: {fileID: 1891844125}
   - 65: {fileID: 1891844122}
   m_Layer: 0
@@ -1584,17 +1511,6 @@ Transform:
   - {fileID: 1420583239}
   m_Father: {fileID: 564624951}
   m_RootOrder: 1
---- !u!114 &1891844121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1891844119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1891844122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1675,7 +1591,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2021441511}
-  - 114: {fileID: 2021441515}
   - 23: {fileID: 2021441514}
   - 102: {fileID: 2021441513}
   - 114: {fileID: 2021441516}
@@ -1752,17 +1667,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &2021441515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2021441510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2021441516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,7 +1694,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2092202329}
-  - 114: {fileID: 2092202330}
   - 23: {fileID: 2092202333}
   - 102: {fileID: 2092202332}
   - 114: {fileID: 2092202334}
@@ -1817,17 +1720,6 @@ Transform:
   - {fileID: 1056220013}
   m_Father: {fileID: 564624951}
   m_RootOrder: 2
---- !u!114 &2092202330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2092202328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df996a39e91ff854ab232367aea222ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2092202331
 BoxCollider:
   m_ObjectHideFlags: 0

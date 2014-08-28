@@ -88,7 +88,9 @@ public class FollowPemain : MonoBehaviour
                 {
                     transform.position = offset * 3 / 2 + pemainTransform.position;
                 }
-            }
+            }else{
+				transform.position = new Vector3(0,30,-45);
+			}
         }
         else
         {
