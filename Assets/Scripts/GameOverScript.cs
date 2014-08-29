@@ -66,7 +66,7 @@ public class GameOverScript : MonoBehaviour {
         if (!GamePrefs.isMultiplayer)
         {
             textInstance = Instantiate(aftermatchPrefab, parent.transform.position, parent.transform.rotation) as GameObject;
-            textInstance.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+//            textInstance.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 		textInstance.transform.position = new Vector3 (parent.transform.position.x - 2.7f, parent.transform.position.y - 2, parent.transform.position.z);
             textInstance.GetComponent<TextMesh>().text = "REMATCH";
             textInstance.name = "rematch";
