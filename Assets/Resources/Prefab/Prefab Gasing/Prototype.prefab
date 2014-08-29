@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2776ff7fcf95204ab1d0120dbd5f2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energiPointMax: 300
+  energiPointMax: 600
   skillPointMax: 100
   energiPoint: 0
   skillPoint: 0
@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: d5ad26ef4c416b441bdecf2a6c7b91ce, type: 3}
   skillName: 
+  cam: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,8 +311,6 @@ MonoBehaviour:
   - {fileID: 11400006}
   - {fileID: 11400018}
   isAvailable: 1
-  ultiAvailable: 1
-  ultiReady: 0
   countdownStarted: 0
   startTime: 0
 --- !u!114 &11400012
@@ -327,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: 6a20e0795ade8bd468bd385f5fe893f1, type: 3}
   skillName: 
+  cam: {fileID: 0}
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCanUlti: 0
   temp: 0
+  timeUltiActive: 3
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonSkill1: {fileID: 2800000, guid: 5acb5749165c3f94d83ee6d73dbcd002, type: 3}
   skillName: 
+  cam: {fileID: 0}
   targetEnemies: []
 --- !u!1001 &100100000
 Prefab:

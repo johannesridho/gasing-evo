@@ -68,7 +68,7 @@ public class Gasing : MonoBehaviour {
 	void Update () {
 		if (!paused && Time.timeScale != 0) {
 			EPKurang(0.05f);		//kurangi EP tiap detik
-			SPTambah (0.01f);		//tambah SP tiap detik
+			SPTambah (0.1f);		//tambah SP tiap detik
 			if(energiPoint <=0 || transform.position.y <= (-10)){
 				//gasing berhenti
 				//Debug.Log("wah");
