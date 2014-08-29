@@ -40,7 +40,7 @@ public class NewCutsceneScript : MonoBehaviour
             foreach (GameObject gobj in GameObject.FindGameObjectsWithTag("Player"))
             {
                 Debug.Log("distance = " + Vector3.Distance(gobj.transform.position, MultiplayerManager.instance.siapaYangUlti));
-                if (Vector3.Distance(gobj.transform.position, MultiplayerManager.instance.siapaYangUlti) < 2)
+                if (Vector3.Distance(gobj.transform.position, MultiplayerManager.instance.siapaYangUlti) < 4)
                 {
                     player = gobj;
                     break;

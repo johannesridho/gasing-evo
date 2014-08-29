@@ -204,6 +204,7 @@ public class MultiplayerSkillContoller : MonoBehaviour
                         }
                     }
 
+                    /*
                     if (ultiReady)
                     {
                         if (availableSkills[2] != null)
@@ -230,6 +231,7 @@ public class MultiplayerSkillContoller : MonoBehaviour
                         GUI.Label(new Rect(0, 0, 500, 100), "ULTIMATEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                         UpdateMic();
                     }
+                     */
                 }
             }
         }
@@ -407,35 +409,35 @@ public class MultiplayerSkillContoller : MonoBehaviour
     [RPC]
     public void server_doSkill(NetworkPlayer player, int skillIndex)
     {
-        List<GameObject> asd = MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].mp_findAllTarget();
-        MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].doSkill();
-        string jenisGasing = "";
-        if (PlayerPrefs.GetInt("Selected Gasing") == 0)
-        {
-            jenisGasing = "Colonix";
-        }
-        else if (PlayerPrefs.GetInt("Selected Gasing") ==1)
-        {
-            jenisGasing = "Craseed";
-        }
-        else if (PlayerPrefs.GetInt("Selected Gasing") == 2)
-        {
-            jenisGasing = "Legasic";
-        }
-        else if (PlayerPrefs.GetInt("Selected Gasing") == 3)
-        {
-            jenisGasing = "Prototype";
-        }
-        else if (PlayerPrefs.GetInt("Selected Gasing") == 4)
-        {
-            jenisGasing = "Skymir";
-        }
+        //List<GameObject> asd = MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].mp_findAllTarget();
+        //MultiplayerManager.instance.getGasingOwnedByPlayer(player).GetComponentInChildren<SkillController>().skills[skillIndex].doSkill();
+        //string jenisGasing = "";
+        //if (PlayerPrefs.GetInt("Selected Gasing") == 0)
+        //{
+        //    jenisGasing = "Colonix";
+        //}
+        //else if (PlayerPrefs.GetInt("Selected Gasing") ==1)
+        //{
+        //    jenisGasing = "Craseed";
+        //}
+        //else if (PlayerPrefs.GetInt("Selected Gasing") == 2)
+        //{
+        //    jenisGasing = "Legasic";
+        //}
+        //else if (PlayerPrefs.GetInt("Selected Gasing") == 3)
+        //{
+        //    jenisGasing = "Prototype";
+        //}
+        //else if (PlayerPrefs.GetInt("Selected Gasing") == 4)
+        //{
+        //    jenisGasing = "Skymir";
+        //}
 
-        networkView.RPC("client_setSiapaYangUlti", RPCMode.All, MultiplayerManager.instance.getGasingOwnedByPlayer(player).transform.position, jenisGasing);
-        if (skillIndex == 2)
-        {
-            networkView.RPC("client_animateUlti", RPCMode.All);
-        }
+        //networkView.RPC("client_setSiapaYangUlti", RPCMode.All, MultiplayerManager.instance.getGasingOwnedByPlayer(player).transform.position, jenisGasing);
+        //if (skillIndex == 2)
+        //{
+        //    networkView.RPC("client_animateUlti", RPCMode.All);
+        //}
     }
 
     [RPC]
