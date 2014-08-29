@@ -50,10 +50,10 @@ public class MultiplayerInputHandler : MonoBehaviour
         GUIsF = new Vector3(guiRatioX, guiRatioY, 1);
 
         //health bar
-        teksturHealth = (Texture2D)Resources.Load("Health/HPBAR_GREEN");
-        teksturHealth2 = (Texture2D)Resources.Load("Health/HPBAR_GREEN");
-        teksturSkill = (Texture2D)Resources.Load("Health/HPBAR_RED");
-        teksturSkill2 = (Texture2D)Resources.Load("Health/HPBAR_RED");
+        teksturHealth = (Texture2D)Resources.Load("Health/HUD_health_04");
+        teksturHealth2 = (Texture2D)Resources.Load("Health/HUD_health_04");
+        teksturSkill = (Texture2D)Resources.Load("Health/HUD_health_04");
+        teksturSkill2 = (Texture2D)Resources.Load("Health/HUD_health_04");
 
         healthBarLength = 1200;
         skillBarLength = 1200;
